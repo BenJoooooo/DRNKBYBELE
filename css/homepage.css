@@ -1,0 +1,27 @@
+/* Main content */
+img {
+    width: 100%;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.card-pictures {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-block: 3em;
+}
+
+.card-pictures-container img {
+    width: 250px;
+    height: 350px;
+    border-radius: 15px;
+}
+
+@media (max-width: 1200px) {
+    .card-pictures {
+        
+    }
+}

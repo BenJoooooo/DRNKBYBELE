@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=League+Spartan:wght@100;200;400;500&display=swap');
+
+:root {
+    --ff-fredoka: 'Fredoka One', cursive;
+    --ff-league: 'League Spartan', sans-serif;
+
+    --fs-72: 4.5rem;
+    --fs-48: 3rem;
+    --fs-40: 2.5rem;
+    --fs-32: 2rem;
+    --fs-24: 1.5rem;
+    --fs-16: 1rem;
+
+    --clr-main-color: #C27933;
+    --clr-secondary-color: white;
+    --clr-background: #6B5237;
+}
+
+* {
+    box-sizing: border-box;
+    font: inherit;
+    color: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1em 0;
+}
+
+.main-logo-picture {
+    width: 8em;
+}
+
+nav {
+    width:25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--clr-main-color);
+    font-size: var(--fs-16);
+    font-family: var(--ff-league);
+    padding-block: var(--fs-16);
+    border: 1px solid transparent;
+
+}
+
+nav a:hover,
+nav a:focus {
+    border-bottom: 1px solid var(--clr-main-color);
+}
+
+/* Continue */
+.dropdown-contact {
+    display: none;
+}
+
+.bag, .user {
+    width: var(--fs-16);
+    fill: var(--clr-main-color);
+}
+
+.svg-container {
+    display: flex;
+    gap: 1em;
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 25%;
+    gap: 1em;
+}
+
+.search-bar {
+    display: flex;
+    height: 30px;
+    gap: 1px;
+}
+
+.search-bar-input {
+    padding: 10px 15px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid var(--clr-main-color);
+}
+
+.search-bar-input::placeholder {
+    color: var(--clr-main-color);
+    font-family: var(--ff-league);
+    font-size: var(--fs-16);
+}
+
+.search-bar-input:focus {
+    outline: 0;
+    color: var(--clr-main-color);
+}
+
+.search-bar button {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid var(--clr-main-color);
+    background: transparent;
+}
+
+header i {
+    color: var(--clr-main-color);
+    font-size: 14px;
+}
