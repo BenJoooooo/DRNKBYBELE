@@ -85,7 +85,7 @@ img {
 .category-links {
     display: flex;
     justify-content: space-evenly;
-    padding-inline: 15em;
+    padding-inline: 5em;
     color: var(--clr-main-color);
 }
 
@@ -100,7 +100,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3em;
+    margin-block: 2em;
 }
 
 .menu h2,
@@ -166,6 +166,47 @@ img {
 
 .about-card:nth-child(4) {
     background-color: var(--clr-main-color);
+}
+
+
+/* Contact Page */
+
+.main-contact {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-contact .contact-header {
+    font-size: var(--fs-40);
+    color: var(--clr-main-color);
+    font-weight: 200;
+    font-family: var(--ff-league);
+}
+
+.main-contact .contact-form {
+    border: 1px solid var(--clr-main-color);
+    resize: none;
+}
+
+.main-contact .contact-form:focus {
+    outline: 0;
+    color: var(--clr-main-color);
+    padding: 1em;
+}
+
+.main-contact .contact-form::placeholder {
+    color: var(--clr-main-color);
+    font-family: var(--ff-league);
+    font-size: var(--fs-16);
+    font-weight: 200;
+}
+
+.contact-container {
+    width: 50%;
+}
+
+.mapouter {
+    width: 50%;
 }
 
 /* media for tablet 1000px */
