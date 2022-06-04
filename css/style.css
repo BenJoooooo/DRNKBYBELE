@@ -173,7 +173,13 @@ img {
 
 .main-contact {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.main-contact .contact-form-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .main-contact .contact-header {
@@ -201,13 +207,13 @@ img {
     font-weight: 200;
 }
 
-.contact-container {
-    width: 50%;
+.main-contact .contact-form-submit {
+    background: transparent;
+    border: 1px solid var(--clr-main-color);
+    border-top: 0;
+    outline: 0;
 }
 
-.mapouter {
-    width: 50%;
-}
 
 /* media for tablet 1000px */
 @media (max-width: 1000px) {
