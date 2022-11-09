@@ -28,207 +28,6 @@ body {
     padding: 0;
 }
 
-/* Start Side Menu */
-
-.admin-wrapper-content {
-    display: flex;
-}
-
-.admin-side-menu {
-    width: 15vw;
-    min-height: 100vh;
-    background: var(--clr-main-color);
-    margin: .5em;
-    display: flex;
-    flex-direction: column;
-}
-
-.admin-side-menu-brand {
-    margin-block: 2em;
-    padding: 0;
-    text-align: center;
-}
-
-.admin-side-menu-title {
-    font-family: var(--ff-league);
-    color: var(--clr-secondary-color);
-    font-size: 2vw;
-}
-
-.admin-side-menu-links .child-menu h4 {
-    color: white;
-    font-size: 1.2vw;
-    text-align: center;
-}
-
-.admin-side-menu-links .child:hover {
-    color: white;
-}
-
-.admin-side-menu-links a:hover {
-    color: white;
-}
-
-.admin-side-menu-links a {
-    text-decoration: none;
-    color: var(--clr-secondary-color);
-    font-family: var(--ff-league);
-    font-size: 1.2vw;
-}
-
-.admin-side-menu-links > .child {
-    margin-block: .5em;
-    margin-left: .5em;
-    padding: .5em 1em;
-    border-top-left-radius: 2em ;
-    border-bottom-left-radius: 2em;
-    display: flex;
-    align-items: center;
-    gap: 1em;
-}
-
-.admin-side-menu-links i {
-    font-size: 1.3vw;
-    color: white;
-}
-
-.admin-side-menu-links > .child:hover {
-    background-color: #6B5237;
-}
-
-.admin-main-content {
-    /* background: var(--clr-background); */
-    margin: 0 auto;
-    max-width: 75vw;
-    width: 100%;
-    padding: .5em;
-}
-
-/* .admin-main-content .admin-page-title { */
-    /* padding: 1.5em; */
-    /* background-color: #6B5237; */
-/* } */
-
-.admin-main-content .admin-page-title h3 {
-    color: var(--clr-main-color);
-    font-size: 2vw; 
-    font-family: var(--ff-league);
-}
-
-.admin-page-header {
-    display: flex;
-    align-items: center;
-    padding: 1.5em;
-    gap: 1em;
-    justify-content: space-between;
-}
-
-.admin-page-greet h4 {
-    color: var(--clr-main-color);
-    font-size: 2vw; 
-    font-family: var(--ff-league);
-}
-
-.admin-card-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2em;
-}
-
-.admin-card-container .admin-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 1em;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    padding: 3rem;
-    margin-block: 1em;
-}
-
-.admin-card-container .admin-card .details,
-.admin-card-container .admin-card .icon {
-    color: var(--clr-main-color);
-}
-
-.admin-card-container .admin-card .icon {
-    font-size: 2.5rem;
-}
-
-/* End of Side menu */
-
-/* Start admin main content */
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-thead tr {
-    border: 1px solid #f0f0f0;
-}
-
-thead th {
-    padding: 1rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    font-family: var(--ff-league);
-
-}
-
-tbody tr {
-    border: 1px solid #f0f0f0;
-}
-
-tbody td {
-    padding: 1rem;
-    border: 1px solid #f0f0f0;
-}
-
-
-.admin-page-table .table-container {
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-
-    padding: 1.5em;
-
-}
-
-.table-button-add {
-    margin-block: 1rem;
-}
-
-.table-container-add-new {
-    text-decoration: none;
-    color: var(--clr-secondary-color);
-    background: var(--clr-main-color);
-    font-size: 1rem;
-    font-family: var(--ff-league);
-    padding: 1rem 1.5rem;
-}
-
-.table-edit-delete {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5em;
-}
-
-.table-container-add-new:hover,
-.table-container-add-new:active {
-    color: #f6f6f6;
-}
-
-.admin-page-table .card-header {
-    padding: 1rem;
-}
-
-.admin-page-table .card-header h3 {
-    font-family: var(--ff-league);
-    color: var(--clr-background);
-}
-
-
-/* End admin main content */
-
 /* Main content */
 /* Homepage */
 #container {
@@ -482,6 +281,7 @@ img {
     outline: 0;
 } */
 
+
 /* Sign up page */
 
 .signup-container {
@@ -535,7 +335,6 @@ img {
 .signup {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1em;
     gap: .5em;
 }
 
@@ -544,12 +343,7 @@ img {
     border-radius: .5em;
 }
 
-.signup-role .admin-role {
-    display: flex;
-    flex-direction: row; 
-}
-
-.signup-input {
+.signup-container .signup-input {
     border: 1px solid var(--clr-main-color);
 }
 
@@ -573,18 +367,6 @@ img {
     font-family: var(--ff-league);
     font-weight: 500;
     color: var(--clr-dirty-white);
-}
-
-.signup-role {
-    display: flex;
-    gap: 2em;
-}
-
-.admin-signup-card-header h3 {
-    font-family: var(--ff-league);
-    font-size: 2vw;
-    color: #6B5237;
-    margin-block: 1em;
 }
 
 .alert {
