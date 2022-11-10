@@ -21,6 +21,10 @@ include "myfunctions.php";
             // $_SESSION['message'] = "Email already registered";
             // header('Location: ../signup.php');
 
+        } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+            redirect("../signup.php", "Please enter a valid email");
+
         } else {
 
              // Checks if password is the same with confirm password
@@ -32,13 +36,13 @@ include "myfunctions.php";
     
                 if($insert_query_run) {
     
-                    redirect("../login.php", "Registered Successfully");
+                    redirectSuccess("../login.php", "Registered Successfully");
                     // $_SESSION['message'] = "Registered Successfull";
                     // header('Location: ../login.php');
     
                 } else {
     
-                    redirect("../signup.php", "Something went wrong");
+                    redirectFailed("../signup.php", "Something went wrong");
                     // $_SESSION['message'] = "Something went wrong";
                     // header('Location: ../signup.php');
     
@@ -46,7 +50,7 @@ include "myfunctions.php";
     
             } else {
 
-                redirect("../signup.php", "Passwords do not match");
+                redirectFailed("../signup.php", "Passwords do not match");
                 // $_SESSION['message'] = "Passwords do not match";
                 // header('Location: ../signup.php');
 
@@ -81,13 +85,13 @@ include "myfunctions.php";
 
             if($role_as == 'admin' || $role_as == 'manager') {
 
-                redirect("../admin/index.php", "Welcome to dashboard");
+                redirectSuccess("../admin/index.php", "Welcome to dashboard");
                 // $_SESSION['message'] = "Welcome to dashboard";
                 // header('Location: ../admin/index.php');
 
             } else {
 
-                redirect("../index.php", "Logged in successfully");
+                redirectSuccess("../index.php", "Logged in successfully");
                 // $_SESSION['message'] = "Logged in successfully";
                 // header('Location: ../index.php');   
 
@@ -95,7 +99,7 @@ include "myfunctions.php";
 
         } else {
 
-            redirect("../login.php", "Invalid credentials");
+            redirectFailed("../login.php", "Invalid credentials");
             // $_SESSION['message'] = "Invalid credentials";
             // header('Location: ../login.php');
 

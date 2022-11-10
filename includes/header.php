@@ -32,7 +32,7 @@
             </div>
             <nav>
                 <?php if(isset($_SESSION['auth'])) { ?>
-                    <?php if(($_SESSION['role'] == 'admin')) { ?>
+                    <?php if(($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager')) { ?>
                         <div class="nav-admin">
                             <a href="admin/index.php">Admin</a>
                         </div>

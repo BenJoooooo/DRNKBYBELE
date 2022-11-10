@@ -1,4 +1,4 @@
-<footer>
+        <footer>
             <div class="footer-content">
                 <div class="footer-column-one">
                     <img src="../img/drnklogowhite.png" alt="">
@@ -46,3 +46,8 @@
             </div>
         </footer>
     </div>
+
+        <script src="../functions/codes.js"></script>
+
+    </body>
+</html>

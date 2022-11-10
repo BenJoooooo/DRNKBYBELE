@@ -15,6 +15,8 @@
     --clr-secondary-color: white;
     --clr-dirty-white: #f6f6f6;
     --clr-background: #6B5237;
+    --clr-dark-black: #1e1e1e;
+    --clr-dark-grey: #3c3c3c;
 }
 
 * {
@@ -193,7 +195,7 @@ tbody td {
 }
 
 .table-button-add {
-    margin-block: 1rem;
+    margin-block: 2rem;
 }
 
 .table-container-add-new {
@@ -535,13 +537,18 @@ img {
 .signup {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1em;
     gap: .5em;
 }
 
 .signup input {
     padding: .7rem;
     border-radius: .5em;
+    color: var(--clr-main-color);
+    outline: 0px;
+}
+
+.signup input:focus {
+    color: var(--clr-dark-black);
 }
 
 .signup-role .admin-role {
@@ -556,7 +563,6 @@ img {
 .signup-container .signup-input:focus {
     outline: 0;
     color: var(--clr-main-color);
-    padding: 1em;
 }
 
 .signup label {
@@ -590,6 +596,26 @@ img {
 .alert {
     margin: 2em;
 }
+
+/* Show or hide password style */
+
+.password-container {
+    width: 100%;
+    position: relative;
+}
+
+.password-container input {
+    width: 100%;
+}
+
+.fa-eye {
+    position: absolute;
+    top: 33%;
+    right: 2%;
+    color: var(--clr-dark-grey);
+}
+
+/* End Show or hide password style */
 
 /* media for tablet 1000px */
 @media (max-width: 1000px) {

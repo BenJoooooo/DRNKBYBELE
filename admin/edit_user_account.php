@@ -20,21 +20,15 @@
             <div class="admin-page-table">
                 <div class="table-container">
 
-                    <div class="signup_message">
-                        <?php if (isset($_SESSION['message'])) { ?>
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <bold>Hey! </bold><?= $_SESSION['message'] ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php unset($_SESSION['message']); } ?>
-                    </div>
+                        <!-- Session Message -->
+                        <?php include('../functions/sessionmessage.php'); ?>
 
-                    <?php if(isset($_GET['id'])) {
-                        $id = $_GET['id'];
-                        $adminUsers = getById("users", $id);
+                        <?php if(isset($_GET['id'])) {
+                            $id = $_GET['id'];
+                            $adminUsers = getById("users", $id);
 
-                        if(mysqli_num_rows($adminUsers) > 0) {
-                            $data = mysqli_fetch_array($adminUsers);
+                            if(mysqli_num_rows($adminUsers) > 0) {
+                                $data = mysqli_fetch_array($adminUsers);
                         ?>
 
                         <div class="admin-signup-card-header">
@@ -42,27 +36,33 @@
                         </div>
 
                         <div class="signup-card-body">
-                            <form action="../functions/codes.php" method="POST" class="create-user-account">
+                            <form action="../functions/codes.php" method="POST" class="signup-form">
                                 <div class="signup fullname">
                                     <input type="hidden" name="category_id" value="<?= $data['id'] ?>">
                                     <label for="">Full Name</label>
-                                    <input type="text" name="signup_fullname" value="<?= $data['fullname']; ?>" class="signup-input">
+                                    <input type="text" name="signup_fullname" value="<?= $data['fullname']; ?>" required class="signup-input">
                                 </div>
                                 <div class="signup email">
                                     <label for="">Email</label>
-                                    <input type="email" name="signup_email" value="<?= $data['email']; ?>">
+                                    <input type="email" name="signup_email" value="<?= $data['email']; ?>" required class="signup-input">
                                 </div>
                                 <div class="signup repeat-password">
                                     <label for="">Address</label>
-                                    <input type="text" name="signup_address" value="<?= $data['address']; ?>" class="signup-input">
+                                    <input type="text" name="signup_address" value="<?= $data['address']; ?>" required class="signup-input">
                                 </div>
                                 <div class="signup password">
                                     <label for="">Password</label>
-                                    <input type="password" name="signup_password" value="<?= $data['password']; ?>" class="signup-input">
+                                    <div class="password-container">
+                                        <input type="password" name="signup_password" id="password" value="<?= $data['password']; ?>" required class="signup-input">
+                                        <i class="fa fa-eye" id="show-password"></i>
+                                    </div>
                                 </div>
                                 <div class="signup repeat-password">
                                     <label for="">Repeat Password</label>
-                                    <input type="password" name="repeat_signup_password" value="<?= $data['password']; ?>" class="signup-input">
+                                    <div class="password-container">
+                                        <input type="password" name="repeat_signup_password" id="repeatPassword" value="<?= $data['password']; ?>" required class="signup-input">
+                                        <i class="fa fa-eye" id="show-repeat-password"></i>
+                                    </div>
                                 </div>
                                 <button class="signup-submit" name="update_user_submit">Update User</button>
                             </form>

@@ -2,6 +2,7 @@
 
     include('../core/dbcon.php');
 
+    // fetches all data from the table
     function getAll($table) {
 
         global $con;
@@ -10,6 +11,7 @@
 
     }
 
+    // fetches id from the table
     function getById($table, $id) {
 
         global $con;
@@ -18,18 +20,25 @@
 
     }
 
+    // Fetches data from table with admin or manager role
     function getAdmin($table) {
+
         global $con;
         $query = "SELECT * FROM $table WHERE role = 'admin' || role = 'manager'";
         return $query_run = mysqli_query($con, $query);
+
     }
 
+    // Fetches data from table with user role
     function getUsers($table) {
+
         global $con;
         $query = "SELECT * FROM $table WHERE role = ''";
         return $query_run = mysqli_query($con, $query);
+        
     }
 
+    // Session messages
     function redirect($url, $message) {
 
         $_SESSION['message'] = $message;
@@ -38,10 +47,22 @@
         
     }
 
-    function getEmail($table, $email) {
-        global $con;
-        $query = "SELECT * FROM $table WHERE email = '$email'";
-        return $query_run = mysqli_query($con, $query);
+    // Session messages
+    function redirectSuccess($url, $message) {
+
+        $_SESSION['successmessage'] = $message;
+        header("Location: " . $url);
+        exit();
+
+    }
+
+    // Session messages
+    function redirectFailed($url, $message) {
+
+        $_SESSION['failedmessage'] = $message;
+        header("location: " . $url);
+        exit();
+
     }
 
 ?>

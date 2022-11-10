@@ -21,15 +21,8 @@
             <div class="admin-page-table">
                 <div class="table-container">
 
-
-                    <div class="signup_message">
-                        <?php if (isset($_SESSION['message'])) { ?>
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <bold>Hey! </bold><?= $_SESSION['message'] ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php unset($_SESSION['message']); } ?>
-                    </div>
+                <!-- Session Message -->
+                <?php include('../functions/sessionmessage.php'); ?>
 
                     <div class="table-button-add">
                         <a href="users_add_new_account.php" class="table-container-add-new">Add User</a>

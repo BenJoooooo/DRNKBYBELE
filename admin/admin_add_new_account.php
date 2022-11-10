@@ -3,6 +3,7 @@
     session_start();
     
     include ('../functions/middleware.php');
+    include ('../functions/middleware_manager.php');
     include ('includes/header.php');
     include ('includes/sidebar.php');
 
@@ -21,40 +22,40 @@
             <div class="admin-page-table">
                 <div class="table-container">
 
-                    <div class="signup_message">
-                        <?php if (isset($_SESSION['message'])) { ?>
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <bold>Hey! </bold><?= $_SESSION['message'] ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php unset($_SESSION['message']); } ?>
-                    </div>
+                    <!-- Session Message -->
+                    <?php include('../functions/sessionmessage.php'); ?>
 
                     <div class="admin-signup-card-header">
                         <h3>Create New Account</h3>
                     </div>
 
                     <div class="signup-card-body">
-                        <form action="../functions/codes.php" method="POST" class="create-user-account">
+                        <form action="../functions/codes.php" method="POST" class="signup-form">
                             <div class="signup fullname">
                                 <label for="">Full Name</label>
-                                <input type="text" name="signup_fullname" class="signup-input">
+                                <input type="text" name="signup_fullname" class="signup-input" required placeholder="Enter Full Name">
                             </div>
                             <div class="signup email">
                                 <label for="">Email</label>
-                                <input type="email" name="signup_email" class="signup-input">
+                                <input type="email" name="signup_email" class="signup-input" required placeholder="Enter Email">
                             </div>
                             <div class="signup repeat-password">
                                 <label for="">Address</label>
-                                <input type="text" name="signup_address" class="signup-input">
+                                <input type="text" name="signup_address" class="signup-input" required placeholder="Enter House No. / Street, Brgy., City, Zip Code">
                             </div>
                             <div class="signup password">
                                 <label for="">Password</label>
-                                <input type="password" name="signup_password" class="signup-input">
+                                <div class="password-container">
+                                    <input type="password" name="signup_password" id="password" class="signup-input" required placeholder="Password">
+                                    <i class="fa fa-eye" id="show-password"></i>
+                                </div>
                             </div>
                             <div class="signup repeat-password">
                                 <label for="">Repeat Password</label>
-                                <input type="password" name="repeat_signup_password" class="signup-input">
+                                <div class="password-container">
+                                    <input type="password" name="repeat_signup_password" id="repeatPassword" class="signup-input" required placeholder="Confirm Password">
+                                    <i class="fa fa-eye" id="show-repeat-password"></i>
+                                </div>
                             </div>
                             <div class="signup-role">
                                 <div class="signup admin-role">
@@ -76,6 +77,7 @@
 
 <?php
 
+    
     include ('includes/footer.php');
 
 ?>

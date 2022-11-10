@@ -20,7 +20,7 @@ include ('../functions/myfunctions.php');
 
         if(mysqli_num_rows($check_email_query_run) > 0) {
 
-            redirect("../admin/admin_add_new_account.php", "Email already exists");
+            redirectFailed("../admin/admin_add_new_account.php", "Email already exists");
 
         } else {
 
@@ -34,11 +34,11 @@ include ('../functions/myfunctions.php');
 
                 if($insert_query_run) {
 
-                    redirect("../admin/admin_admin.php", "Added Successfully");
+                    redirectSuccess("../admin/admin_admin.php", "Added Successfully");
 
                 } else {
 
-                    redirect("../admin/admin_add_new_account.php", "Something went wrong");
+                    redirectFailed("../admin/admin_add_new_account.php", "Something went wrong");
 
                 }
             } else {
@@ -64,7 +64,7 @@ include ('../functions/myfunctions.php');
 
         if(mysqli_num_rows($check_email_query_run) > 0) {
 
-            redirect("../admin/users_add_new_account.php", "Email already exists");
+            redirectFailed("../admin/users_add_new_account.php", "Email already exists");
 
         } else {
 
@@ -78,11 +78,11 @@ include ('../functions/myfunctions.php');
 
                 if($insert_query_run) {
 
-                    redirect("../admin/admin_users.php", "Added Successfully");
+                    redirectSuccess("../admin/admin_users.php", "Added Successfully");
 
                 } else {
 
-                    redirect("../admin/users_add_new_account.php", "Something went wrong");
+                    redirectFailed("../admin/users_add_new_account.php", "Something went wrong");
 
                 }
             } else {
@@ -108,35 +108,62 @@ include ('../functions/myfunctions.php');
         $checks_email_query = "SELECT email FROM users WHERE email = '$signup_email' ";
         $check_email_query_run = mysqli_query($con, $checks_email_query);
 
-        if(mysqli_num_rows($check_email_query_run) > 0) {
+        // Fetches data from database
+        $users = getById("users", $category_id);
+        if(mysqli_num_rows($users) > 0) {
+            $data = mysqli_fetch_array($users);
+        }
 
-            redirect("../admin/edit_admin_account.php?id=$category_id", "Email already exists");
+        // Checks if signup input is not empty
+        if(!empty($signup_email)) {
 
-        } else {
+            // Checks if input email is equal to the data from database
+            if($data['email'] == $signup_email) {
+            
+                // Checks if password match with confirm
+                if($signup_password == $cpassword) {
+    
+                    // Update query
+                    $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', role = '$role', address = '$signup_address'
+                    WHERE id = '$category_id' ";
+                    $update_query_run = mysqli_query($con, $update_query);
+    
+                    if($update_query_run) {
+                        redirectSuccess("../admin/admin_admin.php", "Edit successfully");
+                    } else {
+                        redirectFailed("../admin/edit_admin_account.php?id=$category_id", "Something went wrong");
+                    }
+                } else {
+                    redirect("../admin/edit_admin_account.php?id=$category_id", "Passwords do not match");
+                }
 
-            // checks if password is the same with confirm password
-            if($signup_password == $cpassword) {
+            // Checks if email input is not greater than 0
+            } elseif(!mysqli_num_rows($check_email_query_run) > 0) {
 
-                // Update query
-                $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', role = '$role', address = '$signup_address'
-                WHERE id = '$category_id'";
-                $update_query_run = mysqli_query($con, $update_query);
+                // Checks if password match with confirm
+                if($signup_password == $cpassword) {
 
-                if($update_query_run) {
+                    // Update query
+                    $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', role = '$role', address = '$signup_address'
+                    WHERE id = '$category_id' ";
+                    $update_query_run = mysqli_query($con, $update_query);
 
-                    redirect("../admin/admin_admin.php", "Edit successfully");
+                    if($update_query_run) {
+                        redirectSuccess("../admin/admin_admin.php", "Edit successfully");
+                    } else {
+                        redirectFailed("../admin/edit_admin_account.php?id=$category_id", "Something went wrong");
+                    }
 
                 } else {
-
-                    redirect("../admin/edit_admin_account.php?id=$category_id", "Something went wrong");
-
+                    redirect("../admin/edit_admin_account.php?id=$category_id", "Passwords do not match");
                 }
+
             } else {
-
-                redirect("../admin/edit_admin_account.php?id=$category_id", "Passwords do not match");
-
+                redirectFailed("../admin/edit_admin_account.php?id=$category_id", "Email already exists");
             }
-
+            
+        } else {
+            redirect("../admin/edit_admin_account.php?id=$category_id", "Email must not be empty");
         }
 
         // Updates user
@@ -159,12 +186,13 @@ include ('../functions/myfunctions.php');
             $data = mysqli_fetch_array($users);
         }
 
-        // If data from database is equal to the input
-
+        // Checks if signup input is not empty
         if(!empty($signup_email)) {
 
+            // Checks if input email is equal to the data from database
             if($data['email'] == $signup_email) {
             
+                // Checks if password match with confirm
                 if($signup_password == $cpassword) {
     
                     // Update query
@@ -173,43 +201,37 @@ include ('../functions/myfunctions.php');
                     $update_query_run = mysqli_query($con, $update_query);
     
                     if($update_query_run) {
-    
-                        redirect("../admin/admin_users.php", "Edit successfully");
-    
+                        redirectSuccess("../admin/admin_users.php", "Edit successfully");
                     } else {
-                        redirect("../admin/edit_user_account.php?id=$category_id", "Something went wrong");
+                        redirectFailed("../admin/edit_user_account.php?id=$category_id", "Something went wrong");
                     }
-    
                 } else {
                     redirect("../admin/edit_user_account.php?id=$category_id", "Passwords do not match");
                 }
-            }
 
-            if(mysqli_num_rows($check_email_query_run) > 0) {
+            // Checks if email input is not greater than 0
+            } elseif(!mysqli_num_rows($check_email_query_run) > 0) {
 
-                redirect("../admin/edit_user_account.php?id=$category_id", "Email already exists");
+                // Checks if password match with confirm
+                if($signup_password == $cpassword) {
+
+                    // Update query
+                    $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', address = '$signup_address'
+                    WHERE id = '$category_id' ";
+                    $update_query_run = mysqli_query($con, $update_query);
+
+                    if($update_query_run) {
+                        redirectSuccess("../admin/admin_users.php", "Edit successfully");
+                    } else {
+                        redirectFailed("../admin/edit_user_account.php?id=$category_id", "Something went wrong");
+                    }
+
+                } else {
+                    redirect("../admin/edit_user_account.php?id=$category_id", "Passwords do not match");
+                }
 
             } else {
-
-                // checks if password is the same with confirm password
-                if($signup_password == $cpassword) {
-
-                    // Update query
-                    $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', address = '$signup_address'
-                    WHERE id = '$category_id' ";
-                    $update_query_run = mysqli_query($con, $update_query);
-
-                    if($update_query_run) {
-
-                        redirect("../admin/admin_users.php", "Edit successfully");
-
-                    } else {
-                        redirect("../admin/edit_user_account.php?id=$category_id", "Something went wrong");
-                    }
-
-                } else {
-                    redirect("../admin/edit_user_account.php?id=$category_id", "Passwords do not match");
-                }
+                redirectFailed("../admin/edit_user_account.php?id=$category_id", "Email already exists");
             }
             
         } else {
