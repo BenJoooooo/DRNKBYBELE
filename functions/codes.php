@@ -144,43 +144,75 @@ include ('../functions/myfunctions.php');
 
         $category_id = $_POST['category_id'];
         $signup_fullname = $_POST['signup_fullname'];
-        $signup_email = $_POST['signup_email'];
         $signup_address = $_POST['signup_address'];
         $signup_password = md5($_POST['signup_password']);
         $cpassword = md5($_POST['repeat_signup_password']);
+        $signup_email = $_POST['signup_email'];
 
         // Checks if email already registered
         $checks_email_query = "SELECT email FROM users WHERE email = '$signup_email' ";
         $check_email_query_run = mysqli_query($con, $checks_email_query);
 
-        if(mysqli_num_rows($check_email_query_run) > 0) {
+        // Fetches data from database
+        $users = getById("users", $category_id);
+        if(mysqli_num_rows($users) > 0) {
+            $data = mysqli_fetch_array($users);
+        }
 
-            redirect("../admin/edit_user_account.php?id=$category_id", "Email already exists");
+        // If data from database is equal to the input
 
-        } else {
+        if(!empty($signup_email)) {
 
-            // checks if password is the same with confirm password
-            if($signup_password == $cpassword) {
-
-                // Update query
-                $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', address = '$signup_address'
-                WHERE id = '$category_id'";
-                $update_query_run = mysqli_query($con, $update_query);
-
-                if($update_query_run) {
-
-                    redirect("../admin/admin_users.php", "Edit successfully");
-
+            if($data['email'] == $signup_email) {
+            
+                if($signup_password == $cpassword) {
+    
+                    // Update query
+                    $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', address = '$signup_address'
+                    WHERE id = '$category_id' ";
+                    $update_query_run = mysqli_query($con, $update_query);
+    
+                    if($update_query_run) {
+    
+                        redirect("../admin/admin_users.php", "Edit successfully");
+    
+                    } else {
+                        redirect("../admin/edit_user_account.php?id=$category_id", "Something went wrong");
+                    }
+    
                 } else {
-
-                    redirect("../admin/edit_user_account.php?id=$category_id", "Something went wrong");
-
+                    redirect("../admin/edit_user_account.php?id=$category_id", "Passwords do not match");
                 }
-            } else {
-
-                redirect("../admin/edit_user_account.php?id=$category_id", "Passwords do not match");
-
             }
 
+            if(mysqli_num_rows($check_email_query_run) > 0) {
+
+                redirect("../admin/edit_user_account.php?id=$category_id", "Email already exists");
+
+            } else {
+
+                // checks if password is the same with confirm password
+                if($signup_password == $cpassword) {
+
+                    // Update query
+                    $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', address = '$signup_address'
+                    WHERE id = '$category_id' ";
+                    $update_query_run = mysqli_query($con, $update_query);
+
+                    if($update_query_run) {
+
+                        redirect("../admin/admin_users.php", "Edit successfully");
+
+                    } else {
+                        redirect("../admin/edit_user_account.php?id=$category_id", "Something went wrong");
+                    }
+
+                } else {
+                    redirect("../admin/edit_user_account.php?id=$category_id", "Passwords do not match");
+                }
+            }
+            
+        } else {
+            redirect("../admin/edit_user_account.php?id=$category_id", "Email must not be empty");
         }
     }

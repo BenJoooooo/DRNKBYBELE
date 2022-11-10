@@ -38,4 +38,10 @@
         
     }
 
+    function getEmail($table, $email) {
+        global $con;
+        $query = "SELECT * FROM $table WHERE email = '$email'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
 ?>

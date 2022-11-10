@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="signup email">
                                     <label for="">Email</label>
-                                    <input type="email" name="signup_email" value="<?= $data['email']; ?>" class="signup-input">
+                                    <input type="email" name="signup_email" value="<?= $data['email']; ?>">
                                 </div>
                                 <div class="signup repeat-password">
                                     <label for="">Address</label>
