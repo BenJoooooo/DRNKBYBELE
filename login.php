@@ -43,6 +43,8 @@
             </form>
         </div>
     </div>
+    
+    <script src="functions/passwordIcon.js"></script>
 
 <?php
 

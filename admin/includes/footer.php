@@ -47,7 +47,7 @@
         </footer>
     </div>
 
-        <script src="../functions/codes.js"></script>
+        
 
     </body>
 </html>
