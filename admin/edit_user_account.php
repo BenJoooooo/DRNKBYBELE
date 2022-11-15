@@ -80,6 +80,9 @@
         </div>
     </div>
 
+    <script src="../functions/passwordIcon.js"></script>
+    <script src="../functions/repeat-password.js"></script>
+
 <?php
 
     include ('includes/footer.php');

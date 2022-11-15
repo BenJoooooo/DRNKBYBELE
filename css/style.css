@@ -54,12 +54,13 @@ body {
 .admin-side-menu-title {
     font-family: var(--ff-league);
     color: var(--clr-secondary-color);
-    font-size: 2vw;
+    font-size: clamp(1rem, 2vw, 3rem); 
+
 }
 
 .admin-side-menu-links .child-menu h4 {
     color: white;
-    font-size: 1.2vw;
+    font-size: clamp(1rem, 2vw, 2rem); 
     text-align: center;
 }
 
@@ -75,7 +76,8 @@ body {
     text-decoration: none;
     color: var(--clr-secondary-color);
     font-family: var(--ff-league);
-    font-size: 1.2vw;
+    font-size: clamp(1rem, 2vw, 1.5rem); 
+
 }
 
 .admin-side-menu-links > .child {
@@ -100,8 +102,8 @@ body {
 
 .admin-main-content {
     /* background: var(--clr-background); */
-    margin: 0 auto;
-    max-width: 75vw;
+    margin-inline: auto;
+    max-width: 1200px;
     width: 100%;
     padding: .5em;
 }
@@ -110,10 +112,9 @@ body {
     /* padding: 1.5em; */
     /* background-color: #6B5237; */
 /* } */
-
-.admin-main-content .admin-page-title h3 {
+.admin-page-title h3 {
     color: var(--clr-main-color);
-    font-size: 2vw; 
+    font-size: clamp(1rem, 2vw, 3rem); 
     font-family: var(--ff-league);
 }
 
@@ -127,13 +128,13 @@ body {
 
 .admin-page-greet h4 {
     color: var(--clr-main-color);
-    font-size: 2vw; 
+    font-size: clamp(1rem, 2vw, 3rem); 
     font-family: var(--ff-league);
 }
 
 .admin-card-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2em;
 }
 
@@ -145,6 +146,7 @@ body {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     padding: 3rem;
     margin-block: 1em;
+    gap: 1em;
 }
 
 .admin-card-container .admin-card .details,
@@ -186,12 +188,14 @@ tbody td {
     border: 1px solid #f0f0f0;
 }
 
+tbody td img {
+    width: 10vw;
+    height: auto;
+}
 
 .admin-page-table .table-container {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-
     padding: 1.5em;
-
 }
 
 .table-button-add {
@@ -226,6 +230,8 @@ tbody td {
 .admin-page-table .card-header h3 {
     font-family: var(--ff-league);
     color: var(--clr-background);
+    font-size: clamp(1rem, 2vw, 2.5rem); 
+
 }
 
 
@@ -237,44 +243,103 @@ tbody td {
     display: grid;
     grid-template-rows: (auto, 1fr, auto);
     height: 100vh;
-
     /* take note of centering this item */
     /* max-width: 1200px;
     margin: 0 auto; */
 }
 
-.menu {
-    max-width: 1200px;
-    margin: 0 auto;
+/* .background img {
+    max-height: 100vh;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+} */
+
+.carousel-item img {
+    /* max-height: 100vh; */
+    max-height: auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-
-img {
+.card-pictures img {
     width: 100%;
-    background-size: cover;
-    object-fit: cover;    
+    background-size: cover;  
+    object-fit: cover; 
 }
 
 .card-pictures {
+    /* Change to display flex in carousel */
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     place-items: center;
     justify-content: space-between;
     width: 100%;
     padding-block: 3em;
-    gap: 1em;
+    gap: 3em; 
+    padding-inline: 1em;
+
 }
 
-.card-pictures-container img {
+.product-container h3 {
+    margin: 0;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    color: var(--clr-main-color);
+    font-family: var(--ff-league);
+}
+
+.product-container small {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    padding: .5em 1em;
+    background-color: var(--clr-main-color);
+    border-radius: 1rem;
+    font-family: var(--ff-league);
+    color: white;
+}
+
+.product-container {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: relative;
+}
+
+.card-pictures img {
+    object-fit: cover;
+    object-position: center;
     width: 250px;
-    height: 350px;
-    border-radius: 15px;
+    height: 250px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.featured-products {
+    text-align: center;
+    margin-top: 1em;
+    font-family: var(--ff-fredoka);
+    color: var(--clr-main-color);
+    letter-spacing: .2rem;
+    font-size: var(--fs-40);
 }
 
 /* Menu */
 
 .menu {
     gap: 1em;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .main-container {
@@ -286,12 +351,12 @@ img {
     margin: 0 auto;
 }
 
-.menu .title {
+.main-container .title {
     font-family: var(--ff-fredoka);
     color: var(--clr-main-color);
     font-size: var(--fs-48);
     text-align: center;
-    letter-spacing: .5rem;
+    letter-spacing: .2rem;
 }
 
 .menu a {
@@ -303,6 +368,11 @@ img {
 .menu a:focus {
     border-bottom: 1px solid var(--clr-main-color);
     color: var(--clr-main-color);
+}
+
+.card-pictures-container {
+    max-width: 1500px;
+    margin: 0 auto;
 }
 
 .category-links {
@@ -364,7 +434,9 @@ img {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    justify-content: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
 }
 
 .about-card {
@@ -381,7 +453,7 @@ img {
     text-decoration: none;
     color: var(--clr-secondary-color);
     font-family: var(--ff-league);
-    font-size: var(--fs-16);
+    font-size: clamp(1rem, 1vw, 1rem);
     padding: .5em 1em;
     border-radius: 20px;
     border: 1px solid var(--clr-secondary-color);
@@ -586,6 +658,13 @@ img {
     gap: 2em;
 }
 
+/* Size of image displayed when editing cover photo as a preview */
+.signup img {
+    width: 50vw;
+    height: auto;
+}
+/* Size of image displayed when editing cover photo as a preview */
+
 .admin-signup-card-header h3 {
     font-family: var(--ff-league);
     font-size: 2vw;
@@ -620,8 +699,8 @@ img {
 /* media for tablet 1000px */
 @media (max-width: 1000px) {
     .card-pictures {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10em;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5em;
     }
     .card-menu-container {
         grid-template-columns: repeat(2, 1fr);

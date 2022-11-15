@@ -4,12 +4,19 @@
     
     include ('../functions/middleware.php');
     include ('includes/header.php');
-    include ('includes/sidebar.php');
 
+
+    $adminCount = getAdmin("users");
+    $getAdminCount = mysqli_num_rows($adminCount);
+
+    $userCount = getUsers("users");
+    $getUserCount = mysqli_num_rows($userCount);
 ?>
 
-        <div class="admin-main-content">
+        <?php include ('includes/sidebar.php'); ?>
 
+        <div class="admin-main-content">
+            
             <!-- Session Message -->
             <?php include('../functions/sessionmessage.php'); ?>
 
@@ -25,38 +32,38 @@
             <div class="admin-card-container">
                 <div class="admin-card">
                     <div class="details">
-                        <h4>3</h4>
+                        <h4><?php print_r($getAdminCount); ?></h4>
                         <h5>Admin</h5>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-home"></i>
+                        <i class="fas fa-user-cog"></i>
                     </div>
                 </div>
                 <div class="admin-card">
                     <div class="details">
-                        <h4>39</h4>
+                        <h4><?php print_r($getUserCount); ?></h4>
                         <h5>Users</h5>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-home"></i>
+                        <i class="fas fa-user-friends"></i>
                     </div>
                 </div>
                 <div class="admin-card">
                     <div class="details">
-                        <h4>4,60</h4>
+                        <h4>Dummy</h4>
                         <h5>Income</h5>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-home"></i>
+                        <i class="	fas fa-money-check"></i>
                     </div>
                 </div>
                 <div class="admin-card">
                     <div class="details">
-                        <h4>14</h4>
+                        <h4>Dummy</h4>
                         <h5>Orders</h5>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-home"></i>
+                        <i class="fas fa-shopping-basket"></i>
                     </div>
                 </div>
             </div>

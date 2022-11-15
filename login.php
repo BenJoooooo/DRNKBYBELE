@@ -2,13 +2,10 @@
 
     session_start();
 
-
-
     if(isset($_SESSION['auth'])) {
         include "functions/myfunctions.php";
         redirect("index.php", "You are already logged in");
         exit();
-
     }
 
     require ("includes/header.php");

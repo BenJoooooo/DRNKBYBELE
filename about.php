@@ -5,7 +5,7 @@
 ?>
         <main class="menu-about">
             <div class="about-container">
-                <div class="about-card one">
+                <div class="about-card one">    
                     <a href="" class="read-more">Read more</a>
                 </div>
                 <div class="about-card two">

@@ -25,7 +25,7 @@
                     <!-- Session Message -->
                     <?php include('../functions/sessionmessage.php'); ?>
 
-                    <div class="admin-signup-card-header">
+                    <div class="card-header">
                         <h3>Create New Account</h3>
                     </div>
 
@@ -74,6 +74,9 @@
             </div>
         </div>
     </div>
+
+    <script src="../functions/passwordIcon.js"></script>
+    <script src="../functions/repeat-password.js"></script>
 
 <?php
 

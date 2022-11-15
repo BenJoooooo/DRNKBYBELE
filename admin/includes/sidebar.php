@@ -15,7 +15,7 @@
                 </div>
                 <div class="child">
                     <i class="far fa-file-code"></i>
-                    <a href="index.php">Manage</a>
+                    <a href="admin_manage_home.php">Manage</a>
                 </div>
                 <div class="child">
                     <i class="fas fa-file-invoice"></i>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="child">
                     <i class="fas fa-glass-whiskey"></i>
-                    <a href="admin_products.php">Products</a>
+                    <a href="admin_products_page.php">Products</a>
                 </div>
             </div>
         </div>

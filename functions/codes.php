@@ -20,7 +20,7 @@ include ('../functions/myfunctions.php');
 
         if(mysqli_num_rows($check_email_query_run) > 0) {
 
-            redirectFailed("../admin/admin_add_new_account.php", "Email already exists");
+            redirectFailed($_SERVER['HTTP_REFERER'], "Email already exists");
 
         } else {
 
@@ -29,24 +29,23 @@ include ('../functions/myfunctions.php');
 
                 // Insert admin data
                 $insert_query = "INSERT INTO users (fullname, email, password, role ,address)
-                VALUES ('$signup_fullname', '$signup_email', '$signup_password', '$role', '$signup_address')";
+                VALUES ('$signup_fullname', '$signup_email', '$signup_password', '$role ', '$signup_address')";
                 $insert_query_run = mysqli_query($con, $insert_query);
 
                 if($insert_query_run) {
 
-                    redirectSuccess("../admin/admin_admin.php", "Added Successfully");
+                    redirectSuccess("../admin/admin_admin.php", "Added Sucessfully");
 
                 } else {
 
-                    redirectFailed("../admin/admin_add_new_account.php", "Something went wrong");
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Something went wrong");
 
                 }
             } else {
 
-                redirect("../admin/admin_add_new_account.php", "Passwords do not match");
+                redirect($_SERVER['HTTP_REFERER'], "Passwords do not match");
 
             }
-
         }
 
         // Adds users
@@ -64,7 +63,7 @@ include ('../functions/myfunctions.php');
 
         if(mysqli_num_rows($check_email_query_run) > 0) {
 
-            redirectFailed("../admin/users_add_new_account.php", "Email already exists");
+            redirectFailed($_SERVER['HTTP_REFERER'], "Email already exists");
 
         } else {
 
@@ -78,19 +77,19 @@ include ('../functions/myfunctions.php');
 
                 if($insert_query_run) {
 
-                    redirectSuccess("../admin/admin_users.php", "Added Successfully");
+                    redirectSuccess("../admin/admin_users.php", "Added successfully");
+
 
                 } else {
 
-                    redirectFailed("../admin/users_add_new_account.php", "Something went wrong");
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Something went wrong");
 
                 }
             } else {
 
-                redirect("../admin/users_add_new_account.php", "Passwords do not match");
+                redirect($_SERVER['HTTP_REFERER'], "Passwords do not match");
 
             }
-
         }
 
         // Updates admin user
@@ -237,4 +236,98 @@ include ('../functions/myfunctions.php');
         } else {
             redirect("../admin/edit_user_account.php?id=$category_id", "Email must not be empty");
         }
+
+    } elseif(isset($_POST['delete_btn'])) {
+
+        $category_id = mysqli_real_escape_string($con ,$_POST['category_id']);
+        $delete_query = "DELETE FROM users WHERE id = '$category_id'";
+        $delete_query_run = mysqli_query($con, $delete_query);
+
+        if($delete_query_run) {
+            redirectSuccess($_SERVER['HTTP_REFERER'], "Delete Successfully");
+        } else {
+            redirectFailed($_SERVER['HTTP_REFERER'], "Delete failed");
+        }
+    }
+
+    if (isset($_POST['upload_photo'])) {
+
+        $added_by = $_POST['added_by'];
+        $name = $_POST['name'];
+        $image = $_FILES['upload']['name'];
+        $description = $_POST['description'];
+
+        $path = "../uploads";
+        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+        $filename = time(). '.' .$image_ext;
+
+        $query = "INSERT INTO images (name, description, image, added_by) VALUES ('$name', '$description', '$filename', '$added_by')";
+        $query_run = mysqli_query($con, $query);
+
+        if($query_run) {
+            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+            redirectSuccess("../admin/admin_manage_home.php", "Uploaded Successfully!");
+        } else {
+            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+        }
+
+    } elseif (isset($_POST['update_photo'])) {
+
+        $added_by = $_POST['added_by'];
+        $image_id = $_POST['image_id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $old_image = $_POST['oldimage'];
+        $new_image = $_FILES['upload']['name'];
+
+        if($new_image != "") {
+            // $update_filename = $new_image;
+            $image_ext = pathinfo($new_image, PATHINFO_EXTENSION);
+            $update_filename = time(). '.' .$image_ext;
+        } else {
+            $update_filename = $old_image;
+        }
+
+        $path = "../uploads";
+
+        $query = "UPDATE images SET added_by = '$added_by', name = '$name', description = '$description', image = '$update_filename' WHERE id = $image_id";
+
+        $query_run = mysqli_query($con, $query);
+
+        if($query_run) {
+            if($_FILES['upload']['name'] != "") {
+                move_uploaded_file($_FILES['upload']['tmp_name'], $path. "/" .$update_filename);
+                if(file_exists("../uploads/".$old_image)) {
+                    unlink("../uploads/".$old_image);
+                }
+            }
+            redirectSuccess("../admin/admin_manage_home.php", "Updated Successfully");
+        } else {
+            redirectFailed("../admin/admin_edit_homepage?id=$image_id", "Something Went Wrong");
+        }
+
+    } elseif (isset($_POST['deletephoto_btn'])) {
+
+        $image_id = mysqli_real_escape_string($con,$_POST['image_id']);
+
+        $query = "SELECT * FROM images WHERE id = '$image_id'";
+        $query_run = mysqli_query($con, $query);
+        $query_data = mysqli_fetch_array($query_run);
+        $fetch_image = $query_data['image'];
+
+        $delete_query = "DELETE FROM images WHERE id = '$image_id'";
+        $delete_query_run = mysqli_query($con, $delete_query);
+
+        if($delete_query_run) {
+
+            if(file_exists("../uploads/".$fetch_image)) {
+                unlink("../uploads/".$fetch_image);
+            }
+
+            redirectSuccess("../admin/admin_manage_home.php", "Deleted Successfully");
+        } else {
+            redirectFailed("../admin/admin_manage_home.php", "Delete Failed");
+        }
+
+
     }

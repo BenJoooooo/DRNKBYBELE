@@ -11,6 +11,15 @@
 
     }
 
+    // function getNumberOf($table) {
+
+    //     global $con;
+    //     $query = "SELECT * FROM $table WHERE role = 'admin' || role = 'manager'";
+    //     $query_run = mysqli_query($con, $query);
+    //     return $count = mysqli_num_rows($query_run);
+
+    // }
+
     // fetches id from the table
     function getById($table, $id) {
 

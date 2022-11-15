@@ -2,16 +2,16 @@
 
     // Development Connection
 
-    // $host = "localhost";
-    // $username = "root";
-    // $password = "";
-    // $database = "drnkdup";
+    $host = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "drnkdup";
 
     // Remote database connection
-    $host = "remotemysql.com";
-    $username = "S6YgyM4GtY";
-    $password = "0vMcqT6aA1";
-    $database = "S6YgyM4GtY";
+    // $host = "sql308.epizy.com";
+    // $username = "epiz_32975983";
+    // $password = "TihQ0Yn82oB";
+    // $database = "epiz_32975983_drnkdup";
 
     // Creating database connection
     $con = mysqli_connect($host, $username, $password, $database);
