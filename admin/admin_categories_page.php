@@ -14,7 +14,7 @@
                     <h4>Welcome, <?= $_SESSION['auth_user']['fullname'];  ?></h4>
                 </div>
                 <div class="admin-page-title">
-                    <h3>Home Page Management</h3>
+                    <h3>Categories Management</h3>
                 </div>
             </div>
             
@@ -25,10 +25,10 @@
                 <?php include('../functions/sessionmessage.php'); ?>
 
                     <div class="table-button-add">
-                        <a href="admin_add_new_image.php" class="table-container-add-new">Add Cover Photo</a>
+                        <a href="admin_add_new_categories.php" class="table-container-add-new">Add Categories</a>
                     </div>
                     <div class="card-header">
-                        <h3>Home Page</h3>
+                        <h3>Categories Table</h3>
                     </div>
 
                     <div class="card-body">
@@ -36,12 +36,12 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>name</th>
-                                    <th>Description</th>
+                                    <th>Name</th>
                                     <th>Image</th>
+                                    <th>Description</th>
                                     <th>Status</th>
+                                    <th>Created at</th>
                                     <th>Added by</th>
-                                    <th>Upload Date</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -49,26 +49,27 @@
                             <tbody>
 
                                 <?php
-                                    $images = getAll("images");
-                                    if(mysqli_num_rows($images) > 0) {
+                                    $category_data = getAll("categories");
+                                    if(mysqli_num_rows($category_data) > 0) {
 
-                                        foreach ($images as $image) { ?>
+                                        foreach ($category_data as $data) { ?>
 
                                             <tr>
-                                                <td><?= $image['id']; ?></td>
-                                                <td><?= $image['name']; ?></td>
-                                                <td><?= $image['description']; ?></td>
-                                                <td><img src="../uploads/<?= $image['image']; ?>" alt="<?= $image['name']; ?>"></td>
-                                                <td><?= $image['status'] == 0 ? "Visible":"Hidden";?></td>
-                                                <td><?= $image['added_by']; ?></td>
-                                                <td><?= $image['created_at']; ?></td>
+                                                <td><?= $data['id']; ?></td>
+                                                <td><?= $data['name']; ?></td>
+                                                <td><img src="../uploadsCategories/<?= $data['image']; ?>" alt=""></td>
+                                                <td><?= $data['description']; ?></td>
+                                                <td><?= $data['status'] == 0 ? "Visible":"Hidden"; ?></td>
+                                                <td><?= $data['created_at']; ?></td>
+                                                <td><?= $data['added_by']; ?></td>
+                                    
                                                 <td class="table-edit-delete">
                                                     <div class="table-button-add">
-                                                        <a href="edit_homepage.php?id=<?= $image['id']; ?>" class="btn btn-primary">Edit</a>
+                                                        <a href="edit_categories.php?id=<?= $data['id']; ?>" class="btn btn-primary">Edit</a>
                                                     </div>
                                                     <form action="../functions/codes.php" method="POST">
-                                                        <input type="hidden" name="image_id" value="<?= $image['id']; ?>">
-                                                        <button type="submit" class="btn btn-danger" name="deletephoto_btn">Delete</button>
+                                                        <input type="hidden" name="category_id" value="<?= $user['id']; ?>">
+                                                        <button type="submit" class="btn btn-danger" name="">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>

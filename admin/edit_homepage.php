@@ -33,7 +33,9 @@
                     ?>
 
                     <div class="card-header">
-                        <h3>Edit Cover Photo</h3>
+                        <h3>Edit Cover Photo
+                            <a href="admin_manage_home.php" class="btn px-4 btn-light float-end">Back</a>
+                        </h3>
                     </div>
 
                     <div class="signup-card-body">
@@ -45,6 +47,10 @@
                                 <label for="">Name</label>
                                 <input type="text" name="name" value="<?= $data['name'] ?>" class="signup-input" required placeholder="Enter Full Name">
                             </div>    
+                            <div class="signup email">
+                                <label for="">Description</label>
+                                <input type="text" name="description" value="<?= $data['description'] ?>" class="signup-input" placeholder="Enter description">
+                            </div>
                             <div class="signup fullname">
                                 <label for="">Upload Image</label>
                                 <input type="file" name="upload" class="signup-input" multiple placeholder="Upload an image">
@@ -52,10 +58,14 @@
                                 <input type="hidden" name="oldimage" value="<?= $data['image']; ?>">
                                 <img src="../uploads/<?= $data['image']; ?>" alt="<?= $data['name']; ?>">
                             </div>
-                            <div class="signup email">
-                                <label for="">Description</label>
-                                <input type="text" name="description" value="<?= $data['description'] ?>" class="signup-input" placeholder="Enter description">
+
+                            <div class="signup-role">
+                                <div class="signup admin-role">
+                                    <label for="">Status</label>
+                                    <input type="checkbox" <?= $data['status'] == '0' ? '':'checked' ?> name="status" class="signup-input">
+                                </div>
                             </div>
+
 
                             <input type="hidden" name="added_by" value="<?= $_SESSION['auth_user']['fullname']; ?>">
                             

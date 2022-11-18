@@ -25,7 +25,7 @@
                 <?php include('../functions/sessionmessage.php'); ?>
 
                     <div class="table-button-add">
-                        <a href="users_add_new_account.php" class="table-container-add-new">Add Products</a>
+                        <a href="admin_add_new_products.php" class="table-container-add-new">Add Products</a>
                     </div>
                     <div class="card-header">
                         <h3>Products Table</h3>
@@ -35,11 +35,15 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Product ID</th>
-                                    <th>Product Name</th>
-                                    <th>Product Category</th>
-                                    <th>Product Image</th>
-                                    <th>Stock Availability</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Category</th>
+                                    <th>Image</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Created at</th>
+                                    <th>Added by</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>

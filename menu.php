@@ -1,5 +1,17 @@
 <?php
     session_start();
+
+    include ("core/dbcon.php");
+
+    // Fethes all data from the table
+    function getCategories($table) {
+
+        global $con;
+        $query = "SELECT * FROM $table WHERE status = '0'"; // Status 0 is equals to visible, while status 1 is equals to hidden //
+        return $query_run = mysqli_query($con, $query);
+
+    }
+
     require ("includes/header.php")
 
 ?>
@@ -11,7 +23,21 @@
             </div>
 
             <div class="category-links">
-                <div class="allproducts-category">
+
+            <?php 
+                $fetch_data = getCategories("categories");
+                if(mysqli_num_rows($fetch_data) > 0) {
+                    foreach($fetch_data as $data) { ?>
+
+                <div class="">
+                    <a href=""><?= $data['name']; ?></a>
+                </div>
+
+            <?php
+                    }
+                }
+            ?>
+                <!-- <div class="allproducts-category">
                     <a href="">All Products</a>
                 </div>
                 <div class="milktea-category">
@@ -28,7 +54,7 @@
                 </div>
                 <div class="hotcoffee-category">
                     <a href="">Hot Coffee</a>
-                </div>
+                </div> -->
             </div>
 
             <div class="card-menu-container">

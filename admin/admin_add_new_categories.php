@@ -14,7 +14,7 @@
                     <h4>Welcome, <?= $_SESSION['auth_user']['fullname'];  ?></h4>
                 </div>
                 <div class="admin-page-title">
-                    <h3>Home Page Management</h3>
+                    <h3>Categories Management</h3>
                 </div>
             </div>
             
@@ -25,37 +25,35 @@
                     <?php include('../functions/sessionmessage.php'); ?>
 
                     <div class="card-header">
-                        <h3>Add Cover Photo
-                            <a href="admin_manage_home.php" class="btn px-4 btn-light float-end">Back</a>
+                        <h3>Create New Category
+                            <a href="admin_categories_page.php" class="btn px-4 btn-light float-end">Back</a>
                         </h3>
-                        
                     </div>
 
                     <div class="signup-card-body">
                         <form action="../functions/codes.php" method="POST" class="signup-form" enctype="multipart/form-data">
                             <div class="signup fullname">
-                                    <label for="">Name</label>
-                                    <input type="text" name="name" class="signup-input" required placeholder="Enter Full Name">
-                                </div>    
-                            <div class="signup email">
+                                <label for="">Category Name</label>
+                                <input type="text" name="name" class="signup-input" required placeholder="Enter Category Name">
+                            </div>
+                            <div class="signup fullname">
                                 <label for="">Description</label>
-                                <input type="text" name="description" class="signup-input" placeholder="Enter description">
+                                <input type="text" name="description" class="signup-input" required placeholder="Enter Description">
                             </div>
                             <div class="signup fullname">
                                 <label for="">Upload Image</label>
                                 <input type="file" name="upload" class="signup-input" required multiple placeholder="Upload an image">
                             </div>
-
                             <div class="signup-role">
                                 <div class="signup admin-role">
                                     <label for="">Status</label>
                                     <input type="checkbox" name="status" class="signup-input">
                                 </div>
                             </div>
-
+                            
                             <input type="hidden" name="added_by" value="<?= $_SESSION['auth_user']['fullname']; ?>">
                             
-                            <button class="signup-submit" name="upload_photo">Add Photo</button>
+                            <button class="signup-submit" name="category_submit">Add Category</button>
                         </form>
                     </div>
                 </div>

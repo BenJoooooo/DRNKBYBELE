@@ -50,13 +50,13 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1em;
+    gap: 2em;
 }
 
 nav a {
     text-decoration: none;
     color: var(--clr-main-color);
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-size: clamp(1rem, 1vw, 1.2rem);
     font-family: var(--ff-league);
     padding-block: var(--fs-16);
     border: 1px solid transparent;

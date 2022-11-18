@@ -48,7 +48,7 @@ include ('../functions/myfunctions.php');
             }
         }
 
-        // Adds users
+    // Adds users
     } elseif(isset($_POST['users_signup_submit'])) {
 
         $signup_fullname = $_POST['signup_fullname'];
@@ -92,7 +92,7 @@ include ('../functions/myfunctions.php');
             }
         }
 
-        // Updates admin user
+    // Updates admin user
     } elseif(isset($_POST['update_admin_submit'])) {
 
         $category_id = $_POST['category_id'];
@@ -165,8 +165,8 @@ include ('../functions/myfunctions.php');
             redirect("../admin/edit_admin_account.php?id=$category_id", "Email must not be empty");
         }
 
-        // Updates user
-    }  elseif(isset($_POST['update_user_submit'])) {
+    // Updates user
+    } elseif(isset($_POST['update_user_submit'])) {
 
         $category_id = $_POST['category_id'];
         $signup_fullname = $_POST['signup_fullname'];
@@ -237,6 +237,7 @@ include ('../functions/myfunctions.php');
             redirect("../admin/edit_user_account.php?id=$category_id", "Email must not be empty");
         }
 
+    // Deletes user and admin
     } elseif(isset($_POST['delete_btn'])) {
 
         $category_id = mysqli_real_escape_string($con ,$_POST['category_id']);
@@ -250,27 +251,31 @@ include ('../functions/myfunctions.php');
         }
     }
 
+    // Adds Cover photo
     if (isset($_POST['upload_photo'])) {
 
         $added_by = $_POST['added_by'];
         $name = $_POST['name'];
         $image = $_FILES['upload']['name'];
         $description = $_POST['description'];
+        $status = isset($_POST['status']) ? '1': '0';
 
         $path = "../uploads";
         $image_ext = pathinfo($image, PATHINFO_EXTENSION);
         $filename = time(). '.' .$image_ext;
 
-        $query = "INSERT INTO images (name, description, image, added_by) VALUES ('$name', '$description', '$filename', '$added_by')";
+        $query = "INSERT INTO images (name, description, status, image, added_by) VALUES ('$name', '$description', '$status', '$filename', '$added_by')";
+
         $query_run = mysqli_query($con, $query);
 
         if($query_run) {
             move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
-            redirectSuccess("../admin/admin_manage_home.php", "Uploaded Successfully!");
+            redirectSuccess("../admin/admin_manage_home.php", "Uploaded Successfully");
         } else {
             redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
         }
 
+    // Edit cover photo
     } elseif (isset($_POST['update_photo'])) {
 
         $added_by = $_POST['added_by'];
@@ -279,6 +284,7 @@ include ('../functions/myfunctions.php');
         $description = $_POST['description'];
         $old_image = $_POST['oldimage'];
         $new_image = $_FILES['upload']['name'];
+        $status = isset($_POST['status']) ? '1':'0';
 
         if($new_image != "") {
             // $update_filename = $new_image;
@@ -290,7 +296,7 @@ include ('../functions/myfunctions.php');
 
         $path = "../uploads";
 
-        $query = "UPDATE images SET added_by = '$added_by', name = '$name', description = '$description', image = '$update_filename' WHERE id = $image_id";
+        $query = "UPDATE images SET added_by = '$added_by', name = '$name', description = '$description', status = '$status', image = '$update_filename' WHERE id = $image_id";
 
         $query_run = mysqli_query($con, $query);
 
@@ -306,6 +312,7 @@ include ('../functions/myfunctions.php');
             redirectFailed("../admin/admin_edit_homepage?id=$image_id", "Something Went Wrong");
         }
 
+    // Delete cover photo
     } elseif (isset($_POST['deletephoto_btn'])) {
 
         $image_id = mysqli_real_escape_string($con,$_POST['image_id']);
@@ -328,6 +335,66 @@ include ('../functions/myfunctions.php');
         } else {
             redirectFailed("../admin/admin_manage_home.php", "Delete Failed");
         }
+    }
 
+    // Adds category
+    if(isset($_POST['category_submit'])) {
 
+        $added_by = $_POST['added_by'];
+        $category_name = $_POST['name'];
+        $image = $_FILES['upload']['name'];
+        $category_description = $_POST['description'];
+        $status = isset($_POST['status']) ? '1':'0';
+        
+        $path = "../uploadsCategories";
+        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+        $filename = time(). "." .$image_ext;
+
+        $query = "INSERT INTO categories (name, description, status, image, added_by) VALUES ('$category_name', '$category_description', '$status', '$filename', '$added_by')";
+
+        $query_run = mysqli_query($con, $query);
+
+        if($query_run) {
+            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+            redirectSuccess("../admin/admin_categories_page.php", "Category Added Successfully");
+        } else {
+            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+        }
+
+    // Updates Category
+    } elseif (isset($_POST['update_category_submit'])) {
+
+        $category_id = $_POST['category_id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $status = isset($_POST['status']) ? '1': '0';
+
+        $old_image = $_POST['old_image'];
+        $new_image = $_FILES['upload']['name'];
+
+        if($new_image != "") {
+            // $update_filename = $new_image;
+            $image_ext = pathinfo($new_image, PATHINFO_EXTENSION);
+            $update_filename = time(). '.' .$image_ext;
+        } else {
+            $update_filename = $old_image;
+        }
+
+        $path = "../uploadsCategories";
+
+        $query = "UPDATE categories SET name = '$name', description = '$description', status = '$status', image = '$update_filename' WHERE id = '$category_id'";
+        
+        $query_run = mysqli_query($con, $query);
+
+        if($query_run) {
+            if($_FILES['upload']['name'] != "") {
+                move_uploaded_file($_FILES['upload']['tmp_name'], $path. "/" .$update_filename);
+                if(file_exists("../uploadsCategories/".$old_image)) {
+                    unlink("../uploadsCategories/".$old_image);
+                }
+            }
+            redirectSuccess("../admin/admin_categories_page.php", "Updated Successfully");
+        } else {
+            redirectFailed("../admin/admin_edit_categories?id=$category_id", "Something Went Wrong");
+        }
     }

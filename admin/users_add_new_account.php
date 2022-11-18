@@ -25,7 +25,9 @@
                     <?php include('../functions/sessionmessage.php'); ?>
 
                     <div class="card-header">
-                        <h3>Create New Account</h3>
+                        <h3>Create New Account
+                            <a href="admin_users.php" class="btn px-4 btn-light float-end">Back</a>
+                        </h3>
                     </div>
 
                     <div class="signup-card-body">

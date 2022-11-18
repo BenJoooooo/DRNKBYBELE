@@ -30,8 +30,15 @@ body {
     padding: 0;
 }
 
-/* Start Side Menu */
+#container {
+    display: grid;
+    grid-template-rows: (auto, 1fr, auto);
+    height: 100vh;
+}
 
+/* ---------------------- */
+/*      Sidebar Menu      */
+/* ---------------------- */
 .admin-wrapper-content {
     display: flex;
 }
@@ -108,10 +115,6 @@ body {
     padding: .5em;
 }
 
-/* .admin-main-content .admin-page-title { */
-    /* padding: 1.5em; */
-    /* background-color: #6B5237; */
-/* } */
 .admin-page-title h3 {
     color: var(--clr-main-color);
     font-size: clamp(1rem, 2vw, 3rem); 
@@ -134,7 +137,7 @@ body {
 
 .admin-card-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2em;
 }
 
@@ -145,7 +148,6 @@ body {
     border-radius: 1em;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     padding: 3rem;
-    margin-block: 1em;
     gap: 1em;
 }
 
@@ -158,10 +160,9 @@ body {
     font-size: 2.5rem;
 }
 
-/* End of Side menu */
-
-/* Start admin main content */
-
+/* -------------------------- */
+/*     Admin Main content     */
+/* -------------------------- */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -173,7 +174,7 @@ thead tr {
 
 thead th {
     padding: 1rem;
-    font-size: 1.2rem;
+    font-size: clamp(.5rem, 1.2vw, 1.5rem);
     font-weight: 500;
     font-family: var(--ff-league);
 
@@ -186,10 +187,11 @@ tbody tr {
 tbody td {
     padding: 1rem;
     border: 1px solid #f0f0f0;
+    font-size: clamp(.5rem, 1.0vw, 1.2rem);
 }
 
 tbody td img {
-    width: 10vw;
+    width: 5vw;
     height: auto;
 }
 
@@ -234,30 +236,9 @@ tbody td img {
 
 }
 
-
-/* End admin main content */
-
-/* Main content */
-/* Homepage */
-#container {
-    display: grid;
-    grid-template-rows: (auto, 1fr, auto);
-    height: 100vh;
-    /* take note of centering this item */
-    /* max-width: 1200px;
-    margin: 0 auto; */
-}
-
-/* .background img {
-    max-height: 100vh;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-} */
-
+/* ---------------------- */
+/* Background Cover Photo */
+/* ---------------------- */
 .carousel-item img {
     /* max-height: 100vh; */
     max-height: auto;
@@ -269,14 +250,24 @@ tbody td img {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-.card-pictures img {
-    width: 100%;
-    background-size: cover;  
-    object-fit: cover; 
+/* ----------------------- */
+/*       Main Content      */
+/* ----------------------- */
+
+.section-wrapper {
+    min-height: 50vh;
+}
+
+/* .featured-products {
+    text-align: center;
+    margin-top: 1em;
+    font-family: var(--ff-fredoka);
+    color: var(--clr-main-color);
+    letter-spacing: .2rem;
+    font-size: var(--fs-40);
 }
 
 .card-pictures {
-    /* Change to display flex in carousel */
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     place-items: center;
@@ -285,7 +276,21 @@ tbody td img {
     padding-block: 3em;
     gap: 3em; 
     padding-inline: 1em;
+}
 
+.card-pictures img {
+    width: 100%;
+    background-size: cover;  
+    object-fit: cover; 
+}
+
+.product-container {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: relative;
 }
 
 .product-container h3 {
@@ -307,15 +312,6 @@ tbody td img {
     color: white;
 }
 
-.product-container {
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    position: relative;
-}
-
 .card-pictures img {
     object-fit: cover;
     object-position: center;
@@ -323,19 +319,11 @@ tbody td img {
     height: 250px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-}
+} */
 
-.featured-products {
-    text-align: center;
-    margin-top: 1em;
-    font-family: var(--ff-fredoka);
-    color: var(--clr-main-color);
-    letter-spacing: .2rem;
-    font-size: var(--fs-40);
-}
-
-/* Menu */
-
+/* ------------------------- */
+/*         Menu page         */
+/* ------------------------- */
 .menu {
     gap: 1em;
     max-width: 1200px;
@@ -368,7 +356,7 @@ tbody td img {
 .menu a:focus {
     border-bottom: 1px solid var(--clr-main-color);
     color: var(--clr-main-color);
-}
+} 
 
 .card-pictures-container {
     max-width: 1500px;
@@ -660,7 +648,7 @@ tbody td img {
 
 /* Size of image displayed when editing cover photo as a preview */
 .signup img {
-    width: 50vw;
+    width: 10vw;
     height: auto;
 }
 /* Size of image displayed when editing cover photo as a preview */

@@ -11,6 +11,9 @@
 
     $userCount = getUsers("users");
     $getUserCount = mysqli_num_rows($userCount);
+
+    $categoriesCount = getAll("categories");
+    $getCategoriesCount = mysqli_num_rows($categoriesCount);
 ?>
 
         <?php include ('includes/sidebar.php'); ?>
@@ -50,6 +53,24 @@
                 </div>
                 <div class="admin-card">
                     <div class="details">
+                        <h4><?php print_r($getCategoriesCount); ?></h4>
+                        <h5>Categories</h5>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-th"></i>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="details">
+                        <h4>0</h4>
+                        <h5>Products</h5>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="details">
                         <h4>Dummy</h4>
                         <h5>Income</h5>
                     </div>
@@ -68,7 +89,7 @@
                 </div>
             </div>
             
-            <div class="admin-page-orders">
+            <!-- <div class="admin-page-orders">
                 <div class="orders-container">
                     <div class="card">
                         <h3>Recent Orders</h3>
@@ -97,7 +118,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 

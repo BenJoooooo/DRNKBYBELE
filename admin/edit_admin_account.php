@@ -33,7 +33,9 @@
                         ?>
 
                         <div class="admin-signup-card-header">
-                            <h3>Edit Admin Account</h3>
+                            <h3>Edit Admin Account
+                                <a href="admin_admin.php" class="btn px-4 btn-light float-end">Back</a>
+                            </h3>
                         </div>
 
                         <div class="signup-card-body">

@@ -7,7 +7,7 @@
     function getImage($table) {
 
         global $con;
-        $query = "SELECT * FROM $table";
+        $query = "SELECT * FROM $table WHERE status = '0'"; // Status 0 is equals to visible, while status 1 is hidden //
         return $query_run = mysqli_query($con, $query);
     }
     
@@ -17,21 +17,6 @@
         <main>
 
             <section>
-                <!-- <div class="carousel-frame">
-                    
-                    <button class="carousel-button prev"><i class="fa fa-angle-left"></i></button>
-                    <button class="carousel-button next"><i class="fa fa-angle-right"></i></button>
-
-                    <div class="slide-images">
-                        <div class="background">
-                            <img src="img/backgroundOne.jpg" alt="">
-                        </div>
-                        <div class="background">
-                            <img src="img/backgroundOne.jpg" alt="">
-                        </div>
-                    </div>
-                </div> -->
-                    
                 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-inner">
 
@@ -58,8 +43,22 @@
                 </div>
             </section>
 
-            <section>
-                <div class="card-pictures-container">
+            <section class="section-wrapper">
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <div class="card-wrapper">
+
+                        <div class="card">
+                            <div class="image-content">
+
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="card-pictures-container">
                     
                     <h1 class="featured-products">Featured Products</h1>
 
@@ -119,7 +118,7 @@
                     <div class="card-arrows">
                         
                     </div>
-                </div>
+                </div> -->
             </section>
 
         </main>

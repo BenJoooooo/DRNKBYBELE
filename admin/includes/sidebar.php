@@ -39,7 +39,7 @@
                 </div>
                 <div class="child">
                     <i class="fa fa-th"></i>
-                    <a href="index.php">Categories</a>
+                    <a href="admin_categories_page.php">Categories</a>
                 </div>
                 <div class="child">
                     <i class="fas fa-glass-whiskey"></i>
