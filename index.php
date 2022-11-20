@@ -1,21 +1,15 @@
 <?php
-    session_start();
-
-    include ("core/dbcon.php");
-
-    // fetches all data from the table
-    function getImage($table) {
-
-        global $con;
-        $query = "SELECT * FROM $table WHERE status = '0'"; // Status 0 is equals to visible, while status 1 is hidden //
-        return $query_run = mysqli_query($con, $query);
-    }
     
+    include ("functions/userFunctions.php");
     require ("includes/header.php");
     
 ?>
+
         <main>
 
+        <!-- ----------------------------------------- -->
+        <!-- Image Carousel for background cover photo -->
+        <!-- ----------------------------------------- -->
             <section>
                 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -32,97 +26,100 @@
                         } ?>
                         
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
-                    </button>
+                    </button> -->
                 </div>
             </section>
 
+            <!-- ------------------------------------ -->
+            <!-- Image carousel for featured products -->
+            <!-- ------------------------------------ -->
             <section class="section-wrapper">
 
-                <div class="slide-container">
+                <h1 class="featured-products">Featured Products</h1>
+
+                <div class="slide-container swiper">
                     <div class="slide-content">
-                        <div class="card-wrapper">
+                        <div class="card-wrapper swiper-wrapper">
 
-                        <div class="card">
-                            <div class="image-content">
+                            <div class="card-container swiper-slide">
+                                <div class="card-overlay"></div>
 
+                                <div class="card-image">
+                                    <img src="img/DSC_0438.jpg" alt="" class="card-img">
+                                    <span class="card-price"></span>
+                                </div>
+
+                                <div class="card-content">
+                                    <div class="card-texts">
+                                        <h4 class="card-flavor">Wintermelon</h4>
+                                        <h5 class="card-category">Milktea</h5>
+                                    </div>
+
+                                    <div class="card-rate-orders">
+                                        <div class="card-rates">
+                                            <span><i class="fas fa-star-half-alt"></i></span>
+                                            <small class="rate">4.8</small>
+                                        </div>
+                                        <div class="drink-sizes">
+                                            <span class="small"><i class='fas fa-glass-whiskey'></i></i></span>
+                                            <span class="medium"><i class='fas fa-glass-whiskey'></i></i></span>
+                                            <span class="large"><i class='fas fa-glass-whiskey'></i></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn btn-primary">Add to cart</div>
                             </div>
-                        </div>
+
+                            <div class="card-container swiper-slide">
+                                <div class="card-overlay"></div>
+
+                                <div class="card-image">
+                                    <img src="img/DSC_0438.jpg" alt="" class="card-img">
+                                    <span class="card-price"></span>
+                                </div>
+
+                                <div class="card-content">
+                                    <div class="card-texts">
+                                        <h4 class="card-flavor">Wintermelon</h4>
+                                        <h5 class="card-category">Milktea</h5>
+                                    </div>
+
+                                    <div class="card-rate-orders">
+                                        <div class="card-rates">
+                                            <span><i class="fas fa-star-half-alt"></i></span>
+                                            <small class="rate">4.8</small>
+                                        </div>
+                                        <div class="drink-sizes">
+                                            <span class="small"><i class='fas fa-glass-whiskey'></i></i></span>
+                                            <span class="medium"><i class='fas fa-glass-whiskey'></i></i></span>
+                                            <span class="large"><i class='fas fa-glass-whiskey'></i></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn btn-primary">Add to cart</div>
+                            </div>
+
                         </div>
                     </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
 
-                <!-- <div class="card-pictures-container">
-                    
-                    <h1 class="featured-products">Featured Products</h1>
-
-                    <div class="card-pictures">
-                        <div class="product-container">
-                            <img src="img/sample.jpg" alt="">
-                            <h3>Passion Fruit Tea</h3>
-                            <small>from 90.00</small>
-                        </div>
-                        <div class="product-container">
-                            <img src="img/sample.jpg" alt="">
-                            <h3>Passion Fruit Tea</h3>
-                            <small>from 90.00</small>
-                        </div>
-                        <div class="product-container">
-                            <img src="img/DSC_0438.jpg" alt="">
-                            <h3>Passion Fruit Tea</h3>
-                            <small>from 90.00</small>
-                        </div>
-                        <div class="product-container">
-                            <img src="img/edit-2.jpg" alt="">
-                            <h3>Passion Fruit Tea</h3>
-                            <small>from 90.00</small>
-                        </div>
-                        <div class="product-container">
-                            <img src="img/edit-3.jpg" alt="">
-                            <h3>Passion Fruit Tea</h3>
-                            <small>from 90.00</small>
-                        </div>
-                        <div class="product-container">
-                            <img src="img/sample.jpg" alt="">
-                            <h3>Passion Fruit Tea</h3>
-                            <small>from 90.00</small>
-                        </div>
-                        <div class="product-container">
-                            <img src="img/sample.jpg" alt="">
-                            <h3>Passion Fruit Tea</h3>
-                            <small>from 90.00</small>
-                        </div>
-                        <div class="product-container">
-                            <img src="img/sample.jpg" alt="">
-                            <h3>Passion Fruit Tea</h3>
-                            <small>from 90.00</small>
-                        </div>
-                        <div class="product-container">
-                            <img src="img/sample.jpg" alt="">
-                            <h3>Passion Fruit Tea</h3>
-                            <small>from 90.00</small>
-                        </div>
-                        <div class="product-container">
-                            <img src="img/sample.jpg" alt="">
-                            <h3>Passion Fruit Tea</h3>
-                            <small>from 90.00</small>
-                        </div>
-                    </div>
-
-                    <div class="card-arrows">
-                        
-                    </div>
-                </div> -->
             </section>
-
         </main>
-
+    
+    
+        <script src="js/swiper-bundle.min.js"></script>
+        <script src="js/script.js"></script>
     <?php 
         require ("includes/footer.php");
     ?>

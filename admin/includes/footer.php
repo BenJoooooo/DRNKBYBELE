@@ -49,5 +49,9 @@
 
         
 
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../js/custom.js"></script>
+
     </body>
 </html>

@@ -31,7 +31,7 @@
                         <h3>Categories Table</h3>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body" id="category_table">
                         <table>
                             <thead>
                                 <tr>
@@ -67,10 +67,7 @@
                                                     <div class="table-button-add">
                                                         <a href="edit_categories.php?id=<?= $data['id']; ?>" class="btn btn-primary">Edit</a>
                                                     </div>
-                                                    <form action="../functions/codes.php" method="POST">
-                                                        <input type="hidden" name="category_id" value="<?= $user['id']; ?>">
-                                                        <button type="submit" class="btn btn-danger" name="">Delete</button>
-                                                    </form>
+                                                    <button type="button" class="btn btn-danger delete_category_btn" value="<?= $data['id']; ?>">Delete</button>
                                                 </td>
                                             </tr>
 

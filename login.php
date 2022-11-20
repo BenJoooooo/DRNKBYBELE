@@ -1,6 +1,6 @@
 <?php
 
-    session_start();
+    include ("functions/userFunctions.php");
 
     if(isset($_SESSION['auth'])) {
         include "functions/myfunctions.php";

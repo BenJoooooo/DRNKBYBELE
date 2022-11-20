@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=League+Spartan:wght@100;200;400;500&display=swap');
+
+:root {
+    --ff-fredoka: 'Fredoka One', cursive;
+    --ff-league: 'League Spartan', sans-serif;
+
+    --fs-72: 4.5rem;
+    --fs-48: 3rem;
+    --fs-40: 2.5rem;
+    --fs-32: 2rem;
+    --fs-24: 1.5rem;
+    --fs-16: 1rem;
+
+    --clr-main-color: #C27933;
+    --clr-secondary-color: white;
+    --clr-dirty-white: #f6f6f6;
+    --clr-background: #6B5237;
+    --clr-dark-black: #1e1e1e;
+    --clr-dark-grey: #3c3c3c;
+}
+
+* {
+    box-sizing: border-box;
+    font: inherit;
+    color: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--clr-dirty-white);
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container-header {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.not-found h4 {
+    padding-block: .5em;
+    margin: 0;
+    font-size: clamp(1rem, 2vw + .5rem, 2rem);
+    font-family: var(--ff-league);
+    color: var(--clr-main-color);
+    font-weight: 500;
+}
+
+.main-container {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10vw;
+}
+
+.footer-credits h4 {
+    padding-block: .5em;
+    margin: 0;
+    font-size: clamp(.5rem, 1.5vw + .5rem, 1.2rem);
+    font-family: var(--ff-league);
+    color: var(--clr-main-color);
+    opacity: .5;
+}
+
+main {
+    background-color: #1e1e1e;
+}
+
+.container-footer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container img {
+    height: 50vh;
+    height: 100%;
+    width: auto;
+    width: 100%;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+    max-width: 25vw;
+    width: 100%;
+}
+
+.main-content h3 {
+    max-width: 25vw;
+    font-size: clamp(1rem, 3vw + 1rem, 3rem);
+    color: var(--clr-dirty-white);
+    font-family: var(--ff-league);
+}
+
+.main-content h4 {
+    max-width: 25vw;
+    font-size: clamp(.5rem, 2vw + .5rem, 2rem);
+    text-align: justify;
+    color: var(--clr-dirty-white);
+    font-family: var(--ff-league);
+}
+
+footer {
+    background-color: var(--clr-dirty-white);
+}

@@ -5,7 +5,6 @@
     include ('../functions/middleware.php');
     include ('includes/header.php');
 
-
     $adminCount = getAdmin("users");
     $getAdminCount = mysqli_num_rows($adminCount);
 
@@ -14,6 +13,9 @@
 
     $categoriesCount = getAll("categories");
     $getCategoriesCount = mysqli_num_rows($categoriesCount);
+
+    $productsCount = getAll("products");
+    $getProductsCount = mysqli_num_rows($productsCount);
 ?>
 
         <?php include ('includes/sidebar.php'); ?>
@@ -62,7 +64,7 @@
                 </div>
                 <div class="admin-card">
                     <div class="details">
-                        <h4>0</h4>
+                        <h4><?php print_r($getProductsCount); ?></h4>
                         <h5>Products</h5>
                     </div>
                     <div class="icon">

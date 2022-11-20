@@ -40,7 +40,7 @@
                         <div class="signup-card-body">
                             <form action="../functions/codes.php" method="POST" class="signup-form">
                                 <div class="signup fullname">
-                                    <input type="hidden" name="category_id" value="<?= $data['id'] ?>">
+                                    <input type="hidden" name="category_id_user" value="<?= $data['id'] ?>">
                                     <label for="">Full Name</label>
                                     <input type="text" name="signup_fullname" value="<?= $data['fullname']; ?>" required class="signup-input">
                                 </div>

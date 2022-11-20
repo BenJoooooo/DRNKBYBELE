@@ -31,7 +31,7 @@
                         <h3>Home Page</h3>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body" id="coverphotos_table">
                         <table>
                             <thead>
                                 <tr>
@@ -66,10 +66,7 @@
                                                     <div class="table-button-add">
                                                         <a href="edit_homepage.php?id=<?= $image['id']; ?>" class="btn btn-primary">Edit</a>
                                                     </div>
-                                                    <form action="../functions/codes.php" method="POST">
-                                                        <input type="hidden" name="image_id" value="<?= $image['id']; ?>">
-                                                        <button type="submit" class="btn btn-danger" name="deletephoto_btn">Delete</button>
-                                                    </form>
+                                                    <button type="button" class="btn btn-danger deletephoto_btn" value="<?= $image['id']; ?>">Delete</button>
                                                 </td>
                                             </tr>
 

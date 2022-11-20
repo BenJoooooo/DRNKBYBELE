@@ -31,17 +31,19 @@
                         <h3>Products Table</h3>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body" id="products_table">
                         <table>
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Image</th>
                                     <th>Category</th>
+                                    <th>Name</th>
+                                    <th>Original Price</th>
+                                    <th>Selling Price</th>
                                     <th>Image</th>
                                     <th>Description</th>
                                     <th>Status</th>
+                                    <th>Featured</th>
                                     <th>Created at</th>
                                     <th>Added by</th>
                                     <th>Actions</th>
@@ -51,24 +53,28 @@
                             <tbody>
 
                                 <?php
-                                    $users = getUsers("users");
-                                    if(mysqli_num_rows($users) > 0) {
+                                    $products = getAll("products");
+                                    if(mysqli_num_rows($products) > 0) {
 
-                                        foreach ($users as $user) { ?>
+                                        foreach ($products as $product) { ?>
 
                                             <tr>
-                                                <td><?= $user['id']; ?></td>
-                                                <td><?= $user['fullname']; ?></td>
-                                                <td><?= $user['email']; ?></td>
-                                                <td><?= $user['address']; ?></td>
+                                                <td><?= $product['id']; ?></td>
+                                                <td><?= $product['category_id']; ?></td>
+                                                <td><?= $product['name']; ?></td>
+                                                <td><?= $product['original_price']; ?></td>
+                                                <td><?= $product['selling_price']; ?></td>
+                                                <td><img src="../uploadsProducts/<?= $product['image']; ?>" alt=""></td>
+                                                <td><?= $product['description']; ?></td>
+                                                <td><?= $product['status'] == 0 ? "Visible":"Hidden"; ?></td>
+                                                <td><?= $product['featured'] == 0 ? "False":"True"; ?></td>
+                                                <td><?= $product['created_at']; ?></td>
+                                                <td><?= $product['added_by']; ?></td>
                                                 <td class="table-edit-delete">
                                                     <div class="table-button-add">
-                                                        <a href="edit_user_account.php?id=<?= $user['id']; ?>" class="btn btn-primary">Edit</a>
+                                                        <a href="edit_products_page.php?id=<?= $product['id']; ?>" class="btn btn-primary">Edit</a>
                                                     </div>
-                                                    <form action="../functions/codes.php" method="POST">
-                                                        <input type="hidden" name="category_id" value="<?= $user['id']; ?>">
-                                                        <button type="submit" class="btn btn-danger" name="">Delete</button>
-                                                    </form>
+                                                    <button type="button" class="btn btn-danger delete_product_btn" value="<?= $product['id']; ?>">Delete</button>
                                                 </td>
                                             </tr>
 

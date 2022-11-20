@@ -32,7 +32,7 @@
                         <h3>Accounts Table</h3>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body" id="useradmin_table">
                         <table>
                             <thead>
                                 <tr>
@@ -63,10 +63,8 @@
                                                     <div class="table-button-add">
                                                         <a href="edit_admin_account.php?id=<?= $user['id']; ?>" class="btn btn-primary">Edit</a>
                                                     </div>
-                                                    <form action="../functions/codes.php" method="POST">
-                                                        <input type="hidden" name="category_id" value="<?= $user['id']; ?>">
-                                                        <button type="submit" class="btn btn-danger" name="delete_btn">Delete</button>
-                                                    </form>
+                                                    <button type="button" class="btn btn-danger delete_btn" value="<?= $user['id']; ?>">Delete</button>
+
                                                 </td>
                                             </tr>
 

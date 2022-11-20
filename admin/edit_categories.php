@@ -59,7 +59,7 @@
                             <div class="signup-role">
                                 <div class="signup admin-role">
                                     <label for="">Status</label>
-                                    <input type="checkbox" <?=  $data['status'] == '0' ? '':'checked' ?> name="status" class="signup-input">
+                                    <input type="checkbox" <?= $data['status'] == '0' ? '':'checked';?> name="status" class="signup-input">
                                 </div>
                             </div>
                            

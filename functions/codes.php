@@ -7,6 +7,7 @@ include ('../functions/myfunctions.php');
     // adds admin user  
     if(isset($_POST['admin_signup_submit'])) {
 
+        $user_id = $_POST['user_id'];
         $signup_fullname = $_POST['signup_fullname'];
         $signup_email = $_POST['signup_email'];
         $signup_address = $_POST['signup_address'];
@@ -168,7 +169,7 @@ include ('../functions/myfunctions.php');
     // Updates user
     } elseif(isset($_POST['update_user_submit'])) {
 
-        $category_id = $_POST['category_id'];
+        $category_id_user = $_POST['category_id_user'];
         $signup_fullname = $_POST['signup_fullname'];
         $signup_address = $_POST['signup_address'];
         $signup_password = md5($_POST['signup_password']);
@@ -245,9 +246,11 @@ include ('../functions/myfunctions.php');
         $delete_query_run = mysqli_query($con, $delete_query);
 
         if($delete_query_run) {
-            redirectSuccess($_SERVER['HTTP_REFERER'], "Delete Successfully");
+            // redirectSuccess($_SERVER['HTTP_REFERER'], "Delete Successfully");
+            echo 200;
         } else {
-            redirectFailed($_SERVER['HTTP_REFERER'], "Delete failed");
+            // redirectFailed($_SERVER['HTTP_REFERER'], "Delete failed");
+            echo 500;
         }
     }
 
@@ -331,9 +334,11 @@ include ('../functions/myfunctions.php');
                 unlink("../uploads/".$fetch_image);
             }
 
-            redirectSuccess("../admin/admin_manage_home.php", "Deleted Successfully");
+            // redirectSuccess("../admin/admin_manage_home.php", "Deleted Successfully");
+            echo 200;
         } else {
-            redirectFailed("../admin/admin_manage_home.php", "Delete Failed");
+            // redirectFailed("../admin/admin_manage_home.php", "Delete Failed");
+            echo 500;
         }
     }
 
@@ -396,5 +401,123 @@ include ('../functions/myfunctions.php');
             redirectSuccess("../admin/admin_categories_page.php", "Updated Successfully");
         } else {
             redirectFailed("../admin/admin_edit_categories?id=$category_id", "Something Went Wrong");
+        }
+    // Deletes Category
+    } elseif (isset($_POST['delete_category_btn'])) {
+
+        $category_id = mysqli_real_escape_string($con,$_POST['category_id']);
+
+        $query = "SELECT * FROM categories WHERE id = '$category_id'";
+        $query_run = mysqli_query($con, $query);
+        $query_data = mysqli_fetch_array($query_run);
+        $fetch_image = $query_data['image'];
+
+        $delete_query = "DELETE FROM categories WHERE id = '$category_id'";
+        $delete_query_run = mysqli_query($con, $delete_query);
+
+        if($delete_query_run) {
+
+            if(file_exists("../uploadsCategories/".$fetch_image)) {
+                unlink("../uploadsCategories/".$fetch_image);
+            }
+
+            // redirectSuccess("../admin/admin_categories_page.php", "Deleted Successfully");
+            echo 200;
+        } else {
+            // redirectFailed("../admin/admin_categories_page.php", "Delete Failed");
+            echo 500;
+        } 
+    }
+
+    // Adds products
+    if(isset($_POST['add_product_submit'])) {
+
+        $category_id = $_POST['category_id'];
+        $added_by = $_POST['added_by'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $status = isset($_POST['status']) ? '1':'0';
+        $featured = isset($_POST['featured']) ? '1':'0';
+        $original_price = ($_POST['original_price']);
+        $selling_price = ($_POST['selling_price']);
+
+        $image = $_FILES['upload']['name'];
+        $path = "../uploadsProducts";
+        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+        $filename = time(). '.' .$image_ext;
+
+        $query = "INSERT INTO products (category_id, added_by, name, description, status, featured, original_price, selling_price, image) VALUES ('$category_id', '$added_by', '$name', '$description', '$status', '$featured', '$original_price', '$selling_price', '$filename')";
+        
+        $query_run = mysqli_query($con, $query);
+
+        if($query_run) {
+            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+            redirectSuccess("../admin/admin_products_page.php", "Products Added Successfully");
+        } else {
+            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+        }
+    // Edits Products
+    } elseif (isset($_POST['update_product_submit'])) {
+
+        $category_id = $_POST['category_id'];
+        $product_id = $_POST['product_id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $status = isset($_POST['status']) ? '1':'0';
+        $featured = isset($_POST['featured']) ? '1':'0';
+        $original_price = $_POST['original_price'];
+        $selling_price = $_POST['selling_price'];
+
+        $old_image = $_POST['old_image'];
+        $new_image = $_FILES['upload']['name'];
+
+        if($new_image != "") {
+            $image_ext = pathinfo($new_image, PATHINFO_EXTENSION);
+            $update_filename = time(). "." .$image_ext;
+        } else {
+            $update_filename = $old_image;
+        }
+
+        $path = "../uploadsProducts";
+
+        $query = "UPDATE products SET category_id = '$category_id', name = '$name', description = '$description', status = '$status', featured = '$featured', original_price = '$original_price', selling_price = '$selling_price', image = '$update_filename' WHERE id = '$product_id'";
+
+        $query_run = mysqli_query($con, $query);
+
+        if($query_run) {
+            if($_FILES['upload']['name'] != "") {
+                move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
+                if(file_exists("../uploadsProducts/".$old_image)) {
+                    unlink("../uploadsProducts/".$old_image);
+                }
+            } 
+            redirectSuccess("../admin/admin_products_page.php", "Product Edited Successfully");
+        } else {
+            redirectFailed("../admin/edit_products_page.php?id=$product_id", "Something Went Wrong");
+        }
+    // Deletes products
+    } elseif (isset($_POST['delete_product_btn'])) {
+
+        $product_id = mysqli_real_escape_string($con, $_POST['product_id']);
+        
+        $query = "SELECT * FROM products WHERE id = '$product_id'";
+        $query_run = mysqli_query($con, $query);
+        $query_data = mysqli_fetch_array($query_run);
+        $fetch_image = $query_data['image'];
+
+        $delete_query = "DELETE FROM products WHERE id = '$product_id'";
+        $delete_query_run = mysqli_query($con, $delete_query);
+
+        if($delete_query_run) {
+
+            if(file_exists("../uploadsProducts/".$fetch_image)) {
+                unlink("../uploadsProducts/".$fetch_image);
+            }
+
+            // redirectSuccess("../admin/admin_products_page.php", "Deleted Successfully");
+            echo 200;
+        } else {
+            // redirectFailed("../admin/admin_products_page.php", "Delete Failed");
+            echo 500;
         }
     }

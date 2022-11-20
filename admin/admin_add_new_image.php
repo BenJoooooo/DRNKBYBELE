@@ -8,7 +8,7 @@
 
 ?>
 
-        <div class="admin-main-content">
+        <div class="admin-main-content-add-page">
             <div class="admin-page-header">
                 <div class="admin-page-greet">
                     <h4>Welcome, <?= $_SESSION['auth_user']['fullname'];  ?></h4>
