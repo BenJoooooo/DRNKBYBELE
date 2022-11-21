@@ -173,6 +173,10 @@ body {
     font-size: 2.5rem;
 }
 
+.admin-card-container .admin-card-link {
+    text-decoration: none;
+}
+
 /* ------------------------------------------ */
 /*            Admin Main content              */
 /* ------------------------------------------ */
@@ -276,7 +280,6 @@ tbody td img {
     padding: 0;
     font-family: var(--ff-fredoka);
     color: var(--clr-main-color);
-    letter-spacing: .2rem;
     font-size: var(--fs-40);
 }
 
@@ -302,6 +305,8 @@ tbody td img {
     flex-direction: column;
     align-items: center;
     position: relative;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+
 }
 
 .card-overlay {
@@ -325,8 +330,8 @@ tbody td img {
 }
 
 .card-overlay::after {
-    background-color: #f6f6f6;
-    border-radius: 50px 50px 0px 0px;
+    background-color: white;
+    border-radius: 10px 10px 0px 0px;
 
 }
 
@@ -351,6 +356,10 @@ tbody td img {
 .card-container .btn:hover, 
 .card-container .btn:active {
     background-color: var(--clr-main-color);
+}
+
+.card-rate-orders .rate {
+    color: var(--clr-main-color);
 }
 
 .card-rate-orders {
@@ -396,20 +405,22 @@ tbody td img {
 
 .card-texts .card-flavor {
     font-size: 1.3rem;
-    color: #3c3c3c;
+    color: var(--clr-main-color);
+    font-weight: 700;
 }
 
 .card-texts .card-category {
     font-size: 1rem;
-    color: #4d4d4d;
+    color: var(--clr-main-color);
+    font-weight: 500;
 }
 
 .card-image {
     position: relative;
-    width: 250px;
-    height: 300px;
+    width: 300px;
+    height: 350px;
     border-radius: 20px;
-    padding: 1.5em;
+    padding-block: 1.5em;
 }
 
 .card-image .card-img {
@@ -443,26 +454,9 @@ tbody td img {
 /*                      Menu page                    */
 /* ------------------------------------------------- */
 .menu {
-    gap: 1em;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-}
-
-.main-container {
-    margin-block: 2em;
-}
-
-.menu-about {
-    width: 60%;
-    margin: 0 auto;
-}
-
-.main-container .title {
-    font-family: var(--ff-fredoka);
-    color: var(--clr-main-color);
-    font-size: var(--fs-48);
-    text-align: center;
-    letter-spacing: .2rem;
+    width: 100%;
 }
 
 .menu a {
@@ -476,10 +470,36 @@ tbody td img {
     color: var(--clr-main-color);
 } 
 
-.card-pictures-container {
-    max-width: 1500px;
-    margin: 0 auto;
+.menu h2,
+.menu p {
+    margin: .5rem;    
+    color: var(--clr-main-color);
+    font-family: var(--ff-league);
+    letter-spacing: 1px;
 }
+
+.menu h2 {
+    font-size: var(--fs-16);
+    font-weight: 700;
+}
+
+.menu p {
+    font-size: .85rem;
+    font-weight: 500;
+}
+
+.main-container {
+    margin-block: 2em;
+}
+
+.main-container .title {
+    font-family: var(--ff-fredoka);
+    color: var(--clr-main-color);
+    font-size: var(--fs-48);
+    text-align: center;
+    letter-spacing: .2rem;
+}
+
 
 .category-links {
     display: flex;
@@ -491,45 +511,45 @@ tbody td img {
     color: var(--clr-main-color);
 }
 
+/* .card-pictures-container {
+    max-width: 1500px;
+    margin: 0 auto;
+} */
+
 .card-menu-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 1em;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em;
+    margin-block: 2em;
+    margin-inline: 2em;
 }
 
 .card-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-block: 2em;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
-
 }
 
-.menu h2,
-.menu p {
-    margin: .5rem;
+.card-menu .img-container {
+    height: 50vh;
+    width: 100%;
 }
 
-.menu h2 {
-    color: var(--clr-main-color);
-    font-family: var(--ff-league);
-    font-size: var(--fs-16);
-    font-weight: 500;
-    letter-spacing: 2px;
+.card-menu img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
-.menu p {
-    color: var(--clr-main-color);
-    font-family: var(--ff-league);
-    font-size: .75rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-}
-
-.menu img {
-    width: 250px;
+/* style is same with .card-menu */
+.card-menu-content {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em .5em;
+    width: 100%;
 }
 
 /* ----------------------------------- */
@@ -554,6 +574,12 @@ tbody td img {
     flex-direction: column;
     justify-content: end;
     padding: 1em 10em;
+}
+
+
+.menu-about {
+    width: 60%;
+    margin: 0 auto;
 }
 
 .menu-about a {

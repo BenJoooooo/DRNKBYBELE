@@ -42,69 +42,48 @@
             <!-- ------------------------------------ -->
             <section class="section-wrapper">
 
+
                 <h1 class="featured-products">Featured Products</h1>
 
                 <div class="slide-container swiper">
                     <div class="slide-content">
                         <div class="card-wrapper swiper-wrapper">
 
-                            <div class="card-container swiper-slide">
-                                <div class="card-overlay"></div>
+                            <?php 
+                            $feth_featured = getFeaturedProducts("products", "categories"); 
+                            if(mysqli_num_rows($feth_featured) > 0) {
+                                foreach ($feth_featured as $product) { ?>
+                                    <div class="card-container swiper-slide">
+                                        <div class="card-overlay"></div>
 
-                                <div class="card-image">
-                                    <img src="img/DSC_0438.jpg" alt="" class="card-img">
-                                    <span class="card-price"></span>
-                                </div>
-
-                                <div class="card-content">
-                                    <div class="card-texts">
-                                        <h4 class="card-flavor">Wintermelon</h4>
-                                        <h5 class="card-category">Milktea</h5>
-                                    </div>
-
-                                    <div class="card-rate-orders">
-                                        <div class="card-rates">
-                                            <span><i class="fas fa-star-half-alt"></i></span>
-                                            <small class="rate">4.8</small>
+                                        <div class="card-image">
+                                            <img src="uploadsProducts/<?= $product['image'] ?>" alt="" class="card-img">
+                                            <span class="card-price"></span>
                                         </div>
-                                        <div class="drink-sizes">
-                                            <span class="small"><i class='fas fa-glass-whiskey'></i></i></span>
-                                            <span class="medium"><i class='fas fa-glass-whiskey'></i></i></span>
-                                            <span class="large"><i class='fas fa-glass-whiskey'></i></i></span>
+
+                                        <div class="card-content">
+                                            <div class="card-texts">
+                                                <h4 class="card-flavor"><?= $product['product_name']; ?></h4>
+                                                <h5 class="card-category"><?= $product['category_name']; ?></h5>
+                                            </div>
+
+                                            <div class="card-rate-orders">
+                                                <div class="card-rates">
+                                                    <span><i class="fas fa-star-half-alt"></i></span>
+                                                    <small class="rate">4.8</small>
+                                                </div>
+                                                <div class="drink-sizes">
+                                                    <span class="small"><i class='fas fa-glass-whiskey'></i></i></span>
+                                                    <span class="medium"><i class='fas fa-glass-whiskey'></i></i></span>
+                                                    <span class="large"><i class='fas fa-glass-whiskey'></i></i></span>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <div class="btn btn-primary">Add to cart</div>
                                     </div>
-                                </div>
-                                <div class="btn btn-primary">Add to cart</div>
-                            </div>
-
-                            <div class="card-container swiper-slide">
-                                <div class="card-overlay"></div>
-
-                                <div class="card-image">
-                                    <img src="img/DSC_0438.jpg" alt="" class="card-img">
-                                    <span class="card-price"></span>
-                                </div>
-
-                                <div class="card-content">
-                                    <div class="card-texts">
-                                        <h4 class="card-flavor">Wintermelon</h4>
-                                        <h5 class="card-category">Milktea</h5>
-                                    </div>
-
-                                    <div class="card-rate-orders">
-                                        <div class="card-rates">
-                                            <span><i class="fas fa-star-half-alt"></i></span>
-                                            <small class="rate">4.8</small>
-                                        </div>
-                                        <div class="drink-sizes">
-                                            <span class="small"><i class='fas fa-glass-whiskey'></i></i></span>
-                                            <span class="medium"><i class='fas fa-glass-whiskey'></i></i></span>
-                                            <span class="large"><i class='fas fa-glass-whiskey'></i></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="btn btn-primary">Add to cart</div>
-                            </div>
+                            <?php
+                                }
+                            } ?>
 
                         </div>
                     </div>
@@ -120,6 +99,7 @@
     
         <script src="js/swiper-bundle.min.js"></script>
         <script src="js/script.js"></script>
-    <?php 
-        require ("includes/footer.php");
-    ?>
+
+<?php 
+    require ("includes/footer.php");
+?>

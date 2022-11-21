@@ -35,60 +35,77 @@
             </div>
 
             <div class="admin-card-container">
-                <div class="admin-card">
-                    <div class="details">
-                        <h4><?php print_r($getAdminCount); ?></h4>
-                        <h5>Admin</h5>
+                <a href="admin_admin.php" class="admin-card-link">
+                    <div class="admin-card">
+                        <div class="details">
+                            <h4><?php print_r($getAdminCount); ?></h4>
+                            <h5>Admin</h5>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
                     </div>
-                    <div class="icon">
-                        <i class="fas fa-user-cog"></i>
+                </a>
+
+                <a href="admin_users.php" class="admin-card-link">
+                    <div class="admin-card">
+                        <div class="details">
+                            <h4><?php print_r($getUserCount); ?></h4>
+                            <h5>Users</h5>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="admin-card">
-                    <div class="details">
-                        <h4><?php print_r($getUserCount); ?></h4>
-                        <h5>Users</h5>
+                </a>
+
+                <a href="admin_categories_page.php" class="admin-card-link">
+                    <div class="admin-card">
+                        <div class="details">
+                            <h4><?php print_r($getCategoriesCount); ?></h4>
+                            <h5>Categories</h5>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-th"></i>
+                        </div>
                     </div>
-                    <div class="icon">
-                        <i class="fas fa-user-friends"></i>
+                </a>
+
+                <a href="admin_products_page.php" class="admin-card-link">
+                    <div class="admin-card">
+                        <div class="details">
+                            <h4><?php print_r($getProductsCount); ?></h4>
+                            <h5>Products</h5>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-glass-whiskey"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="admin-card">
-                    <div class="details">
-                        <h4><?php print_r($getCategoriesCount); ?></h4>
-                        <h5>Categories</h5>
+                </a>
+
+                <a href="" class="admin-card-link">
+                    <div class="admin-card">
+                        <div class="details">
+                            <h4>Dummy</h4>
+                            <h5>Income</h5>
+                        </div>
+                        <div class="icon">
+                            <i class="	fas fa-money-check"></i>
+                        </div>
                     </div>
-                    <div class="icon">
-                        <i class="fa fa-th"></i>
+                </a>
+
+                <a href="" class="admin-card-link">
+                    <div class="admin-card">
+                        <div class="details">
+                            <h4>Dummy</h4>
+                            <h5>Orders</h5>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-shopping-basket"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="admin-card">
-                    <div class="details">
-                        <h4><?php print_r($getProductsCount); ?></h4>
-                        <h5>Products</h5>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-glass-whiskey"></i>
-                    </div>
-                </div>
-                <div class="admin-card">
-                    <div class="details">
-                        <h4>Dummy</h4>
-                        <h5>Income</h5>
-                    </div>
-                    <div class="icon">
-                        <i class="	fas fa-money-check"></i>
-                    </div>
-                </div>
-                <div class="admin-card">
-                    <div class="details">
-                        <h4>Dummy</h4>
-                        <h5>Orders</h5>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-shopping-basket"></i>
-                    </div>
-                </div>
+                </a>
             </div>
             
             <!-- <div class="admin-page-orders">

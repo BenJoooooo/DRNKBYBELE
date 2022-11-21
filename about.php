@@ -40,20 +40,20 @@
 ?>
 
     <!-- Messenger Chat Plugin Code -->
-    <div id="fb-root"></div>
+    <!-- <div id="fb-root"></div> -->
 
     <!-- Your Chat Plugin code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
+    <!-- <div id="fb-customer-chat" class="fb-customerchat">
     </div>
 
     <script>
       var chatbox = document.getElementById('fb-customer-chat');
       chatbox.setAttribute("page_id", "100181522130367");
       chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
+    </script> -->
 
     <!-- Your SDK code -->
-    <script>
+    <!-- <script>
       window.fbAsyncInit = function() {
         FB.init({
           xfbml            : true,
@@ -70,4 +70,4 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
 </body>
-</html>
+</html> -->

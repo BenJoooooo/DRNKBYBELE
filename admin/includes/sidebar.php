@@ -13,10 +13,13 @@
                 <div class="child-menu">
                     <h4>Menu</h4>
                 </div>
+
+
                 <div class="child <?= $page ==  "index.php" ? 'active':''; ?>">
                     <i class="fa fa-home"></i>
                     <a href="index.php">Home</a>
                 </div>
+                
                 <div class="child <?= $page ==  "admin_manage_home.php" ? 'active':''; ?> ">
                     <i class="far fa-file-code"></i>
                     <a href="admin_manage_home.php">Manage</a>
