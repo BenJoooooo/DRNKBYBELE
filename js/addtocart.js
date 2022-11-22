@@ -30,7 +30,6 @@ $(document).ready(function () {
         }
     });
 
-
     // Add to cart
     $('.addToCartBtn').click(function (e) { 
         e.preventDefault();
@@ -56,6 +55,24 @@ $(document).ready(function () {
                 }else if (response == 500) {
                     swal("Sheesh Bruh!", "Something went wrong", "error");
                 }
+            }
+        });
+    });
+
+    $(document).on('click','.updateQty', function () {
+        var qty = $(this).closest('.product_data').find('.input-qty').val();
+        var prod_id = $(this).closest('.product_data').find('.prodId').val();
+
+        
+        $.ajax({
+            method: "POST",
+            url: "functions/handlecart.php",
+            data: {
+                "prod_id": prod_id,
+                "prod_qty": qty,
+                "scope": "update"
+            },
+            success: function (response) {
             }
         });
     });
