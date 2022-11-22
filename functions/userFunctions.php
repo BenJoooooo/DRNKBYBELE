@@ -23,7 +23,7 @@
     // Fetches the id, image, name, and categories name 
     function getJointData($table1, $table2) {
         global $con;
-        $query = "SELECT products.id, products.image, products.name AS product_name, categories.name AS category_name
+        $query = "SELECT products.id, products.description, products.image, products.name AS product_name, products.slug, categories.name AS category_name
         FROM $table1, $table2
         WHERE products.category_id = categories.id AND products.status = '0'";
         return $query_run = mysqli_query($con, $query);
@@ -34,9 +34,44 @@
         global $con;
         $query = "SELECT products.id, products.image, products.name AS product_name, categories.name AS category_name
         FROM $table1, $table2
-        WHERE products.category_id = categories.id AND products.featured = '1'";
+        WHERE products.category_id = categories.id AND products.featured = '1' AND products.status = '0'";
         return $query_run = mysqli_query($con, $query);
     }
+
+    // Fetches active slug from the url
+    function getSlugActive($table, $slug) {
+        global $con;
+        $query = "SELECT * FROM $table WHERE slug = '$slug' AND status = '0' LIMIT 1";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    // Fetches active ID from the url
+    function getActiveId($table, $id) {
+        global $con;
+        $query = "SELECT * FROM $table WHERE id = '$id' AND status = '0'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    // Fetch products by categories
+    function getProductsbyCategory($category_id) {
+        global $con;
+        $query = "SELECT products.id, products.image, products.name AS product_name, products.slug, categories.id, categories.name AS category_name
+        FROM products, categories
+        WHERE products.category_id = categories.id AND products.category_id = '$category_id' AND products.status = '0'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    // Fetches data from two tables where slug is equal to the fetched slug data from the url
+    function getTablesOnSlug($table1,$table2, $slug) {
+        global $con;
+        $query = "SELECT products.id, products.description, products.image, products.selling_price, products.name AS product_name, products.slug, categories.name AS category_name
+        FROM $table1, $table2
+        WHERE products.category_id = categories.id AND products.status = '0' AND products.slug = '$slug'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    // Fetches product items of the user added to cart
+    
     
 ?>
 

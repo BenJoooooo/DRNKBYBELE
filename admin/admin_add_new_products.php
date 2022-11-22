@@ -32,9 +32,15 @@
 
                     <div class="signup-card-body">
                         <form action="../functions/codes.php" method="POST" class="signup-form" enctype="multipart/form-data">
-                            <div class="signup">
-                                <label for="">Product Name</label>
-                                <input type="text" name="name" class="signup-input" required placeholder="Enter Product Name">
+                            <div class="signup-role">
+                                <div class="signup price">
+                                    <label for="">Product Name</label>
+                                    <input type="text" name="name" class="signup-input" required placeholder="Enter Product Name">
+                                </div>
+                                <div class="signup price">
+                                    <label for="">Slug</label>
+                                    <input type="text" name="slug" class="signup-input" required placeholder="Enter Product Name">
+                                </div>
                             </div>
                             <div class="signup">
                                 <label for="">Select Category</label>

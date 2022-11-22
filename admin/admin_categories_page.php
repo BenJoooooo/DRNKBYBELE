@@ -38,6 +38,7 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Image</th>
+                                    <th>Slug</th>
                                     <th>Description</th>
                                     <th>Status</th>
                                     <th>Created at</th>
@@ -58,6 +59,7 @@
                                                 <td><?= $data['id']; ?></td>
                                                 <td><?= $data['name']; ?></td>
                                                 <td><img src="../uploadsCategories/<?= $data['image']; ?>" alt=""></td>
+                                                <td><?= $data['slug']; ?></td>
                                                 <td><?= $data['description']; ?></td>
                                                 <td><?= $data['status'] == 0 ? "Visible":"Hidden"; ?></td>
                                                 <td><?= $data['created_at']; ?></td>
@@ -75,7 +77,13 @@
                                         }
                                     } else {
                                         // $_SESSION['message'] = "No records found";
-                                        echo "No records found";
+                                ?>
+                                        <div class="error-message-container">
+                                            <div class="product-not-available">
+                                                <h3 class="text-message">Sorry, Categories page is empty!</h3>
+                                            </div>
+                                        </div>
+                                <?php
                                     }
                                 ?>
                             </tbody>

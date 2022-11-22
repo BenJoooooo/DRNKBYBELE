@@ -347,6 +347,7 @@ include ('../functions/myfunctions.php');
 
         $added_by = $_POST['added_by'];
         $category_name = $_POST['name'];
+        $slug = $_POST['slug'];
         $image = $_FILES['upload']['name'];
         $category_description = $_POST['description'];
         $status = isset($_POST['status']) ? '1':'0';
@@ -355,7 +356,7 @@ include ('../functions/myfunctions.php');
         $image_ext = pathinfo($image, PATHINFO_EXTENSION);
         $filename = time(). "." .$image_ext;
 
-        $query = "INSERT INTO categories (name, description, status, image, added_by) VALUES ('$category_name', '$category_description', '$status', '$filename', '$added_by')";
+        $query = "INSERT INTO categories (name, description, status, image, slug, added_by) VALUES ('$category_name', '$category_description', '$status', '$filename', '$slug', '$added_by')";
 
         $query_run = mysqli_query($con, $query);
 
@@ -372,6 +373,7 @@ include ('../functions/myfunctions.php');
         $category_id = $_POST['category_id'];
         $name = $_POST['name'];
         $description = $_POST['description'];
+        $slug = $_POST['slug'];
         $status = isset($_POST['status']) ? '1': '0';
 
         $old_image = $_POST['old_image'];
@@ -387,7 +389,7 @@ include ('../functions/myfunctions.php');
 
         $path = "../uploadsCategories";
 
-        $query = "UPDATE categories SET name = '$name', description = '$description', status = '$status', image = '$update_filename' WHERE id = '$category_id'";
+        $query = "UPDATE categories SET name = '$name', description = '$description', status = '$status', image = '$update_filename', slug = '$slug' WHERE id = '$category_id'";
         
         $query_run = mysqli_query($con, $query);
 
@@ -435,6 +437,7 @@ include ('../functions/myfunctions.php');
         $category_id = $_POST['category_id'];
         $added_by = $_POST['added_by'];
         $name = $_POST['name'];
+        $slug = $_POST['slug'];
         $description = $_POST['description'];
         $status = isset($_POST['status']) ? '1':'0';
         $featured = isset($_POST['featured']) ? '1':'0';
@@ -446,7 +449,7 @@ include ('../functions/myfunctions.php');
         $image_ext = pathinfo($image, PATHINFO_EXTENSION);
         $filename = time(). '.' .$image_ext;
 
-        $query = "INSERT INTO products (category_id, added_by, name, description, status, featured, original_price, selling_price, image) VALUES ('$category_id', '$added_by', '$name', '$description', '$status', '$featured', '$original_price', '$selling_price', '$filename')";
+        $query = "INSERT INTO products (category_id, added_by, name, description, status, featured, original_price, selling_price, image, slug) VALUES ('$category_id', '$added_by', '$name', '$description', '$status', '$featured', '$original_price', '$selling_price', '$filename', '$slug')";
         
         $query_run = mysqli_query($con, $query);
 
@@ -462,6 +465,7 @@ include ('../functions/myfunctions.php');
         $category_id = $_POST['category_id'];
         $product_id = $_POST['product_id'];
         $name = $_POST['name'];
+        $slug = $_POST['slug'];
         $description = $_POST['description'];
         $status = isset($_POST['status']) ? '1':'0';
         $featured = isset($_POST['featured']) ? '1':'0';
@@ -480,7 +484,7 @@ include ('../functions/myfunctions.php');
 
         $path = "../uploadsProducts";
 
-        $query = "UPDATE products SET category_id = '$category_id', name = '$name', description = '$description', status = '$status', featured = '$featured', original_price = '$original_price', selling_price = '$selling_price', image = '$update_filename' WHERE id = '$product_id'";
+        $query = "UPDATE products SET category_id = '$category_id', name = '$name', description = '$description', status = '$status', featured = '$featured', original_price = '$original_price', selling_price = '$selling_price', image = '$update_filename', slug = '$slug' WHERE id = '$product_id'";
 
         $query_run = mysqli_query($con, $query);
 

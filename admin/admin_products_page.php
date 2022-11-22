@@ -21,8 +21,8 @@
             <div class="admin-page-table">
                 <div class="table-container">
 
-                <!-- Session Message -->
-                <?php include('../functions/sessionmessage.php'); ?>
+                    <!-- Session Message -->
+                    <?php include('../functions/sessionmessage.php'); ?>
 
                     <div class="table-button-add">
                         <a href="admin_add_new_products.php" class="table-container-add-new">Add Products</a>
@@ -41,6 +41,7 @@
                                     <th>Original Price</th>
                                     <th>Selling Price</th>
                                     <th>Image</th>
+                                    <th>Slug</th>
                                     <th>Description</th>
                                     <th>Status</th>
                                     <th>Featured</th>
@@ -65,6 +66,7 @@
                                                 <td><?= $product['original_price']; ?></td>
                                                 <td><?= $product['selling_price']; ?></td>
                                                 <td><img src="../uploadsProducts/<?= $product['image']; ?>" alt=""></td>
+                                                <th><?= $product['slug']; ?></th>
                                                 <td><?= $product['description']; ?></td>
                                                 <td><?= $product['status'] == 0 ? "Visible":"Hidden"; ?></td>
                                                 <td><?= $product['featured'] == 0 ? "False":"True"; ?></td>
@@ -82,7 +84,13 @@
                                         }
                                     } else {
                                         // $_SESSION['message'] = "No records found";
-                                        echo "No records found";
+                                ?>
+                                        <div class="error-message-container">
+                                            <div class="product-not-available">
+                                                <h3 class="text-message">Sorry, Users table is empty!</h3>
+                                            </div>
+                                        </div>
+                                <?php
                                     }
                                 ?>
                             </tbody>

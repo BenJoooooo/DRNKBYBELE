@@ -72,7 +72,9 @@
                                         }
                                     } else {
                                         // $_SESSION['message'] = "No records found";
-                                        echo "No records found";
+                                        ?>
+                                        
+                                <?php
                                     }
                                 ?>
                             </tbody>

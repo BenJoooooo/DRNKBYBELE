@@ -1,9 +1,7 @@
 <?php
     
     include ("functions/userFunctions.php");
-    require ("includes/header.php")
-    
-
+    require ("includes/header.php");
 ?>
 
         <main class="menu">
@@ -27,7 +25,7 @@
 
 
                         <div class="">
-                            <a href="products.php?category=<?= $data['name'] ?>"><?= $data['name']; ?></a>
+                            <a href="drnksmenulist.php?category=<?= $data['slug'] ?>"><?= $data['name']; ?></a>
                         </div>
 
                 <?php
@@ -47,16 +45,18 @@
                     if(mysqli_num_rows($fetch_data_products) > 0) {
                         foreach($fetch_data_products as $data_products) { ?>
                         
-                        <div class="card-menu">
-                            <div class="img-container">
-                                <img src="uploadsProducts/<?= $data_products['image']; ?>" alt="">
+                        <a href="drnksproductinfo.php?product=<?= $data_products['slug']; ?>" class="product-view">
+                            <div class="card-menu">
+                                <div class="img-container">
+                                    <img src="uploadsProducts/<?= $data_products['image']; ?>" alt="">
+                                </div>
+                                <div class="card-menu-content">
+                                    <h2 class="card-menu-title"><?= $data_products['product_name'] ?></h2>
+                                    <p class="card-menu-description"><?= $data_products['category_name']; ?></p>
+                                </div>
                             </div>
-                            <div class="card-menu-content">
-                                <h2 class="card-menu-title"><?= $data_products['product_name'] ?></h2>
-                                <p class="card-menu-description"><?= $data_products['category_name']; ?></p>
-                            </div>
-                        </div>
-                    
+                        </a>
+
                 <?php
                         }
                     }

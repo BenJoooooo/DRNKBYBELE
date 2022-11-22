@@ -68,7 +68,13 @@
                                         }
                                     } else {
                                         // $_SESSION['message'] = "No records found";
-                                        echo "No records found";
+                                ?>
+                                        <div class="error-message-container">
+                                            <div class="product-not-available">
+                                                <h3 class="text-message">Sorry, Users table is empty!</h3>
+                                            </div>
+                                        </div>
+                                <?php
                                     }
                                 ?>
                             </tbody>

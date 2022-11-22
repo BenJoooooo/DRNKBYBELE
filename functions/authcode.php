@@ -70,12 +70,14 @@ include "myfunctions.php";
             $_SESSION['auth'] = true;
 
             $userdata = mysqli_fetch_array($login_query_run);
+            $user_id = $userdata['id'];
             $username = $userdata['fullname'];
             $useremail = $userdata['email'];
             $role_as = $userdata['role'];
 
             $_SESSION['auth_user'] = [
 
+                'user_id' => $user_id,
                 'fullname' => $username,  
                 'email' => $useremail
 
