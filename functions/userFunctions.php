@@ -40,7 +40,7 @@
     // Fetches data from table products and table categories where products featured is true
     function getFeaturedProducts($table1, $table2) {
         global $con;
-        $query = "SELECT products.id, products.image, products.name AS product_name, categories.name AS category_name
+        $query = "SELECT products.id, products.slug, products.image, products.name AS product_name, categories.name AS category_name
         FROM $table1, $table2
         WHERE products.category_id = categories.id AND products.featured = '1' AND products.status = '0'";
         return $query_run = mysqli_query($con, $query);
@@ -83,7 +83,30 @@
         global $con;
         $user_id = $_SESSION['auth_user']['user_id'];
 
-        $query = "SELECT c.id AS cid, c.prod_id, c.prod_qty, p.id AS pid, p.category_id, p.name, p.image, p.selling_price, t.name as cat_name, t.id FROM carts c, products p, categories t WHERE c.prod_id = p.id AND c.user_id = '$user_id' AND p.category_id = t.id  ORDER BY c.id DESC";
+        $query = "SELECT c.id AS cid, c.prod_id, c.prod_qty, p.id AS pid, p.category_id, p.name, 
+        p.image, p.slug, p.selling_price, t.name as cat_name, t.id 
+        FROM carts c, products p, categories t 
+        WHERE c.prod_id = p.id 
+        AND c.user_id = '$user_id' 
+        AND p.category_id = t.id  
+        ORDER BY c.id DESC";
+
+        return $query_run = mysqli_query($con, $query);
+
+    }
+
+    function getCartDetails() {
+        global $con;
+        $user_id = $_SESSION['auth_user']['user_id'];
+
+        $query = "SELECT c.id AS cid, c.prod_id, c.prod_qty, p.id AS pid, p.category_id, p.name, 
+        p.image, p.slug, p.selling_price, t.name as cat_name, t.id, u.email, u.fullname
+        FROM carts c, products p, categories t, users u
+        WHERE c.prod_id = p.id 
+        AND c.user_id = '$user_id' 
+        AND p.category_id = t.id
+        AND u.id = '$user_id'  
+        ORDER BY c.id DESC";
 
         return $query_run = mysqli_query($con, $query);
 

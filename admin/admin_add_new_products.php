@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="signup price">
                                     <label for="">Slug</label>
-                                    <input type="text" name="slug" class="signup-input" required placeholder="Enter Product Name">
+                                    <input type="text" name="slug" class="signup-input" required placeholder="e.g., milktea-series">
                                 </div>
                             </div>
                             <div class="signup">

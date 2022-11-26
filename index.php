@@ -26,21 +26,13 @@
                         } ?>
                         
                     </div>
-                    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button> -->
                 </div>
             </section>
 
             <!-- ------------------------------------ -->
             <!-- Image carousel for featured products -->
             <!-- ------------------------------------ -->
-            <section class="section-wrapper">
+            <section class="section-wrapper product_data">
 
 
                 <h1 class="featured-products">Featured Products</h1>
@@ -56,10 +48,12 @@
                                     <div class="card-container swiper-slide">
                                         <div class="card-overlay"></div>
 
+                                        <a href="drnksproductinfo.php?product=<?= $product['slug']; ?>">
                                         <div class="card-image">
                                             <img src="uploadsProducts/<?= $product['image'] ?>" alt="" class="card-img">
                                             <span class="card-price"></span>
                                         </div>
+                                        </a>
 
                                         <div class="card-content">
                                             <div class="card-texts">
@@ -79,11 +73,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="btn btn-primary">Add to cart</div>
+                                        <input type="hidden" name="" class="input-qty" value="1">
+                                        <button class="btn btn-primary addToCartBtn" value="<?= $product['id']; ?>">Add to cart</button>
+
                                     </div>
                             <?php
                                 }
-                            } ?>
+                             ?>
 
                         </div>
                     </div>
@@ -92,6 +88,22 @@
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-pagination"></div>
                 </div>
+
+                <?php
+                
+                        } else {
+
+                            ?>
+                                <div class="error-message-container">
+                                    <div class="product-not-available">
+                                        <h3 class="text-message">Product Not Found!</h3>
+                                    </div>
+                                </div>
+                            <?php
+
+                        }
+
+                ?>
 
             </section>
         </main>

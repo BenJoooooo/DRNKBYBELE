@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="signup price">
                                     <label for="">Slug</label>
-                                    <input type="text" name="slug" class="signup-input" value="<?= $data['slug']; ?>" required placeholder="Enter Slug">
+                                    <input type="text" name="slug" class="signup-input" value="<?= $data['slug']; ?>" required placeholder="e.g., milktea-series">
                                 </div>
                             </div>
                             <div class="signup fullname">
