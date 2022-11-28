@@ -261,6 +261,10 @@ tbody td img {
 /* ------------------------------------------- */
 /*            Background Cover Photo           */
 /* ------------------------------------------- */
+.carousel {
+    z-index: -1;
+}
+
 .carousel-item img {
     /* max-height: 100vh; */
     max-height: auto;

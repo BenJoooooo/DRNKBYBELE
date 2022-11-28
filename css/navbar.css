@@ -153,19 +153,68 @@ header i {
 }
 
 .mobile-navigation {
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 999;
     position: fixed;
     display: none;
-    /* background-color: var(--clr-main-color); */
+    background-color: var(--clr-main-color);
     height: 100%;
     width: 100%;
+    padding: .4em 1em;
+
+    transform: translateX(-100%);
+    transition: all 300ms ease-in-out;
+}
+
+.mobile-navigation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .menu-button button  {
-    font-size: 5rem;
     background: none;
     border: none;
     font-size: 2rem;
+}
+
+.close-button button {
+    border: none;
+    background: transparent;
+    font-size: 2.5rem;
+    color: var(--clr-secondary-color);
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: 4em;
+}
+
+.links-container a {
+    text-decoration: none;
+    color: var(--clr-secondary-color);
+    font-size: 2rem;
+    font-family: var(--ff-league);
+    font-weight: 500;
+    padding: .3em 2em;
+    border-radius: 1em;
+}
+
+.links-container a:hover,
+.links-container a:active,
+.links-container a:focus {
+    color: var(--clr-main-color);
+    background-color: var(--clr-secondary-color);
+}
+
+
+.mobile-navigation-open {
+    transform: translateX(0);
 }
 
 /* ----------------------------------- */
@@ -203,11 +252,51 @@ header i {
     } 
 
     .mobile-navigation {
-        display: block;
+        display: flex;
+        height: 100%;
+        padding: .5em 1em 5em 1em;
     }
     
     .mobile-navigation .search-bar-container {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 3em;
+        height: 10%;
+    }
+
+    .mobile-navigation .svg-container {
+        display: block;
+    }
+
+    .mobile-navigation .svg-container .cart {
         display: none;
+    }
+
+    .mobile-navigation .svg-container a {
+        color: white;
+        font-size: 1rem;
+    }
+
+    .mobile-navigation .svg-container .dropdown-item {
+        color: var(--clr-main-color);
+    }
+
+    .mobile-navigation .search-bar {
+        display: block;
+    }
+
+    .mobile-navigation .main-logo-container {
+        min-width: 2vw;
+    }
+
+    .mobile-navigation .main-logo-picture {
+        width: 5rem;
+    }
+
+    .mobile-navigation .search-bar-container i {
+        color: var(--clr-secondary-color);
+        font-size: 1.5rem;
     }
 
 

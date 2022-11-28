@@ -47,6 +47,7 @@
         </footer>
     </div>
 
+    <script src="js/mobilenav.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/jquery-3.6.1.min.js"></script>
     <script src="js/addtocart.js"></script>
