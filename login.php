@@ -5,7 +5,7 @@
     if(isset($_SESSION['auth'])) {
         include "functions/myfunctions.php";
         redirect("index.php", "You are already logged in");
-        exit();
+        exit(0);
     }
 
     require ("includes/header.php");

@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="buttons">
                                     <button class="add-to-cart addToCartBtn" value="<?= $product['id']; ?>">Add to cart</button>
-                                    <button class="buy-now">Buy Now</button>
+                                    <button class="buy-now buyNowBtn" value="<?= $product['id']; ?>">Buy Now</button>
                                 </div>
                             </div>
                         </div>

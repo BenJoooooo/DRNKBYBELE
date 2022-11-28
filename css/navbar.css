@@ -40,6 +40,7 @@ header {
     margin-inline: auto;
     gap: 5vw;
     padding: .5em 1em;
+    align-items: center;
 }
 
 .main-logo-picture {
@@ -143,4 +144,82 @@ nav a:focus {
 header i {
     color: var(--clr-main-color);
     font-size: 14px;
+}
+
+/* Before mobile view */
+
+.menu-button {
+    display: none;
+}
+
+.mobile-navigation {
+    z-index: 1;
+    position: fixed;
+    display: none;
+    /* background-color: var(--clr-main-color); */
+    height: 100%;
+    width: 100%;
+}
+
+.menu-button button  {
+    font-size: 5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+}
+
+/* ----------------------------------- */
+/*            768px tablet             */
+/* ----------------------------------- */
+@media (max-width: 768px) {
+
+    .navigation-container nav,
+    .navigation-container .search-bar-container {
+        display: none;
+    }
+
+    .navigation-container .search-bar-container {
+        display: block;
+    }
+
+    .navigation-container .search-bar {
+        display: none;
+    }
+
+    .navigation-container .svg-container {
+        justify-content: end;
+    }
+
+    .navigation-container .main-logo-container {
+        margin: 0 auto;
+    }
+
+    .navigation-container .main-logo-picture {
+        width: 5rem;
+    }
+
+    .menu-button {
+        display: block;
+    } 
+
+    .mobile-navigation {
+        display: block;
+    }
+    
+    .mobile-navigation .search-bar-container {
+        display: none;
+    }
+
+
+    /* .mobile-navigation-header {
+        display: flex;
+    }
+
+    .mobile-navigation .links-container {
+        display: flex;
+    } */
+
+    /* .navigation-container .main-logo-picture {
+        width: 20vw;
+    } */
 }

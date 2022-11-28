@@ -1,6 +1,11 @@
 <?php
     include ("functions/userFunctions.php");
     include ("authenticate-user.php");
+
+    if(!isset($_POST['paynow'])) {
+        header("location: shipping.php");
+    }
+
     include ("includes/header.php");
 
     // $courier = $_POST['courier'];
@@ -69,13 +74,26 @@
                                 <img src="img/maya.png" alt="">
                                 <small class="mx-1">and more...</small>
                             </div>
-
                         </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <div class="accordion-body text-center">
+                                <img class="text-center" src="img/appWindow.png" alt="">
+                                You will be redirected to Secure Payments via PayMongo to complete your purchase securely. 
+                            </div>
                         </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <input type="radio" name="payment" class="me-2" id="" required value="bdo">
+                            <label for="">Maya</label>
+                        </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body text-center">
+                                <img class="maya" src="img/pymya.png" alt="">
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -86,22 +104,11 @@
                         </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <input type="radio" name="payment" class="me-2" id="" required value="bdo">
-                            <label for="">BDO</label>
-                        </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
+                            <div class="accordion-body text-center">
+                                <p>Bank Details:</p>
+                                <p>Account Name: Lexa Natalie C. Juntado</p>
+                                <p>Account Number: 0966 275 0476</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,9 +119,6 @@
                     <button type="submit" name="paynow" class="buy-now">Pay Now</button">
                 </div>
 
-                <?= $_SESSION['courier'] ?> 
-                <?= $_SESSION['status']?>
-                <?= $_SESSION['postal']?>
             </div>  
         </main>
         <aside class="menu-checkout">
@@ -194,7 +198,7 @@
             
             <?php
 
-                } else {
+                } elseif($_SESSION['courier'] == "othercourier") {
 
                     if($total > 1000) {
                         ?>
@@ -227,7 +231,26 @@
                         </div>
                     </div>
                     <?php
+                    
                     }                    
+                } else {
+
+                    ?>
+
+                    <div class="divider">
+                        <h4>Shipping</h4>
+                        <h4>Pick-up</h4>
+                        
+                    </div>
+
+                    <div class="total-container">
+                        <div class="divider">
+                            <h4>Total</h4>
+                            <p><span>&#8369 </span><?= $total?></p>
+                        </div>
+                    </div>
+                    <?php
+
                 }
             ?>
 
@@ -249,7 +272,12 @@
         <?php 
 
             $_SESSION['price'] = $total;
-            
+            echo $_SESSION['status'];
+            echo $_SESSION['courier'];
+            echo $_SESSION['price'];
+            echo $_SESSION['address'];
+            echo $_SESSION['email'];
+
         }
         ?>
 

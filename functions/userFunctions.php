@@ -84,7 +84,7 @@
         $user_id = $_SESSION['auth_user']['user_id'];
 
         $query = "SELECT c.id AS cid, c.prod_id, c.prod_qty, p.id AS pid, p.category_id, p.name, 
-        p.image, p.slug, p.selling_price, t.name as cat_name, t.id 
+        p.image, p.slug, p.selling_price,t.name as cat_name, t.id 
         FROM carts c, products p, categories t 
         WHERE c.prod_id = p.id 
         AND c.user_id = '$user_id' 
@@ -100,7 +100,7 @@
         $user_id = $_SESSION['auth_user']['user_id'];
 
         $query = "SELECT c.id AS cid, c.prod_id, c.prod_qty, p.id AS pid, p.category_id, p.name, 
-        p.image, p.slug, p.selling_price, t.name as cat_name, t.id, u.email, u.fullname
+        p.image, p.slug, p.selling_price,  t.name as cat_name, t.id, u.email, u.fullname, u.address, u.country, u.apartment, u.city, u.postal, u.region, u.phone
         FROM carts c, products p, categories t, users u
         WHERE c.prod_id = p.id 
         AND c.user_id = '$user_id' 

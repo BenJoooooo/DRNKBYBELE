@@ -1,6 +1,37 @@
 <?php
     include ("functions/userFunctions.php");
     include ("authenticate-user.php");
+
+    if(isset($_POST['shipping'])) {
+        // $courier = $_POST['courier'];
+        // $name = $_POST['name'];
+        // $phone = $_POST['phone'];
+        // $email = $_POST['email'];
+        // $status = isset($_POST['status']) ? '1':'0';
+        // $addressinfo = $_POST["address"];
+        // $apartment = $_POST['apartment'];
+        // $postal = $_POST['postal'];
+        // $city = $_POST['city'];
+        // $region = $_POST['region'];
+        // $country = $_POST['country'];
+        // $address = $_POST["address"]. ', ' .$_POST['apartment']. ', ' .$_POST['postal']. ' ' .$_POST['city'] .', '.$_POST['region']. ', ' .$_POST['country'];
+
+        $_SESSION['courier'] = $_POST['courier'];
+        $_SESSION['name'] = $_POST['name'];
+        $_SESSION['phone'] = $_POST['phone'];
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['status'] = isset($_POST['status']) ? '1':'0';
+        $_SESSION['addressinfo'] = $_POST['address'];
+        $_SESSION['apartment'] = $_POST['apartment'];
+        $_SESSION['postal'] = $_POST['postal'];
+        $_SESSION['city'] = $_POST['city'];
+        $_SESSION['region'] = $_POST['region'];
+        $_SESSION['country'] = $_POST['country'];
+        $_SESSION['address'] = $_POST["address"]. ', ' .$_POST['apartment']. ', ' .$_POST['postal']. ' ' .$_POST['city'] .', '.$_POST['region']. ', ' .$_POST['country'];
+    } else {
+        header("location: checkout.php");
+    }
+
     include ("includes/header.php");
 
     // $_SESSION['courier'] =  $_POST['courier'];
@@ -43,34 +74,6 @@
     //     $address = $_POST["address"]. ', ' .$_POST['apartment']. ', ' .$_POST['postal']. ' ' .$_POST['city'] .', '.$_POST['region']. ', ' .$_POST['country'];
     // }
     // $_SESSION['address'] = $_POST["address"]. ', ' .$_POST['apartment']. ', ' .$_POST['postal']. ' ' .$_POST['city'] .', '.$_POST['region']. ', ' .$_POST['country'];
-
-    if(isset($_POST['shipping'])) {
-        // $courier = $_POST['courier'];
-        // $name = $_POST['name'];
-        // $phone = $_POST['phone'];
-        // $email = $_POST['email'];
-        // $status = isset($_POST['status']) ? '1':'0';
-        // $addressinfo = $_POST["address"];
-        // $apartment = $_POST['apartment'];
-        // $postal = $_POST['postal'];
-        // $city = $_POST['city'];
-        // $region = $_POST['region'];
-        // $country = $_POST['country'];
-        // $address = $_POST["address"]. ', ' .$_POST['apartment']. ', ' .$_POST['postal']. ' ' .$_POST['city'] .', '.$_POST['region']. ', ' .$_POST['country'];
-
-        $_SESSION['courier'] = $_POST['courier'];
-        $_SESSION['name'] = $_POST['name'];
-        $_SESSION['phone'] = $_POST['phone'];
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['status'] = isset($_POST['status']) ? '1':'0';
-        $_SESSION['addressinfo'] = $_POST['address'];
-        $_SESSION['apartment'] = $_POST['apartment'];
-        $_SESSION['postal'] = $_POST['postal'];
-        $_SESSION['city'] = $_POST['city'];
-        $_SESSION['region'] = $_POST['region'];
-        $_SESSION['country'] = $_POST['country'];
-        $_SESSION['address'] = $_POST["address"]. ', ' .$_POST['apartment']. ', ' .$_POST['postal']. ' ' .$_POST['city'] .', '.$_POST['region']. ', ' .$_POST['country'];
-    }
 ?>
 
     <div class="checkout-container">
@@ -197,7 +200,7 @@
             
             <?php
 
-                } else {
+                } elseif($_SESSION['courier'] == "othercourier") {
 
                     if($total > 1000) {
                         ?>
@@ -231,6 +234,24 @@
                     </div>
                     <?php
                     }                    
+                } else {
+
+                    ?>
+
+                    <div class="divider">
+                        <h4>Shipping</h4>
+                        <h4>Pick-up</h4>
+                        
+                    </div>
+
+                    <div class="total-container">
+                        <div class="divider">
+                            <h4>Total</h4>
+                            <p><span>&#8369 </span><?= $total?></p>
+                        </div>
+                    </div>
+                    <?php
+
                 }
             ?>  
 

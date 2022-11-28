@@ -574,6 +574,10 @@ tbody td img {
     margin: 0 auto;
 }
 
+.error-message-container img {
+    width: 100%;
+}
+
 .product-not-available {
     min-height: 100vh;
     height: 100%;
@@ -1224,7 +1228,30 @@ tbody td img {
     font-weight: 300;
     color: var(--clr-dark-black);
  }
+
+ .menu-checkout .accordion-body {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--clr-dark-black);
+    font-family: var(--ff-league);
+    padding: 3em;
+    width: 80%;
+    margin: 0 auto;
+ }
+
+ .menu-checkout .accordion-body img {
+    width: 8rem;
+    display: block;
+    margin: 0 auto;
+ }
+
+ .menu-checkout .accordion-body .maya {
+    width: 20em ;
+ }
  
+ .menu-checkout .accordion-body p {
+    margin: 0;
+ }
 
 .signup-card-body .buttons .back-to-cart,
 .signup-card-body .buttons .buy-now {
