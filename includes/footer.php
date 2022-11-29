@@ -39,7 +39,7 @@
                         <p class="footer-p">Subscribe to our newsletter</p>
                         <div class="footer-newsletter">
                             <input class="newsletter-input" type="text" placeholder="Email Address" spellcheck="false">
-                            <button type="submit">Submit</button>
+                            <button class="submit-letter" type="submit">Submit</button>
                         </div>
                     </div>
                 </div>
