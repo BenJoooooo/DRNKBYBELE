@@ -153,7 +153,6 @@ header i {
 }
 
 .mobile-navigation {
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 999;
@@ -261,8 +260,7 @@ header i {
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        gap: 3em;
-        height: 10%;
+        gap: 2em;
     }
 
     .mobile-navigation .svg-container {

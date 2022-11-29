@@ -1,17 +1,6 @@
         <footer>
             <div class="footer-content">
-                <div class="footer-column-one">
-                    <img src="img/drnklogowhite.png" alt="">
-                    <div class="footer-newsletter-container">
-                        <p class="footer-p">Subscribe to our newsletter</p>
-                        <div class="footer-newsletter">
-                            <input class="newsletter-input" type="text" placeholder="Email Address" spellcheck="false">
-                            <button type="submit">Submit</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-column-two">
+                <div class="footer column-two">
                     <h1 class="column-two-footer">About Us</h1>
 
                     <div class="footer-links-container">
@@ -22,7 +11,7 @@
                     </div>
                 </div>
 
-                <div class="footer-column-two">
+                <div class="footer column-two">
                     <h1 class="column-two-footer">Our Services</h1>
 
                     <div class="footer-links-container">
@@ -33,7 +22,7 @@
                     </div>
                 </div>
 
-                <div class="footer-column-two">
+                <div class="footer column-two">
                     <h1 class="column-two-footer">Follow us:</h1>
 
                     <div class="footer-links-socials">
@@ -41,6 +30,17 @@
                         <a href="https://www.tiktok.com/@drnkbybeleph"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.instagram.com/drnkbybeleph"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.twitter.com/drnkbybele"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer column-one">
+                    <img src="img/drnklogowhite.png" alt="">
+                    <div class="footer-newsletter-container">
+                        <p class="footer-p">Subscribe to our newsletter</p>
+                        <div class="footer-newsletter">
+                            <input class="newsletter-input" type="text" placeholder="Email Address" spellcheck="false">
+                            <button type="submit">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>

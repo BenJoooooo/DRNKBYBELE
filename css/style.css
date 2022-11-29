@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=League+Spartan:wght@100;200;400;500&display=swap');
 
+
 :root {
     --ff-fredoka: 'Fredoka One', cursive;
     --ff-league: 'League Spartan', sans-serif;
@@ -263,14 +264,11 @@ tbody td img {
 /* ------------------------------------------- */
 .carousel {
     z-index: -1;
+    margin: 0 auto;
 }
 
 .carousel-item img {
     /* max-height: 100vh; */
-    max-height: auto;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    display: block;
     object-fit: cover;
     object-position: center;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
@@ -280,25 +278,28 @@ tbody td img {
 /*                   Main Content                 */
 /* ---------------------------------------------- */
 
+.section-wrapper {
+    min-height: 80vh;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-inline: 1em;
+}
+
+
 .card-wrapper {
     margin-bottom: 3em;
 }
 
 .featured-products {
-    margin-block: 1em;
+    margin-bottom: 1em;
     padding: 0;
     font-family: var(--ff-fredoka);
     color: var(--clr-main-color);
-    font-size: var(--fs-40);
-}
-
-.section-wrapper {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-inline: 2em;
+    font-size: 2rem, 1rem + 5vw, 3rem;
 }
 
 .slide-container {
@@ -308,7 +309,6 @@ tbody td img {
 
 .card-container {
     background-color:#f6f6f6 ;
-    padding: 1em;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -316,7 +316,6 @@ tbody td img {
     position: relative;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
     border: 3px solid var(--clr-main-color);
-
 }
 
 .card-overlay {
@@ -430,12 +429,12 @@ tbody td img {
     width: 250px;
     height: 350px;
     border-radius: 20px;
-    padding-block: 1.5em;
+    padding: 2em;
 }
 
 .card-image .card-img {
     height: 100%;
-    width: 100%;
+    min-width: 100%;
     object-fit: cover;
     object-position: center;
     border-radius: 20px;
@@ -1494,6 +1493,7 @@ tbody td img {
 .signup {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .signup input,
@@ -1581,9 +1581,8 @@ tbody td img {
 
 /* Show or hide password style */
 
-.password-container {
+.signup-container .password-container {
     width: 100%;
-    position: relative;
 }
 
 .password-container input {
@@ -1592,7 +1591,7 @@ tbody td img {
 
 .fa-eye {
     position: absolute;
-    top: 33%;
+    top: 55%;
     right: 2%;
     color: var(--clr-dark-grey);
 }

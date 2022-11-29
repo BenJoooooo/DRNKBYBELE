@@ -11,14 +11,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 
     <!-- CDN For fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylsheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
@@ -37,7 +37,7 @@
 
             <div class="close-button" onclick="toggleMobileNavigation()">
                 <button>
-                <i class="fa fa-close"></i>
+                <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
             </div>
 
@@ -80,7 +80,7 @@
 
             <?php  else : ?>
                 
-            <div class="svg-container"> 
+            <!-- <div class="svg-container"> 
                 <a class="cart" href="cart.php">
                     <svg xmlns="http://www.w3.org/2000/svg" class="bag" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 319.987 319.987" style="enable-background:new 0 0 319.987 319.987;" xml:space="preserve"><g><g><path d="M314.49,301.082l-39.829-189.186c-1.461-6.94-7.584-11.909-14.678-11.909h-25V75c0-41.354-33.645-75-75-75    s-75,33.646-75,75v24.986h-25c-7.094,0-13.217,4.969-14.678,11.909l-40,190c-0.931,4.424,0.182,9.032,3.03,12.543    c2.849,3.511,7.128,5.549,11.648,5.549h280c0.006,0,0.014,0,0.02,0c8.285,0,15-6.716,15-15    C315.003,303.636,314.825,302.328,314.49,301.082z M114.983,75c0-24.813,20.187-45,45-45c24.814,0,45,20.187,45,45v24.986h-90V75z     M243.628,129.986c-7.141,39.684-42.056,70-83.645,70c-41.587,0-76.503-30.317-83.644-70H243.628z M38.47,289.986l23.997-113.984    c4.661,7.421,10.201,14.36,16.577,20.678c18.084,17.919,41.091,29.114,65.939,32.335v15.972c0,8.284,6.716,15,15,15    s15-6.716,15-15v-15.972c24.849-3.221,47.855-14.416,65.939-32.335c6.376-6.317,11.916-13.258,16.577-20.679l23.997,113.985H38.47    z"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
                 </a>
@@ -94,7 +94,7 @@
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
                 </div>
-            </div> 
+            </div>  -->
                 
             <?php endif; ?>
         </div>
@@ -106,7 +106,7 @@
 
                 <div class="menu-button" onclick="toggleMobileNavigation()">
                     <button>                       
-                        <i class="fa fa-reorder ham"></i>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                     </button>
                 </div>
 
