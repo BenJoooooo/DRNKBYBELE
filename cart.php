@@ -15,7 +15,6 @@
                 <tr class="table-row-cart">
                     <th class="data-cart products">Product</th>
                     <th class="data-cart"></th>
-                    <th class="data-cart price">Price</th>
                     <th class="data-cart quantity">Quantity</th>
                     <th class="data-cart total">Total</th>
                 </tr>
@@ -43,26 +42,29 @@
                     
                     <td class="data-cart-items-prod">
                         <a href="drnksproductinfo.php?product=<?= $item['slug'] ?>">
-                            <?= $item['name']; ?>
-                            <?= $item['cat_name'] ?>
+                            <p><?= $item['name']; ?></p>
+                            <p><?= $item['cat_name'] ?></p>
                         </a> 
                         <button class="data-cart-remove-item deleteItem" value="<?= $item['cid']; ?>">Remove</button>
                     </td>
-
-                    <td class="data-cart-items-price"> &#8369 <?= $item['selling_price'] ?></td>
                     <td class="data-cart-items-qty">
                         <div class="input-group">
                             <input type="hidden" class="prodId" value="<?= $item['prod_id'] ?>">
-                            <div class="input-group-prepend">
+
+                            <div class="buttons">
+                                <button><i class="fa fa-angle-up increment-btn updateQty"></i></button>
+                                <button><i class="fa fa-angle-down decrement-btn updateQty"></i></button>
+                            </div>
+                            <!-- <div class="input-group-prepend">
                                 <button class="input-group-text decrement-btn updateQty">-</button>
-                            </div>
+                            </div> -->
                                 <input type="text" class="form-control input-qty" disabled value="<?= $item['prod_qty'] ?>">
-                            <div class="input-group-append">
+                            <!-- <div class="input-group-append">
                                 <button class="input-group-text increment-btn updateQty">+</button>
-                            </div>
+                            </div> -->
                         </div>
                     </td>
-                    <td class="data-cart-items-total"> &#8369 <?= $totalItem ?></td>
+                    <td class="data-cart-items-total"><p>&#8369 <?= $totalItem ?> </p> </td>
                 </tr>
             <?php 
             $totalPrice += $item['selling_price'] * $item['prod_qty'];

@@ -139,7 +139,7 @@
                     <div class="drink-title">
                         <div class="drinktitle-container">
                             <h4><?= $items['name']; ?> <?= $items['cat_name']; ?></h4>
-                            <h5>Series - <?= $items['cat_name']; ?></h5>
+                            <h5>(<?= $items['cat_name']; ?> Series)</h5>
                             <h6>Small - 12 oz</h6>
                         </div>
                         <div class="drinktitle-price">
