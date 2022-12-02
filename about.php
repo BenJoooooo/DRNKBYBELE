@@ -2,35 +2,63 @@
     include ("functions/userFunctions.php");
     require ("includes/header.php");
 ?>
-
+<!-- 
         <main class="menu-about">
             <div class="about-container">
-                <div class="about-card one">    
+                <div class="about-card card-one">    
                     <a href="" class="read-more">Read more</a>
                 </div>
-                <div class="about-card two">
+                <div class="about-card card-two">
 
                 </div>
-                <div class="about-card three">
+                <div class="about-card card-three">
     
                 </div>
-                <div class="about-card four">
+                <div class="about-card card-four">
                     <a href="" class="read-more">Read more</a>
                 </div>
 
-                <div class="about-card five">
+                <div class="about-card card-five">
                     <a href="" class="read-more">Read more</a>
                 </div>
-                <div class="about-card six">
+                <div class="about-card card-six">
 
                 </div>
-                <div class="about-card seven">
+                <div class="about-card card-seven">
     
                 </div>
-                <div class="about-card eight">
+                <div class="about-card card-eight">
                     <a href="" class="read-more">Read more</a>
                 </div>
             </div>
+        </main> -->
+
+        <main class="menu-about">
+          <div class="about-container">
+            
+
+                <?php 
+                    $fetch_data_products = getJointData("products", "categories");
+                    if(mysqli_num_rows($fetch_data_products) > 0) {
+                        foreach($fetch_data_products as $data_products) { ?>
+                        
+
+                        <div class="about-card">
+                          <div class="img-container about-card-one">
+                            <img src="uploadsProducts/<?= $data_products['image'] ?>" alt="">
+                          </div>
+                          <div class="content-container about-card-two">
+                            <h1 class="title"><?= $data_products['product_name'] ?> </h1>
+                            <p class="description"><?= $data_products['description'] ?></p>
+                          </div>
+                        </div>
+                        
+                <?php
+                        }
+                    }
+                ?>
+            
+          </div>
         </main>
 
 <?php
