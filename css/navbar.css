@@ -198,7 +198,7 @@ header i {
     color: var(--clr-secondary-color);
     font-size: 2rem;
     font-family: var(--ff-league);
-    font-weight: 500;
+    font-weight: 300;
     padding: .3em 2em;
     border-radius: 1em;
 }
@@ -268,7 +268,7 @@ header i {
     .mobile-navigation {
         display: flex;
         height: 100%;
-        padding: 1em;
+        padding: 1em 1em 2em;
     }
     
     .mobile-navigation .search-bar-container {
@@ -284,11 +284,6 @@ header i {
 
     .mobile-navigation .svg-container .cart {
         display: none;
-    }
-
-    .mobile-navigation .svg-container a {
-        /* color: white;
-        font-size: 1rem; */
     }
 
     .mobile-navigation .links-container a {

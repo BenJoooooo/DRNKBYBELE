@@ -83,7 +83,7 @@
             $total = 0;
         ?>
 
-        <main class="menu-checkout">
+        <main class="menu-checkout area-one">
             <form action="payment.php" method="POST">
             <div class="info-checkout">
                 <h4 class="brand-title">DRNK BY BELE</h4>
@@ -123,7 +123,7 @@
 
             
         </main>
-        <aside class="menu-checkout">
+        <aside class="menu-checkout area-two">
         
             <div class="checkout">
                 <?php foreach ($cart_items as $items) {

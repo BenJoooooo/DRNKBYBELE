@@ -1,8 +1,8 @@
 <?php
     include ("functions/userFunctions.php");
     require ("includes/header.php");
-
 ?>
+
         <main class="menu-about">
             <div class="about-container">
                 <div class="about-card one">    
@@ -34,9 +34,7 @@
         </main>
 
 <?php
-
     require ("includes/footer.php");
-
 ?>
 
     <!-- Messenger Chat Plugin Code -->

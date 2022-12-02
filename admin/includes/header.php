@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     
@@ -29,7 +30,7 @@
 </head>
 <body>
 
-    <div class="mobile-navigation" id="mobile-navigation">
+    <!-- <div class="mobile-navigation" id="mobile-navigation">
         <div class="mobile-navigation-header">
 
             <div class="close-button" onclick="toggleMobileNavigation()">
@@ -75,7 +76,7 @@
                 </a>
             </div>
 
-            <?php  else : ?>
+            <?php  else : ?> -->
                 
             <!-- <div class="svg-container"> 
                 <a class="cart" href="cart.php">
@@ -93,11 +94,11 @@
                 </div>
             </div>  -->
                 
-            <?php endif; ?>
+            <!-- <?php endif; ?>
         </div>
-    </div>
+    </div> -->
 
-    <div id="container">
+    <!-- <div id="container">
         <header>
             <div class="navigation-container">
 
@@ -122,9 +123,9 @@
                         <a href="../menu.php">Menu</a>
                     </div>
                     <div class="nav-about">
-                        <a href="../about.php">About</a>
+                        <a href="../about.php">About</a> -->
                         <!-- Continue -->
-                        <div class="dropdown-contact">
+                        <!-- <div class="dropdown-contact">
                             <a href="" class="dropdown-drnkbybele">DRNK by BELE</a>
                             <a href="" class="dropdown-ourhistory">Our History</a>
                         </div>
@@ -177,4 +178,4 @@
 
                 </div>
             </div>
-        </header>
+        </header> -->
