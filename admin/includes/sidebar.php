@@ -42,7 +42,7 @@
                     <div class="image-svg">
                         <i class="fas fa-file-invoice"></i>
                     </div>
-                    <a href="about.php">About Blogs</a>
+                    <a href="blogs_about_page.php">About Blogs</a>
                 </div>
                 
                 <div class="brand-child <?= $page ==  "sales.php" ? 'active':''; ?>">
@@ -93,7 +93,7 @@
                     <div class="image-svg">
                         <i class="fas fa-user-friends"></i>
                     </div>
-                    <a href="admin_products_page.php">Client</a>
+                    <a href="../index.php">Client</a>
                 </div>
 
             </div>

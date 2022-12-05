@@ -5,80 +5,82 @@
     include ('../functions/middleware.php');
     include ('../functions/middleware_manager.php');
     include ('includes/header.php');
-    include ('includes/sidebar.php');
-
 ?>
+    <div class="wrapper">
+        <?php include ('includes/sidebar.php'); ?>
 
-        <div class="admin-main-content">
-            <div class="admin-page-header">
-                <div class="admin-page-greet">
-                    <h4>Welcome, <?= $_SESSION['auth_user']['fullname'];  ?></h4>
-                </div>
-                <div class="admin-page-title">
-                    <h3>Admin Accounts Management</h3>
-                </div>
-            </div>
-            
-            <div class="admin-page-table">
-                <div class="table-container">
-
-                    <!-- Session Message -->
-                    <?php include('../functions/sessionmessage.php'); ?>
-
-                    <div class="table-button-add">
-                        <a href="admin_add_new_account.php" class="table-container-add-new">Add User</a>
+        <div class="body-wrapper">
+            <div class="admin-main-content">
+                <div class="admin-page-header">
+                    <div class="admin-page-greet">
+                        <h4>Welcome, <?= $_SESSION['auth_user']['fullname'];  ?></h4>
                     </div>
-                    <div class="card-header">
-                        <h3>Accounts Table</h3>
+                    <div class="admin-page-title">
+                        <h3>Admin Accounts Management</h3>
                     </div>
+                </div>
+                
+                <div class="admin-page-table">
+                    <div class="table-container">
 
-                    <div class="card-body" id="useradmin_table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Role</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
+                        <!-- Session Message -->
+                        <?php include('../functions/sessionmessage.php'); ?>
 
-                            <tbody>
+                        <div class="table-button-add">
+                            <a href="admin_add_new_account.php" class="table-container-add-new">Add User</a>
+                        </div>
+                        <div class="card-header">
+                            <h3>Accounts Table</h3>
+                        </div>
 
-                                <?php
-                                    $users = getAdmin("users");
-                                    if(mysqli_num_rows($users) > 0) {
+                        <div class="card-body" id="useradmin_table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Address</th>
+                                        <th>Role</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
 
-                                        foreach ($users as $user) { ?>
+                                <tbody>
 
-                                            <tr>
-                                                <td><?= $user['id']; ?></td>
-                                                <td><?= $user['fullname']; ?></td>
-                                                <td><?= $user['email']; ?></td>
-                                                <td><?= $user['address']; ?></td>
-                                                <td><?= $user['role']; ?></td>
-                                                <td class="table-edit-delete">
-                                                    <div class="table-button-add">
-                                                        <a href="edit_admin_account.php?id=<?= $user['id']; ?>" class="btn btn-primary">Edit</a>
-                                                    </div>
-                                                    <button type="button" class="btn btn-danger delete_btn" value="<?= $user['id']; ?>">Delete</button>
+                                    <?php
+                                        $users = getAdmin("users");
+                                        if(mysqli_num_rows($users) > 0) {
 
-                                                </td>
-                                            </tr>
+                                            foreach ($users as $user) { ?>
 
-                                <?php
+                                                <tr>
+                                                    <td><?= $user['id']; ?></td>
+                                                    <td><?= $user['fullname']; ?></td>
+                                                    <td><?= $user['email']; ?></td>
+                                                    <td><?= $user['address']; ?></td>
+                                                    <td><?= $user['role']; ?></td>
+                                                    <td class="table-edit-delete">
+                                                        <div class="table-button-add">
+                                                            <a href="edit_admin_account.php?id=<?= $user['id']; ?>" class="btn btn-primary">Edit</a>
+                                                        </div>
+                                                        <button type="button" class="btn btn-danger delete_btn" value="<?= $user['id']; ?>">Delete</button>
+
+                                                    </td>
+                                                </tr>
+
+                                    <?php
+                                            }
+                                        } else {
+                                            // $_SESSION['message'] = "No records found";
+                                            ?>
+                                            
+                                    <?php
                                         }
-                                    } else {
-                                        // $_SESSION['message'] = "No records found";
-                                        ?>
-                                        
-                                <?php
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

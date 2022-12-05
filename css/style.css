@@ -54,6 +54,7 @@ body {
     top: 0;
     left: 0;
     background-color: var(--clr-main-color);
+    z-index: 1;
 }
 
 .admin-brand {
@@ -131,6 +132,7 @@ body {
     display: flex;
     justify-content: center;
     transition: all 300ms ease-in-out;
+    z-index: 1;
 }
 
 body.open .header-admin {
@@ -138,12 +140,6 @@ body.open .header-admin {
     width: calc(100% - 72px);
     transition: all 300ms ease-in-out;
 
-}
-
-/* This has been declared to the admin main content style section */
-.admin-main-content {
-    margin-top: 100px;
-    width: 100%;
 }
 
 .navigation-container-admin {
@@ -365,7 +361,7 @@ thead tr {
 
 thead th {
     padding: 1rem;
-    font-size: clamp(.5rem, 1vw, 1rem);
+    font-size: clamp(.7rem, 1vw, 1rem);
     font-weight: 500;
     font-family: var(--ff-league);
 
@@ -378,7 +374,7 @@ tbody tr {
 tbody td {
     padding: 1rem;
     border: 1px solid #f0f0f0;
-    font-size: clamp(.5rem, 1.0vw, 1.2rem);
+    font-size: clamp(.7rem, 1.0vw, 1.2rem);
 }
 
 tbody td img {
@@ -388,7 +384,7 @@ tbody td img {
 
 .admin-page-table .table-container {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    padding: 1.5em;
+    padding: 1.5em 1em;
 }
 
 .table-button-add {
@@ -423,8 +419,7 @@ tbody td img {
 .admin-page-table .card-header h3 {
     font-family: var(--ff-league);
     color: var(--clr-background);
-    font-size: clamp(1rem, 2vw, 2.5rem); 
-
+    font-size: 1rem;
 }
 
 .admin-main-content {
@@ -433,35 +428,42 @@ tbody td img {
     min-width: 80vw;
     width: 100%;
     padding: .5em 1em;
+    z-index: -1;
+    margin-top: 100px;
+    overflow: scroll;
 }
 
 .admin-main-content-add-page {
     /* background: var(--clr-background); */
-    margin-inline: auto;
+    margin: 2em auto;
     min-width: 50vw;
     width: 50%;
     padding: .5em;
+    margin-top: 100px;
 }
 
 .admin-page-title h3 {
     color: var(--clr-main-color);
     font-size: clamp(1rem, 2vw, 3rem); 
     font-family: var(--ff-league);
+    text-align: end;
 }
 
 .admin-page-header {
     display: flex;
     align-items: center;
-    padding: 1.5em;
+    padding: 1.5em .5em;
     gap: 1em;
     justify-content: space-between;
     width: 100%;
+    z-index: -1;
 }
 
 .admin-page-greet h4 {
     color: var(--clr-main-color);
     font-size: clamp(1rem, 2vw, 3rem); 
     font-family: var(--ff-league);
+    text-align: start;
 }
 
 .admin-card-container {
@@ -473,11 +475,34 @@ tbody td img {
 .admin-card-container .admin-card {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     border-radius: 1em;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    padding: 3rem;
+    padding: 2rem;
+    gap: 2em;
+}
+
+.admin-card-container .card-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
     gap: 1em;
+}
+
+.admin-card-container .button {
+    text-align: center;
+    color: var(--clr-main-color);
+    font-family: var(--ff-league);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: all .3s ease-in-out;
+}
+
+.admin-card-container .button:hover {
+    transform: scale(1.1);
+    transition: all .3s ease-in-out;
 }
 
 .admin-card-container .admin-card .details,
@@ -1888,7 +1913,7 @@ tbody td img {
 
 .signup input,
 .signup select {
-    padding: .7em .5em;
+    padding: .7em 2em .7em .5em;
     border-radius: .5em;
     color: var(--clr-main-color);
     outline: 0px;
@@ -1938,7 +1963,7 @@ tbody td img {
 .signup-role {
     display: flex;
     gap: 1em;
-    align-items: center;
+    align-items: flex-start;
     max-width: 100%;
 }
 
@@ -1951,9 +1976,14 @@ tbody td img {
 
 .admin-signup-card-header h3 {
     font-family: var(--ff-league);
-    font-size: 2vw;
+    font-size: 1rem;
     color: #6B5237;
     margin-block: 1em;
+}
+
+.admin-signup-card-header a {
+    margin: 0;
+    padding: 0;
 }
 
 .alert {
@@ -1968,8 +1998,6 @@ tbody td img {
     padding: 0;
 }
 
-.signup-card-body 
-
 /* Show or hide password style */
 
 .signup-container .password-container {
@@ -1983,7 +2011,7 @@ tbody td img {
 .fa-eye {
     position: absolute;
     top: 55%;
-    right: 2%;
+    right: 5%;
     color: var(--clr-dark-grey);
 }
 
@@ -2031,6 +2059,14 @@ tbody td img {
     .admin-main-content {
         margin-top: 0;
     }
+
+    .admin-main-content-add-page {
+        margin-top: 0;
+    }
+
+    .signup-role {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 768px) {
@@ -2060,10 +2096,6 @@ tbody td img {
         width: 50px;
     }
 
-    .signup-role {
-        flex-direction: column;
-    }
-
     .menu-about .about-card {
         grid-template-columns: repeat(1, 1fr);
         grid-template-areas: "first" "second";
@@ -2075,6 +2107,23 @@ tbody td img {
 
     .admin-card-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-main-content {
+        min-width: 100vh;
+        width: 100%;
+    }
+
+    .admin-main-content-add-page {
+        width: 80%;
+    }
+
+    .signup-form {
+        padding-inline: 0;
+    }
+
+    .admin-page-table .card-header {
+        padding: 1rem 0
     }
 }
 
@@ -2088,6 +2137,10 @@ tbody td img {
 
     .admin-card-container {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .admin-main-content-add-page {
+        width: 100%;
     }
 
 }

@@ -7,59 +7,63 @@
     include ('includes/sidebar.php');
 
 ?>
+    <div class="wrapper">
+        <?php include ('includes/sidebar.php'); ?>
 
-        <div class="admin-main-content">
-            <div class="admin-page-header">
-                <div class="admin-page-greet">
-                    <h4>Welcome, <?= $_SESSION['auth_user']['fullname'];  ?></h4>
-                </div>
-                <div class="admin-page-title">
-                    <h3>Admin Accounts Management</h3>
-                </div>
-            </div>
-            
-            <div class="admin-page-table">
-                <div class="table-container">
-
-                    <!-- Session Message -->
-                    <?php include('../functions/sessionmessage.php'); ?>
-
-                    <div class="card-header">
-                        <h3>Create New Account
-                            <a href="admin_users.php" class="btn px-4 btn-light float-end">Back</a>
-                        </h3>
+        <div class="body-wrapper">
+            <div class="admin-main-content-add-page">
+                <div class="admin-page-header">
+                    <div class="admin-page-greet">
+                        <h4>Welcome, <?= $_SESSION['auth_user']['fullname'];  ?></h4>
                     </div>
+                    <div class="admin-page-title">
+                        <h3>Admin Accounts Management</h3>
+                    </div>
+                </div>
+                
+                <div class="admin-page-table">
+                    <div class="table-container">
 
-                    <div class="signup-card-body">
-                        <form action="../functions/codes.php" method="POST" class="signup-form">
-                            <div class="signup fullname">
-                                <label for="">Full Name</label>
-                                <input type="text" name="signup_fullname" class="signup-input" required placeholder="Enter Full Name">
-                            </div>
-                            <div class="signup email">
-                                <label for="">Email</label>
-                                <input type="email" name="signup_email" class="signup-input" required placeholder="Enter Email">
-                            </div>
-                            <div class="signup repeat-password">
-                                <label for="">Address</label>
-                                <input type="text" name="signup_address" class="signup-input" required placeholder="Enter House No. / Street, Brgy., City, Zip Code">
-                            </div>
-                            <div class="signup password">
-                                <label for="">Password</label>
-                                <div class="password-container">
-                                    <input type="password" name="signup_password" id="password" class="signup-input" required placeholder="Password">
-                                    <i class="fa fa-eye" id="show-password"></i>
+                        <!-- Session Message -->
+                        <?php include('../functions/sessionmessage.php'); ?>
+
+                        <div class="card-header">
+                            <h3>Create New Account
+                                <a href="admin_users.php" class="btn px-4 btn-light float-end">Back</a>
+                            </h3>
+                        </div>
+
+                        <div class="signup-card-body">
+                            <form action="../functions/codes.php" method="POST" class="signup-form">
+                                <div class="signup fullname">
+                                    <label for="">Full Name</label>
+                                    <input type="text" name="signup_fullname" class="signup-input" required placeholder="Enter Full Name">
                                 </div>
-                            </div>
-                            <div class="signup repeat-password">
-                                <label for="">Repeat Password</label>
-                                <div class="password-container">
-                                    <input type="password" name="repeat_signup_password" id="repeatPassword" class="signup-input" required placeholder="Confirm Password">
-                                    <i class="fa fa-eye" id="show-repeat-password"></i>
+                                <div class="signup email">
+                                    <label for="">Email</label>
+                                    <input type="email" name="signup_email" class="signup-input" required placeholder="Enter Email">
                                 </div>
-                            </div>
-                            <button class="signup-submit" name="users_signup_submit">Add User</button>
-                        </form>
+                                <div class="signup repeat-password">
+                                    <label for="">Address</label>
+                                    <input type="text" name="signup_address" class="signup-input" required placeholder="Enter House No. / Street, Brgy., City, Zip Code">
+                                </div>
+                                <div class="signup password">
+                                    <label for="">Password</label>
+                                    <div class="password-container">
+                                        <input type="password" name="signup_password" id="password" class="signup-input" required placeholder="Password">
+                                        <i class="fa fa-eye" id="show-password"></i>
+                                    </div>
+                                </div>
+                                <div class="signup repeat-password">
+                                    <label for="">Repeat Password</label>
+                                    <div class="password-container">
+                                        <input type="password" name="repeat_signup_password" id="repeatPassword" class="signup-input" required placeholder="Confirm Password">
+                                        <i class="fa fa-eye" id="show-repeat-password"></i>
+                                    </div>
+                                </div>
+                                <button class="signup-submit" name="users_signup_submit">Add User</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
