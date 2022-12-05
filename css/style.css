@@ -46,6 +46,198 @@ body {
 /* ---------------------------------- */
 /*              Sidebar Menu          */
 /* ---------------------------------- */
+
+.admin-wrapper {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--clr-main-color);
+}
+
+.admin-brand {
+    display: flex;
+    align-items: center;
+    padding: 0 1.25rem 0 0;
+    background: rgba(0, 0, 0, 0.1);
+    height: 72px;
+}
+
+.admin-menu-title {
+    font-family: var(--ff-league);
+    color: var(--clr-secondary-color);
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+.admin-wrapper .image-svg {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+}
+
+.admin-wrapper .image-svg svg {
+    fill: white;
+    width: 25px;
+    height: 25px;
+}
+
+.brand-child {
+    display: flex;
+    align-items: center;
+    flex-shrink: 1 0 auto;
+}
+
+.brand-child.has-border {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.brand-child i {
+    font-size: 1.2rem;
+    color: var(--clr-secondary-color);
+}
+
+.brand-child:hover {
+    color: white;
+}
+
+.admin-links > .active {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.admin-links > .brand-child:hover {
+    background: rgba(0, 0, 0, 0.1);
+
+} 
+
+.body-wrapper {
+    position: relative;
+    margin-left: 300px;
+    transition: all 300ms ease-in-out;
+}
+
+.header-admin {
+    position: fixed;
+    background-color: #fff;
+    height: 100px;
+    top: 0;
+    left: 300px;
+    padding: 1em;
+    margin: 0;
+    width: calc(100% - 300px);
+    display: flex;
+    justify-content: center;
+    transition: all 300ms ease-in-out;
+}
+
+body.open .header-admin {
+    left: 72px;
+    width: calc(100% - 72px);
+    transition: all 300ms ease-in-out;
+
+}
+
+/* This has been declared to the admin main content style section */
+.admin-main-content {
+    margin-top: 100px;
+    width: 100%;
+}
+
+.navigation-container-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    max-width: 1200px;
+    width: 100%;
+}
+
+body.open .admin-wrapper {
+    width: 72px;
+    transition: all 300ms ease-in-out;
+}
+
+body.open .body-wrapper {
+    margin-left: 72px;
+    transition: all 300ms ease-in-out;
+}
+
+body.open .admin-menu-title {
+    opacity: 0;
+}
+
+.admin-menu-title {
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.admin-wrapper {
+    overflow: hidden;
+    width: 72px;
+    position: fixed;
+    width: 300px;
+    top: 0;
+    left: 0;
+    transition: all 300ms ease-in-out;
+    
+}
+
+.admin-menu {
+    min-width: 300px;
+    max-height: 100vh;
+    background: var(--clr-main-color);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25vw;
+    overflow-y: scroll;
+
+}
+
+.brand-child a {
+    text-decoration: none;
+    color: var(--clr-secondary-color);
+    font-family: var(--ff-league);
+    font-size: clamp(1rem, 2vw, 1.5rem); 
+    font-weight: 300;
+    letter-spacing: 1px;
+    /* opacity: 1;
+    transition: 0.3s;
+    animation: appear 0.3s both; */
+}
+
+.brand-child a:hover {
+    color: white;
+}
+
+.client {
+    display: none;
+}
+
+/* @keyframes appear {
+    0% {
+        opacity: 0;
+        translate: 0 10px;
+    }
+    100% {
+        opacity: 1;
+        translate: 0;
+    }
+} */
+
+/* body.open .admin-wrapper .brand-child a {
+    opacity: 0;
+    transition: 0.3s;
+
+} */
+
+
 /* .wrapper {
     display: flex;
     justify-content: center;
@@ -137,6 +329,15 @@ body.open .admin-wrapper {
 
 .brand-child a:hover {
     color: white;
+}
+
+.admin-links > .active {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.admin-links > .brand-child:hover {
+    background: rgba(0, 0, 0, 0.1);
+
 } */
 
 /* .admin-side-menu-links > .child {
@@ -148,15 +349,6 @@ body.open .admin-wrapper {
     display: flex;
     align-items: center;
     gap: 1em;
-} */
-/* 
-.admin-links > .active {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.admin-links > .brand-child:hover {
-    background: rgba(0, 0, 0, 0.1);
-
 } */
 
 /* ------------------------------------------ */
@@ -240,7 +432,7 @@ tbody td img {
     margin-inline: auto;
     min-width: 80vw;
     width: 100%;
-    padding: .5em;
+    padding: .5em 1em;
 }
 
 .admin-main-content-add-page {
@@ -263,6 +455,7 @@ tbody td img {
     padding: 1.5em;
     gap: 1em;
     justify-content: space-between;
+    width: 100%;
 }
 
 .admin-page-greet h4 {
@@ -273,7 +466,7 @@ tbody td img {
 
 .admin-card-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2em;
 }
 
@@ -1822,6 +2015,22 @@ tbody td img {
     .contact-input{
         width: 100%;
       }
+
+    .admin-card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .client {
+        display: flex;
+    }
+
+    .header-admin {
+        display: none;
+    }
+
+    .admin-main-content {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1855,13 +2064,17 @@ tbody td img {
         flex-direction: column;
     }
 
-    .about-card {
+    .menu-about .about-card {
         grid-template-columns: repeat(1, 1fr);
         grid-template-areas: "first" "second";
     }
 
-    .about-card:nth-child(odd) {
+    .menu-about .about-card:nth-child(odd) {
         grid-template-areas: "first" "second";
+    }
+
+    .admin-card-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1872,4 +2085,9 @@ tbody td img {
     .contact-input{
       width: 100%;
     }
+
+    .admin-card-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
 }

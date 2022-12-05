@@ -1,4 +1,4 @@
-<!--     
+    
 <?php 
     $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'],"/")+1);
 ?>
@@ -64,7 +64,7 @@
                         <div class="image-svg">
                             <i class="fas fa-user-cog"></i>
                         </div>
-                        <a href="admin_admin.php">Admin</a>
+                        <a href="admin_admin.php">Admin Account</a>
                     </div>
                 <?php } ?>
                 
@@ -72,7 +72,7 @@
                     <div class="image-svg">
                         <i class="fas fa-user-friends"></i>
                     </div>
-                    <a href="admin_users.php">Users</a>
+                    <a href="admin_users.php">User Account</a>
                 </div>
 
                 <div class="brand-child <?= $page ==  "admin_categories_page.php" ? 'active':''; ?>">
@@ -82,12 +82,20 @@
                     <a href="admin_categories_page.php">Categories</a>
                 </div>
 
-                <div class="brand-child <?= $page ==  "admin_products_page.php" ? 'active':''; ?>">
+                <div class="brand-child has-border <?= $page ==  "admin_products_page.php" ? 'active':''; ?>">
                     <div class="image-svg">
                         <i class="fas fa-glass-whiskey"></i>
                     </div>
                     <a href="admin_products_page.php">Products</a>
                 </div>
+
+                <div class="brand-child client <?= $page ==  "admin_products_page.php" ? 'active':''; ?>">
+                    <div class="image-svg">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <a href="admin_products_page.php">Client</a>
+                </div>
+
             </div>
         </div>
     </div>
@@ -96,4 +104,4 @@
         
     <script type="text/javascript">
         const toggleSideBar = () => document.body.classList.toggle("open");
-    </script> -->
+    </script>
