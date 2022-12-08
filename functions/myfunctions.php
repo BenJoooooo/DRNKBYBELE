@@ -74,4 +74,10 @@
 
     }
 
+    function getBlogsActive($table) {
+        global $con;
+        $query = "SELECT * FROM $table WHERE posted = '0'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
 ?>

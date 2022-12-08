@@ -167,3 +167,44 @@ $(document).ready(function() {
 
 });
 
+// Delete about blogs
+$(document).ready(function() {
+
+  $(document).on('click', '.delete_blogs_about', function(e) {
+      e.preventDefault();
+
+      var id = $(this).val();
+
+      swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+
+          if (willDelete) {
+
+            $.ajax({
+              method: "POST",
+              url: "../functions/codes.php",
+              data: {
+                  'about_blog_id': id,
+                  'delete_blogs_about': true
+              },
+              success: function(response) {
+                  if(response == 200) {
+                      swal("Success!", "Blog Deleted Successfully", "success");
+                      $("#coverphotos_table").load(location.href + " #coverphotos_table");
+                  } else if(response == 500) {
+                      swal("Error!", "Something went wrong", "error");
+                  }
+              }
+            });
+
+          }
+        });
+  });
+
+});

@@ -525,3 +525,54 @@ include ('../functions/myfunctions.php');
             echo 500;
         }
     }
+
+    // Adds Blog Section
+    if(isset($_POST['add_about_blog'])) {
+        $author = $_POST['added_by'];
+        $title = $_POST['name'];
+        $slug = $_POST['slug'];
+        $description = $_POST['story'];
+        $status = isset($_POST['status']) ? '1':'0';
+        
+        $image = $_FILES['upload']['name'];
+        $path = "../uploadsBlogs";
+        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+        $filename = time(). '.' .$image_ext;
+
+        $query = "INSERT INTO blogsabout (title, description, slug, posted, image, added_by) VALUES ('$title', '$description', '$slug', '$status', '$filename', '$author')";
+        
+        $query_run = mysqli_query($con, $query);
+
+        if($query_run) {
+            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+            redirectSuccess("../admin/blogs_about_page.php", "Products Added Successfully");
+        } else {
+            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+        }
+    } elseif (isset($_POST['edit_about_blog'])) {
+
+        
+
+    } elseif (isset($_POST['delete_blogs_about'])) {
+        $blog_id = mysqli_real_escape_string($con, $_POST['about_blog_id']);
+        
+        $query = "SELECT * FROM blogsabout WHERE id = '$blog_id'";
+        $query_run = mysqli_query($con, $query);
+        $query_data = mysqli_fetch_array($query_run);
+        $fetch_image = $query_data['image'];
+        
+        $delete_query = "DELETE FROM blogsabout WHERE id = '$blog_id'";
+        $delete_query_run = mysqli_query($con, $delete_query);
+
+        if($delete_query_run) {
+
+            if(file_exists("../uploadsBlogs" . $fetch_image)) {
+                unlink ("../uploadsBlogs" . $fetch_image);
+            }
+
+            echo 200;
+
+        } else {
+            echo 500;
+        }
+    }

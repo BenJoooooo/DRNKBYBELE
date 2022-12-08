@@ -6,9 +6,8 @@
     include ('includes/header.php');
 
 ?>
-
     <div class="wrapper">
-        <?php include('includes/sidebar.php'); ?>
+        <?php include ('includes/sidebar.php'); ?>
 
         <div class="body-wrapper">
             <div class="admin-main-content-add-page">
@@ -17,7 +16,7 @@
                         <h4>Welcome, <?= $_SESSION['auth_user']['fullname'];  ?></h4>
                     </div>
                     <div class="admin-page-title">
-                        <h3>Home Page Management</h3>
+                        <h3>Internal Blogs Management</h3>
                     </div>
                 </div>
                 
@@ -29,66 +28,67 @@
 
                         <?php if(isset($_GET['id'])) {
                             $id = $_GET['id'];
-                            $getImage = getById("images", $id);
+                            $getBlog = getById("blogsabout", $id);
 
-                            if(mysqli_num_rows($getImage) > 0) {
-                                $data = mysqli_fetch_array($getImage);  
+                            if(mysqli_num_rows($getBlog) > 0) {
+                                $data = mysqli_fetch_array($getBlog);
                         ?>
 
                         <div class="card-header">
-                            <h3>Edit Cover Photo</h3>
-                            <a href="admin_manage_home.php" class="btn px-4 btn-light float-end">Back</a>
+                            <h3>Edit Blog Page
+                            </h3>
+                                <a href="blogs_about_page.php" class="btn btn-light float-end">Back</a>
 
                         </div>
 
                         <div class="signup-card-body">
                             <form action="../functions/codes.php" method="POST" class="signup-form" enctype="multipart/form-data">
-                                <div class="signup fullname">
-                                    <input type="hidden" name="created_at" value="<?= $data['created_at']; ?>">
-                                    <input type="hidden" name="image_id" value="<?= $data['id']; ?>">
-                                    <input type="hidden" name="added_by" value="<?= $SESSION['auth_user']['fullname']; ?>">
-                                    <label for="">Name</label>
-                                    <input type="text" name="name" value="<?= $data['name'] ?>" class="signup-input" required placeholder="Enter Full Name">
-                                </div>    
-                                <div class="signup email">
-                                    <label for="">Description</label>
-                                    <input type="text" name="description" value="<?= $data['description'] ?>" class="signup-input" placeholder="Enter description">
+                                <div class="signup-role">
+                                    <div class="signup price">
+                                        <label for="">Title</label>
+                                        <input type="text" name="name" class="signup-input" value="<?= $data['title'] ?>" required placeholder="Blog Title">
+                                    </div>
+                                    <div class="signup price">
+                                        <label for="">Slug</label>
+                                        <input type="text" name="slug" class="signup-input" value="<?= $data['slug']; ?>" required placeholder="e.g., blog-show-case">
+                                    </div>
                                 </div>
-                                <div class="signup fullname">
+                                <div class="signup">
+                                    <label for="">Story</label>
+                                    <!-- <input type="text" name="description" class="signup-input" required placeholder="Write Article"> -->
+                                    <textarea name="story" id="" cols="30" rows="10" class="signup-input" placeholder="Write Article"><?= $data['description']; ?></textarea>
+                                </div>
+                                <div class="signup">
                                     <label for="">Upload Image</label>
-                                    <input type="file" name="upload" class="signup-input" multiple placeholder="Upload an image">
+                                    <input type="file" name="upload" class="signup-input" required multiple placeholder="Upload an image">
+                                    <br>
                                     <label for="">Current Image</label>
-                                    <input type="hidden" name="oldimage" value="<?= $data['image']; ?>">
-                                    <img src="../uploads/<?= $data['image']; ?>" alt="<?= $data['name']; ?>">
+                                    <img src="../uploadsBlogs/<?= $data['image']; ?>" alt="">
                                 </div>
-
                                 <div class="signup-role">
                                     <div class="signup admin-role">
                                         <label for="">Status</label>
-                                        <input type="checkbox" <?= $data['status'] == '0' ? '':'checked' ?> name="status" class="signup-input">
+                                        <input type="checkbox" name="status" class="signup-input">
                                     </div>
                                 </div>
-
-
+                                
                                 <input type="hidden" name="added_by" value="<?= $_SESSION['auth_user']['fullname']; ?>">
                                 
-                                <button class="signup-submit" name="update_photo">Update Photo</button>
+                                <button class="signup-submit" name="add_about_blog">Publish Blog</button>
                             </form>
                         </div>
-                        
+
                         <?php 
                             } else {
                                 echo "No data found";
                             }
                         } else {
                             
-                        }
-                        ?>
+                        }?>
                     </div>
                 </div>
             </div>
-        <div class="body-wrapper">
-
+        </div>
     </div>
 
     <script src="../functions/passwordIcon.js"></script>

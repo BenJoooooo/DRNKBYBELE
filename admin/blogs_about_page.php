@@ -21,14 +21,14 @@
                     </div>
                 </div>
                 
-                <div class="admin-page-table">
+                <div class="admin-page-table" id="coverphotos_table">
                     <div class="table-container">
 
                         <!-- Session Message -->
                         <?php include('../functions/sessionmessage.php'); ?>
 
                         <div class="table-button-add">
-                            <a href="admin_add_new_account.php" class="table-container-add-new">Add User</a>
+                            <a href="blogs_about_add_new.php" class="table-container-add-new">Add Blogs</a>
                         </div>
                         <div class="card-header">
                             <h3>Accounts Table</h3>
@@ -39,10 +39,13 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
-                                        <th>Role</th>
+                                        <th>Blog Title</th>
+                                        <th>Description</th>
+                                        <th>Slug</th>
+                                        <th>Visibility</th>
+                                        <th>Image</th>
+                                        <th>Date</th>
+                                        <th>Author</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -50,22 +53,25 @@
                                 <tbody>
 
                                     <?php
-                                        $users = getAdmin("users");
-                                        if(mysqli_num_rows($users) > 0) {
+                                        $blogs = getBlogsActive("blogsabout");
+                                        if(mysqli_num_rows($blogs) > 0) {
 
-                                            foreach ($users as $user) { ?>
+                                            foreach ($blogs as $blog) { ?>
 
                                                 <tr>
-                                                    <td><?= $user['id']; ?></td>
-                                                    <td><?= $user['fullname']; ?></td>
-                                                    <td><?= $user['email']; ?></td>
-                                                    <td><?= $user['address']; ?></td>
-                                                    <td><?= $user['role']; ?></td>
+                                                    <td><?= $blog['id']; ?></td>
+                                                    <td><?= $blog['title']; ?></td>
+                                                    <td><?= $blog['description']; ?></td>
+                                                    <td><?= $blog['slug']; ?></td>
+                                                    <td><?= $blog['posted'] == 0 ? "Visible":"Hidden"; ?></td>
+                                                    <td><img src="../uploadsBlogs/<?= $blog['image']; ?>" alt=""></td>
+                                                    <td><?= $blog['created_at']; ?></td>
+                                                    <td><?= $blog['added_by']; ?></td>
                                                     <td class="table-edit-delete">
                                                         <div class="table-button-add">
-                                                            <a href="edit_admin_account.php?id=<?= $user['id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="blogs_about_edit.php?id=<?= $blog['id']; ?>" class="btn btn-primary">Edit</a>
                                                         </div>
-                                                        <button type="button" class="btn btn-danger delete_btn" value="<?= $user['id']; ?>">Delete</button>
+                                                        <button type="button" class="btn btn-danger delete_blogs_about" value="<?= $blog['id']; ?>">Delete</button>
 
                                                     </td>
                                                 </tr>

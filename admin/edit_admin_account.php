@@ -36,10 +36,9 @@
                                 $data = mysqli_fetch_array($adminUsers);
                             ?>
 
-                            <div class="admin-signup-card-header">
-                                <h3>Edit Admin Account
-                                    <a href="admin_admin.php" class="btn px-4 btn-light float-end">Back</a>
-                                </h3>
+                            <div class="card-header">
+                                <h3>Edit Admin Account</h3>
+                                <a href="admin_admin.php" class="btn px-4 btn-light float-end">Back</a>
                             </div>
 
                             <div class="signup-card-body">

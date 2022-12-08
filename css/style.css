@@ -414,23 +414,27 @@ tbody td img {
 
 .admin-page-table .card-header {
     padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 .admin-page-table .card-header h3 {
     font-family: var(--ff-league);
     color: var(--clr-background);
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin: 0;
 }
 
 .admin-main-content {
     /* background: var(--clr-background); */
     margin-inline: auto;
     min-width: 80vw;
-    width: 100%;
+    max-width: 100%;
     padding: .5em 1em;
     z-index: -1;
     margin-top: 100px;
-    overflow: scroll;
 }
 
 .admin-main-content-add-page {
@@ -1860,6 +1864,7 @@ tbody td img {
     gap: 1em;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     border-radius: 3%;
+    padding-inline: 1em;
 }
 
 .signup-container .signup-header a {
@@ -1909,6 +1914,23 @@ tbody td img {
     display: flex;
     flex-direction: column;
     position: relative;
+}
+
+.signup textarea {
+    padding: 1em;
+    color: var(--clr-main-color);
+    border-radius: .5em;
+}
+
+.signup textarea:focus {
+    color: var(--clr-dark-black);
+}
+
+.signup input::file-selector-button {
+    padding: .2em .5em;
+    border-radius: 3px;
+    background: none;
+    border: 1px solid var(--clr-main-color)
 }
 
 .signup input,
@@ -1974,7 +1996,8 @@ tbody td img {
 }
 /* Size of image displayed when editing cover photo as a preview */
 
-.admin-signup-card-header h3 {
+
+/* .admin-signup-card-header h3 {
     font-family: var(--ff-league);
     font-size: 1rem;
     color: #6B5237;
@@ -1984,7 +2007,7 @@ tbody td img {
 .admin-signup-card-header a {
     margin: 0;
     padding: 0;
-}
+} */
 
 .alert {
     margin: 2em;
@@ -2067,6 +2090,7 @@ tbody td img {
     .signup-role {
         flex-direction: column;
     }
+
 }
 
 @media (max-width: 768px) {

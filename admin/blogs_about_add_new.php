@@ -16,7 +16,7 @@
                         <h4>Welcome, <?= $_SESSION['auth_user']['fullname'];  ?></h4>
                     </div>
                     <div class="admin-page-title">
-                        <h3>Home Page Management</h3>
+                        <h3>Internal Blogs Management</h3>
                     </div>
                 </div>
                 
@@ -27,42 +27,47 @@
                         <?php include('../functions/sessionmessage.php'); ?>
 
                         <div class="card-header">
-                            <h3>Add Cover Photo</h3>
-                            <a href="admin_manage_home.php" class="btn btn-light float-end">Back</a>
+                            <h3>Create A Blog</h3>
+                            <a href="blogs_about_page.php" class="btn btn-light float-end">Back</a>
                         </div>
 
                         <div class="signup-card-body">
                             <form action="../functions/codes.php" method="POST" class="signup-form" enctype="multipart/form-data">
-                                <div class="signup fullname">
-                                        <label for="">Name</label>
-                                        <input type="text" name="name" class="signup-input" required placeholder="Enter Full Name">
-                                    </div>    
-                                <div class="signup email">
-                                    <label for="">Description</label>
-                                    <input type="text" name="description" class="signup-input" placeholder="Enter description">
+                                <div class="signup-role">
+                                    <div class="signup price">
+                                        <label for="">Title</label>
+                                        <input type="text" name="name" class="signup-input" required placeholder="Blog Title">
+                                    </div>
+                                    <div class="signup price">
+                                        <label for="">Slug</label>
+                                        <input type="text" name="slug" class="signup-input" required placeholder="e.g., blog-show-case">
+                                    </div>
                                 </div>
-                                <div class="signup fullname">
+                                <div class="signup">
+                                    <label for="">Story</label>
+                                    <!-- <input type="text" name="description" class="signup-input" required placeholder="Write Article"> -->
+                                    <textarea name="story" id="" cols="30" rows="10" class="signup-input" placeholder="Write Article"></textarea>
+                                </div>
+                                <div class="signup">
                                     <label for="">Upload Image</label>
                                     <input type="file" name="upload" class="signup-input" required multiple placeholder="Upload an image">
                                 </div>
-
                                 <div class="signup-role">
                                     <div class="signup admin-role">
                                         <label for="">Status</label>
                                         <input type="checkbox" name="status" class="signup-input">
                                     </div>
                                 </div>
-
+                                
                                 <input type="hidden" name="added_by" value="<?= $_SESSION['auth_user']['fullname']; ?>">
                                 
-                                <button class="signup-submit" name="upload_photo">Add Photo</button>
+                                <button class="signup-submit" name="add_about_blog">Publish Blog</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="../functions/passwordIcon.js"></script>

@@ -38,7 +38,7 @@
                     <a href="blogs.php">Industry Blogs</a>
                 </div>
 
-                <div class="brand-child has-border <?= $page ==  "blogs.php" ? 'active':''; ?>">
+                <div class="brand-child has-border <?= $page ==  "blogs_about_page.php" ? 'active':''; ?>">
                     <div class="image-svg">
                         <i class="fas fa-file-invoice"></i>
                     </div>

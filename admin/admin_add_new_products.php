@@ -4,7 +4,6 @@
     
     include ('../functions/middleware.php');
     include ('includes/header.php');
-    include ('includes/sidebar.php');
 
 ?>
     <div class="wrapper">
