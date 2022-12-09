@@ -35,7 +35,15 @@
                     <div class="image-svg">
                         <i class="fas fa-file-invoice"></i>
                     </div>
-                    <a href="blogs.php">Industry Blogs</a>
+                    <a href="blogs.php">Client Blogs</a>
+                </div>
+
+
+                <div class="brand-child <?= $page ==  "blogs_industry_page.php" ? 'active':''; ?>">
+                    <div class="image-svg">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <a href="blogs_industry_page.php">Industry Blogs</a>
                 </div>
 
                 <div class="brand-child has-border <?= $page ==  "blogs_about_page.php" ? 'active':''; ?>">

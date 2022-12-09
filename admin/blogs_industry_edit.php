@@ -28,7 +28,7 @@
 
                         <?php if(isset($_GET['id'])) {
                             $id = $_GET['id'];
-                            $getBlog = getById("blogsabout", $id);
+                            $getBlog = getById("blogsindustry", $id);
 
                             if(mysqli_num_rows($getBlog) > 0) {
                                 $data = mysqli_fetch_array($getBlog);
@@ -75,7 +75,7 @@
                                 
                                 <input type="hidden" name="added_by" value="<?= $_SESSION['auth_user']['fullname']; ?>">
                                 
-                                <button class="signup-submit" name="edit_about_blog">Publish Blog</button>
+                                <button class="signup-submit" name="edit_industry_blog">Publish Blog</button>
                             </form>
                         </div>
 

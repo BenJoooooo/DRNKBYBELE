@@ -8,18 +8,18 @@
         <div class="about-container">
 
                 <?php 
-                    $fetch_data_products = getJointData("products", "categories");
+                    $fetch_data_products = getActiveData("blogsindustry");
                     if(mysqli_num_rows($fetch_data_products) > 0) {
                         foreach($fetch_data_products as $data_products) { ?>
                         
                         <div class="blogs-container">
                             <div class="blog-card">
                                 <div class="img-container">
-                                    <img src="uploadsProducts/<?= $data_products['image'] ?>" alt="">
+                                    <a href="#"><img src="uploadsBlogs/<?= $data_products['image'] ?>" alt=""></a>
                                 </div>
                                 <div class="content-container">
-                                    <span class="date">June 25, 2000</span>
-                                    <a href="#" class="title"><?= $data_products['product_name'] ?> </a>
+                                    <span class="date"><?= $data_products['created_at'] ?></span>
+                                    <a href="#" class="title"><?= $data_products['title'] ?> </a>
                                     <p class="description"><?= $data_products['description'] ?></p>
                                 </div>
                             </div>

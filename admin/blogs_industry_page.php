@@ -28,7 +28,7 @@
                         <?php include('../functions/sessionmessage.php'); ?>
 
                         <div class="table-button-add">
-                            <a href="blogs_about_add_new.php" class="table-container-add-new">Add Blogs</a>
+                            <a href="blogs_industry_add_new.php" class="table-container-add-new">Add Blogs</a>
                         </div>
                         <div class="card-header">
                             <h3>Accounts Table</h3>
@@ -53,7 +53,7 @@
                                 <tbody>
 
                                     <?php
-                                        $blogs = getAll("blogsabout");
+                                        $blogs = getAll("blogsindustry");
                                         if(mysqli_num_rows($blogs) > 0) {
 
                                             foreach ($blogs as $blog) { ?>
@@ -65,13 +65,13 @@
                                                     <td><?= $blog['slug']; ?></td>
                                                     <td><?= $blog['posted'] == 0 ? "Visible":"Hidden"; ?></td>
                                                     <td><img src="../uploadsBlogs/<?= $blog['image']; ?>" alt=""></td>
-                                                    <td><?= $blog['created_at']; ?></td>
+                                                    <td><?= $blog['exact_created_at']; ?></td>
                                                     <td><?= $blog['added_by']; ?></td>
                                                     <td class="table-edit-delete">
                                                         <div class="table-button-add">
-                                                            <a href="blogs_about_edit.php?id=<?= $blog['id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="blogs_industry_edit.php?id=<?= $blog['id']; ?>" class="btn btn-primary">Edit</a>
                                                         </div>
-                                                        <button type="button" class="btn btn-danger delete_blogs_about" value="<?= $blog['id']; ?>">Delete</button>
+                                                        <button type="button" class="btn btn-danger delete_blogs_industry" value="<?= $blog['id']; ?>">Delete</button>
 
                                                     </td>
                                                 </tr>

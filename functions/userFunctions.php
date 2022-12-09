@@ -6,13 +6,17 @@
     include("core/dbcon.php");
 
     function redirect($url, $message) {
-
         $_SESSION['message'] = $message;
         header("Location: " . $url);
         exit();
-        
     }
 
+    // Fetches data with active posted status.
+    function getActiveData($table) {
+        global $con;
+        $query = "SELECT * FROM $table WHERE posted = '0'";
+        return $query_run = mysqli_query($con, $query);
+    }
     // Fethes all data from the table
     function getCategoriesProducts($table) {
         global $con;
@@ -50,6 +54,13 @@
     function getSlugActive($table, $slug) {
         global $con;
         $query = "SELECT * FROM $table WHERE slug = '$slug' AND status = '0' LIMIT 1";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    // Get data active slug from blogsabout
+    function getBlogSlugActive($table, $slug) {
+        global $con;
+        $query = "SELECT * FROM $table WHERE slug = '$slug' AND posted = '0' LIMIT 1";
         return $query_run = mysqli_query($con, $query);
     }
 

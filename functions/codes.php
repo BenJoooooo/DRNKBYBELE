@@ -549,10 +549,45 @@ include ('../functions/myfunctions.php');
         } else {
             redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
         }
+
+    // Edits Blogs
     } elseif (isset($_POST['edit_about_blog'])) {
 
-        
+        $blog_id = $_POST['blog_id'];
+        $name = $_POST['name'];
+        $slug = $_POST['slug'];
+        $story = $_POST['story'];
+        $status = isset($_POST['status']) ? '1':'0';
 
+        $old_image = $_POST['old_image'];
+        $new_image = $_FILES['upload']['name'];
+
+        if($new_image != "") {
+            $image_ext = pathinfo($new_image, PATHINFO_EXTENSION);
+            $update_filename = time(). "." .$image_ext;
+        } else {
+            $update_filename = $old_image;
+        }
+
+        $path = "../uploadsBlogs";
+
+        $query = "UPDATE blogsabout SET title = '$name', description = '$story', posted = '$status', image = '$update_filename', slug = '$slug' WHERE id = '$blog_id'";
+
+        $query_run = mysqli_query($con, $query);
+
+        if($query_run) {
+            if($_FILES['upload']['name'] != "") {
+                move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
+                if(file_exists("../uploadsBlogs/".$old_image)) {
+                    unlink("../uploadsBlogs/".$old_image);
+                }
+            } 
+            redirectSuccess("../admin/blogs_about_page.php", "Product Edited Successfully");
+        } else {
+            redirectFailed("../admin/blogs_about_page.php?id=$product_id", "Something Went Wrong");
+        }
+
+    // Deletes Blogs
     } elseif (isset($_POST['delete_blogs_about'])) {
         $blog_id = mysqli_real_escape_string($con, $_POST['about_blog_id']);
         
@@ -562,6 +597,92 @@ include ('../functions/myfunctions.php');
         $fetch_image = $query_data['image'];
         
         $delete_query = "DELETE FROM blogsabout WHERE id = '$blog_id'";
+        $delete_query_run = mysqli_query($con, $delete_query);
+
+        if($delete_query_run) {
+
+            if(file_exists("../uploadsBlogs" . $fetch_image)) {
+                unlink ("../uploadsBlogs" . $fetch_image);
+            }
+
+            echo 200;
+
+        } else {
+            echo 500;
+        }
+    }
+
+    // Adds Blog Industry
+    if(isset($_POST['add_industry_blog'])) {
+        $author = $_POST['added_by'];
+        $title = $_POST['name'];
+        $slug = $_POST['slug'];
+        $description = $_POST['story'];
+        $status = isset($_POST['status']) ? '1':'0';
+        
+        $image = $_FILES['upload']['name'];
+        $path = "../uploadsBlogs";
+        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+        $filename = time(). '.' .$image_ext;
+
+        $query = "INSERT INTO blogsindustry (title, description, slug, posted, image, added_by) VALUES ('$title', '$description', '$slug', '$status', '$filename', '$author')";
+        
+        $query_run = mysqli_query($con, $query);
+
+        if($query_run) {
+            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+            redirectSuccess("../admin/blogs_industry_page.php", "Products Added Successfully");
+        } else {
+            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+        }
+    
+    // Edits Blog Industry
+    } elseif (isset($_POST['edit_industry_blog'])) {
+
+        $blog_id = $_POST['blog_id'];
+        $name = $_POST['name'];
+        $slug = $_POST['slug'];
+        $story = $_POST['story'];
+        $status = isset($_POST['status']) ? '1':'0';
+
+        $old_image = $_POST['old_image'];
+        $new_image = $_FILES['upload']['name'];
+
+        if($new_image != "") {
+            $image_ext = pathinfo($new_image, PATHINFO_EXTENSION);
+            $update_filename = time(). "." .$image_ext;
+        } else {
+            $update_filename = $old_image;
+        }
+
+        $path = "../uploadsBlogs";
+
+        $query = "UPDATE blogsindustry SET title = '$name', description = '$story', posted = '$status', image = '$update_filename', slug = '$slug' WHERE id = '$blog_id'";
+
+        $query_run = mysqli_query($con, $query);
+
+        if($query_run) {
+            if($_FILES['upload']['name'] != "") {
+                move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
+                if(file_exists("../uploadsBlogs/".$old_image)) {
+                    unlink("../uploadsBlogs/".$old_image);
+                }
+            } 
+            redirectSuccess("../admin/blogs_industry_page.php", "Product Edited Successfully");
+        } else {
+            redirectFailed("../admin/blogs_industry_page.php?id=$product_id", "Something Went Wrong");
+        }
+
+    // Deletes Blog Industry
+    } elseif (isset($_POST['delete_blogs_industry'])) {
+        $blog_id = mysqli_real_escape_string($con, $_POST['industry_blog_id']);
+        
+        $query = "SELECT * FROM blogsindustry WHERE id = '$blog_id'";
+        $query_run = mysqli_query($con, $query);
+        $query_data = mysqli_fetch_array($query_run);
+        $fetch_image = $query_data['image'];
+        
+        $delete_query = "DELETE FROM blogsindustry WHERE id = '$blog_id'";
         $delete_query_run = mysqli_query($con, $delete_query);
 
         if($delete_query_run) {
