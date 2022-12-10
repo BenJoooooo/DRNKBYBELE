@@ -5,8 +5,11 @@
 ?>
 
     <main class="blogs-about">
-        <div class="about-container">
+        <!-- <div class="input-container">
+            <input type="text" id="search-blog" class="search-function" placeholder="Search">
+        </div> -->
 
+        <div class="about-container">
                 <?php 
                     $fetch_data_products = getActiveData("blogsindustry");
                     if(mysqli_num_rows($fetch_data_products) > 0) {
@@ -18,7 +21,7 @@
                                     <a href="#"><img src="uploadsBlogs/<?= $data_products['image'] ?>" alt=""></a>
                                 </div>
                                 <div class="content-container">
-                                    <span class="date"><?= $data_products['created_at'] ?></span>
+                                    <p class="date"><?= $data_products['created_at'] ?></p>
                                     <a href="#" class="title"><?= $data_products['title'] ?> </a>
                                     <p class="description"><?= $data_products['description'] ?></p>
                                 </div>

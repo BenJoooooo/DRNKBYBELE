@@ -54,16 +54,23 @@
                     </div>
                     <?php }?>
             <?php } ?>
+
             <a href="index.php" class="mobile-navigation-item">Home</a>
             <a href="menu.php" class="mobile-navigation-item">Menu</a>
             <a href="about.php" class="mobile-navigation-item">About</a>
             <a href="contact.php" class="mobile-navigation-item">Contact</a>
             <a href="blog.php" class="mobile-navigation-item">Blog</a>
+
+            <?php if(isset($_SESSION['auth'])) { ?>
+                <div class="nav-admin">
+                    <a href="espressyourself.php">EspressYourSelf</a>
+                </div>
+            <?php } ?>
         </div>
 
         <div class="search-bar-container">
             <form action="" class="search-bar">
-                <input class="search-bar-input" type="text" placeholder="Looking for?" spellcheck="false">
+                <input class="search-bar-input" id="live_search_mobile" type="text" placeholder="Looking for?" spellcheck="false">
                 <button type="submit"><i class="fas fa-search"></i></button>
             </form>
 
@@ -120,8 +127,9 @@
                             <div class="nav-admin">
                                 <a href="admin/index.php">Admin</a>
                             </div>
-                            <?php }?>
+                        <?php }?>
                     <?php } ?>
+
                     <div class="nav-home">
                         <a href="index.php">Home</a>
                     </div>
@@ -142,12 +150,18 @@
                     <div class="nav-blog">
                         <a href="blog.php">Blog</a>
                     </div>
+
+                    <?php if(isset($_SESSION['auth'])) { ?>
+                        <div class="nav-admin">
+                            <a href="espressyourself.php">EspressYourSelf</a>
+                        </div>
+                    <?php } ?>
                 </nav>
 
                 <div class="search-bar-container">
 
                     <form action="" class="search-bar">
-                        <input class="search-bar-input" type="text" placeholder="Looking for?" spellcheck="false">
+                        <input class="search-bar-input" type="text" id="live_search" placeholder="Looking for" spellcheck="false">
                         <button type="submit"><i class="fas fa-search"></i></button>
                     </form>
                     

@@ -4,7 +4,7 @@
     require ("includes/header.php");
 ?>
 
-        <main class="menu">
+    <main class="menu">
 
             <div class="main-container">
                 <h1 class="title">DRNKs</h1>
@@ -60,10 +60,8 @@
                 <?php
                         }
                     }
-                ?>
-                
-                
-        </main>
+                ?>           
+    </main>
 
 <?php
 

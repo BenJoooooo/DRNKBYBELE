@@ -51,6 +51,75 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/jquery-3.6.1.min.js"></script>
     <script src="js/addtocart.js"></script>
-    </body>
 
+
+    <!-- Search function for blog -->
+    <script type="text/javascript">
+
+        // For web view
+        $("#live_search").on('input', function() {
+            const val = $(this).val().toUpperCase()
+
+            // Blog search
+            $('.blog-card').each(function() {
+                if($(this).html().toUpperCase().indexOf(val) !== -1) {
+                    $(this).show()
+                } else {
+                    $(this).hide()
+                }
+            })
+
+            // About search
+            $('.about-card').each(function() {
+                if($(this).html().toUpperCase().indexOf(val) !== -1) {
+                    $(this).show()
+                } else {
+                    $(this).hide()
+                }
+            })
+
+            // Menu search
+            $('.card-menu').each(function() {
+                if($(this).html().toUpperCase().indexOf(val) !== -1) {
+                    $(this).show()
+                } else {
+                    $(this).hide()
+                }
+            })
+        })
+
+        // For mobile view
+        $("#live_search_mobile").on('input', function() {
+            const val = $(this).val().toUpperCase()
+
+            // Blog search
+            $('.blog-card').each(function() {
+                if($(this).html().toUpperCase().indexOf(val) !== -1) {
+                    $(this).show()
+                } else {
+                    $(this).hide()
+                }
+            })
+
+            // About search
+            $('.about-card').each(function() {
+                if($(this).html().toUpperCase().indexOf(val) !== -1) {
+                    $(this).show()
+                } else {
+                    $(this).hide()
+                }
+            })
+
+            // Menu search
+            $('.card-menu').each(function() {
+                if($(this).html().toUpperCase().indexOf(val) !== -1) {
+                    $(this).show()
+                } else {
+                    $(this).hide()
+                }
+            })
+        })
+    </script>
+
+    </body>
 </html>

@@ -28,18 +28,21 @@
             ?>
           </div>
           
-          <?php if(isset($_SESSION['auth'])) : 
+          <!-- <?php if(isset($_SESSION['auth'])) : 
             
             if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager') : ?>
 
               <div class="about-container">
-                edits
+                <div class="about-card">
+                  <div class="add-title-slug"></div>
+                  <div class="add-description"></div>
+                </div>
               </div>
 
             <?php else : ?>
             <?php endif; ?>
           <?php else : ?>
-          <?php endif; ?>
+          <?php endif; ?> -->
         </main>
 
 <?php

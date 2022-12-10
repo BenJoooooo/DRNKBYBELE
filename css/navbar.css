@@ -61,12 +61,14 @@ nav a {
     font-family: var(--ff-league);
     padding-block: var(--fs-16);
     border: 1px solid transparent;
+    transition: 300ms All ease-in-out;
 }
 
 nav a:hover,
 nav a:focus {
     border-bottom: 1px solid var(--clr-main-color);
     color: var(--clr-main-color);
+    transition: 300ms All ease-in-out;
 }
 
 .nav-session a {

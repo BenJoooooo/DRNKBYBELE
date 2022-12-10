@@ -63,6 +63,12 @@
                         <div class="nav-blog">
                             <a href="../blog.php">Blog</a>
                         </div>
+
+                        <?php if(isset($_SESSION['auth'])) { ?>
+                            <div class="nav-admin">
+                                <a href="espressyourself.php">EspressYourSelf</a>
+                            </div>
+                        <?php } ?>
                     </nav>
 
                     <div class="search-bar-container">

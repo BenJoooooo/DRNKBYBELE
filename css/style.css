@@ -44,6 +44,13 @@ body {
 }
 
 /* ---------------------------------- */
+/*           Search function CSS      */
+/* ---------------------------------- */
+.search-function {
+    width: 80%;
+}
+
+/* ---------------------------------- */
 /*              Sidebar Menu          */
 /* ---------------------------------- */
 
@@ -795,11 +802,18 @@ tbody td img {
     padding: .5em;
     gap: .5em;
     border-radius: 10px;
+    transition: 300ms all ease-in-out;
 }
 
-.category-links .active {
-    color: black;
+.category-links a:hover {
+    color: white;
+    background-color: var(--clr-main-color);
+    transition: 300ms all ease-in-out;
 }
+
+/* .category-links .active {
+    color: black;
+} */
 
 .card-menu-container {
     display: grid;
@@ -824,6 +838,13 @@ tbody td img {
 
 .card-menu .img-container {
     width: 100%;
+    transform: scale(1);
+    transition: 300ms all ease-in-out;
+}
+
+.card-menu .img-container:hover {
+    transform: scale(1.01);
+    transition: 300ms all ease-in-out;
 }
 
 .card-menu img {
@@ -1658,7 +1679,7 @@ tbody td img {
     color: var(--clr-dark-black);
     font-size: 2rem;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1721,6 +1742,13 @@ tbody td img {
     aspect-ratio: 4/3;
     object-fit: cover;
     object-position: center;
+    transform: scale(1);
+    transition: 300ms all ease-in-out;
+}
+
+.menu-about img:hover {
+    transform: scale(1.01);
+    transition: 300ms all ease-in-out;
 }
 /* ----------------------------------- */
 /*              Contact page           */
@@ -1892,6 +1920,13 @@ tbody td img {
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
+}
+
+.blogs-about .input-container {
+    margin: 1em;
+    display: grid;
+    place-items: center;
+
 }
 
 /* .blogs-about .img-container {
