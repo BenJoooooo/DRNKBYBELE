@@ -11,6 +11,20 @@
         exit();
     }
 
+    // Session messages
+    function redirectSuccess($url, $message) {
+        $_SESSION['successmessage'] = $message;
+        header("Location: " . $url);
+        exit();
+    }
+
+    // Session messages
+    function redirectFailed($url, $message) {
+        $_SESSION['failedmessage'] = $message;
+        header("location: " . $url);
+        exit();
+    }
+
     // Fetches data with active posted status.
     function getActiveData($table) {
         global $con;
