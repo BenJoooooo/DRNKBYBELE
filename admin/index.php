@@ -17,6 +17,15 @@
     $productsCount = getAll("products");
     $getProductsCount = mysqli_num_rows($productsCount);
 
+    $espressYourSelfCount = getAll("espressyourself");
+    $getEspressCount = mysqli_num_rows($espressYourSelfCount);
+
+    $aboutBlogsCount = getAll("blogsabout");
+    $getAboutCount  = mysqli_num_rows($aboutBlogsCount);
+
+    $industryBlogsCount = getAll("blogsindustry");
+    $getIndustryCount = mysqli_num_rows($industryBlogsCount);
+
 ?>
     <div class="wrapper">
         <?php include ('includes/sidebar.php'); ?>
@@ -129,6 +138,57 @@
                                 <div class="details">
                                     <h4>Dummy</h4>
                                     <h5>Orders</h5>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-shopping-basket"></i>
+                                </div>
+                            </div>
+                            <div class="button">
+                                <button>View All</button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="client_blog_page.php" class="admin-card-link">
+                        <div class="admin-card">
+                            <div class="card-wrapper">
+                                <div class="details">
+                                    <h4><?php print_r($getEspressCount); ?></h4>
+                                    <h5>EspressYourSelf Posts</h5>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-shopping-basket"></i>
+                                </div>
+                            </div>
+                            <div class="button">
+                                <button>View All</button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="blogs_about_page.php" class="admin-card-link">
+                        <div class="admin-card">
+                            <div class="card-wrapper">
+                                <div class="details">
+                                    <h4><?php print_r($getAboutCount); ?></h4>
+                                    <h5>About Page Blogs</h5>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-shopping-basket"></i>
+                                </div>
+                            </div>
+                            <div class="button">
+                                <button>View All</button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="blogs_industry_page.php" class="admin-card-link">
+                        <div class="admin-card">
+                            <div class="card-wrapper">
+                                <div class="details">
+                                    <h4><?php print_r($getIndustryCount); ?></h4>
+                                    <h5>Industry Page Blogs</h5>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-shopping-basket"></i>

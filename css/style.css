@@ -759,12 +759,15 @@ tbody td img {
 .menu a {
     text-decoration: none;
     padding-block: var(--fs-16);
+    transition: 300ms All ease-in-out;
+
 }
 
 .menu a:hover,
 .menu a:focus {
-    border-bottom: 1px solid var(--clr-main-color);
+    border-bottom: 2px solid var(--clr-main-color);
     color: var(--clr-main-color);
+    transition: 300ms All ease-in-out;
 } 
 
 .menu h2,
@@ -1274,12 +1277,12 @@ tbody td img {
     margin-block: 2em;
 }
 
-.menu-cart .total a {
-    text-decoration: none;
+.menu-cart .total button {
+    /* text-decoration: none; */
     color: var(--clr-main-color);
     padding: 1em 3em;
     opacity: .8;
-    display: inline-block;
+    /* display: inline-block; */
     font-size: .9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1288,9 +1291,9 @@ tbody td img {
     border: 1px solid var(--clr-main-color);
 }
 
-.menu-cart .total a:hover,
-.menu-cart .total a:active,
-.menu-cart .total a:focus {
+.menu-cart .total button:hover,
+.menu-cart .total button:active,
+.menu-cart .total button:focus {
     opacity: 1;
     background-color: white;
     color: var(--clr-secondary-color);
@@ -2043,15 +2046,25 @@ tbody td img {
 
 .menu-espresso .article {
     text-align: justify;
+    font-size: 1rem;
 }
 
 .menu-espresso .name {
     text-align: right;
+    font-size: 1rem;
+}
+
+.menu-espresso .title {
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .menu-espresso .img-container {
-    width: 250px;
-    height: 150px;
+    width: 150px;
+    height: 100px;
+    margin: 0 auto;
 }
 
 .menu-espresso .img-container img {

@@ -4,7 +4,7 @@
 
     if(!isset($_POST['paynow'])) {
         header("location: shipping.php");
-    }
+    }   
 
     include ("includes/header.php");
 
@@ -277,6 +277,8 @@
             echo $_SESSION['price'];
             echo $_SESSION['address'];
             echo $_SESSION['email'];
+            echo $_SESSION['specialmsg'];
+            echo $_SESSION['price'];
 
         }
         ?>

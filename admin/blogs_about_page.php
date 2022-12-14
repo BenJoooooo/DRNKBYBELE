@@ -31,7 +31,7 @@
                             <a href="blogs_about_add_new.php" class="table-container-add-new">Add Blogs</a>
                         </div>
                         <div class="card-header">
-                            <h3>Accounts Table</h3>
+                            <h3>About Blogs Table</h3>
                         </div>
 
                         <div class="card-body" id="useradmin_table">

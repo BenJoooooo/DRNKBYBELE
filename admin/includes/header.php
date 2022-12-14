@@ -66,7 +66,7 @@
 
                         <?php if(isset($_SESSION['auth'])) { ?>
                             <div class="nav-admin">
-                                <a href="espressyourself.php">EspressYourSelf</a>
+                                <a href="../espressyourself.php">EspressYourSelf</a>
                             </div>
                         <?php } ?>
                     </nav>

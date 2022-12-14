@@ -87,6 +87,15 @@
                     $(this).hide()
                 }
             })
+
+            // Espressyourself search
+            $('.content-container').each(function() {
+                if($(this).html().toUpperCase().indexOf(val) !== -1) {
+                    $(this).show()
+                } else {
+                    $(this).hide()
+                }
+            })
         })
 
         // For mobile view
@@ -113,6 +122,15 @@
 
             // Menu search
             $('.card-menu').each(function() {
+                if($(this).html().toUpperCase().indexOf(val) !== -1) {
+                    $(this).show()
+                } else {
+                    $(this).hide()
+                }
+            })
+
+             // Espressyourself search
+             $('.content-container').each(function() {
                 if($(this).html().toUpperCase().indexOf(val) !== -1) {
                     $(this).show()
                 } else {

@@ -1,7 +1,17 @@
 <?php
     include ("functions/userFunctions.php");
     include ("authenticate-user.php");
+
+    if(isset($_POST['checkout'])) {
+
+        $_SESSION['specialmsg'] = $_POST['special-instruction'];
+
+    } else {
+        header("Location: cart.php");
+    }
+
     include ("includes/header.php");
+
 ?>
 
     <div class="checkout-container">
@@ -160,6 +170,7 @@
                                     <a href="cart.php" class="back-to-cart">Back to Cart</a>
                                     <button name="shipping" class="buy-now addAddress">Continue to shipping</button">
                             </div>
+                            
                         </form>
                     </div>
                 </div>

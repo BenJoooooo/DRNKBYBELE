@@ -31,11 +31,11 @@
                     <a href="admin_manage_home.php">Manage</a>
                 </div>
 
-                <div class="brand-child <?= $page ==  "blogs.php" ? 'active':''; ?>">
+                <div class="brand-child <?= $page ==  "client_blog_page.php" ? 'active':''; ?>">
                     <div class="image-svg">
                         <i class="fas fa-file-invoice"></i>
                     </div>
-                    <a href="blogs.php">Client Blogs</a>
+                    <a href="client_blog_page.php">Client Blogs</a>
                 </div>
 
 

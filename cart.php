@@ -73,17 +73,19 @@
             </tbody>
         </table>
 
-        <div class="lower-container">
-            <div class="instructions">
-                <p>Special Instructions for the seller</p>
-                <textarea name="" id="" placeholder="Write your message" ></textarea>
+        <form action="checkout.php" method="POST">
+            <div class="lower-container">
+                <div class="instructions">
+                    <p>Special Instructions for the seller</p>
+                    <textarea name="special-instruction" id="" placeholder="Write your message" ></textarea>
+                </div>
+                <div class="total">
+                    <h3>Subtotal <span>&#8369</span><span><?= $totalPrice ?></span></h3>
+                    <p>Tax included and shipping calculated at checkout </p>
+                    <button class="" name="checkout">Checkout</button>
+                </div>
             </div>
-            <div class="total">
-                <h3>Subtotal <span>&#8369</span><span><?= $totalPrice ?></span></h3>
-                <p>Tax included and shipping calculated at checkout </p>
-                <a href="checkout.php">Checkout</a>
-            </div>
-        </div>
+        </form>
     </main>
 <?php 
     require ("includes/footer.php");

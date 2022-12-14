@@ -25,6 +25,12 @@
         exit();
     }
 
+    function getAll($table) {
+        global $con;
+        $query = "SELECT * FROM $table";
+        return $query_run = mysqli_query($con, $query);
+    }
+
     // Fetches data with active posted status.
     function getActiveData($table) {
         global $con;

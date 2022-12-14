@@ -8,92 +8,28 @@
 
     <main class="menu-espresso">
         <div class="espresso-container">
+
+            <?php 
+                $espressyourself = getAll("espressyourself");
+                if(mysqli_num_rows($espressyourself) > 0) {
+                    foreach ($espressyourself as $espressdata) {
+             ?>
+
             <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit sdfsdfsdfsdfsdfsdfsdfsdfamet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor ssdfsdfsdfsdfsfsdfsfsfdfsdfit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit sdfsdfsdfsdfsdfsdfsdfsdfamet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
+                <div class="date"><?= $espressdata['created_at'] ?></div>
+                <div class="title"><?= $espressdata['title'] ?></div>
                 <div class="img-container">
-                    <img src="img/aws.jpg" alt="">
+                    <img src="uploadsEspresso/<?= $espressdata['image'] ?>" alt="">
                 </div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
+                <div class="article"><?= $espressdata['article'] ?></div>
+                <div class="name">- <?= $espressdata['name']; ?></div>
             </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="img-container">
-                    <img src="img/edit-2.jpg" alt="">
-                </div>
-                <div class="article">Lorem ipsum dolor ssdfsdfsdfsdfsfsdfsfsfdfsdfit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
-            <div class="content-container area">
-                <div class="date">12/12/2022</div>
-                <div class="article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempora quae dolorum doloremque illum similique error praesentium fugiat doloribus fuga.</div>
-                <div class="name">- Ben Joshua</div>
-            </div>
+
+            <?php 
+                }
+            }
+            ?>
+        
         </div>
     </main>
 
@@ -124,7 +60,7 @@
                     </div>
                 </div>
 
-                <button class="addPost">Post Now</button>
+                <button name="addPost" class="addPost">Post Now</button>
             </form>
 
         </div>
@@ -135,7 +71,8 @@
     <!-- Function for random background colors of EspressYourSelf -->
     <!-- -------------------------------------------------------- -->
     <script>
-        var colors = ['#f5bfd2', '#a1cdce', '#e5db9c', '#beb4c5', '#e6a57e'];
+        var colors = ['#f5bfd2', '#a1cdce', '#e5db9c', '#beb4c5', '#e6a57e', '#f7f6cf', '#b6d8f2', '#f4cfdf', '#5784ba', '#9ac8eb', '#ccd4bf', '#e7cba9', '#eebab2', '#f5f3e7', '#f5bfd2', '#a1cdce', '#e5db9c', '#beb4c5', '#e5a57e', '#218b82', '#9ad9db', '#e5dbd9', '#98d4bb', '#eb96aa', '#c6c9d0', '#c54b6c', '#e5b3bb', '#c47482', '#d5e4c3', '#f9968b', '#f27348', '#26474e', '#76cdcd', '#2cced2', '#b8e0f6', '#a4cce3', '#37667e', '#dec4d6', '#7b92aa'];
+
         var fonts = ['Fredoka One', 'League Spartan', 'Arial', 'Times New Roman', 'Lucida Sans', 'Cambria', 'Georgia', 'Verdana', 'Segoe UI', 'Courier New'];
         var containers = document.querySelectorAll(".content-container");
 

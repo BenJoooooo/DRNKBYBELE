@@ -250,3 +250,45 @@ $(document).ready(function() {
   });
 
 });
+
+// Delete client blogs
+$(document).ready(function() {
+
+  $(document).on('click', '.delete_espress', function(e) {
+      e.preventDefault();
+
+      var id = $(this).val();
+
+      swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+
+          if (willDelete) {
+
+            $.ajax({
+              method: "POST",
+              url: "../functions/handleEspress.php",
+              data: {
+                  'espress_id': id,
+                  'delete_espress': true
+              },
+              success: function(response) {
+                  if(response == 200) {
+                      swal("Success!", "Blog Deleted Successfully", "success");
+                      $("#coverphotos_table").load(location.href + " #coverphotos_table");
+                  } else if(response == 500) {
+                      swal("Error!", "Something went wrong", "error");
+                  }
+              }
+            });
+
+          }
+        });
+  });
+
+});

@@ -28,6 +28,7 @@
         $_SESSION['region'] = $_POST['region'];
         $_SESSION['country'] = $_POST['country'];
         $_SESSION['address'] = $_POST["address"]. ', ' .$_POST['apartment']. ', ' .$_POST['postal']. ' ' .$_POST['city'] .', '.$_POST['region']. ', ' .$_POST['country'];
+        // $_SESSION['specialmsg'] = $_POST['special-instruction'];
     } else {
         header("location: checkout.php");
     }
