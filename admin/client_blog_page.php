@@ -38,6 +38,7 @@
                                             <th>Article</th>
                                             <th>Image</th>
                                             <th>Added by</th>
+                                            <th>Created at</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -57,7 +58,7 @@
                                                         <td><img src="../uploadsEspresso/<?= $row['image']; ?>" alt="<?= $row['name']; ?>"></td>
                                                         <td><?= $row['added_by']; ?></td>
                                                         <td><?= $row['created_at']; ?></td>
-                                                        <td class="table-edit-delete">
+                                                        <td>
                                                             <button type="button" class="btn btn-danger delete_espress" value="<?= $row['id']; ?>">Delete</button>
                                                         </td>
                                                     </tr>

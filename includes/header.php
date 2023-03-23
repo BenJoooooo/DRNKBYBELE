@@ -71,7 +71,7 @@
         <div class="search-bar-container">
             <form action="" class="search-bar">
                 <input class="search-bar-input" id="live_search_mobile" type="text" placeholder="Looking for?" spellcheck="false">
-                <button type="submit"><i class="fas fa-search"></i></button>
+                <button type="button"><i class="fas fa-search"></i></button>
             </form>
 
             <?php if(!isset($_SESSION['auth'])): ?>
@@ -162,7 +162,7 @@
 
                     <form action="" class="search-bar">
                         <input class="search-bar-input" type="text" id="live_search" placeholder="Looking for" spellcheck="false">
-                        <button type="submit"><i class="fas fa-search"></i></button>
+                        <button type="button"><i class="fas fa-search" disabled></i></button>
                     </form>
                     
                     <?php if(!isset($_SESSION['auth'])): ?>

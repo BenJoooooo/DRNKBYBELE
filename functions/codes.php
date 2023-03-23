@@ -181,7 +181,7 @@ include ('../functions/myfunctions.php');
         $check_email_query_run = mysqli_query($con, $checks_email_query);
 
         // Fetches data from database
-        $users = getById("users", $category_id);
+        $users = getById("users", $category_id_user);
         if(mysqli_num_rows($users) > 0) {
             $data = mysqli_fetch_array($users);
         }
@@ -197,7 +197,7 @@ include ('../functions/myfunctions.php');
     
                     // Update query
                     $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', address = '$signup_address'
-                    WHERE id = '$category_id' ";
+                    WHERE id = '$category_id_user' ";
                     $update_query_run = mysqli_query($con, $update_query);
     
                     if($update_query_run) {

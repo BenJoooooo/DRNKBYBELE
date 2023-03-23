@@ -44,7 +44,7 @@
                             <div class="signup-card-body">
                                 <form action="../functions/codes.php" method="POST" class="signup-form">
                                     <div class="signup fullname">
-                                        <input type="hidden" name="category_id" value="<?= $data['id'] ?>">
+                                        <input type="hidden" name="category_id" value="<?= $data['id']; ?>">
                                         <label for="">Full Name</label>
                                         <input type="text" name="signup_fullname" value="<?= $data['fullname']; ?>" required class="signup-input">
                                     </div>
@@ -59,14 +59,14 @@
                                     <div class="signup password">
                                         <label for="">Password</label>
                                         <div class="password-container">
-                                            <input type="password" name="signup_password" id="password" value="<?= $data['password']; ?>" required class="signup-input">
+                                            <input type="password" name="signup_password" id="password" required class="signup-input" placeholder="New Password">
                                             <i class="fa fa-eye" id="show-password"></i>
                                         </div>
                                     </div>
                                     <div class="signup repeat-password">
                                         <label for="">Repeat Password</label>
                                         <div class="password-container">
-                                            <input type="password" name="repeat_signup_password" id="repeatPassword" value="<?= $data['password']; ?>" required class="signup-input">
+                                            <input type="password" name="repeat_signup_password" id="repeatPassword" required class="signup-input" placeholder="Repeat New Passsword">
                                             <i class="fa fa-eye" id="show-repeat-password"></i>
                                         </div>
                                     </div>

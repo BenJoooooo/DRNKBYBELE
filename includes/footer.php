@@ -26,10 +26,10 @@
                     <h1 class="column-two-footer">Follow us:</h1>
 
                     <div class="footer-links-socials">
-                        <a href="https://www.facebook.com/drnkbybele"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.tiktok.com/@drnkbybeleph"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/drnkbybeleph"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.twitter.com/drnkbybele"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/drnkbybele"><i class="fab fa-facebook"></i>Facebook</a>
+                        <a href="https://www.tiktok.com/@drnkbybeleph"><i class="fab fa-tiktok"></i>Tiktok</a>
+                        <a href="https://www.instagram.com/drnkbybeleph"><i class="fab fa-instagram"></i>Instagram</a>
+                        <a href="https://www.twitter.com/drnkbybele"><i class="fab fa-twitter"></i>Twitter</a>
                     </div>
                 </div>
 
@@ -37,11 +37,16 @@
                     <img src="img/drnklogowhite.png" alt="">
                     <div class="footer-newsletter-container">
                         <p class="footer-p">Subscribe to our newsletter</p>
-                        <div class="footer-newsletter">
-                            <input class="newsletter-input" type="text" placeholder="Email Address" spellcheck="false">
-                            <button class="submit-letter" type="submit">Submit</button>
-                        </div>
+                        <form class="footer-newsletter">
+                            <input class="newsletter-input" type="email" placeholder="Email Address" spellcheck="false">
+                            <button class="submit-letter" type="submit">Subscribe</button>
+                        </form>
                     </div>
+                </div>
+            </div>
+            <div class="footer-lower">
+                <div class="copyright-container">
+                    <h3>&#169 2022 Webify Creatives. All rights reserved.</h3>
                 </div>
             </div>
         </footer>
@@ -80,7 +85,7 @@
             })
 
             // Menu search
-            $('.card-menu').each(function() {
+            $('.product-view').each(function() {
                 if($(this).html().toUpperCase().indexOf(val) !== -1) {
                     $(this).show()
                 } else {
@@ -121,7 +126,7 @@
             })
 
             // Menu search
-            $('.card-menu').each(function() {
+            $('.product-view').each(function() {
                 if($(this).html().toUpperCase().indexOf(val) !== -1) {
                     $(this).show()
                 } else {
