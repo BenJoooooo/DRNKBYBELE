@@ -51,8 +51,8 @@
                                     <img src="uploadsProducts/<?= $data_products['image']; ?>" alt="">
                                 </div>
                                 <div class="card-menu-content">
-                                    <h2 class="card-menu-title"><?= $data_products['product_name'] ?></h2>
-                                    <p class="card-menu-description"><?= $data_products['category_name']; ?></p>
+                                    <h2 class="card-menu-title"><?= $data_products['product_name']; ?></h2>
+                                    <p class="card-menu-description"><?= $data_products['category_name']; ?> / <?= $data_products['size']; ?></p>
                                 </div>
                             </div>
                         </a>

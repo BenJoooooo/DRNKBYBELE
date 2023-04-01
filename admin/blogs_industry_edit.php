@@ -37,7 +37,7 @@
                         <div class="card-header">
                             <h3>Edit Blog Page
                             </h3>
-                                <a href="blogs_about_page.php" class="btn btn-light float-end">Back</a>
+                                <a href="blogs_industry_page.php" class="btn btn-light float-end">Back</a>
 
                         </div>
 
@@ -68,8 +68,8 @@
                                 </div>
                                 <div class="signup-role">
                                     <div class="signup admin-role">
-                                        <label for="">Status</label>
-                                        <input type="checkbox" <?= $data['image'] == '0' ? '':'checked' ?> name="status" class="signup-input">
+                                        <label for="">Hide</label>
+                                        <input type="checkbox" <?= $data['posted'] == '0' ? '':'checked' ?> name="status" class="signup-input">
                                     </div>
                                 </div>
                                 

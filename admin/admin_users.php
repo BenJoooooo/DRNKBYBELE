@@ -29,6 +29,7 @@
 
                         <div class="table-button-add">
                             <a href="users_add_new_account.php" class="table-container-add-new">Add User</a>
+                            <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                         </div>
                         <div class="card-header">
                             <h3>Accounts Table</h3>
@@ -38,7 +39,7 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Address</th>
@@ -55,7 +56,7 @@
                                             foreach ($users as $user) { ?>
 
                                                 <tr>
-                                                    <td><?= $user['id']; ?></td>
+                                                    <!-- <td><?= $user['id']; ?></td> -->
                                                     <td><?= $user['fullname']; ?></td>
                                                     <td><?= $user['email']; ?></td>
                                                     <td><?= $user['address']; ?></td>

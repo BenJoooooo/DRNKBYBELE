@@ -27,6 +27,7 @@
 
                             <div class="table-button-add">
                                 <a href="admin_add_new_image.php" class="table-container-add-new">Add Cover Photo</a>
+                                <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                             </div>
                             <div class="card-header">
                                 <h3>Home Page</h3>
@@ -36,7 +37,7 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <!-- <th>ID</th> -->
                                             <th>name</th>
                                             <th>Description</th>
                                             <th>Image</th>
@@ -56,7 +57,7 @@
                                                 foreach ($images as $image) { ?>
 
                                                     <tr>
-                                                        <td><?= $image['id']; ?></td>
+                                                        <!-- <td><?= $image['id']; ?></td> -->
                                                         <td><?= $image['name']; ?></td>
                                                         <td><?= $image['description']; ?></td>
                                                         <td><img src="../uploads/<?= $image['image']; ?>" alt="<?= $image['name']; ?>"></td>

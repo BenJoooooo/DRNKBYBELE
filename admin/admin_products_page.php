@@ -29,7 +29,9 @@
 
                         <div class="table-button-add">
                             <a href="admin_add_new_products.php" class="table-container-add-new">Add Products</a>
+                            <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                         </div>
+
                         <div class="card-header">
                             <h3>Products Table</h3>
                         </div>
@@ -38,14 +40,19 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Category</th>
                                         <th>Name</th>
-                                        <th>Original Price</th>
+                                        <th>Size</th>
+
+                                        <?php if($_SESSION['role'] == 'admin') { ?>
+                                            <th>Original Price</th>
+                                        <?php } ?>
+
                                         <th>Selling Price</th>
                                         <th>Image</th>
-                                        <th>Slug</th>
-                                        <th>Description</th>
+                                        <!-- <th>Slug</th> -->
+                                        <!-- <th>Description</th> -->
                                         <th>Status</th>
                                         <th>Featured</th>
                                         <th>Created at</th>
@@ -57,29 +64,35 @@
                                 <tbody>
 
                                     <?php
-                                        $products = getAll("products");
+                                        $products = getProductAndCategory("products", "categories");
                                         if(mysqli_num_rows($products) > 0) {
 
                                             foreach ($products as $product) { ?>
 
                                                 <tr>
-                                                    <td><?= $product['id']; ?></td>
-                                                    <td><?= $product['category_id']; ?></td>
+                                                    <!-- <td><?= $product['product_id']; ?></td> -->
+                                                    <!-- <td><?= $product['category_id']; ?></td> -->
+                                                    <td><?= $product['cat_name']; ?></td>
                                                     <td><?= $product['name']; ?></td>
-                                                    <td><?= $product['original_price']; ?></td>
+                                                    <td><?= $product['size']; ?></td>
+
+                                                    <?php if($_SESSION['role'] == 'admin') { ?>
+                                                        <td><?= $product['original_price']; ?></td>
+                                                    <?php } ?>
+
                                                     <td><?= $product['selling_price']; ?></td>
                                                     <td><img src="../uploadsProducts/<?= $product['image']; ?>" alt=""></td>
-                                                    <th><?= $product['slug']; ?></th>
-                                                    <td><?= $product['description']; ?></td>
+                                                    <!-- <th><?= $product['slug']; ?></th> -->
+                                                    <!-- <td><?= $product['description']; ?></td> -->
                                                     <td><?= $product['status'] == 0 ? "Visible":"Hidden"; ?></td>
                                                     <td><?= $product['featured'] == 0 ? "False":"True"; ?></td>
                                                     <td><?= $product['created_at']; ?></td>
                                                     <td><?= $product['added_by']; ?></td>
                                                     <td class="table-edit-delete">
                                                         <div class="table-button-add">
-                                                            <a href="edit_products_page.php?id=<?= $product['id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="edit_products_page.php?id=<?= $product['product_id']; ?>" class="btn btn-primary">Edit</a>
                                                         </div>
-                                                        <button type="button" class="btn btn-danger delete_product_btn" value="<?= $product['id']; ?>">Delete</button>
+                                                        <button type="button" class="btn btn-danger delete_product_btn" value="<?= $product['product_id']; ?>">Delete</button>
                                                     </td>
                                                 </tr>
 

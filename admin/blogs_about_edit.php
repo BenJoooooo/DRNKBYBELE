@@ -35,9 +35,8 @@
                         ?>
 
                         <div class="card-header">
-                            <h3>Edit Blog Page
-                            </h3>
-                                <a href="blogs_about_page.php" class="btn btn-light float-end">Back</a>
+                            <h3>Edit Blog Page</h3>
+                            <a href="blogs_about_page.php" class="btn btn-light float-end">Back</a>
 
                         </div>
 
@@ -57,7 +56,7 @@
                                 <div class="signup">
                                     <label for="">Story</label>
                                     <!-- <input type="text" name="description" class="signup-input" required placeholder="Write Article"> -->
-                                    <textarea name="story" id="" cols="30" rows="10" class="signup-input" placeholder="Write Article"><?= $data['description']; ?></textarea>
+                                    <textarea name="story" cols="30" rows="10" class="signup-input" placeholder="Write Article"><?= $data['description']; ?></textarea>
                                 </div>
                                 <div class="signup">
                                     <label for="">Upload Image</label>
@@ -68,8 +67,8 @@
                                 </div>
                                 <div class="signup-role">
                                     <div class="signup admin-role">
-                                        <label for="">Status</label>
-                                        <input type="checkbox" <?= $data['image'] == '0' ? '':'checked' ?> name="status" class="signup-input">
+                                        <label for="">Hide</label>
+                                        <input type="checkbox" <?= $data['posted'] == '0' ? '':'checked' ?> name="status" class="signup-input">
                                     </div>
                                 </div>
                                 

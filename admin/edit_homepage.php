@@ -64,11 +64,10 @@
 
                                 <div class="signup-role">
                                     <div class="signup admin-role">
-                                        <label for="">Status</label>
+                                        <label for="">Hide</label>
                                         <input type="checkbox" <?= $data['status'] == '0' ? '':'checked' ?> name="status" class="signup-input">
                                     </div>
                                 </div>
-
 
                                 <input type="hidden" name="added_by" value="<?= $_SESSION['auth_user']['fullname']; ?>">
                                 

@@ -439,6 +439,7 @@ include ('../functions/myfunctions.php');
         $name = $_POST['name'];
         $slug = $_POST['slug'];
         $description = $_POST['description'];
+        $size = $_POST['size'];
         $status = isset($_POST['status']) ? '1':'0';
         $featured = isset($_POST['featured']) ? '1':'0';
         $original_price = ($_POST['original_price']);
@@ -449,7 +450,7 @@ include ('../functions/myfunctions.php');
         $image_ext = pathinfo($image, PATHINFO_EXTENSION);
         $filename = time(). '.' .$image_ext;
 
-        $query = "INSERT INTO products (category_id, added_by, name, description, status, featured, original_price, selling_price, image, slug) VALUES ('$category_id', '$added_by', '$name', '$description', '$status', '$featured', '$original_price', '$selling_price', '$filename', '$slug')";
+        $query = "INSERT INTO products (category_id, size, added_by, name, description, status, featured, original_price, selling_price, image, slug) VALUES ('$category_id', '$size', '$added_by', '$name', '$description', '$status', '$featured', '$original_price', '$selling_price', '$filename', '$slug')";
         
         $query_run = mysqli_query($con, $query);
 
@@ -467,6 +468,7 @@ include ('../functions/myfunctions.php');
         $name = $_POST['name'];
         $slug = $_POST['slug'];
         $description = $_POST['description'];
+        $size = $_POST['size'];
         $status = isset($_POST['status']) ? '1':'0';
         $featured = isset($_POST['featured']) ? '1':'0';
         $original_price = $_POST['original_price'];
@@ -484,7 +486,7 @@ include ('../functions/myfunctions.php');
 
         $path = "../uploadsProducts";
 
-        $query = "UPDATE products SET category_id = '$category_id', name = '$name', description = '$description', status = '$status', featured = '$featured', original_price = '$original_price', selling_price = '$selling_price', image = '$update_filename', slug = '$slug' WHERE id = '$product_id'";
+        $query = "UPDATE products SET category_id = '$category_id', name = '$name', description = '$description', size= '$size', status = '$status', featured = '$featured', original_price = '$original_price', selling_price = '$selling_price', image = '$update_filename', slug = '$slug' WHERE id = '$product_id'";
 
         $query_run = mysqli_query($con, $query);
 

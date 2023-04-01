@@ -76,7 +76,13 @@
 
                                 <div class="signup">
                                     <label for="">Description</label>
-                                    <input type="text" name="description" value="<?= $data['description'] ?>" class="signup-input" required placeholder="Enter Description">
+                                    <!-- <input type="text" name="description" value="<?= $data['description'] ?>" class="signup-input" required placeholder="Enter Description"> -->
+                                    <textarea name="description" cols="30" rows="10" class="signup-input" placeholder="Write description" id="my-text" maxlength="800" required><?= $data['description']; ?></textarea>
+                                    <p id="count-result" class="text-count"></p>
+                                </div>
+                                <div class="signup">
+                                    <label for="">Size</label>
+                                    <input type="text" name="size" class="signup-input" value="<?= $data['size']; ?>" required placeholder="Enter Size">
                                 </div>
                                 <div class="signup">
                                     <label for="">Upload Image</label>
@@ -97,7 +103,7 @@
                                 </div>
                                 <div class="signup-role">
                                     <div class="signup admin-role">
-                                        <label for="">Status</label>
+                                        <label for="">Hide</label>
                                         <input type="checkbox" name="status" <?= $data['status'] == '0' ? '':'checked'; ?> class="signup-input">
                                     </div>
                                     <div class="signup admin-role">

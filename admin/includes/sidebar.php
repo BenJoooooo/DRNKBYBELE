@@ -53,20 +53,24 @@
                     <a href="blogs_about_page.php">About Blogs</a>
                 </div>
                 
-                <div class="brand-child <?= $page ==  "sales.php" ? 'active':''; ?>">
-                    <div class="image-svg">
-                        <i class="fas fa-poll"></i>
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager') { ?>
+                    <div class="brand-child <?= $page ==  "sales.php" ? 'active':''; ?>">
+                        <div class="image-svg">
+                            <i class="fas fa-poll"></i>
+                        </div>
+                        <a href="sales.php">Sales</a>
                     </div>
-                    <a href="sales.php">Sales</a>
-                </div>
+                <?php } ?>
 
-                <div class="brand-child has-border <?= $page ==  "sales.php" ? 'active':''; ?>">
-                    <div class="image-svg">
-                        <i class="fas fa-poll"></i>
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager') { ?>
+                    <div class="brand-child has-border <?= $page ==  "sales.php" ? 'active':''; ?>">
+                        <div class="image-svg">
+                            <i class="fas fa-poll"></i>
+                        </div>
+                        <a href="sales.php">Orders</a>
                     </div>
-                    <a href="sales.php">Orders</a>
-                </div>
-                
+                <?php } ?>
+
                 <?php if($_SESSION['role'] == 'admin') { ?>
                     <div class="brand-child <?= $page ==  "admin_admin.php" ? 'active':''; ?>">
                         <div class="image-svg">
@@ -76,12 +80,14 @@
                     </div>
                 <?php } ?>
                 
-                <div class="brand-child has-border <?= $page ==  "admin_users.php" ? 'active':''; ?>">
-                    <div class="image-svg">
-                        <i class="fas fa-user-friends"></i>
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager') { ?>
+                    <div class="brand-child has-border <?= $page ==  "admin_users.php" ? 'active':''; ?>">
+                        <div class="image-svg">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <a href="admin_users.php">User Account</a>
                     </div>
-                    <a href="admin_users.php">User Account</a>
-                </div>
+                <?php } ?>
 
                 <div class="brand-child <?= $page ==  "admin_categories_page.php" ? 'active':''; ?>">
                     <div class="image-svg">
@@ -96,6 +102,15 @@
                     </div>
                     <a href="admin_products_page.php">Products</a>
                 </div>
+
+                <!-- Drink Sizes -->
+                <div class="brand-child has-border<?= $page ==  "admin_sizes_page.php" ? 'active':''; ?>">
+                    <div class="image-svg">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                    <a href="admin_sizes_page.php">Product Sizes</a>
+                </div>
+                <!-- Drink Sizes -->
 
                 <div class="brand-child client <?= $page ==  "admin_products_page.php" ? 'active':''; ?>">
                     <div class="image-svg">

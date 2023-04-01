@@ -48,7 +48,7 @@
 
                                 <div class="signup-role">
                                     <div class="signup admin-role">
-                                        <label for="">Status</label>
+                                        <label for="">Hide</label>
                                         <input type="checkbox" name="status" class="signup-input">
                                     </div>
                                 </div>

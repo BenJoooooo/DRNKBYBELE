@@ -55,7 +55,7 @@
     // Fetches the id, image, name, and categories name 
     function getJointData($table1, $table2) {
         global $con;
-        $query = "SELECT products.id, products.description, products.image, products.name AS product_name, products.slug, categories.name AS category_name
+        $query = "SELECT products.id, products.description, products.image, products.name AS product_name, products.slug, products.size, categories.name AS category_name
         FROM $table1, $table2
         WHERE products.category_id = categories.id AND products.status = '0'";
         return $query_run = mysqli_query($con, $query);
@@ -142,7 +142,5 @@
         return $query_run = mysqli_query($con, $query);
 
     }
-    
-
 ?>
 

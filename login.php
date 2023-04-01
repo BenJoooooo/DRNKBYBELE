@@ -2,7 +2,7 @@
     include ("functions/userFunctions.php");
 
     if(isset($_SESSION['auth'])) {
-        include "functions/myfunctions.php";
+        // include "functions/myfunctions.php";
         redirect("index.php", "You are already logged in");
         exit(0);
     }

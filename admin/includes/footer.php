@@ -53,5 +53,22 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../js/custom.js"></script>
 
+    <script type="text/javascript">
+        $("#live_search").on('input', function () {
+            const val = $(this).val().toUpperCase()
+
+            // Product search
+            $('tr').each(function () {
+                if($(this).html().toUpperCase().indexOf(val) !== -1) {
+                    $(this).show()
+                } else {
+                    $(this).hide()
+                }
+                
+            });
+        });
+    </script>
+
+    <script src="../js/stringcounter.js"></script>
     </body>
 </html>

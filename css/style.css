@@ -153,7 +153,7 @@ body {
     display: flex;
     justify-content: center;
     transition: all 300ms ease-in-out;
-    z-index: 1;
+    z-index: 100;
 }
 
 body.open .header-admin {
@@ -387,7 +387,6 @@ thead th {
     font-weight: 500;
     font-family: var(--ff-league);
     text-transform: uppercase;
-
 }
 
 tbody tr {
@@ -408,11 +407,24 @@ tbody td img {
 
 .admin-page-table .table-container {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    padding: 1.5em 1em;
+    padding: 1em;
 }
 
+/* add product and search */
 .table-button-add {
     margin-block: 2rem;
+    justify-content: space-between;
+    display: flex;
+    max-width: 100%;
+}
+
+.table-button-add input {
+    width: 50%;
+    text-decoration: none;
+    outline: none;
+    padding-inline: .5em;
+    border: 1px solid var(--clr-dark-grey);
+    border-radius: .5em;
 }
 
 .table-container-add-new {
@@ -422,6 +434,7 @@ tbody td img {
     font-size: 1rem;
     font-family: var(--ff-league);
     padding: 1rem 1.5rem;
+    border-radius: .5em;
 }
 
 .table-edit-delete {
@@ -441,9 +454,16 @@ tbody td img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
+.admin-page-table input {
+    width: 50%;
+    padding: 1em .5em;
+    text-decoration: none;
+    outline: none;
+    border: 1px solid whitesmoke;
+    border-radius: .5em;
+}
 .admin-page-table .card-header h3 {
     font-family: var(--ff-league);
     color: var(--clr-background);
@@ -984,10 +1004,11 @@ tbody td img {
     padding: 0;
     letter-spacing: 0;
     display: -webkit-box;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 12;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: justify;
 }
 
 .menu .product-container .product-content-container .product-info-order p {
@@ -1715,6 +1736,7 @@ tbody td img {
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
+    text-align: justify;
 }
 
 .menu-about .content-container a {

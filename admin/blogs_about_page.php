@@ -29,6 +29,7 @@
 
                         <div class="table-button-add">
                             <a href="blogs_about_add_new.php" class="table-container-add-new">Add Blogs</a>
+                            <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                         </div>
                         <div class="card-header">
                             <h3>About Blogs Table</h3>
@@ -38,7 +39,7 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Blog Title</th>
                                         <th>Description</th>
                                         <th>Slug</th>
@@ -59,7 +60,7 @@
                                             foreach ($blogs as $blog) { ?>
 
                                                 <tr>
-                                                    <td><?= $blog['id']; ?></td>
+                                                    <!-- <td><?= $blog['id']; ?></td> -->
                                                     <td><?= $blog['title']; ?></td>
                                                     <td><?= $blog['description']; ?></td>
                                                     <td><?= $blog['slug']; ?></td>

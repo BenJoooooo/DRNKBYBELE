@@ -27,13 +27,14 @@
 
                             <div class="card-header">
                                 <h3>Home Page</h3>
+                                <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                             </div>
 
                             <div class="card-body" id="coverphotos_table">
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <!-- <th>ID</th> -->
                                             <th>title</th>
                                             <th>Article</th>
                                             <th>Image</th>
@@ -52,7 +53,7 @@
                                                 foreach ($rows as $row) { ?>
 
                                                     <tr>
-                                                        <td><?= $row['id']; ?></td>
+                                                        <!-- <td><?= $row['id']; ?></td> -->
                                                         <td><?= $row['title']; ?></td>
                                                         <td><?= $row['article']; ?></td>
                                                         <td><img src="../uploadsEspresso/<?= $row['image']; ?>" alt="<?= $row['name']; ?>"></td>

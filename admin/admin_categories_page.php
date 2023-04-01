@@ -29,6 +29,7 @@
 
                         <div class="table-button-add">
                             <a href="admin_add_new_categories.php" class="table-container-add-new">Add Categories</a>
+                            <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                         </div>
                         <div class="card-header">
                             <h3>Categories Table</h3>
@@ -38,11 +39,11 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>NUMBER</th> -->
                                         <th>Name</th>
                                         <th>Image</th>
-                                        <th>Slug</th>
-                                        <th>Description</th>
+                                        <!-- <th>Slug</th> -->
+                                        <!-- <th>Description</th> -->
                                         <th>Status</th>
                                         <th>Created at</th>
                                         <th>Added by</th>
@@ -59,11 +60,11 @@
                                             foreach ($category_data as $data) { ?>
 
                                                 <tr>
-                                                    <td><?= $data['id']; ?></td>
+                                                    <!-- <td><?= $data['id']; ?></td> -->
                                                     <td><?= $data['name']; ?></td>
                                                     <td><img src="../uploadsCategories/<?= $data['image']; ?>" alt=""></td>
-                                                    <td><?= $data['slug']; ?></td>
-                                                    <td><?= $data['description']; ?></td>
+                                                    <!-- <td><?= $data['slug']; ?></td> -->
+                                                    <!-- <td><?= $data['description']; ?></td> -->
                                                     <td><?= $data['status'] == 0 ? "Visible":"Hidden"; ?></td>
                                                     <td><?= $data['created_at']; ?></td>
                                                     <td><?= $data['added_by']; ?></td>

@@ -2,6 +2,16 @@
 
     // require_once ("core/controller.php");
     // $userdetails = $mainController -> get_userdata();
+
+    // session time set 
+    if(isset($_SESSION['auth'])) {
+        if((time() - $_SESSION['last_active']) > 300) {
+            header("location: logout.php");
+        } 
+    }
+
+    $_SESSION['last_active'] = time();
+    // session time set
     
 ?>
 
@@ -122,13 +132,23 @@
                 </div>
                 
                 <nav>
-                    <?php if(isset($_SESSION['auth'])) { ?>
-                        <?php if(($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager')) { ?>
-                            <div class="nav-admin">
-                                <a href="admin/index.php">Admin</a>
-                            </div>
-                        <?php }?>
+                <?php if(isset($_SESSION['auth'])) { ?>
+
+                    <?php if($_SESSION['role'] != '') { ?>
+                        <div class="nav-admin">
+                            <a href="admin/index.php">Admin</a>
+                        </div>
                     <?php } ?>
+
+                        <!-- <?php 
+                        if(($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'creator')) { ?>
+                        <div class="nav-admin">
+                            <a href="index.php">Admin</a>
+                        </div>
+                        <?php }?> -->
+
+
+                <?php } ?>
 
                     <div class="nav-home">
                         <a href="index.php">Home</a>

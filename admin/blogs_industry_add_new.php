@@ -28,7 +28,7 @@
 
                         <div class="card-header">
                             <h3>Create A Blog</h3>
-                            <a href="blogs_about_page.php" class="btn btn-light float-end">Back</a>
+                            <a href="blogs_industry_page.php" class="btn btn-light float-end">Back</a>
                         </div>
 
                         <div class="signup-card-body">
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="signup-role">
                                     <div class="signup admin-role">
-                                        <label for="">Status</label>
+                                        <label for="">Hide</label>
                                         <input type="checkbox" name="status" class="signup-input">
                                     </div>
                                 </div>

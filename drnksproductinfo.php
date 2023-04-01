@@ -26,12 +26,9 @@
                                 <p><?= $product['description']; ?></p>
                             </div>
                             <div class="product-info-order">
-                                <p class="product-size">asdasd</p>
-                                <p class="product-sugar-level">asdasd</p>
-                                <p class="product-add-ons">asdasd</p>
                                 <div class="product-price">
                                     <div class="price-container">
-                                        <p class="price"><span>Price Starts:</span> &#8369 <?=  $product['selling_price']; ?></p>
+                                        <p class="price"><span>Price: </span> &#8369 <?=  $product['selling_price']; ?></p>
                                         <p class="small">Tax included</p>
                                     </div>
 

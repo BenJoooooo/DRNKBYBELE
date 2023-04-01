@@ -7,10 +7,10 @@
     $password = "";
     $database = "drnkdup";
 
-    // $host = "sql106.epizy.com";
-    // $username = "epiz_33062076";
-    // $password = "XkmirM6s8rVJsr0";
-    // $database = "epiz_33062076_drnk";
+    // $host = "sql203.epizy.com";
+    // $username = "epiz_33867229";
+    // $password = "JfIBHb3O6B66fA";
+    // $database = "epiz_33867229_drnk";
 
     // Remote database connection
     // $host = "sql308.epizy.com";

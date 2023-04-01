@@ -85,18 +85,18 @@ include "myfunctions.php";
 
             $_SESSION['role'] = $role_as;
 
-            if($role_as == 'admin' || $role_as == 'manager') {
-
-                redirectSuccess("../admin/index.php", "Welcome to dashboard");
-                // $_SESSION['message'] = "Welcome to dashboard";
-                // header('Location: ../admin/index.php');
-
-            } else {
+            // if (($role_as == 'admin' || $role_as == 'manager'))
+            if(($role_as == '')) {
 
                 redirectSuccess("../index.php", "Logged in successfully");
                 // $_SESSION['message'] = "Logged in successfully";
                 // header('Location: ../index.php');   
 
+            } else {
+
+                redirectSuccess("../admin/index.php", "Welcome to dashboard");
+                // $_SESSION['message'] = "Welcome to dashboard";
+                // header('Location: ../admin/index.php');
             }
 
         } else {

@@ -36,9 +36,8 @@
                         ?>
 
                         <div class="card-header">
-                            <h3>Edit Category
-                                <a href="admin_categories_page.php" class="btn px-4 btn-light float-end">Back</a>
-                            </h3>
+                            <h3>Edit Category</h3>
+                            <a href="admin_categories_page.php" class="btn px-4 btn-light float-end">Back</a>
                         </div>
 
                         <div class="signup-card-body">
@@ -56,7 +55,9 @@
                                 </div>
                                 <div class="signup fullname">
                                     <label for="">Description</label>
-                                    <input type="text" name="description" value="<?= $data['description']; ?>" class="signup-input" required placeholder="Enter Description">
+                                    <!-- <input type="text" name="description" value="<?= $data['description']; ?>" class="signup-input" required placeholder="Enter Description"> -->
+                                    <textarea name="description" cols="30" rows="10" class="signup-input" placeholder="Write description" id="my-text" maxlength="800" required><?= $data['description']; ?></textarea>
+                                    <p id="count-result" class="text-count"></p>
                                 </div>
                                 <div class="signup fullname">
                                     <label for="">Upload Image</label>
@@ -67,7 +68,7 @@
                                 </div>
                                 <div class="signup-role">
                                     <div class="signup admin-role">
-                                        <label for="">Status</label>
+                                        <label for="">Hide</label>
                                         <input type="checkbox" <?= $data['status'] == '0' ? '':'checked';?> name="status" class="signup-input">
                                     </div>
                                 </div>
