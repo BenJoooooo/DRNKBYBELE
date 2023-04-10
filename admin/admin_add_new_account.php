@@ -29,7 +29,7 @@
 
                         <div class="card-header">
                             <h3>Create New Account</h3>
-                            <a href="admin_admin.php" class="btn px-4 btn-light float-end">Back</a>
+                            <a href="admin_admin" class="btn px-4 btn-light float-end">Back</a>
                         </div>
 
                         <div class="signup-card-body">

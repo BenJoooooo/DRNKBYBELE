@@ -8,7 +8,7 @@
 
             // redirect("../index.php", "You are not authorized to access this page");
             // redirect("../login.php", "Login to continue");
-            redirect("../index.php", "You are not authorized to access this page");
+            redirect("../index", "You are not authorized to access this page");
 
         } else {
 
@@ -18,7 +18,7 @@
 
     } else {
 
-        redirect("../login.php", "Login to continue");
+        redirect("../login", "Login to continue");
         // redirect("../index.php", "You are not authorized to access this page");
         
     }

@@ -13,12 +13,12 @@
 
                     <div class="about-card">
                       <div class="img-container about-card-one">
-                        <a href="blogs_info.php?blog=<?= $data_products['slug']; ?>"><img src="uploadsBlogs/<?= $data_products['image'] ?>" alt=""></a>
+                        <a href="blogs_info?blog=<?= $data_products['slug']; ?>"><img src="uploadsBlogs/<?= $data_products['image'] ?>" alt=""></a>
                       </div>
                       <div class="content-container about-card-two">
                         <h1 class="title"><?= $data_products['title'] ?> </h1>
                         <p class="description"><?= $data_products['description'] ?></p>
-                        <a href="blogs_info.php?blog=<?= $data_products['slug']; ?>">Read More</a>
+                        <a href="blogs_info?blog=<?= $data_products['slug']; ?>">Read More</a>
                       </div>
                     </div>
                     

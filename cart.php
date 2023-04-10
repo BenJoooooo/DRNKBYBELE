@@ -34,15 +34,15 @@
 
                 <tr class="table-row-cart-items product_data">
                     <td class="data-cart-items-img">
-                        <a href="drnksproductinfo.php?product=<?= $item['slug'] ?>">
+                        <a href="drnksproductinfo?product=<?= $item['slug'] ?>">
                             <img src="uploadsProducts/<?= $item['image']; ?>" alt="">
                         </a>
                         
                     </td>
                     
                     <td class="data-cart-items-prod">
-                        <a href="drnksproductinfo.php?product=<?= $item['slug'] ?>">
-                            <p><?= $item['name']; ?></p>
+                        <a href="drnksproductinfo?product=<?= $item['slug'] ?>">
+                            <p><?= $item['name']; ?> <span>(<?= $item['size']; ?>)</span></p>
                             <p><?= $item['cat_name'] ?></p>
                         </a> 
                         <button class="data-cart-remove-item deleteItem" value="<?= $item['cid']; ?>">Remove</button>
@@ -73,7 +73,7 @@
             </tbody>
         </table>
 
-        <form action="checkout.php" method="POST">
+        <form action="checkout" method="POST">
             <div class="lower-container">
                 <div class="instructions">
                     <p>Special Instructions for the seller</p>

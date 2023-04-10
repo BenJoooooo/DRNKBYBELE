@@ -28,7 +28,7 @@
 
                         <div class="card-header">
                             <h3>Create A Blog</h3>
-                            <a href="blogs_industry_page.php" class="btn btn-light float-end">Back</a>
+                            <a href="blogs_industry_page" class="btn btn-light float-end">Back</a>
                         </div>
 
                         <div class="signup-card-body">

@@ -37,7 +37,7 @@
 
                         <div class="card-header">
                             <h3>Edit Cover Photo</h3>
-                            <a href="admin_manage_home.php" class="btn px-4 btn-light float-end">Back</a>
+                            <a href="admin_manage_home" class="btn px-4 btn-light float-end">Back</a>
 
                         </div>
 

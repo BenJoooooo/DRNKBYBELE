@@ -41,6 +41,7 @@
 
                     <div class="signup-card-body">
                         <form action="shipping.php" method="POST" class="checkout-form" enctype="multipart/form-data">
+                            <input type="hidden" name="user" value="<?= $items['uid']; ?>">
                             <div class="signup">
                                 <label for="">Email</label>
                                 <input type="email" name="email" class="signup-input" value="<?= $items['email']; ?>" placeholder="Enter Email">
@@ -68,7 +69,7 @@
 
                             <div class="signup">
                                 <label for="">Apartment, suite, etc. (optional)</label>
-                                <input type="text" name="apartment" class="signup-input" value="<?= $items['apartment'] ?>" required placeholder="Apartment, suite, etc. (optional)">
+                                <input type="text" name="apartment" class="signup-input" value="<?= $items['apartment'] ?>" placeholder="Apartment, suite, etc. (optional)">
                             </div>
 
                             <div class="signup-role">
@@ -95,7 +96,10 @@
 
                             <div class="signup-role">
                                 <div class="signup admin-role">
-                                    <input type="checkbox" name="status" class="signup-input">
+                                    <input type="radio" name="saveinfo" value="yes" required> 
+                                    <h6>Yes</h6>
+                                    <input type="radio" name="saveinfo" value="no" required>
+                                    <h6>No</h6>
                                     <label for="">Save this information for next time</label>
                                 </div>
                             </div>
@@ -167,7 +171,7 @@
                             </div> -->
                             
                             <div class="buttons">
-                                    <a href="cart.php" class="back-to-cart">Back to Cart</a>
+                                    <a href="cart" class="back-to-cart">Back to Cart</a>
                                     <button name="shipping" class="buy-now addAddress">Continue to shipping</button">
                             </div>
                             
@@ -192,8 +196,8 @@
                     <div class="drink-title">
                         <div class="drinktitle-container">
                             <h4><?= $items['name']; ?> <?= $items['cat_name']; ?></h4>
-                            <h5>Series - <?= $items['cat_name']; ?></h5>
-                            <h6>Small - 12 oz</h6>
+                            <h5>(<?= $items['cat_name']; ?> Series)</h5>
+                            <h6>Size - <?= $items['size']; ?></h6>
                         </div>
                         <div class="drinktitle-price">
                             <p><span>&#8369 </span><?= $total_qty ?></p>

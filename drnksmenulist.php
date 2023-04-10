@@ -25,7 +25,7 @@
             <div class="category-links">
 
                         <div class="">
-                            <a href="menu.php">All Products</a>
+                            <a href="menu">All Products</a>
                         </div>
                         
                 <?php 
@@ -35,7 +35,7 @@
 
 
                         <div class="">
-                            <a href="drnksmenulist.php?category=<?= $data['slug'] ?>"><?= $data['name']; ?></a>
+                            <a href="drnksmenulist?category=<?= $data['slug'] ?>"><?= $data['name']; ?></a>
                         </div>
 
                 <?php
@@ -56,7 +56,7 @@
                     if(mysqli_num_rows($productsbycat) > 0) {
                         foreach($productsbycat as $items) { ?>
                         
-                        <a href="drnksproductinfo.php?product=<?= $items['slug']; ?>" class="product-view">
+                        <a href="drnksproductinfo?product=<?= $items['slug']; ?>" class="product-view">
                             <div class="card-menu">
                                 <div class="img-container">
                                     <img src="uploadsProducts/<?= $items['image']; ?>" alt="">

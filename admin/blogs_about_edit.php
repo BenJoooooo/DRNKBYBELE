@@ -36,7 +36,7 @@
 
                         <div class="card-header">
                             <h3>Edit Blog Page</h3>
-                            <a href="blogs_about_page.php" class="btn btn-light float-end">Back</a>
+                            <a href="blogs_about_page" class="btn btn-light float-end">Back</a>
 
                         </div>
 
@@ -56,7 +56,8 @@
                                 <div class="signup">
                                     <label for="">Story</label>
                                     <!-- <input type="text" name="description" class="signup-input" required placeholder="Write Article"> -->
-                                    <textarea name="story" cols="30" rows="10" class="signup-input" placeholder="Write Article"><?= $data['description']; ?></textarea>
+                                    <textarea name="story" cols="30" rows="10" class="signup-input" placeholder="Write article" id="my-text" maxlength="800" required><?= $data['description']; ?></textarea>
+                                    <p id="count-result" class="text-count"></p>
                                 </div>
                                 <div class="signup">
                                     <label for="">Upload Image</label>

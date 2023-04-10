@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="admin-card-container">
-                    <a href="admin_admin.php" class="admin-card-link">
+                    <a href="admin_admin" class="admin-card-link">
                         <div class="admin-card">
                             <div class="card-wrapper">
                                 <div class="details">
@@ -64,7 +64,7 @@
                         </div>
                     </a>
 
-                    <a href="admin_users.php" class="admin-card-link">
+                    <a href="admin_users" class="admin-card-link">
                         <div class="admin-card">
                             <div class="card-wrapper">
                                 <div class="details">
@@ -81,7 +81,7 @@
                         </div>
                     </a>
 
-                    <a href="admin_categories_page.php" class="admin-card-link">
+                    <a href="admin_categories_page" class="admin-card-link">
                         <div class="admin-card">
                             <div class="card-wrapper">
                                 <div class="details">
@@ -98,7 +98,7 @@
                         </div>
                     </a>
 
-                    <a href="admin_products_page.php" class="admin-card-link">
+                    <a href="admin_products_page" class="admin-card-link">
                         <div class="admin-card">
                             <div class="card-wrapper">
                                 <div class="details">
@@ -149,7 +149,7 @@
                         </div>
                     </a>
 
-                    <a href="client_blog_page.php" class="admin-card-link">
+                    <a href="client_blog_page" class="admin-card-link">
                         <div class="admin-card">
                             <div class="card-wrapper">
                                 <div class="details">
@@ -166,7 +166,7 @@
                         </div>
                     </a>
 
-                    <a href="blogs_about_page.php" class="admin-card-link">
+                    <a href="blogs_about_page" class="admin-card-link">
                         <div class="admin-card">
                             <div class="card-wrapper">
                                 <div class="details">
@@ -183,7 +183,7 @@
                         </div>
                     </a>
 
-                    <a href="blogs_industry_page.php" class="admin-card-link">
+                    <a href="blogs_industry_page" class="admin-card-link">
                         <div class="admin-card">
                             <div class="card-wrapper">
                                 <div class="details">

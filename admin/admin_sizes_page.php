@@ -28,7 +28,7 @@
                         <?php include('../functions/sessionmessage.php'); ?>
 
                         <div class="table-button-add">
-                            <a href="admin_add_sizes.php" class="table-container-add-new">Add Sizes & Price</a>
+                            <a href="admin_add_sizes" class="table-container-add-new">Add Sizes & Price</a>
                         </div>
                         <div class="card-header">
                             <h3>Sizes and Price Table</h3>
@@ -63,7 +63,7 @@
                                                     <td><?= $sizes['added_by']; ?></td>
                                                     <td class="table-edit-delete">
                                                         <div class="table-button-add">
-                                                            <a href="edit_sizes_page.php?id=<?= $sizes['id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="edit_sizes_page?id=<?= $sizes['id']; ?>" class="btn btn-primary">Edit</a>
                                                         </div>
                                                         <button type="button" class="btn btn-danger delete_sizes_btn" value="<?= $sizes['id']; ?>">Delete</button>
                                                     </td>

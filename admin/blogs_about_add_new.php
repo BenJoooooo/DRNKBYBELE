@@ -28,7 +28,7 @@
 
                         <div class="card-header">
                             <h3>Create A Blog</h3>
-                            <a href="blogs_about_page.php" class="btn btn-light float-end">Back</a>
+                            <a href="blogs_about_page" class="btn btn-light float-end">Back</a>
                         </div>
 
                         <div class="signup-card-body">
@@ -46,7 +46,8 @@
                                 <div class="signup">
                                     <label for="">Story</label>
                                     <!-- <input type="text" name="description" class="signup-input" required placeholder="Write Article"> -->
-                                    <textarea name="story" id="" cols="30" rows="10" class="signup-input" placeholder="Write Article"></textarea>
+                                    <textarea name="story" cols="30" rows="10" class="signup-input" placeholder="Write article" id="my-text" maxlength="800" required></textarea>
+                                    <p id="count-result" class="text-count"></p>
                                 </div>
                                 <div class="signup">
                                     <label for="">Upload Image</label>

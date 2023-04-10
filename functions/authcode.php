@@ -17,13 +17,13 @@ include "myfunctions.php";
 
         if(mysqli_num_rows($check_email_query_run) > 0) {
             
-            redirect("../signup.php", "Email already registered");
+            redirect("../signup", "Email already registered");
             // $_SESSION['message'] = "Email already registered";
             // header('Location: ../signup.php');
 
         } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-            redirect("../signup.php", "Please enter a valid email");
+            redirect("../signup", "Please enter a valid email");
 
         } else {
 
@@ -36,13 +36,13 @@ include "myfunctions.php";
     
                 if($insert_query_run) {
     
-                    redirectSuccess("../login.php", "Registered Successfully");
+                    redirectSuccess("../login", "Registered Successfully");
                     // $_SESSION['message'] = "Registered Successfull";
                     // header('Location: ../login.php');
     
                 } else {
     
-                    redirectFailed("../signup.php", "Something went wrong");
+                    redirectFailed("../signup", "Something went wrong");
                     // $_SESSION['message'] = "Something went wrong";
                     // header('Location: ../signup.php');
     
@@ -50,7 +50,7 @@ include "myfunctions.php";
     
             } else {
 
-                redirectFailed("../signup.php", "Passwords do not match");
+                redirectFailed("../signup", "Passwords do not match");
                 // $_SESSION['message'] = "Passwords do not match";
                 // header('Location: ../signup.php');
 
@@ -88,20 +88,20 @@ include "myfunctions.php";
             // if (($role_as == 'admin' || $role_as == 'manager'))
             if(($role_as == '')) {
 
-                redirectSuccess("../index.php", "Logged in successfully");
+                redirectSuccess("../index", "Logged in successfully");
                 // $_SESSION['message'] = "Logged in successfully";
                 // header('Location: ../index.php');   
 
             } else {
 
-                redirectSuccess("../admin/index.php", "Welcome to dashboard");
+                redirectSuccess("../admin/index", "Welcome to dashboard");
                 // $_SESSION['message'] = "Welcome to dashboard";
                 // header('Location: ../admin/index.php');
             }
 
         } else {
 
-            redirectFailed("../login.php", "Invalid credentials");
+            redirectFailed("../login", "Invalid credentials");
             // $_SESSION['message'] = "Invalid credentials";
             // header('Location: ../login.php');
 

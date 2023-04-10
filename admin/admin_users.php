@@ -28,7 +28,7 @@
                     <?php include('../functions/sessionmessage.php'); ?>
 
                         <div class="table-button-add">
-                            <a href="users_add_new_account.php" class="table-container-add-new">Add User</a>
+                            <a href="users_add_new_account" class="table-container-add-new">Add User</a>
                             <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                         </div>
                         <div class="card-header">
@@ -62,7 +62,7 @@
                                                     <td><?= $user['address']; ?></td>
                                                     <td class="table-edit-delete">
                                                         <div class="table-button-add">
-                                                            <a href="edit_user_account.php?id=<?= $user['id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="edit_user_account?id=<?= $user['id']; ?>" class="btn btn-primary">Edit</a>
                                                         </div>
                                                         <button type="button" class="btn btn-danger delete_btn" value="<?= $user['id']; ?>">Delete</button>
                                                     </td>

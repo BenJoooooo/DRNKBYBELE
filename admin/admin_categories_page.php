@@ -28,7 +28,7 @@
                     <?php include('../functions/sessionmessage.php'); ?>
 
                         <div class="table-button-add">
-                            <a href="admin_add_new_categories.php" class="table-container-add-new">Add Categories</a>
+                            <a href="admin_add_new_categories" class="table-container-add-new">Add Categories</a>
                             <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                         </div>
                         <div class="card-header">
@@ -71,7 +71,7 @@
                                         
                                                     <td class="table-edit-delete">
                                                         <div class="table-button-add">
-                                                            <a href="edit_categories.php?id=<?= $data['id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="edit_categories?id=<?= $data['id']; ?>" class="btn btn-primary">Edit</a>
                                                         </div>
                                                         <button type="button" class="btn btn-danger delete_category_btn" value="<?= $data['id']; ?>">Delete</button>
                                                     </td>

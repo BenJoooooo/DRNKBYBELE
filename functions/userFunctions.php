@@ -57,7 +57,8 @@
         global $con;
         $query = "SELECT products.id, products.description, products.image, products.name AS product_name, products.slug, products.size, categories.name AS category_name
         FROM $table1, $table2
-        WHERE products.category_id = categories.id AND products.status = '0'";
+        WHERE products.category_id = categories.id AND products.status = '0'
+        ORDER BY product_name";
         return $query_run = mysqli_query($con, $query);
     }
 
@@ -94,7 +95,7 @@
     // Fetch products by categories
     function getProductsbyCategory($category_id) {
         global $con;
-        $query = "SELECT products.id, products.image, products.name AS product_name, products.slug, categories.id, categories.name AS category_name
+        $query = "SELECT products.id, products.image, products.size, products.name AS product_name, products.slug, categories.id, categories.name AS category_name
         FROM products, categories
         WHERE products.category_id = categories.id AND products.category_id = '$category_id' AND products.status = '0'";
         return $query_run = mysqli_query($con, $query);
@@ -103,7 +104,7 @@
     // Fetches data from two tables where slug is equal to the fetched slug data from the url
     function getTablesOnSlug($table1,$table2, $slug) {
         global $con;
-        $query = "SELECT products.id, products.description, products.image, products.selling_price, products.name AS product_name, products.slug, categories.name AS category_name
+        $query = "SELECT products.id, products.description, products.image, products.selling_price, products.name AS product_name, products.slug, products.size, categories.name AS category_name
         FROM $table1, $table2
         WHERE products.category_id = categories.id AND products.status = '0' AND products.slug = '$slug'";
         return $query_run = mysqli_query($con, $query);
@@ -115,7 +116,7 @@
         $user_id = $_SESSION['auth_user']['user_id'];
 
         $query = "SELECT c.id AS cid, c.prod_id, c.prod_qty, p.id AS pid, p.category_id, p.name, 
-        p.image, p.slug, p.selling_price,t.name as cat_name, t.id 
+        p.image, p.slug, p.selling_price, p.size, t.name as cat_name, t.id 
         FROM carts c, products p, categories t 
         WHERE c.prod_id = p.id 
         AND c.user_id = '$user_id' 
@@ -131,7 +132,7 @@
         $user_id = $_SESSION['auth_user']['user_id'];
 
         $query = "SELECT c.id AS cid, c.prod_id, c.prod_qty, p.id AS pid, p.category_id, p.name, 
-        p.image, p.slug, p.selling_price,  t.name as cat_name, t.id, u.email, u.fullname, u.address, u.country, u.apartment, u.city, u.postal, u.region, u.phone
+        p.image, p.slug, p.selling_price, p.size, t.name as cat_name, t.id, u.id AS uid, u.email, u.fullname, u.address, u.country, u.apartment, u.city, u.postal, u.region, u.phone
         FROM carts c, products p, categories t, users u
         WHERE c.prod_id = p.id 
         AND c.user_id = '$user_id' 

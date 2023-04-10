@@ -18,7 +18,7 @@
                         <div class="blogs-container">
                             <div class="blog-card">
                                 <div class="img-container">
-                                    <a href="blogs_industry_info.php?blog=<?= $data_products['slug'] ?>"><img src="uploadsBlogs/<?= $data_products['image'] ?>" alt=""></a>
+                                    <a href="blogs_industry_info?blog=<?= $data_products['slug'] ?>"><img src="uploadsBlogs/<?= $data_products['image'] ?>" alt=""></a>
                                 </div>
                                 <div class="content-container">
                                     <p class="date"><?= $data_products['created_at'] ?></p>

@@ -1246,6 +1246,10 @@ tbody td img {
     color: var(--clr-dark-black);
 }
 
+.menu-cart .data-cart-items-prod span {
+    font-weight: 300;
+}
+
 .menu-cart .data-cart-items-prod a:hover,
 .menu-cart .data-cart-items-prod a:active,
 .menu-cart .data-cart-items-prod a:focus {
@@ -2043,7 +2047,6 @@ tbody td img {
     border: 15px solid var(--clr-main-color);
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3) inset;
     padding-inline: 1em;
-
 }
 
 .menu-espresso .espresso-container {
@@ -2066,7 +2069,8 @@ tbody td img {
     border-radius: 10px;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3) inset;
-    
+    width: 300px;
+    max-width: 500px;
 }
 
 .menu-espresso .article {

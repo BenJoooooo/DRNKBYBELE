@@ -34,28 +34,82 @@
         //         break;
         //     }
         // }
+
             $title = $_POST['title'];
             $name = $_POST['name'];
-            $article = $_POST['article'];
+            $article = mysqli_real_escape_string($con, $_POST['article']);
             $image = $_FILES['image']['name'];
+            $imageSize = $_FILES['image']['size'];
             $user_id = $_SESSION['auth_user']['fullname'];
 
-            $path = "../uploadsEspresso";
-            $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-            $filename = time(). '.' .$image_ext;
+            $fileExt = explode('.', $image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
 
-            $insert_query = "INSERT INTO espressyourself (title, name, article, image, added_by) VALUES ('$title', '$name', '$article', '$filename', '$user_id')";
-            $insert_query_run = mysqli_query($con, $insert_query);
+            if(in_array($fileActualExt, $allowedExt)) {
+                
+                if($imageSize < 3000000) {
 
-            if($insert_query_run) {
-                move_uploaded_file($_FILES['image']['tmp_name'], $path. '/' .$filename);
-                header("Location: " . $_SERVER['HTTP_REFERER']);
-                $_SESSION['message'] = "Added Successfully!";
+                    $path = "../uploadsEspresso";
+                    $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                    $filename = time(). '.' .$image_ext;
+
+                    $insert_query = "INSERT INTO espressyourself (title, name, article, image, added_by) VALUES ('$title', '$name', '$article', '$filename', '$user_id')";
+                    $insert_query_run = mysqli_query($con, $insert_query);
+
+                    if($insert_query_run) {
+                        move_uploaded_file($_FILES['image']['tmp_name'], $path. '/' .$filename);
+                        header("Location: " . $_SERVER['HTTP_REFERER']);
+                        $_SESSION['message'] = "Added Successfully!";
+                    } else {
+                        header("Location: " . $_SERVER['HTTP_REFERER']);
+                        $_SESSION['message'] = "Something went wrong!";
+                    }
+
+                } else {
+
+                    header("Location: " . $_SERVER['HTTP_REFERER']);
+                    $_SESSION['message'] = "File can only be less than 50 mb";
+
+                }
+
             } else {
-                // redirectFailed($_SERVER['HTTP_REFERER'], "Something went wrong");
+                
                 header("Location: " . $_SERVER['HTTP_REFERER']);
-                $_SESSION['message'] = "Something went wrong!";
+                $_SESSION['message'] = "File type is not supported for upload.";
+
             }
+
+            // $path = "../uploadsEspresso";
+            // $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+            // $filename = time(). '.' .$image_ext;
+
+            // $insert_query = "INSERT INTO espressyourself (title, name, article, image, added_by) VALUES ('$title', '$name', '$article', '$filename', '$user_id')";
+            // $insert_query_run = mysqli_query($con, $insert_query);
+
+            // if($insert_query_run) {
+            //     move_uploaded_file($_FILES['image']['tmp_name'], $path. '/' .$filename);
+            //     header("Location: " . $_SERVER['HTTP_REFERER']);
+            //     $_SESSION['message'] = "Added Successfully!";
+            // } else {
+            //     header("Location: " . $_SERVER['HTTP_REFERER']);
+            //     $_SESSION['message'] = "Something went wrong!";
+            // }
+
+
+
+            // $insert_query = "INSERT INTO espressyourself (title, name, article, image, added_by) VALUES ('$title', '$name', '$article', '$filename', '$user_id')";
+            // $insert_query_run = mysqli_query($con, $insert_query);
+
+            // if($insert_query_run) {
+            //     move_uploaded_file($_FILES['image']['tmp_name'], $path. '/' .$filename);
+            //     header("Location: " . $_SERVER['HTTP_REFERER']);
+            //     $_SESSION['message'] = "Added Successfully!";
+            // } else {
+            //     // redirectFailed($_SERVER['HTTP_REFERER'], "Something went wrong");
+            //     header("Location: " . $_SERVER['HTTP_REFERER']);
+            //     $_SESSION['message'] = "Something went wrong!";
+            // }
 
         } elseif (isset($_POST['delete_espress'])) {
             $espress_id = mysqli_real_escape_string($con, $_POST['espress_id']);

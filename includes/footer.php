@@ -4,10 +4,10 @@
                     <h1 class="column-two-footer">About Us</h1>
 
                     <div class="footer-links-container">
-                        <a href="">DRNK BY BELE</a>
-                        <a href="">Our History</a>
-                        <a href="">Tesimonials</a>
-                        <a href="">Blog</a>
+                        <a href="about">DRNK BY BELE</a>
+                        <a href="about">Our History</a>
+                        <a href="espressyourself">Tesimonials</a>
+                        <a href="blog">Blog</a>
                     </div>
                 </div>
 
@@ -15,10 +15,10 @@
                     <h1 class="column-two-footer">Our Services</h1>
 
                     <div class="footer-links-container">
-                        <a href="">Events</a>
-                        <a href="">Mission and Vision</a>
-                        <a href="">Our Goals</a>
-                        <a href="">Customer Service</a>
+                        <a href="about">Events</a>
+                        <a href="blog">Mission and Vision</a>
+                        <a href="blog">Our Goals</a>
+                        <a href="contact">Customer Service</a>
                     </div>
                 </div>
 

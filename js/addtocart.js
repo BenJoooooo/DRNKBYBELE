@@ -124,9 +124,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if(response == 201) {
-                    location.href = "checkout.php";
-                } else if (response = 409) {
-                    swal("Sorry!", "You need to login first", "info");
+                    location.href = "checkout";
                 } else if(response == 500) {
                     swal("Sorry!", "Something went wrong", "error");
                 } else if(response == 409) {

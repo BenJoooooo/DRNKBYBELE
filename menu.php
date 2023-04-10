@@ -16,7 +16,7 @@
             <div class="category-links">
 
                         <div class="">
-                            <a href="menu.php">All Products</a>
+                            <a href="menu">All Products</a>
                         </div>
                 <?php 
                     $fetch_data = getCategoriesProducts("categories");
@@ -25,7 +25,7 @@
 
 
                         <div class="">
-                            <a href="drnksmenulist.php?category=<?= $data['slug'] ?>"><?= $data['name']; ?></a>
+                            <a href="drnksmenulist?category=<?= $data['slug'] ?>"><?= $data['name']; ?></a>
                         </div>
 
                 <?php
@@ -45,7 +45,7 @@
                     if(mysqli_num_rows($fetch_data_products) > 0) {
                         foreach($fetch_data_products as $data_products) { ?>
                         
-                        <a href="drnksproductinfo.php?product=<?= $data_products['slug']; ?>" class="product-view">
+                        <a href="drnksproductinfo?product=<?= $data_products['slug']; ?>" class="product-view">
                             <div class="card-menu">
                                 <div class="img-container">
                                     <img src="uploadsProducts/<?= $data_products['image']; ?>" alt="">

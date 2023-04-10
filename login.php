@@ -17,7 +17,7 @@
             
             <div class="signup-header">
                 <h1 class="sign-up-create-account">Login</h1>
-                <p class="sign-up-already-have">Don't have an account? <a href="signup.php">Register</a></p>
+                <p class="sign-up-already-have">Don't have an account? <a href="signup">Register</a></p>
             </div>
 
             <div class="signup-form-container">

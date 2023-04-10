@@ -48,7 +48,7 @@
                                     <div class="card-container swiper-slide">
                                         <div class="card-overlay"></div>
 
-                                        <a href="drnksproductinfo.php?product=<?= $product['slug']; ?>">
+                                        <a href="drnksproductinfo?product=<?= $product['slug']; ?>">
                                         <div class="card-image">
                                             <img src="uploadsProducts/<?= $product['image'] ?>" alt="" class="card-img">
                                             <span class="card-price"></span>

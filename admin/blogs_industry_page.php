@@ -28,7 +28,7 @@
                         <?php include('../functions/sessionmessage.php'); ?>
 
                         <div class="table-button-add">
-                            <a href="blogs_industry_add_new.php" class="table-container-add-new">Add Blogs</a>
+                            <a href="blogs_industry_add_new" class="table-container-add-new">Add Blogs</a>
                             <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                         </div>
                         <div class="card-header">
@@ -70,7 +70,7 @@
                                                     <td><?= $blog['added_by']; ?></td>
                                                     <td class="table-edit-delete">
                                                         <div class="table-button-add">
-                                                            <a href="blogs_industry_edit.php?id=<?= $blog['id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="blogs_industry_edit?id=<?= $blog['id']; ?>" class="btn btn-primary">Edit</a>
                                                         </div>
                                                         <button type="button" class="btn btn-danger delete_blogs_industry" value="<?= $blog['id']; ?>">Delete</button>
 

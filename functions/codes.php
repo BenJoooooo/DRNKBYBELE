@@ -35,7 +35,7 @@ include ('../functions/myfunctions.php');
 
                 if($insert_query_run) {
 
-                    redirectSuccess("../admin/admin_admin.php", "Added Sucessfully");
+                    redirectSuccess("../admin/admin_admin", "Added Sucessfully");
 
                 } else {
 
@@ -78,7 +78,7 @@ include ('../functions/myfunctions.php');
 
                 if($insert_query_run) {
 
-                    redirectSuccess("../admin/admin_users.php", "Added successfully");
+                    redirectSuccess("../admin/admin_users", "Added successfully");
 
 
                 } else {
@@ -129,15 +129,15 @@ include ('../functions/myfunctions.php');
                     $update_query_run = mysqli_query($con, $update_query);
     
                     if($update_query_run) {
-                        redirectSuccess("../admin/admin_admin.php", "Edit successfully");
+                        redirectSuccess("../admin/admin_admin", "Edit successfully");
                     } else {
-                        redirectFailed("../admin/edit_admin_account.php?id=$category_id", "Something went wrong");
+                        redirectFailed("../admin/edit_admin_account?id=$category_id", "Something went wrong");
                     }
                 } else {
-                    redirect("../admin/edit_admin_account.php?id=$category_id", "Passwords do not match");
+                    redirect("../admin/edit_admin_account?id=$category_id", "Passwords do not match");
                 }
 
-            // Checks if email input is not greater than 0
+            // Checks if email input is not at the database
             } elseif(!mysqli_num_rows($check_email_query_run) > 0) {
 
                 // Checks if password match with confirm
@@ -149,21 +149,21 @@ include ('../functions/myfunctions.php');
                     $update_query_run = mysqli_query($con, $update_query);
 
                     if($update_query_run) {
-                        redirectSuccess("../admin/admin_admin.php", "Edit successfully");
+                        redirectSuccess("../admin/admin_admin", "Edit successfully");
                     } else {
-                        redirectFailed("../admin/edit_admin_account.php?id=$category_id", "Something went wrong");
+                        redirectFailed("../admin/edit_admin_account?id=$category_id", "Something went wrong");
                     }
 
                 } else {
-                    redirect("../admin/edit_admin_account.php?id=$category_id", "Passwords do not match");
+                    redirect("../admin/edit_admin_account?id=$category_id", "Passwords do not match");
                 }
 
             } else {
-                redirectFailed("../admin/edit_admin_account.php?id=$category_id", "Email already exists");
+                redirectFailed("../admin/edit_admin_account?id=$category_id", "Email already exists");
             }
             
         } else {
-            redirect("../admin/edit_admin_account.php?id=$category_id", "Email must not be empty");
+            redirect("../admin/edit_admin_account?id=$category_id", "Email must not be empty");
         }
 
     // Updates user
@@ -201,12 +201,12 @@ include ('../functions/myfunctions.php');
                     $update_query_run = mysqli_query($con, $update_query);
     
                     if($update_query_run) {
-                        redirectSuccess("../admin/admin_users.php", "Edit successfully");
+                        redirectSuccess("../admin/admin_users", "Edit successfully");
                     } else {
-                        redirectFailed("../admin/edit_user_account.php?id=$category_id", "Something went wrong");
+                        redirectFailed("../admin/edit_user_account?id=$category_id", "Something went wrong");
                     }
                 } else {
-                    redirect("../admin/edit_user_account.php?id=$category_id", "Passwords do not match");
+                    redirect("../admin/edit_user_account?id=$category_id", "Passwords do not match");
                 }
 
             // Checks if email input is not greater than 0
@@ -221,21 +221,21 @@ include ('../functions/myfunctions.php');
                     $update_query_run = mysqli_query($con, $update_query);
 
                     if($update_query_run) {
-                        redirectSuccess("../admin/admin_users.php", "Edit successfully");
+                        redirectSuccess("../admin/admin_users", "Edit successfully");
                     } else {
-                        redirectFailed("../admin/edit_user_account.php?id=$category_id", "Something went wrong");
+                        redirectFailed("../admin/edit_user_account?id=$category_id", "Something went wrong");
                     }
 
                 } else {
-                    redirect("../admin/edit_user_account.php?id=$category_id", "Passwords do not match");
+                    redirect("../admin/edit_user_account?id=$category_id", "Passwords do not match");
                 }
 
             } else {
-                redirectFailed("../admin/edit_user_account.php?id=$category_id", "Email already exists");
+                redirectFailed("../admin/edit_user_account?id=$category_id", "Email already exists");
             }
             
         } else {
-            redirect("../admin/edit_user_account.php?id=$category_id", "Email must not be empty");
+            redirect("../admin/edit_user_account?id=$category_id", "Email must not be empty");
         }
 
     // Deletes user and admin
@@ -260,22 +260,43 @@ include ('../functions/myfunctions.php');
         $added_by = $_POST['added_by'];
         $name = $_POST['name'];
         $image = $_FILES['upload']['name'];
-        $description = $_POST['description'];
+        $imageSize = $_FILES['upload']['size'];
+        $description = mysqli_real_escape_string($con, $_POST['description']);
         $status = isset($_POST['status']) ? '1': '0';
 
-        $path = "../uploads";
-        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-        $filename = time(). '.' .$image_ext;
+        $fileExt = explode('.', $image);
+        $fileActualExt = strtolower(end($fileExt));
+        $allowedExt = array('jpg', 'jpeg', 'png',);
 
-        $query = "INSERT INTO images (name, description, status, image, added_by) VALUES ('$name', '$description', '$status', '$filename', '$added_by')";
+        if(in_array($fileActualExt, $allowedExt)) {
 
-        $query_run = mysqli_query($con, $query);
+            if($imageSize < 5000000) {
 
-        if($query_run) {
-            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
-            redirectSuccess("../admin/admin_manage_home.php", "Uploaded Successfully");
+                $path = "../uploads";
+                $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                $filename = time(). '.' .$image_ext;
+        
+                $query = "INSERT INTO images (name, description, status, image, added_by) VALUES ('$name', '$description', '$status', '$filename', '$added_by')";
+        
+                $query_run = mysqli_query($con, $query);
+        
+                if($query_run) {
+                    move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+                    redirectSuccess("../admin/admin_manage_home", "Uploaded Successfully");
+                } else {
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+                }
+
+            } else {
+
+                redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+
+            }
+
         } else {
-            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+
+            redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
+
         }
 
     // Edit cover photo
@@ -284,35 +305,55 @@ include ('../functions/myfunctions.php');
         $added_by = $_POST['added_by'];
         $image_id = $_POST['image_id'];
         $name = $_POST['name'];
-        $description = $_POST['description'];
+        $description = mysqli_real_escape_string($con, $_POST['description']);
         $old_image = $_POST['oldimage'];
         $new_image = $_FILES['upload']['name'];
+        $imageSize = $_FILES['upload']['size'];
         $status = isset($_POST['status']) ? '1':'0';
 
         if($new_image != "") {
+
+            $fileExt = explode('.', $new_image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
+
             // $update_filename = $new_image;
             $image_ext = pathinfo($new_image, PATHINFO_EXTENSION);
             $update_filename = time(). '.' .$image_ext;
+
         } else {
+
+            $fileExt = explode('.', $old_image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
+
             $update_filename = $old_image;
         }
 
-        $path = "../uploads";
+        if(in_array($fileActualExt, $allowedExt)) {
+            if($imageSize < 5000000) {
+                $path = "../uploads";
 
-        $query = "UPDATE images SET added_by = '$added_by', name = '$name', description = '$description', status = '$status', image = '$update_filename' WHERE id = $image_id";
-
-        $query_run = mysqli_query($con, $query);
-
-        if($query_run) {
-            if($_FILES['upload']['name'] != "") {
-                move_uploaded_file($_FILES['upload']['tmp_name'], $path. "/" .$update_filename);
-                if(file_exists("../uploads/".$old_image)) {
-                    unlink("../uploads/".$old_image);
+                $query = "UPDATE images SET added_by = '$added_by', name = '$name', description = '$description', status = '$status', image = '$update_filename' WHERE id = $image_id";
+        
+                $query_run = mysqli_query($con, $query);
+        
+                if($query_run) {
+                    if($_FILES['upload']['name'] != "") {
+                        move_uploaded_file($_FILES['upload']['tmp_name'], $path. "/" .$update_filename);
+                        if(file_exists("../uploads/".$old_image)) {
+                            unlink("../uploads/".$old_image);
+                        }
+                    }
+                    redirectSuccess("../admin/admin_manage_home", "Updated Successfully");
+                } else {
+                    redirectFailed("../admin/admin_edit_homepage?id=$image_id", "Something Went Wrong");
                 }
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
             }
-            redirectSuccess("../admin/admin_manage_home.php", "Updated Successfully");
         } else {
-            redirectFailed("../admin/admin_edit_homepage?id=$image_id", "Something Went Wrong");
+            redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
         }
 
     // Delete cover photo
@@ -349,22 +390,46 @@ include ('../functions/myfunctions.php');
         $category_name = $_POST['name'];
         $slug = $_POST['slug'];
         $image = $_FILES['upload']['name'];
-        $category_description = $_POST['description'];
+        $imageSize = $_FILES['upload']['size'];
+        $category_description = mysqli_real_escape_string($con, $_POST['description']);
         $status = isset($_POST['status']) ? '1':'0';
-        
-        $path = "../uploadsCategories";
-        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-        $filename = time(). "." .$image_ext;
 
-        $query = "INSERT INTO categories (name, description, status, image, slug, added_by) VALUES ('$category_name', '$category_description', '$status', '$filename', '$slug', '$added_by')";
+        $fileExt = explode('.', $image);
+        $fileActualExt = strtolower(end($fileExt));
+        $allowedExt = array('jpg', 'jpeg', 'png',);
 
-        $query_run = mysqli_query($con, $query);
+        $check_product_size = "SELECT name FROM categories WHERE name = '$category_name'";
+        $check_product_size_query = mysqli_query($con, $check_product_size);
 
-        if($query_run) {
-            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
-            redirectSuccess("../admin/admin_categories_page.php", "Category Added Successfully");
+        if(!mysqli_num_rows($check_product_size_query) > 0) {
+
+            if(in_array($fileActualExt, $allowedExt)) {
+
+                if($imageSize < 5000000) {
+            
+                    $path = "../uploadsCategories";
+                    $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                    $filename = time(). "." .$image_ext;
+    
+                    $query = "INSERT INTO categories (name, description, status, image, slug, added_by) VALUES ('$category_name', '$category_description', '$status', '$filename', '$slug', '$added_by')";
+    
+                    $query_run = mysqli_query($con, $query);
+    
+                    if($query_run) {
+                        move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+                        redirectSuccess("../admin/admin_categories_page", "Category Added Successfully");
+                    } else {
+                        redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+                    }
+                } else {
+                    redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+                }
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
+            }
+
         } else {
-            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+            redirectFailed($_SERVER['HTTP_REFERER'], "Category already existed");
         }
 
     // Updates Category
@@ -372,38 +437,101 @@ include ('../functions/myfunctions.php');
 
         $category_id = $_POST['category_id'];
         $name = $_POST['name'];
-        $description = $_POST['description'];
+        $description = mysqli_real_escape_string($con, $_POST['description']);
         $slug = $_POST['slug'];
         $status = isset($_POST['status']) ? '1': '0';
 
         $old_image = $_POST['old_image'];
         $new_image = $_FILES['upload']['name'];
+        $imageSize = $_FILES['upload']['size'];
 
         if($new_image != "") {
+
+            $fileExt = explode('.', $new_image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
+
             // $update_filename = $new_image;
             $image_ext = pathinfo($new_image, PATHINFO_EXTENSION);
             $update_filename = time(). '.' .$image_ext;
+
         } else {
+
+            $fileExt = explode('.', $old_image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
+
             $update_filename = $old_image;
         }
 
-        $path = "../uploadsCategories";
+        $check_category = "SELECT name FROM categories WHERE name = '$name'";
+        $check_category_run = mysqli_query($con, $check_category);
 
-        $query = "UPDATE categories SET name = '$name', description = '$description', status = '$status', image = '$update_filename', slug = '$slug' WHERE id = '$category_id'";
-        
-        $query_run = mysqli_query($con, $query);
-
-        if($query_run) {
-            if($_FILES['upload']['name'] != "") {
-                move_uploaded_file($_FILES['upload']['tmp_name'], $path. "/" .$update_filename);
-                if(file_exists("../uploadsCategories/".$old_image)) {
-                    unlink("../uploadsCategories/".$old_image);
-                }
-            }
-            redirectSuccess("../admin/admin_categories_page.php", "Updated Successfully");
-        } else {
-            redirectFailed("../admin/admin_edit_categories?id=$category_id", "Something Went Wrong");
+        $data = getById("categories", $category_id);
+        if(mysqli_num_rows($data) > 0) {
+            $data_fetch = mysqli_fetch_array($data);
         }
+
+        if($data_fetch['name'] == $name) {
+            
+            if(in_array($fileActualExt, $allowedExt)) {
+                if($imageSize < 5000000) {
+    
+                    $path = "../uploadsCategories";
+    
+                    $query = "UPDATE categories SET name = '$name', description = '$description', status = '$status', image = '$update_filename', slug = '$slug' WHERE id = '$category_id'";
+                    
+                    $query_run = mysqli_query($con, $query);
+    
+                    if($query_run) {
+                        if($_FILES['upload']['name'] != "") {
+                            move_uploaded_file($_FILES['upload']['tmp_name'], $path. "/" .$update_filename);
+                            if(file_exists("../uploadsCategories/".$old_image)) {
+                                unlink("../uploadsCategories/".$old_image);
+                            }
+                        }
+                        redirectSuccess("../admin/admin_categories_page", "Updated Successfully");
+                    } else {
+                        redirectFailed("../admin/admin_edit_categories?id=$category_id", "Something Went Wrong");
+                    }
+                } else {
+                    redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+                }
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
+            }
+
+        } elseif(!mysqli_num_rows($check_category_run) > 0) {
+            if(in_array($fileActualExt, $allowedExt)) {
+                if($imageSize < 5000000) {
+    
+                    $path = "../uploadsCategories";
+    
+                    $query = "UPDATE categories SET name = '$name', description = '$description', status = '$status', image = '$update_filename', slug = '$slug' WHERE id = '$category_id'";
+                    
+                    $query_run = mysqli_query($con, $query);
+    
+                    if($query_run) {
+                        if($_FILES['upload']['name'] != "") {
+                            move_uploaded_file($_FILES['upload']['tmp_name'], $path. "/" .$update_filename);
+                            if(file_exists("../uploadsCategories/".$old_image)) {
+                                unlink("../uploadsCategories/".$old_image);
+                            }
+                        }
+                        redirectSuccess("../admin/admin_categories_page", "Updated Successfully");
+                    } else {
+                        redirectFailed("../admin/admin_edit_categories?id=$category_id", "Something Went Wrong");
+                    }
+                } else {
+                    redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+                }
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
+            }
+        } else {
+            redirectFailed($_SERVER['HTTP_REFERER'], "Product already exists");
+        }
+        
     // Deletes Category
     } elseif (isset($_POST['delete_category_btn'])) {
 
@@ -438,28 +566,64 @@ include ('../functions/myfunctions.php');
         $added_by = $_POST['added_by'];
         $name = $_POST['name'];
         $slug = $_POST['slug'];
-        $description = $_POST['description'];
+        $description = mysqli_real_escape_string($con, $_POST['description']);
         $size = $_POST['size'];
         $status = isset($_POST['status']) ? '1':'0';
         $featured = isset($_POST['featured']) ? '1':'0';
         $original_price = ($_POST['original_price']);
         $selling_price = ($_POST['selling_price']);
 
+        $imageSize = $_FILES['upload']['size'];
         $image = $_FILES['upload']['name'];
-        $path = "../uploadsProducts";
-        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-        $filename = time(). '.' .$image_ext;
 
-        $query = "INSERT INTO products (category_id, size, added_by, name, description, status, featured, original_price, selling_price, image, slug) VALUES ('$category_id', '$size', '$added_by', '$name', '$description', '$status', '$featured', '$original_price', '$selling_price', '$filename', '$slug')";
+        $fileExt = explode('.', $image);
+        $fileActualExt = strtolower(end($fileExt));
+        $allowedExt = array('jpg', 'jpeg', 'png',);
+
+        $check_product_size = "SELECT name, size FROM products WHERE name = '$name' AND size = '$size'";
+        $check_product_size_query = mysqli_query($con, $check_product_size);
+
         
-        $query_run = mysqli_query($con, $query);
+        if(!mysqli_num_rows($check_product_size_query) > 0) {
 
-        if($query_run) {
-            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
-            redirectSuccess("../admin/admin_products_page.php", "Products Added Successfully");
+            if(in_array($fileActualExt, $allowedExt)) {
+
+                if($imageSize < 5000000) {
+
+                    $path = "../uploadsProducts";
+                    $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                    $filename = time(). '.' .$image_ext;
+
+                        $query = "INSERT INTO products (category_id, size, added_by, name, description, status, featured, original_price, selling_price, image, slug) VALUES ('$category_id', '$size', '$added_by', '$name', '$description', '$status', '$featured', '$original_price', '$selling_price', '$filename', '$slug')";
+                    
+                        $query_run = mysqli_query($con, $query);
+                
+                        if($query_run) {
+                            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+                            redirectSuccess("../admin/admin_products_page", "Products Added Successfully");
+                        } else {
+                            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+                        }
+                    // $query = "INSERT INTO products (category_id, size, added_by, name, description, status, featured, original_price, selling_price, image, slug) VALUES ('$category_id', '$size', '$added_by', '$name', '$description', '$status', '$featured', '$original_price', '$selling_price', '$filename', '$slug')";
+                    
+                    // $query_run = mysqli_query($con, $query);
+
+                    // if($query_run) {
+                    //     move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+                    //     redirectSuccess("../admin/admin_products_page", "Products Added Successfully");
+                    // } else {
+                    //     redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+                    // }
+                } else {
+                    redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+                }
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
+            }
         } else {
-            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+            redirectFailed($_SERVER['HTTP_REFERER'], "Product and Size already existed");
         }
+
     // Edits Products
     } elseif (isset($_POST['update_product_submit'])) {
 
@@ -467,40 +631,172 @@ include ('../functions/myfunctions.php');
         $product_id = $_POST['product_id'];
         $name = $_POST['name'];
         $slug = $_POST['slug'];
-        $description = $_POST['description'];
+        $description = mysqli_real_escape_string($con, $_POST['description']);
         $size = $_POST['size'];
         $status = isset($_POST['status']) ? '1':'0';
         $featured = isset($_POST['featured']) ? '1':'0';
         $original_price = $_POST['original_price'];
         $selling_price = $_POST['selling_price'];
 
+        $imageSize = $_FILES['upload']['size'];
         $old_image = $_POST['old_image'];
         $new_image = $_FILES['upload']['name'];
 
         if($new_image != "") {
+
+            $fileExt = explode('.', $new_image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
+
             $image_ext = pathinfo($new_image, PATHINFO_EXTENSION);
             $update_filename = time(). "." .$image_ext;
+
         } else {
+
+            $fileExt = explode('.', $old_image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
+
             $update_filename = $old_image;
         }
 
-        $path = "../uploadsProducts";
+        $check_product_size = "SELECT name, size FROM products WHERE name = '$name' AND size = '$size'";
+        $check_product_size_query = mysqli_query($con, $check_product_size);
 
-        $query = "UPDATE products SET category_id = '$category_id', name = '$name', description = '$description', size= '$size', status = '$status', featured = '$featured', original_price = '$original_price', selling_price = '$selling_price', image = '$update_filename', slug = '$slug' WHERE id = '$product_id'";
-
-        $query_run = mysqli_query($con, $query);
-
-        if($query_run) {
-            if($_FILES['upload']['name'] != "") {
-                move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
-                if(file_exists("../uploadsProducts/".$old_image)) {
-                    unlink("../uploadsProducts/".$old_image);
-                }
-            } 
-            redirectSuccess("../admin/admin_products_page.php", "Product Edited Successfully");
-        } else {
-            redirectFailed("../admin/edit_products_page.php?id=$product_id", "Something Went Wrong");
+        $data = getProductAndCategoryById("products", "categories", $product_id);
+        if(mysqli_num_rows($data) > 0) {
+            $data_fetch = mysqli_fetch_array($data);
         }
+
+        if($data_fetch['name'] == $name && $data_fetch['size'] == $size) {
+            
+            if(in_array($fileActualExt, $allowedExt)) {
+                if($imageSize < 5000000) {
+
+                    $path = "../uploadsProducts";
+
+                    $query = "UPDATE products SET category_id = '$category_id', name = '$name', description = '$description', size= '$size', status = '$status', featured = '$featured', original_price = '$original_price', selling_price = '$selling_price', image = '$update_filename', slug = '$slug' WHERE id = '$product_id'";
+
+                    $query_run = mysqli_query($con, $query);
+
+                    if($query_run) {
+                        if($_FILES['upload']['name'] != "") {
+                            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
+                            if(file_exists("../uploadsProducts/".$old_image)) {
+                                unlink("../uploadsProducts/".$old_image);
+                            }
+                        } 
+                        redirectSuccess("../admin/admin_products_page", "Product Edited Successfully");
+                    } else {
+                        redirectFailed("../admin/edit_products_page?id=$product_id", "Something Went Wrong");
+                    }
+                } else {
+                    redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+                }
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
+            }
+
+        } elseif(!mysqli_num_rows($check_product_size_query) > 0) {
+            
+            if(in_array($fileActualExt, $allowedExt)) {
+                if($imageSize < 5000000) {
+    
+                    $path = "../uploadsProducts";
+    
+                    $query = "UPDATE products SET category_id = '$category_id', name = '$name', description = '$description', size= '$size', status = '$status', featured = '$featured', original_price = '$original_price', selling_price = '$selling_price', image = '$update_filename', slug = '$slug' WHERE id = '$product_id'";
+    
+                    $query_run = mysqli_query($con, $query);
+    
+                    if($query_run) {
+                        if($_FILES['upload']['name'] != "") {
+                            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
+                            if(file_exists("../uploadsProducts/".$old_image)) {
+                                unlink("../uploadsProducts/".$old_image);
+                            }
+                        } 
+                        redirectSuccess("../admin/admin_products_page", "Product Edited Successfully");
+                    } else {
+                        redirectFailed("../admin/edit_products_page?id=$product_id", "Something Went Wrong");
+                    }
+                } else {
+                    redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+                }
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
+            }
+
+        } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "Product you entered already exists!");
+            }
+
+        // if($data_fetch['name'] == $name && $data_fetch['size'] == $size) {
+
+        //     if(!mysqli_num_rows($check_product_size_query) > 0) {
+
+        //         if(in_array($fileActualExt, $allowedExt)) {
+        //             if($imageSize < 5000000) {
+        
+        //                 $path = "../uploadsProducts";
+        
+        //                 $query = "UPDATE products SET category_id = '$category_id', name = '$name', description = '$description', size= '$size', status = '$status', featured = '$featured', original_price = '$original_price', selling_price = '$selling_price', image = '$update_filename', slug = '$slug' WHERE id = '$product_id'";
+        
+        //                 $query_run = mysqli_query($con, $query);
+        
+        //                 if($query_run) {
+        //                     if($_FILES['upload']['name'] != "") {
+        //                         move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
+        //                         if(file_exists("../uploadsProducts/".$old_image)) {
+        //                             unlink("../uploadsProducts/".$old_image);
+        //                         }
+        //                     } 
+        //                     redirectSuccess("../admin/admin_products_page", "Product Edited Successfully");
+        //                 } else {
+        //                     redirectFailed("../admin/edit_products_page?id=$product_id", "Something Went Wrong");
+        //                 }
+        //             } else {
+        //                 redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+        //             }
+        //         } else {
+        //             redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
+        //         }
+        //     } else {
+        //         redirectFailed($_SERVER['HTTP_REFERER'], "Product already existed");
+        //     }
+
+        // } elseif (!mysqli_num_rows($check_product_size_query) > 0) {
+
+        //     if(in_array($fileActualExt, $allowedExt)) {
+        //         if($imageSize < 5000000) {
+    
+        //             $path = "../uploadsProducts";
+    
+        //             $query = "UPDATE products SET category_id = '$category_id', name = '$name', description = '$description', size= '$size', status = '$status', featured = '$featured', original_price = '$original_price', selling_price = '$selling_price', image = '$update_filename', slug = '$slug' WHERE id = '$product_id'";
+    
+        //             $query_run = mysqli_query($con, $query);
+    
+        //             if($query_run) {
+        //                 if($_FILES['upload']['name'] != "") {
+        //                     move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
+        //                     if(file_exists("../uploadsProducts/".$old_image)) {
+        //                         unlink("../uploadsProducts/".$old_image);
+        //                     }
+        //                 } 
+        //                 redirectSuccess("../admin/admin_products_page", "Product Edited Successfully");
+        //             } else {
+        //                 redirectFailed("../admin/edit_products_page?id=$product_id", "Something Went Wrong");
+        //             }
+        //         } else {
+        //             redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+        //         }
+        //     } else {
+        //         redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
+        //     }
+
+        // } else {
+        //     redirectFailed($_SERVER['HTTP_REFERER'], "Product you entered already exists!");
+        // }
+
     // Deletes products
     } elseif (isset($_POST['delete_product_btn'])) {
 
@@ -533,23 +829,37 @@ include ('../functions/myfunctions.php');
         $author = $_POST['added_by'];
         $title = $_POST['name'];
         $slug = $_POST['slug'];
-        $description = $_POST['story'];
+        $description = mysqli_real_escape_string($con, $_POST['story']);
         $status = isset($_POST['status']) ? '1':'0';
-        
         $image = $_FILES['upload']['name'];
+        $imageSize = $_FILES['upload']['size'];
         $path = "../uploadsBlogs";
         $image_ext = pathinfo($image, PATHINFO_EXTENSION);
         $filename = time(). '.' .$image_ext;
 
-        $query = "INSERT INTO blogsabout (title, description, slug, posted, image, added_by) VALUES ('$title', '$description', '$slug', '$status', '$filename', '$author')";
-        
-        $query_run = mysqli_query($con, $query);
+        $fileExt = explode('.', $image);
+        $fileActualExt = strtolower(end($fileExt));
+        $allowedExt = array('jpg', 'jpeg', 'png',);
 
-        if($query_run) {
-            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
-            redirectSuccess("../admin/blogs_about_page.php", "Products Added Successfully");
+        if(in_array($fileActualExt, $allowedExt)) {
+
+            if($imageSize < 5000000) {
+
+                $query = "INSERT INTO blogsabout (title, description, slug, posted, image, added_by) VALUES ('$title', '$description', '$slug', '$status', '$filename', '$author')";
+                
+                $query_run = mysqli_query($con, $query);
+
+                if($query_run) {
+                    move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+                    redirectSuccess("../admin/blogs_about_page", "Products Added Successfully");
+                } else {
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+                }
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+            }
         } else {
-            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+            redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
         }
 
     // Edits Blogs
@@ -558,35 +868,56 @@ include ('../functions/myfunctions.php');
         $blog_id = $_POST['blog_id'];
         $name = $_POST['name'];
         $slug = $_POST['slug'];
-        $story = $_POST['story'];
+        $story = mysqli_real_escape_string($con, $_POST['story']);
         $status = isset($_POST['status']) ? '1':'0';
-
         $old_image = $_POST['old_image'];
         $new_image = $_FILES['upload']['name'];
+        $imageSize = $_FILES['upload']['size'];
 
         if($new_image != "") {
+
+            $fileExt = explode('.', $new_image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
+
             $image_ext = pathinfo($new_image, PATHINFO_EXTENSION);
             $update_filename = time(). "." .$image_ext;
+
         } else {
+
             $update_filename = $old_image;
+
+            $fileExt = explode('.', $old_image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
+
         }
 
-        $path = "../uploadsBlogs";
+        if(in_array($fileActualExt, $allowedExt)) {
+            if($imageSize < 5000000) {
 
-        $query = "UPDATE blogsabout SET title = '$name', description = '$story', posted = '$status', image = '$update_filename', slug = '$slug' WHERE id = '$blog_id'";
+                $path = "../uploadsBlogs";
 
-        $query_run = mysqli_query($con, $query);
+                $query = "UPDATE blogsabout SET title = '$name', description = '$story', posted = '$status', image = '$update_filename', slug = '$slug' WHERE id = '$blog_id'";
 
-        if($query_run) {
-            if($_FILES['upload']['name'] != "") {
-                move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
-                if(file_exists("../uploadsBlogs/".$old_image)) {
-                    unlink("../uploadsBlogs/".$old_image);
+                $query_run = mysqli_query($con, $query);
+
+                if($query_run) {
+                    if($_FILES['upload']['name'] != "") {
+                        move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
+                        if(file_exists("../uploadsBlogs/".$old_image)) {
+                            unlink("../uploadsBlogs/".$old_image);
+                        }
+                    } 
+                    redirectSuccess("../admin/blogs_about_page", "Product Edited Successfully");
+                } else {
+                    redirectFailed("../admin/blogs_about_page?id=$product_id", "Something Went Wrong");
                 }
-            } 
-            redirectSuccess("../admin/blogs_about_page.php", "Product Edited Successfully");
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+            }
         } else {
-            redirectFailed("../admin/blogs_about_page.php?id=$product_id", "Something Went Wrong");
+            redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
         }
 
     // Deletes Blogs
@@ -603,8 +934,8 @@ include ('../functions/myfunctions.php');
 
         if($delete_query_run) {
 
-            if(file_exists("../uploadsBlogs" . $fetch_image)) {
-                unlink ("../uploadsBlogs" . $fetch_image);
+            if(file_exists("../uploadsBlogs/" . $fetch_image)) {
+                unlink ("../uploadsBlogs/" . $fetch_image);
             }
 
             echo 200;
@@ -619,23 +950,38 @@ include ('../functions/myfunctions.php');
         $author = $_POST['added_by'];
         $title = $_POST['name'];
         $slug = $_POST['slug'];
-        $description = $_POST['story'];
+        $description = mysqli_real_escape_string($con, $_POST['story']);
         $status = isset($_POST['status']) ? '1':'0';
-        
         $image = $_FILES['upload']['name'];
-        $path = "../uploadsBlogs";
-        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-        $filename = time(). '.' .$image_ext;
+        $imageSize = $_FILES['upload']['size'];
 
-        $query = "INSERT INTO blogsindustry (title, description, slug, posted, image, added_by) VALUES ('$title', '$description', '$slug', '$status', '$filename', '$author')";
-        
-        $query_run = mysqli_query($con, $query);
+        $fileExt = explode('.', $image);
+        $fileActualExt = strtolower(end($fileExt));
+        $allowedExt = array('jpg', 'jpeg', 'png',);
 
-        if($query_run) {
-            move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
-            redirectSuccess("../admin/blogs_industry_page.php", "Products Added Successfully");
+        if(in_array($fileActualExt, $allowedExt)) {
+
+            if($imageSize < 5000000) {
+
+                $path = "../uploadsBlogs";
+                $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                $filename = time(). '.' .$image_ext;
+
+                $query = "INSERT INTO blogsindustry (title, description, slug, posted, image, added_by) VALUES ('$title', '$description', '$slug', '$status', '$filename', '$author')";
+                
+                $query_run = mysqli_query($con, $query);
+
+                if($query_run) {
+                    move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$filename);
+                    redirectSuccess("../admin/blogs_industry_page", "Products Added Successfully");
+                } else {
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+                }
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+            }
         } else {
-            redirectFailed($_SERVER['HTTP_REFERER'], "Something Went Wrong");
+            redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
         }
     
     // Edits Blog Industry
@@ -644,35 +990,56 @@ include ('../functions/myfunctions.php');
         $blog_id = $_POST['blog_id'];
         $name = $_POST['name'];
         $slug = $_POST['slug'];
-        $story = $_POST['story'];
+        $story = mysqli_real_escape_string($con, $_POST['story']);
         $status = isset($_POST['status']) ? '1':'0';
 
         $old_image = $_POST['old_image'];
         $new_image = $_FILES['upload']['name'];
+        $imageSize = $_FILES['upload']['size'];
 
         if($new_image != "") {
+
+            $fileExt = explode('.', $new_image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
+
             $image_ext = pathinfo($new_image, PATHINFO_EXTENSION);
             $update_filename = time(). "." .$image_ext;
+
         } else {
+
+            $fileExt = explode('.', $old_image);
+            $fileActualExt = strtolower(end($fileExt));
+            $allowedExt = array('jpg', 'jpeg', 'png',);
+
             $update_filename = $old_image;
         }
 
-        $path = "../uploadsBlogs";
+        if(in_array($fileActualExt, $allowedExt)) {
+            if($imageSize < 5000000) {
 
-        $query = "UPDATE blogsindustry SET title = '$name', description = '$story', posted = '$status', image = '$update_filename', slug = '$slug' WHERE id = '$blog_id'";
+                $path = "../uploadsBlogs";
 
-        $query_run = mysqli_query($con, $query);
+                $query = "UPDATE blogsindustry SET title = '$name', description = '$story', posted = '$status', image = '$update_filename', slug = '$slug' WHERE id = '$blog_id'";
 
-        if($query_run) {
-            if($_FILES['upload']['name'] != "") {
-                move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
-                if(file_exists("../uploadsBlogs/".$old_image)) {
-                    unlink("../uploadsBlogs/".$old_image);
+                $query_run = mysqli_query($con, $query);
+
+                if($query_run) {
+                    if($_FILES['upload']['name'] != "") {
+                        move_uploaded_file($_FILES['upload']['tmp_name'], $path. '/' .$update_filename);
+                        if(file_exists("../uploadsBlogs/".$old_image)) {
+                            unlink("../uploadsBlogs/".$old_image);
+                        }
+                    } 
+                    redirectSuccess("../admin/blogs_industry_page", "Product Edited Successfully");
+                } else {
+                    redirectFailed("../admin/blogs_industry_page?id=$product_id", "Something Went Wrong");
                 }
-            } 
-            redirectSuccess("../admin/blogs_industry_page.php", "Product Edited Successfully");
+            } else {
+                redirectFailed($_SERVER['HTTP_REFERER'], "File can only be less than 50 mb");
+            }
         } else {
-            redirectFailed("../admin/blogs_industry_page.php?id=$product_id", "Something Went Wrong");
+            redirectFailed($_SERVER['HTTP_REFERER'], "File type is not supported for upload");
         }
 
     // Deletes Blog Industry
@@ -689,8 +1056,8 @@ include ('../functions/myfunctions.php');
 
         if($delete_query_run) {
 
-            if(file_exists("../uploadsBlogs" . $fetch_image)) {
-                unlink ("../uploadsBlogs" . $fetch_image);
+            if(file_exists("../uploadsBlogs/" . $fetch_image)) {
+                unlink ("../uploadsBlogs/" . $fetch_image);
             }
 
             echo 200;
@@ -698,4 +1065,5 @@ include ('../functions/myfunctions.php');
         } else {
             echo 500;
         }
+
     }

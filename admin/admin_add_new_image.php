@@ -28,7 +28,7 @@
 
                         <div class="card-header">
                             <h3>Add Cover Photo</h3>
-                            <a href="admin_manage_home.php" class="btn btn-light float-end">Back</a>
+                            <a href="admin_manage_home" class="btn btn-light float-end">Back</a>
                         </div>
 
                         <div class="signup-card-body">

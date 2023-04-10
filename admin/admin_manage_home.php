@@ -26,7 +26,7 @@
                         <?php include('../functions/sessionmessage.php'); ?>
 
                             <div class="table-button-add">
-                                <a href="admin_add_new_image.php" class="table-container-add-new">Add Cover Photo</a>
+                                <a href="admin_add_new_image" class="table-container-add-new">Add Cover Photo</a>
                                 <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                             </div>
                             <div class="card-header">
@@ -66,7 +66,7 @@
                                                         <td><?= $image['created_at']; ?></td>
                                                         <td class="table-edit-delete">
                                                             <div class="table-button-add">
-                                                                <a href="edit_homepage.php?id=<?= $image['id']; ?>" class="btn btn-primary">Edit</a>
+                                                                <a href="edit_homepage?id=<?= $image['id']; ?>" class="btn btn-primary">Edit</a>
                                                             </div>
                                                             <button type="button" class="btn btn-danger deletephoto_btn" value="<?= $image['id']; ?>">Delete</button>
                                                         </td>

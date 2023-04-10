@@ -24,11 +24,13 @@
                                 <h3><?= $product['product_name']; ?></h3>
                                 <h5><?= $product['category_name']; ?></h5>
                                 <p><?= $product['description']; ?></p>
+                                <hr>
                             </div>
                             <div class="product-info-order">
                                 <div class="product-price">
                                     <div class="price-container">
                                         <p class="price"><span>Price: </span> &#8369 <?=  $product['selling_price']; ?></p>
+                                        <p class="small">Size: <?= $product['size']; ?></p>
                                         <p class="small">Tax included</p>
                                     </div>
 

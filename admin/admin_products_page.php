@@ -28,7 +28,7 @@
                         <?php include('../functions/sessionmessage.php'); ?>
 
                         <div class="table-button-add">
-                            <a href="admin_add_new_products.php" class="table-container-add-new">Add Products</a>
+                            <a href="admin_add_new_products" class="table-container-add-new">Add Products</a>
                             <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                         </div>
 
@@ -90,7 +90,7 @@
                                                     <td><?= $product['added_by']; ?></td>
                                                     <td class="table-edit-delete">
                                                         <div class="table-button-add">
-                                                            <a href="edit_products_page.php?id=<?= $product['product_id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="edit_products_page?id=<?= $product['product_id']; ?>" class="btn btn-primary">Edit</a>
                                                         </div>
                                                         <button type="button" class="btn btn-danger delete_product_btn" value="<?= $product['product_id']; ?>">Delete</button>
                                                     </td>

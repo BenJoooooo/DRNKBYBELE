@@ -36,13 +36,13 @@
             <div class="info-checkout">
                 <h4 class="brand-title">DRNK BY BELE</h4>
                 <div class="nav-checkout">
-                    <a href="cart.php" class="cart">Cart</a>
+                    <a href="cart" class="cart">Cart</a>
                     <i class='fa fa-angle-right'></i>
-                    <a href="checkout.php" class="cart">Information</a>
+                    <a href="checkout" class="cart">Information</a>
                     <i class='fa fa-angle-right'></i>
-                    <a href="shipping.php" class="cart">Shipping</a>
+                    <a href="shipping" class="cart">Shipping</a>
                     <i class='fa fa-angle-right'></i>
-                    <a href="payment.php" class="cart">Payment</a>
+                    <a href="payment" class="cart">Payment</a>
                 </div>
 
                 <div class="contact-header">
@@ -115,7 +115,7 @@
                 <!-- Accordion end -->
 
                 <div class="buttons">
-                    <a href="shipping.php" class="back-to-cart">Back to Shipping</a>
+                    <a href="shipping" class="back-to-cart">Back to Shipping</a>
                     <button type="submit" name="paynow" class="buy-now">Pay Now</button">
                 </div>
 
@@ -137,8 +137,8 @@
                     <div class="drink-title">
                         <div class="drinktitle-container">
                             <h4><?= $items['name']; ?> <?= $items['cat_name']; ?></h4>
-                            <h5>Series - <?= $items['cat_name']; ?></h5>
-                            <h6>Small - 12 oz</h6>
+                            <h5>(<?= $items['cat_name']; ?> Series)</h5>
+                            <h6>Size - <?= $items['size']; ?></h6>
                         </div>
                         <div class="drinktitle-price">
                             <p><span>&#8369 </span><?= $total_qty ?></p>

@@ -36,7 +36,7 @@
 
                             <div class="card-header">
                                 <h3>Edit User Account</h3>
-                                <a href="admin_users.php" class="btn px-4 btn-light float-end">Back</a>
+                                <a href="admin_users" class="btn px-4 btn-light float-end">Back</a>
                             </div>
 
                             <div class="signup-card-body">

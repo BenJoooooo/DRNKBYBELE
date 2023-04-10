@@ -19,7 +19,7 @@
 
             <div class="signup-header">
                 <h1 class="sign-up-create-account">Create an account</h1>
-                <p class="sign-up-already-have">Already have an account? <a href="login.php">Log in</a></p>
+                <p class="sign-up-already-have">Already have an account? <a href="login">Log in</a></p>
             </div>
 
             <div class="signup-form-container">

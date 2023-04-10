@@ -15,7 +15,7 @@
                     foreach ($espressyourself as $espressdata) {
              ?>
 
-            <div class="content-container area">
+            <div class="content-container">
                 <div class="date"><?= $espressdata['created_at'] ?></div>
                 <div class="title"><?= $espressdata['title'] ?></div>
                 <div class="img-container">
@@ -71,9 +71,11 @@
     <!-- Function for random background colors of EspressYourSelf -->
     <!-- -------------------------------------------------------- -->
     <script>
-        var colors = ['#f5bfd2', '#a1cdce', '#e5db9c', '#beb4c5', '#e6a57e', '#f7f6cf', '#b6d8f2', '#f4cfdf', '#5784ba', '#9ac8eb', '#ccd4bf', '#e7cba9', '#eebab2', '#f5f3e7', '#f5bfd2', '#a1cdce', '#e5db9c', '#beb4c5', '#e5a57e', '#218b82', '#9ad9db', '#e5dbd9', '#98d4bb', '#eb96aa', '#c6c9d0', '#c54b6c', '#e5b3bb', '#c47482', '#d5e4c3', '#f9968b', '#f27348', '#26474e', '#76cdcd', '#2cced2', '#b8e0f6', '#a4cce3', '#37667e', '#dec4d6', '#7b92aa'];
+        var colors = ['#F8C8DC','#A7C7E7','#FAA0A0','#C1E1C1','#FFFAA0','#C3B1E1','#F08080','#FFC0CB','#FFA07A','#FFFFE0','#FFE4C4'];
 
-        var fonts = ['Fredoka One', 'League Spartan', 'Arial', 'Times New Roman', 'Lucida Sans', 'Cambria', 'Georgia', 'Verdana', 'Segoe UI', 'Courier New'];
+        // var fonts = ['Fredoka One', 'League Spartan', 'Arial', 'Times New Roman', 'Lucida Sans', 'Cambria', 'Georgia', 'Verdana', 'Segoe UI', 'Courier New'];
+
+        var fonts = ['League Spartan'];
         var containers = document.querySelectorAll(".content-container");
 
         for (i = 0; i < containers.length; i++) {

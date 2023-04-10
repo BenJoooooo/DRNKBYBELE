@@ -29,7 +29,7 @@
 
                         <div class="card-header">
                             <h3>Add Sizes & Price</h3>
-                            <a href="admin_sizes_page.php" class="btn px-4 btn-light float-end">Back</a>
+                            <a href="admin_sizes_page" class="btn px-4 btn-light float-end">Back</a>
                         </div>
 
                         <div class="signup-card-body">
