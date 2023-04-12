@@ -26,6 +26,9 @@
     $industryBlogsCount = getAll("blogsindustry");
     $getIndustryCount = mysqli_num_rows($industryBlogsCount);
 
+    $ordersCount = getAll("orders");
+    $getOrdersCount = mysqli_num_rows($ordersCount);
+
 ?>
     <div class="wrapper">
         <?php include ('includes/sidebar.php'); ?>
@@ -136,7 +139,7 @@
                         <div class="admin-card">
                             <div class="card-wrapper">
                                 <div class="details">
-                                    <h4>Dummy</h4>
+                                    <h4><?php print_r($getOrdersCount); ?></h4>
                                     <h5>Orders</h5>
                                 </div>
                                 <div class="icon">

@@ -93,11 +93,6 @@
 
                     <div class="search-bar-container">
 
-                        <!-- <form action="" class="search-bar">
-                            <input class="search-bar-input" type="text" placeholder="Looking for?" spellcheck="false">
-                            <button type="submit"><i class="fas fa-search"></i></button>
-                        </form> -->
-
                         <?php if(!isset($_SESSION['auth'])): ?>
 
                         <div class="svg-container"> 
@@ -117,8 +112,7 @@
                                     <?php echo $_SESSION['auth_user']['fullname']; ?>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="">my purchase</a></li>
-                                    <li><a class="dropdown-item" href="">order history</a></li>
+                                    <li><a class="dropdown-item" href="../mypurchase">my purchase</a></li>
                                     <li><a class="dropdown-item" href="../logout">Logout</a></li>
                                 </ul>
                             </div>

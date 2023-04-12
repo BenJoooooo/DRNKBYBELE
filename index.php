@@ -6,11 +6,13 @@
 ?>
 
         <main>
-
         <!-- ----------------------------------------- -->
         <!-- Image Carousel for background cover photo -->
         <!-- ----------------------------------------- -->
             <section>
+
+                <?php include('functions/sessionmessage.php'); ?>
+                
                 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-inner">
 

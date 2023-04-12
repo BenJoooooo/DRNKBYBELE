@@ -65,6 +65,58 @@ body {
 }
 
 /* ---------------------------------- */
+/*              View Order            */
+/* ---------------------------------- */
+
+.greeting-order-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.greeting-order-detail p {
+    margin: 0px;
+    color: var(--clr-dark-grey)
+}
+
+.greeting-order-detail p:nth-child(even) {
+    font-size: 1.5rem;
+}
+
+.greeting-order-detail-info p {
+    margin: 0px;
+    color: var(--clr-dark-grey);
+    font-size: 1rem;
+    font-family: var(--ff-league);
+    text-align: justify;
+}
+
+.contact-shipping-info .header {
+    font-size: 1rem;
+    font-family: var(--ff-league);
+}
+
+.order-info-container {
+    display: flex;
+}
+
+.order-info-one, .order-info-two {
+    width: 50%;
+    font-size: 1rem;
+    font-family: var(--ff-league);
+    color: var(--clr-dark-grey);
+}
+
+.order-info-one p, .order-info-two p {
+    margin: 0;
+}
+
+.card-body .td-justify {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* ---------------------------------- */
 /*              Sidebar Menu          */
 /* ---------------------------------- */
 
@@ -224,9 +276,6 @@ body.open .admin-menu-title {
     font-size: clamp(1rem, 2vw, 1.5rem); 
     font-weight: 300;
     letter-spacing: 1px;
-    /* opacity: 1;
-    transition: 0.3s;
-    animation: appear 0.3s both; */
 }
 
 .brand-child a:hover {
@@ -236,137 +285,6 @@ body.open .admin-menu-title {
 .client {
     display: none;
 }
-
-/* @keyframes appear {
-    0% {
-        opacity: 0;
-        translate: 0 10px;
-    }
-    100% {
-        opacity: 1;
-        translate: 0;
-    }
-} */
-
-/* body.open .admin-wrapper .brand-child a {
-    opacity: 0;
-    transition: 0.3s;
-
-} */
-
-
-/* .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-body.open .admin-wrapper {
-    width: 20vw;
-}
-
-.admin-wrapper {
-    overflow: hidden;
-    width: 72px;
-    transition: width 0.5s;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 300px;
-}
-
-.admin-menu {
-    min-width: 15vw;
-    min-height: 100vh;
-    background: var(--clr-main-color);
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 25vw;
-}
-
-.admin-brand {
-    display: flex;
-    align-items: center;
-    padding: 0 1.25rem 0 0;
-    background: rgba(0, 0, 0, 0.1);
-    height: 72px;
-}
-
-.admin-menu-title {
-    font-family: var(--ff-league);
-    color: var(--clr-secondary-color);
-    font-size: 1.5rem;
-    margin: 0;
-    font-weight: 400;
-}
-
-.admin-wrapper .image-svg {
-    display: grid;
-    place-items: center;
-    width: 72px;
-    height: 72px;
-}
-
-.admin-wrapper .image-svg svg {
-    fill: white;
-    width: 25px;
-    height: 25px;
-}
-
-.brand-child {
-    display: flex;
-    align-items: center;
-    flex-shrink: 1 0 auto;
-}
-
-.brand-child.has-border {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.brand-child i {
-    font-size: 1.2rem;
-    color: var(--clr-secondary-color);
-}
-
-.brand-child:hover {
-    color: white;
-}
-
-.brand-child a {
-    text-decoration: none;
-    color: var(--clr-secondary-color);
-    font-family: var(--ff-league);
-    font-size: clamp(1rem, 2vw, 1.5rem); 
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-.brand-child a:hover {
-    color: white;
-}
-
-.admin-links > .active {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.admin-links > .brand-child:hover {
-    background: rgba(0, 0, 0, 0.1);
-
-} */
-
-/* .admin-side-menu-links > .child {
-    margin-block: .5em;
-    margin-left: .5em;
-    padding: .5em 1em;
-    border-top-left-radius: 2em ;
-    border-bottom-left-radius: 2em;
-    display: flex;
-    align-items: center;
-    gap: 1em;
-} */
 
 /* ------------------------------------------ */
 /*            Admin Main content              */
@@ -2353,19 +2271,6 @@ tbody td img {
     height: auto;
 }
 /* Size of image displayed when editing cover photo as a preview */
-
-
-/* .admin-signup-card-header h3 {
-    font-family: var(--ff-league);
-    font-size: 1rem;
-    color: #6B5237;
-    margin-block: 1em;
-}
-
-.admin-signup-card-header a {
-    margin: 0;
-    padding: 0;
-} */
 
 .alert {
     margin: 2em;

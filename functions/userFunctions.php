@@ -143,5 +143,57 @@
         return $query_run = mysqli_query($con, $query);
 
     }
+
+    function getOrders($table) {
+        global $con;
+        $user_id = $_SESSION['auth_user']['user_id'];
+        $query = "SELECT * FROM $table WHERE user_id = '$user_id'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function checkTrackingNoValid($trackingNo) {
+        global $con;
+
+        $user_id = $_SESSION['auth_user']['user_id'];
+        $query = "SELECT * FROM orders WHERE tracking_no = '$trackingNo' AND user_id = '$user_id'";
+        return mysqli_query($con, $query);
+    }
+
+    function checkTrackingAndOrderDetails($trackingNo) {
+        global $con;
+
+        $user_id = $_SESSION['auth_user']['user_id'];
+        $query = "SELECT o.tracking_no, o.user_id AS oid, o.payment_mode, o.total_price, o.email, o.name, o.address, o.apartment, o.postal, o.city, o.region, o.phone, o.courier, o.comments, u.id AS uid
+        FROM orders o, users u
+        WHERE o.user_id = u.id
+        AND o.tracking_no = '$trackingNo'
+        AND user_id = '$user_id'";
+
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function checkTrackingAndOrderDetailsAdmin($trackingNo) {
+        global $con;
+
+        $query = "SELECT o.tracking_no, o.user_id AS oid, o.payment_mode, o.total_price, o.email, o.name, o.address, o.apartment, o.postal, o.city, o.region, o.phone, o.courier, o.comments, u.id AS uid
+        FROM orders o, users u
+        WHERE o.user_id = u.id
+        AND o.tracking_no = '$trackingNo'";
+
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getOrderDetails($trackingNo) {
+        global $con;
+
+        $query = "SELECT od.id, od.order_id, od.prod_id, od.qty, od.price, p.id AS pid, p.name AS prod_name, p.image, p.size, p.category_id, c.id AS cid, c.name AS cat_name, o.id AS oid, o.courier, o.tracking_no
+        FROM order_items od, products p, categories c, orders o
+        WHERE od.prod_id = p.id
+        AND p.category_id = c.id
+        AND od.order_id = o.id
+        AND o.tracking_no = '$trackingNo'";
+
+        return $query_run = mysqli_query($con, $query);
+    }
 ?>
 

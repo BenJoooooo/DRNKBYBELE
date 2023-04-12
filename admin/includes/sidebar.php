@@ -63,11 +63,11 @@
                 <?php } ?>
 
                 <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager') { ?>
-                    <div class="brand-child has-border <?= $page ==  "sales.php" ? 'active':''; ?>">
+                    <div class="brand-child has-border <?= $page ==  "orders_page.php" ? 'active':''; ?>">
                         <div class="image-svg">
                             <i class="fas fa-poll"></i>
                         </div>
-                        <a href="sales">Orders</a>
+                        <a href="orders_page">Orders</a>
                     </div>
                 <?php } ?>
 

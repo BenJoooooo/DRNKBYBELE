@@ -7,21 +7,7 @@
     }   
 
     include ("includes/header.php");
-
-    // $courier = $_POST['courier'];
-    // $name = $_POST['fullname'];
-    // $phone = $_POST['phone'];
-    // $email = $_POST['email'];
-    // $status = isset($_POST['status']) ? '1':'0';
-    // $addressinfo = $_POST["addressinfo"];
-    // $apartment = $_POST['apartment'];
-    // $postal = $_POST['postal'];
-    // $city = $_POST['city'];
-    // $region = $_POST['region'];
-    // $country = $_POST['country'];
-    // $price = $_POST['price'];
-
-    // $address = $_POST["addressinfo"]. ', ' .$_POST['apartment']. ', ' .$_POST['postal']. ' ' .$_POST['city'] .', '.$_POST['region']. ', ' .$_POST['country'];
+    
 ?>
 
     <div class="checkout-container">
@@ -32,7 +18,7 @@
         ?>
 
         <main class="menu-checkout area-one">
-            <form action="sample.php" method="POST">
+            <form action="functions/placeorder.php" method="POST">
             <div class="info-checkout">
                 <h4 class="brand-title">DRNK BY BELE</h4>
                 <div class="nav-checkout">
@@ -254,31 +240,12 @@
                 }
             ?>
 
-
-                <!-- <input type="hidden" name="fullname" value="<?=$name;?>">
-                <input type="hidden" name="email" value="<?=$email;?>">
-                <input type="hidden" name="addressinfo" value="<?=$addressinfo;?>">
-                <input type="hidden" name="apartment" value="<?=$apartment;?>">
-                <input type="hidden" name="postal" value="<?=$postal;?>">
-                <input type="hidden" name="city" value="<?=$city;?>">
-                <input type="hidden" name="region" value="<?=$region;?>">
-                <input type="hidden" name="country" value="<?=$country;?>">
-                <input type="hidden" name="phone" value="<?=$phone;?>">
-                <input type="hidden" name="status" value="<?=$status?>">
-                <input type="hidden" name="price" value="<?=$total?>"> -->
         </form> 
         </aside>
 
         <?php 
 
             $_SESSION['price'] = $total;
-            echo $_SESSION['status'];
-            echo $_SESSION['courier'];
-            echo $_SESSION['price'];
-            echo $_SESSION['address'];
-            echo $_SESSION['email'];
-            echo $_SESSION['specialmsg'];
-            echo $_SESSION['price'];
 
         }
         ?>

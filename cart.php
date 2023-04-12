@@ -22,13 +22,14 @@
 
             <tbody class="table-body-cart" id="myCart">
 
-            <?php $items = getCartItems();
-            $total = 0;
-            $totalPrice = 0;
+            <?php 
+                $items = getCartItems();
+                $total = 0;
+                $totalPrice = 0;
 
-            foreach ($items as $item) { 
+                foreach ($items as $item) { 
 
-            $totalItem = $item['selling_price'] * $item['prod_qty'];
+                $totalItem = $item['selling_price'] * $item['prod_qty'];
             ?>
 
 
@@ -58,7 +59,7 @@
                             <!-- <div class="input-group-prepend">
                                 <button class="input-group-text decrement-btn updateQty">-</button>
                             </div> -->
-                                <input type="text" class="form-control input-qty" disabled value="<?= $item['prod_qty'] ?>">
+                            <input type="text" class="form-control input-qty" disabled value="<?= $item['prod_qty'] ?>">
                             <!-- <div class="input-group-append">
                                 <button class="input-group-text increment-btn updateQty">+</button>
                             </div> -->
@@ -67,7 +68,7 @@
                     <td class="data-cart-items-total"><p>&#8369 <?= $totalItem ?> </p> </td>
                 </tr>
             <?php 
-            $totalPrice += $item['selling_price'] * $item['prod_qty'];
+                $totalPrice += $item['selling_price'] * $item['prod_qty'];
                 }
             ?>
             </tbody>

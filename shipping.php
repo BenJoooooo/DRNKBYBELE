@@ -46,9 +46,10 @@
 
     <div class="checkout-container">
 
-        <?php $cart_items = getCartDetails();
-        foreach ($cart_items as $items) {
-            $total = 0;
+        <?php 
+            $cart_items = getCartDetails();
+            foreach ($cart_items as $items) {
+                $total = 0;
         ?>
 
         <main class="menu-checkout area-one">
@@ -64,9 +65,6 @@
                     <i class='fa fa-angle-right'></i>
                     <a href="payment" class="cart">Payment</a>
                 </div>
-
-                <?= $_SESSION['status'] ?>
-                <?= $_SESSION['courier'] ?>
 
                 <div class="contact-header">
                     <div class="contact-shipping-info">

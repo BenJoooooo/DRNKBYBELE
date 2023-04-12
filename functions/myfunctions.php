@@ -75,4 +75,26 @@
         return $query_run = mysqli_query($con, $query);
     }
 
+    function getCartItems() {
+        global $con;
+        $user_id = $_SESSION['auth_user']['user_id'];
+
+        $query = "SELECT c.id AS cid, c.prod_id, c.prod_qty, p.id AS pid, p.category_id, p.name, 
+        p.image, p.slug, p.selling_price, p.size, t.name as cat_name, t.id 
+        FROM carts c, products p, categories t 
+        WHERE c.prod_id = p.id 
+        AND c.user_id = '$user_id' 
+        AND p.category_id = t.id  
+        ORDER BY c.id DESC";
+
+        return $query_run = mysqli_query($con, $query);
+
+    }
+
+    function getOrders($table) {
+        global $con;
+        $query = "SELECT * FROM $table";
+        return $query_run = mysqli_query($con, $query);
+    }
+
 ?>
