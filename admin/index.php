@@ -29,6 +29,10 @@
     $ordersCount = getAll("orders");
     $getOrdersCount = mysqli_num_rows($ordersCount);
 
+    // $orderSameDay = getSameDayOrders("orders");
+    // $getOrderSameDay = mysqli_num_rows($orderSameDay);
+
+
 ?>
     <div class="wrapper">
         <?php include ('includes/sidebar.php'); ?>
@@ -135,7 +139,7 @@
                         </div>
                     </a>
 
-                    <a href="" class="admin-card-link">
+                    <a href="orders_page" class="admin-card-link">
                         <div class="admin-card">
                             <div class="card-wrapper">
                                 <div class="details">
@@ -151,6 +155,23 @@
                             </div>
                         </div>
                     </a>
+
+                    <!-- <a href="orders_page" class="admin-card-link">
+                        <div class="admin-card">
+                            <div class="card-wrapper">
+                                <div class="details">
+                                    <h4><?php print_r($getOrderSameDay); ?></h4>
+                                    <h5>Orders</h5>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-shopping-basket"></i>
+                                </div>
+                            </div>
+                            <div class="button">
+                                <button>View All</button>
+                            </div>
+                        </div>
+                    </a> -->
 
                     <a href="client_blog_page" class="admin-card-link">
                         <div class="admin-card">

@@ -50,6 +50,7 @@
 
                         $update_query = "UPDATE carts SET prod_qty = '$prod_qty' WHERE prod_id = '$prod_id' AND user_id = '$user_id'";
                         $update_query_run = mysqli_query($con, $update_query); 
+                        
                         if($update_query_run) {
                             echo 201;
                         } else {

@@ -10,6 +10,7 @@
         $product = mysqli_fetch_array($product_data);
 
         if($product) { 
+            
             ?>
 
                  <main class="menu">
@@ -35,13 +36,19 @@
                                     </div>
 
                                     <div class="input-group">
+
+                                        <input type="hidden" class="prodId" value="<?= $product['id']; ?>">
+                                    
                                         <div class="input-group-prepend">
-                                            <button class="input-group-text decrement-btn">-</button>
+                                            <button class="input-group-text decrement-btn updateqty">-</button>
                                         </div>
+
                                         <input type="text" class="form-control input-qty" disabled value="1">
+
                                         <div class="input-group-append">
-                                            <button class="input-group-text increment-btn">+</button>
+                                            <button class="input-group-text increment-btn updateqty">+</button>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="buttons">

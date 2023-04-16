@@ -57,6 +57,7 @@
     <script src="js/jquery-3.6.1.min.js"></script>
     <script src="js/addtocart.js"></script>
     <script src="js/espressyourself.js"></script>
+    <script src="js/orders.js"></script>
 
 
     <!-- Search function for blog -->

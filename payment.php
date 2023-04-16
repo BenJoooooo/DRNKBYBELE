@@ -72,7 +72,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <input type="radio" name="payment" class="me-2" id="" required value="bdo">
+                            <input type="radio" name="payment" class="me-2" id="" required value="maya">
                             <label for="">Maya</label>
                         </button>
                         </h2>

@@ -257,7 +257,7 @@ body.open .admin-menu-title {
 
 .admin-menu {
     min-width: 300px;
-    max-height: 100vh;
+    max-height: 90vh;
     background: var(--clr-main-color);
     display: flex;
     flex-direction: column;
@@ -285,6 +285,7 @@ body.open .admin-menu-title {
 .client {
     display: none;
 }
+
 
 /* ------------------------------------------ */
 /*            Admin Main content              */
@@ -1552,6 +1553,7 @@ tbody td img {
 
  .menu-checkout .accordion-body img {
     width: 8rem;
+    max-width: 100%;
     display: block;
     margin: 0 auto;
  }

@@ -56,13 +56,9 @@
                                 <button><i class="fa fa-angle-up increment-btn updateQty"></i></button>
                                 <button><i class="fa fa-angle-down decrement-btn updateQty"></i></button>
                             </div>
-                            <!-- <div class="input-group-prepend">
-                                <button class="input-group-text decrement-btn updateQty">-</button>
-                            </div> -->
+
                             <input type="text" class="form-control input-qty" disabled value="<?= $item['prod_qty'] ?>">
-                            <!-- <div class="input-group-append">
-                                <button class="input-group-text increment-btn updateQty">+</button>
-                            </div> -->
+  
                         </div>
                     </td>
                     <td class="data-cart-items-total"><p>&#8369 <?= $totalItem ?> </p> </td>
@@ -83,7 +79,7 @@
                 <div class="total">
                     <h3>Subtotal <span>&#8369</span><span><?= $totalPrice ?></span></h3>
                     <p>Tax included and shipping calculated at checkout </p>
-                    <button class="" name="checkout">Checkout</button>
+                    <button name="checkout">Checkout</button>
                 </div>
             </div>
         </form>

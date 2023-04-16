@@ -7,10 +7,8 @@
     <main class="menu-cart">
 
         <div class="main-container">
-            <h1 class="title">Your Purchase</h1>
+            <h1 class="title">My Order History</h1>
         </div>
-
-        <?php include('functions/sessionmessage.php'); ?>
 
         <table class="table-cart">
             <thead class="table-head-cart">
@@ -28,7 +26,7 @@
             <tbody class="table-body-cart">
 
             <?php 
-               $data = getOrders("orders");
+               $data = getOrderHistory("orders");
 
                if(mysqli_num_rows($data) > 0) {
                    foreach($data as $item) {
@@ -66,13 +64,13 @@
                    }
                 } else {
             ?>
-                        <div class="error-message-container"></div>
-                            <div class="error-message-container">
-                                <div class="product-not-available">
-                                    <h3 class="text-message">No orders found!</h3>
-                                </div>
+                    <div class="error-message-container"></div>
+                        <div class="error-message-container">
+                            <div class="product-not-available">
+                                <h3 class="text-message">No orders found!</h3>
                             </div>
-                        <div class="error-message-container"></div>
+                        </div>
+                    <div class="error-message-container"></div>
             <?php 
                 }
             ?>

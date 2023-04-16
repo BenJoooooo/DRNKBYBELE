@@ -207,7 +207,8 @@
                                 <?php echo $_SESSION['auth_user']['fullname']; ?>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="mypurchase">my purchase</a></li>
+                                <li><a class="dropdown-item" href="mypurchase">My purchase</a></li>
+                                <li><a class="dropdown-item" href="order_history">Order History</a></li>
                                 <li><a class="dropdown-item" href="logout">Logout</a></li>
                             </ul>
                         </div>

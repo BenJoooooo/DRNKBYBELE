@@ -48,7 +48,7 @@
                                     <tbody>
 
                                         <?php
-                                            $data = getOrdersByStatus("orders");
+                                            $data = getOrdersByComplete("orders");
                                             if(mysqli_num_rows($data) > 0) {
 
                                                 foreach ($data as $item) { ?>
@@ -74,7 +74,7 @@
                                                             ?>
                                                         </td>
 
-                                                        <td><?= $item['created_at']; ?></td>
+                                                        <td><?= $item['date_created']; ?></td>
                                                         <td class="td-justify">
                                                             <a href="../view_order_admin?id=<?= $item['tracking_no']; ?>" value="<?= $item['id']; ?>" class="btn btn-success">View</a>
                                                             <button class="btn btn-danger declineOrder" value="<?= $item['id']; ?>">Decline</button>

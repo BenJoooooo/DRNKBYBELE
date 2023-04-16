@@ -5,7 +5,8 @@
     // fetches all data from the table
     function getAll($table) {
         global $con;
-        $query = "SELECT * FROM $table";
+        $query = "SELECT *, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at 
+        FROM $table";
         return $query_run = mysqli_query($con, $query);
     }
 
@@ -88,12 +89,51 @@
         ORDER BY c.id DESC";
 
         return $query_run = mysqli_query($con, $query);
-
     }
 
     function getOrders($table) {
         global $con;
-        $query = "SELECT * FROM $table";
+        $query = "SELECT id, user_id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table ";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getOrdersByStatus($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table
+        ORDER BY status ASC, id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getOrdersByDeclined($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table
+        WHERE status = '1'
+        ORDER BY status ASC, id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getOrdersByAccept($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table
+        WHERE status = '2'
+        ORDER BY status ASC, id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getOrdersByComplete($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%W %M %e %Y') AS date_created
+        FROM $table
+        WHERE status = '3'
+        ORDER BY status ASC, id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+
+    function getSameDayOrders($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(price, '#,###,###.##') AS price, status, DATE_FORMAT(date_created, '%W %M %e %Y')
+        FROM $table";
         return $query_run = mysqli_query($con, $query);
     }
 

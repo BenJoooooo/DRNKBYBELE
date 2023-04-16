@@ -124,7 +124,6 @@
         ORDER BY c.id DESC";
 
         return $query_run = mysqli_query($con, $query);
-
     }
 
     function getCartDetails() {
@@ -139,15 +138,26 @@
         AND p.category_id = t.id
         AND u.id = '$user_id'  
         ORDER BY c.id DESC";
-
         return $query_run = mysqli_query($con, $query);
-
     }
 
     function getOrders($table) {
         global $con;
         $user_id = $_SESSION['auth_user']['user_id'];
-        $query = "SELECT * FROM $table WHERE user_id = '$user_id'";
+        // $query = "SELECT * FROM $table WHERE user_id = '$user_id' AND status != '3'
+        $query = "SELECT id, user_id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table 
+        WHERE user_id = '$user_id' AND status != '3'
+        ORDER BY id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getOrderHistory($table) {
+        global $con;
+        $user_id = $_SESSION['auth_user']['user_id'];
+        // $query = "SELECT * FROM $table WHERE user_id = '$user_id' AND status != '0' AND status != '1' AND status != '2'
+        $query = "SELECT id, user_id, tracking_no, total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table 
+        WHERE user_id = '$user_id' AND status = '3'
+        ORDER BY id DESC";
         return $query_run = mysqli_query($con, $query);
     }
 
@@ -185,14 +195,12 @@
 
     function getOrderDetails($trackingNo) {
         global $con;
-
-        $query = "SELECT od.id, od.order_id, od.prod_id, od.qty, od.price, p.id AS pid, p.name AS prod_name, p.image, p.size, p.category_id, c.id AS cid, c.name AS cat_name, o.id AS oid, o.courier, o.tracking_no
+        $query = "SELECT od.id, od.order_id, od.prod_id, od.qty, od.price, p.id AS pid, p.name AS prod_name, p.image, p.size, p.category_id, c.id AS cid, c.name AS cat_name, o.id AS oid, o.courier, o.tracking_no, o.status
         FROM order_items od, products p, categories c, orders o
         WHERE od.prod_id = p.id
         AND p.category_id = c.id
         AND od.order_id = o.id
         AND o.tracking_no = '$trackingNo'";
-
         return $query_run = mysqli_query($con, $query);
     }
 ?>

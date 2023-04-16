@@ -48,7 +48,7 @@
                                     <tbody>
 
                                         <?php
-                                            $data = getOrdersByStatus("orders");
+                                            $data = getOrdersByAccept("orders");
                                             if(mysqli_num_rows($data) > 0) {
 
                                                 foreach ($data as $item) { ?>

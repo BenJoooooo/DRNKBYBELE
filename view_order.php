@@ -184,6 +184,23 @@
                         }
                     ?>
                 </div>
+
+                <div class="divider">
+                    <h4>Status</h4>
+                    <h5><?php 
+                        if($item['status'] == 0) {
+                            echo "Pending";
+                        } elseif($item['status'] == 1) {
+                            echo "Declined";
+                        } elseif($item['status'] == 2) {
+                            echo "Processing";
+                        } elseif($item['status'] == 3) {
+                            echo "Completed";
+                        } else {
+                            echo "Error";
+                        }
+                    ?></h5>
+                </div>
             </div>
         </aside>
     </div>

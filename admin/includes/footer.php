@@ -49,9 +49,10 @@
 
         
     <script src="../js/mobilenav.js"></script>
-    <script src="../js/jquery-3.6.1.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../js/jquery-3.6.1.min.js"></script>
     <script src="../js/custom.js"></script>
+    <script src="../js/orders.js"></script>
 
     <script type="text/javascript">
         $("#live_search").on('input', function () {

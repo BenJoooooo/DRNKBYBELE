@@ -66,7 +66,7 @@
                                                     <td><?= $blog['slug']; ?></td>
                                                     <td><?= $blog['posted'] == 0 ? "Visible":"Hidden";?></td>
                                                     <td><img src="../uploadsBlogs/<?= $blog['image']; ?>" alt=""></td>
-                                                    <td><?= $blog['exact_created_at']; ?></td>
+                                                    <td><?= $blog['created_at']; ?></td>
                                                     <td><?= $blog['added_by']; ?></td>
                                                     <td class="table-edit-delete">
                                                         <div class="table-button-add">

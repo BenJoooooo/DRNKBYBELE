@@ -68,7 +68,7 @@
                     header("Location: https://paymongo.page/l/drnk-by-bele-cafe");
                     exit();
                 } else {
-                    redirectSuccess("../index.php", "Order placed successfully");
+                    redirectSuccess("../mypurchase.php", "Order placed successfully");
                 }
             }
         }

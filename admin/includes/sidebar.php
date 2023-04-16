@@ -62,14 +62,33 @@
                     </div>
                 <?php } ?>
 
+                <!-- Orders divider and status dropdown -->
                 <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager') { ?>
-                    <div class="brand-child has-border <?= $page ==  "orders_page.php" ? 'active':''; ?>">
+
+                    <div class="brand-child has-border hide <?= $page ==  "orders_page.php" ? 'active':''; ?>">
                         <div class="image-svg">
                             <i class="fas fa-poll"></i>
                         </div>
                         <a href="orders_page">Orders</a>
                     </div>
+                    
+                    <div class="order-status-dropdown show">
+                        <div class="brand-child <?= $page ==  "orders_page.php" ? 'active':''; ?>">
+                            <div class="image-svg"></div>
+                            <a href="orders_page_decline">Declined</a>
+                        </div>
+                        <div class="brand-child <?= $page ==  "orders_page.php" ? 'active':''; ?>">
+                            <div class="image-svg"></div>
+                            <a href="orders_page_accept">Accepted</a>
+                        </div>
+                        <div class="brand-child has-border <?= $page ==  "orders_page.php" ? 'active':''; ?>">
+                            <div class="image-svg"></div>
+                            <a href="orders_page_complete">Completed </a>
+                        </div>
+                    </div>
+
                 <?php } ?>
+                <!-- Orders divider and status dropdown -->
 
                 <?php if($_SESSION['role'] == 'admin') { ?>
                     <div class="brand-child <?= $page ==  "admin_admin.php" ? 'active':''; ?>">

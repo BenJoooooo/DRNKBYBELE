@@ -75,33 +75,53 @@ $(document).ready(function () {
                 "scope": "update"
             },
             success: function (response) {
-
+                if(response == 201) {
+                    $('main').load(location.href + " main");
+                } else {
+                    swal("Sorry!", "Something went wrong", "error");
+                }
             }
         });
     });
 
     // Deletes cart item fetches the cart id
-    $(document).on('click','.deleteItem', function () {
+    $(document).on('click','.deleteItem', function (e) {
+
+        e.preventDefault();
         var cart_id = $(this).val();
 
-        $.ajax({
-            method: "POST",
-            url: "functions/handlecart.php",
-            data: {
-                "cart_id": cart_id,
-                "scope": "delete"
-            },
-            success: function (response) {
-                if(response == 401) {
-                    swal("Sorry!", "You need to login first", "info");
-                }else if (response == 409) {
-                    swal("Sheesh Bruh!", "Product is in the cart already", "warning");
-                }else if (response == 200) {
-                    swal("Great!", "Product deleted successfully", "success");
-                    $('#myCart').load(location.href + " #myCart");
-                }else if (response == 500) {
-                    swal("Sheesh Bruh!", "Something went wrong", "error");
-                }
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, product will be removed from cart",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+
+
+            if(willDelete) {
+
+                $.ajax({
+                    method: "POST",
+                    url: "functions/handlecart.php",
+                    data: {
+                        "cart_id": cart_id,
+                        "scope": "delete"
+                    },
+                    success: function (response) {
+                        if(response == 401) {
+                            swal("Sorry!", "You need to login first", "info");
+                        }else if (response == 409) {
+                            swal("Sheesh Bruh!", "Product is in the cart already", "warning");
+                        }else if (response == 200) {
+                            swal("Great!", "Product deleted successfully", "success");
+                            $('main').load(location.href + " main");
+                        }else if (response == 500) {
+                            swal("Sheesh Bruh!", "Something went wrong", "error");
+                        }
+                    }
+                });
             }
         });
     });
@@ -128,7 +148,7 @@ $(document).ready(function () {
                 } else if(response == 500) {
                     swal("Sorry!", "Something went wrong", "error");
                 } else if(response == 409) {
-                    swal("Uh Oh!", "Product exists", "error")
+                    swal("Uh Oh!", "Product is in the cart already", "error")
                 }
             }
         });
