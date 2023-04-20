@@ -11,8 +11,8 @@ include ('../functions/myfunctions.php');
         $signup_fullname = $_POST['signup_fullname'];
         $signup_email = $_POST['signup_email'];
         $signup_address = $_POST['signup_address'];
-        $signup_password = md5($_POST['signup_password']);
-        $cpassword = md5($_POST['repeat_signup_password']);
+        $signup_password = $_POST['signup_password'];
+        $cpassword = $_POST['repeat_signup_password'];
         $role = $_POST['signup_radio'];
 
         // Checks if email already registered
@@ -25,28 +25,28 @@ include ('../functions/myfunctions.php');
 
         } else {
 
-            // checks if password is the same with confirm password
-            if($signup_password == $cpassword) {
+            if(strlen($signup_password) >= 8) {
+                // checks if password is the same with confirm password
+                if($signup_password == $cpassword) {
 
-                // Insert admin data
-                $insert_query = "INSERT INTO users (fullname, email, password, role ,address)
-                VALUES ('$signup_fullname', '$signup_email', '$signup_password', '$role ', '$signup_address')";
-                $insert_query_run = mysqli_query($con, $insert_query);
+                    // Insert admin data
+                    $insert_query = "INSERT INTO users (fullname, email, password, role ,address)
+                    VALUES ('$signup_fullname', '$signup_email', md5('$signup_password'), '$role', '$signup_address')";
+                    $insert_query_run = mysqli_query($con, $insert_query);
 
-                if($insert_query_run) {
-
-                    redirectSuccess("../admin/admin_admin", "Added Sucessfully");
+                    if($insert_query_run) {
+                        redirectSuccess("../admin/admin_admin", "Added Sucessfully");
+                    } else {
+                        redirectFailed($_SERVER['HTTP_REFERER'], "Something went wrong");
+                    }
 
                 } else {
-
-                    redirectFailed($_SERVER['HTTP_REFERER'], "Something went wrong");
-
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Passwords do not match");
                 }
             } else {
-
-                redirect($_SERVER['HTTP_REFERER'], "Passwords do not match");
-
+                redirectFailed($_SERVER['HTTP_REFERER'], "Password should contain atleast 8 characters");
             }
+
         }
 
     // Adds users
@@ -55,41 +55,36 @@ include ('../functions/myfunctions.php');
         $signup_fullname = $_POST['signup_fullname'];
         $signup_email = $_POST['signup_email'];
         $signup_address = $_POST['signup_address'];
-        $signup_password = md5($_POST['signup_password']);
-        $cpassword = md5($_POST['repeat_signup_password']);
+        $signup_password = $_POST['signup_password'];
+        $cpassword = $_POST['repeat_signup_password'];
 
         // Checks if email already registered
         $checks_email_query = "SELECT email FROM users WHERE email = '$signup_email' ";
         $check_email_query_run = mysqli_query($con, $checks_email_query);
 
         if(mysqli_num_rows($check_email_query_run) > 0) {
-
             redirectFailed($_SERVER['HTTP_REFERER'], "Email already exists");
-
         } else {
 
-            // checks if password is the same with confirm password
-            if($signup_password == $cpassword) {
+            if(strlen($signup_password) >= 8) {
+                // checks if password is the same with confirm password
+                if($signup_password == $cpassword) {
 
-                // Insert admin data
-                $insert_query = "INSERT INTO users (fullname, email, password ,address)
-                VALUES ('$signup_fullname', '$signup_email', '$signup_password', '$signup_address')";
-                $insert_query_run = mysqli_query($con, $insert_query);
+                    // Insert admin data
+                    $insert_query = "INSERT INTO users (fullname, email, password ,address)
+                    VALUES ('$signup_fullname', '$signup_email', md5('$signup_password'), '$signup_address')";
+                    $insert_query_run = mysqli_query($con, $insert_query);
 
-                if($insert_query_run) {
-
-                    redirectSuccess("../admin/admin_users", "Added successfully");
-
-
+                    if($insert_query_run) {
+                        redirectSuccess("../admin/admin_users", "Added successfully");
+                    } else {
+                        redirectFailed($_SERVER['HTTP_REFERER'], "Something went wrong");
+                    }
                 } else {
-
-                    redirectFailed($_SERVER['HTTP_REFERER'], "Something went wrong");
-
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Passwords do not match");
                 }
             } else {
-
-                redirect($_SERVER['HTTP_REFERER'], "Passwords do not match");
-
+                redirectFailed($_SERVER['HTTP_REFERER'], "Password should contain atleast 8 characters");
             }
         }
 
@@ -100,8 +95,8 @@ include ('../functions/myfunctions.php');
         $signup_fullname = $_POST['signup_fullname'];
         $signup_email = $_POST['signup_email'];
         $signup_address = $_POST['signup_address'];
-        $signup_password = md5($_POST['signup_password']);
-        $cpassword = md5($_POST['repeat_signup_password']);
+        $signup_password = $_POST['signup_password'];
+        $cpassword = $_POST['repeat_signup_password'];
         $role = $_POST['signup_radio'];
 
         // Checks if email already registered
@@ -119,43 +114,51 @@ include ('../functions/myfunctions.php');
 
             // Checks if input email is equal to the data from database
             if($data['email'] == $signup_email) {
-            
-                // Checks if password match with confirm
-                if($signup_password == $cpassword) {
-    
-                    // Update query
-                    $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', role = '$role', address = '$signup_address'
-                    WHERE id = '$category_id' ";
-                    $update_query_run = mysqli_query($con, $update_query);
-    
-                    if($update_query_run) {
-                        redirectSuccess("../admin/admin_admin", "Edit successfully");
+                
+                if(strlen($signup_password) >= 8) {
+                    // Checks if password match with confirm
+                    if($signup_password == $cpassword) {
+        
+                        // Update query
+                        $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = md5('$signup_password'), role = '$role', address = '$signup_address'
+                        WHERE id = '$category_id' ";
+                        $update_query_run = mysqli_query($con, $update_query);
+        
+                        if($update_query_run) {
+                            redirectSuccess("../admin/admin_admin", "Edit successfully");
+                        } else {
+                            redirectFailed("../admin/edit_admin_account?id=$category_id", "Something went wrong");
+                        }
                     } else {
-                        redirectFailed("../admin/edit_admin_account?id=$category_id", "Something went wrong");
+                        redirectFailed("../admin/edit_admin_account?id=$category_id", "Passwords do not match");
                     }
                 } else {
-                    redirect("../admin/edit_admin_account?id=$category_id", "Passwords do not match");
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Password should contain atleast 8 characters");
                 }
 
             // Checks if email input is not at the database
             } elseif(!mysqli_num_rows($check_email_query_run) > 0) {
 
-                // Checks if password match with confirm
-                if($signup_password == $cpassword) {
+                if(strlen($signup_password) >= 8) {
+                      // Checks if password match with confirm
+                    if($signup_password == $cpassword) {
 
-                    // Update query
-                    $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', role = '$role', address = '$signup_address'
-                    WHERE id = '$category_id' ";
-                    $update_query_run = mysqli_query($con, $update_query);
+                        // Update query
+                        $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', role = '$role', address = '$signup_address'
+                        WHERE id = '$category_id' ";
+                        $update_query_run = mysqli_query($con, $update_query);
 
-                    if($update_query_run) {
-                        redirectSuccess("../admin/admin_admin", "Edit successfully");
+                        if($update_query_run) {
+                            redirectSuccess("../admin/admin_admin", "Edit successfully");
+                        } else {
+                            redirectFailed("../admin/edit_admin_account?id=$category_id", "Something went wrong");
+                        }
+
                     } else {
-                        redirectFailed("../admin/edit_admin_account?id=$category_id", "Something went wrong");
+                        redirect("../admin/edit_admin_account?id=$category_id", "Passwords do not match");
                     }
-
                 } else {
-                    redirect("../admin/edit_admin_account?id=$category_id", "Passwords do not match");
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Password should contain atleast 8 characters");
                 }
 
             } else {
@@ -172,8 +175,8 @@ include ('../functions/myfunctions.php');
         $category_id_user = $_POST['category_id_user'];
         $signup_fullname = $_POST['signup_fullname'];
         $signup_address = $_POST['signup_address'];
-        $signup_password = md5($_POST['signup_password']);
-        $cpassword = md5($_POST['repeat_signup_password']);
+        $signup_password = $_POST['signup_password'];
+        $cpassword = $_POST['repeat_signup_password'];
         $signup_email = $_POST['signup_email'];
 
         // Checks if email already registered
@@ -191,43 +194,51 @@ include ('../functions/myfunctions.php');
 
             // Checks if input email is equal to the data from database
             if($data['email'] == $signup_email) {
-            
-                // Checks if password match with confirm
-                if($signup_password == $cpassword) {
-    
-                    // Update query
-                    $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', address = '$signup_address'
-                    WHERE id = '$category_id_user' ";
-                    $update_query_run = mysqli_query($con, $update_query);
-    
-                    if($update_query_run) {
-                        redirectSuccess("../admin/admin_users", "Edit successfully");
+                
+                if(strlen($signup_password) >=8 ) {
+                    // Checks if password match with confirm
+                    if($signup_password == $cpassword) {
+        
+                        // Update query
+                        $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = md5('$signup_password'), address = '$signup_address'
+                        WHERE id = '$category_id_user' ";
+                        $update_query_run = mysqli_query($con, $update_query);
+        
+                        if($update_query_run) {
+                            redirectSuccess("../admin/admin_users", "Edit successfully");
+                        } else {
+                            redirectFailed("../admin/edit_user_account?id=$category_id", "Something went wrong");
+                        }
                     } else {
-                        redirectFailed("../admin/edit_user_account?id=$category_id", "Something went wrong");
+                        redirect("../admin/edit_user_account?id=$category_id", "Passwords do not match");
                     }
                 } else {
-                    redirect("../admin/edit_user_account?id=$category_id", "Passwords do not match");
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Password should contain atleast 8 characters");
                 }
 
             // Checks if email input is not greater than 0
             } elseif(!mysqli_num_rows($check_email_query_run) > 0) {
 
-                // Checks if password match with confirm
-                if($signup_password == $cpassword) {
+                if(strlen($signup_password) >=8 ) {
+                    // Checks if password match with confirm
+                    if($signup_password == $cpassword) {
 
-                    // Update query
-                    $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', address = '$signup_address'
-                    WHERE id = '$category_id' ";
-                    $update_query_run = mysqli_query($con, $update_query);
+                        // Update query
+                        $update_query = "UPDATE users SET fullname = '$signup_fullname', email = '$signup_email', password = '$signup_password', address = '$signup_address'
+                        WHERE id = '$category_id' ";
+                        $update_query_run = mysqli_query($con, $update_query);
 
-                    if($update_query_run) {
-                        redirectSuccess("../admin/admin_users", "Edit successfully");
+                        if($update_query_run) {
+                            redirectSuccess("../admin/admin_users", "Edit successfully");
+                        } else {
+                            redirectFailed("../admin/edit_user_account?id=$category_id", "Something went wrong");
+                        }
+
                     } else {
-                        redirectFailed("../admin/edit_user_account?id=$category_id", "Something went wrong");
+                        redirect("../admin/edit_user_account?id=$category_id", "Passwords do not match");
                     }
-
                 } else {
-                    redirect("../admin/edit_user_account?id=$category_id", "Passwords do not match");
+                    redirectFailed($_SERVER['HTTP_REFERER'], "Password should contain atleast 8 characters");
                 }
 
             } else {

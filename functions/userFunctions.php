@@ -145,7 +145,7 @@
         global $con;
         $user_id = $_SESSION['auth_user']['user_id'];
         // $query = "SELECT * FROM $table WHERE user_id = '$user_id' AND status != '3'
-        $query = "SELECT id, user_id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table 
+        $query = "SELECT id, user_id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %h:%i %p') AS created_at FROM $table 
         WHERE user_id = '$user_id' AND status != '3'
         ORDER BY id DESC";
         return $query_run = mysqli_query($con, $query);
@@ -155,7 +155,7 @@
         global $con;
         $user_id = $_SESSION['auth_user']['user_id'];
         // $query = "SELECT * FROM $table WHERE user_id = '$user_id' AND status != '0' AND status != '1' AND status != '2'
-        $query = "SELECT id, user_id, tracking_no, total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table 
+        $query = "SELECT id, user_id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %h:%i %p') AS created_at FROM $table 
         WHERE user_id = '$user_id' AND status = '3'
         ORDER BY id DESC";
         return $query_run = mysqli_query($con, $query);
@@ -173,7 +173,7 @@
         global $con;
 
         $user_id = $_SESSION['auth_user']['user_id'];
-        $query = "SELECT o.tracking_no, o.user_id AS oid, o.payment_mode, o.total_price, o.email, o.name, o.address, o.apartment, o.postal, o.city, o.region, o.phone, o.courier, o.comments, u.id AS uid
+        $query = "SELECT o.tracking_no, o.user_id AS oid, o.payment_mode, FORMAT(o.total_price, 2) AS total_price, o.email, o.name, o.address, o.apartment, o.postal, o.city, o.region, o.phone, o.courier, o.comments, DATE_FORMAT(o.created_at, '%a, %M %e  %Y | %h:%i %p') AS created_at, u.id AS uid
         FROM orders o, users u
         WHERE o.user_id = u.id
         AND o.tracking_no = '$trackingNo'
@@ -185,7 +185,7 @@
     function checkTrackingAndOrderDetailsAdmin($trackingNo) {
         global $con;
 
-        $query = "SELECT o.tracking_no, o.user_id AS oid, o.payment_mode, o.total_price, o.email, o.name, o.address, o.apartment, o.postal, o.city, o.region, o.phone, o.courier, o.comments, u.id AS uid
+        $query = "SELECT o.tracking_no, o.user_id AS oid, o.payment_mode, FORMAT(o.total_price, 2) AS total_price, o.email, o.name, o.address, o.apartment, o.postal, o.city, o.region, DATE_FORMAT(o.created_at, '%a, %M %e  %Y | %h:%i %p') AS created_at, o.phone, o.courier, o.comments, u.id AS uid
         FROM orders o, users u
         WHERE o.user_id = u.id
         AND o.tracking_no = '$trackingNo'";

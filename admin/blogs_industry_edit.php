@@ -2,7 +2,9 @@
 
     session_start();
     
-    include ('../functions/middleware.php');
+    // include ('../functions/middleware.php');
+    include ('../functions/accessMiddleWare.php');
+
     include ('includes/header.php');
 
 ?>

@@ -1,8 +1,10 @@
 <?php 
 
     session_start();
-    include ('../functions/middleware.php');
-    include ('../functions/middleware_manager.php');
+    // include ('../functions/middleware.php');
+    // include ('../functions/middleware_manager.php');
+
+    include ('../functions/accessMiddleWare.php');
     include ('includes/header.php')
 
 ?>

@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    include ("../functions/middleware.php");
+    include ("../functions/accessMiddleWareManager.php");
     include ("includes/header.php");
 
 ?>  
@@ -68,6 +68,10 @@
                                                                     echo "Processing";
                                                                 } elseif($item['status'] == 3) {
                                                                     echo "Completed";
+                                                                } elseif($item['status'] == 4) {
+                                                                    echo "Delivery";
+                                                                } elseif($item['status'] == 5) {
+                                                                    echo "Order Failed";
                                                                 } else {
                                                                     echo "Error";
                                                                 }
@@ -78,8 +82,9 @@
                                                         <td class="td-justify">
                                                             <a href="../view_order_admin?id=<?= $item['tracking_no']; ?>" value="<?= $item['id']; ?>" class="btn btn-success">View</a>
                                                             <button class="btn btn-danger declineOrder" value="<?= $item['id']; ?>">Decline</button>
-                                                            <button class="btn btn-info acceptOrder" value="<?= $item['id']; ?>">Accept</button>
+                                                            <button class="btn btn-primary deliverOrder" value="<?= $item['id']; ?>">Deliver</button>
                                                             <button class="btn btn-dark completeOrder" value="<?= $item['id']; ?>">Complete</button>
+                                                            <button class="btn btn-danger failOrder" value="<?= $item['id']; ?>">Failed</button>
                                                         </td>
 
                                                     </tr>

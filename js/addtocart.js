@@ -143,7 +143,9 @@ $(document).ready(function () {
                 "scope": "buyNow"
             },
             success: function (response) {
-                if(response == 201) {
+                if(response == 401) {
+                    swal("Sorry!", "You need to login first", "info");
+                } else if(response == 201) {
                     location.href = "checkout";
                 } else if(response == 500) {
                     swal("Sorry!", "Something went wrong", "error");

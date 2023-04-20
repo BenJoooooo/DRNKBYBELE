@@ -1,7 +1,8 @@
 <?php
     session_start();
 
-    include ("../functions/middleware.php");
+    // include ("../functions/middleware.php");
+    include ('../functions/accessMiddleWareManager.php');
     include ("includes/header.php");
 
 ?>  
@@ -28,6 +29,7 @@
 
                             <div class="card-header">
                                 <h3>Orders Page</h3>
+                                
                                 <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                             </div>
 
@@ -68,6 +70,10 @@
                                                                     echo "Processing";
                                                                 } elseif($item['status'] == 3) {
                                                                     echo "Completed";
+                                                                } elseif($item['status'] == 4) {
+                                                                    echo "Delivery";
+                                                                } elseif($item['status'] == 5) {
+                                                                    echo "Order Failed";
                                                                 } else {
                                                                     echo "Error";
                                                                 }
@@ -79,7 +85,22 @@
                                                             <a href="../view_order_admin?id=<?= $item['tracking_no']; ?>" value="<?= $item['id']; ?>" class="btn btn-success">View</a>
                                                             <button class="btn btn-danger declineOrder" value="<?= $item['id']; ?>">Decline</button>
                                                             <button class="btn btn-info acceptOrder" value="<?= $item['id']; ?>">Accept</button>
+                                                            <button class="btn btn-primary deliverOrder" value="<?= $item['id']; ?>">Deliver</button>
                                                             <button class="btn btn-dark completeOrder" value="<?= $item['id']; ?>">Complete</button>
+                                                            <button class="btn btn-danger failOrder" value="<?= $item['id']; ?>">Failed</button>
+
+
+                                                            <!-- <form action="" method="POST">
+                                                                <input type="hidden" value="<?= $item['id']; ?>">
+                                                                <select name="order_status" id="" value="<?= $item['id']; ?>" class="order-id">
+                                                                    <option value="0" <?= $item['status'] == 0 ? "selected":"" ?>>Pending</option>
+                                                                    <option value="1" <?= $item['status'] == 1 ? "selected":"" ?>>Decline</option>
+                                                                    <option value="2" <?= $item['status'] == 2 ? "selected":"" ?>>Accept</option>
+                                                                    <option value="3" <?= $item['status'] == 3 ? "selected":"" ?>>Complete</option>
+                                                                    <option value="4" <?= $item['status'] == 4 ? "selected":"" ?>>Deliver</option>
+                                                                </select>
+                                                                <button type="submit" name="update_order_btn" class="btn btn-primary updateStatus">Update status</button>
+                                                            </form> -->
                                                         </td>
 
                                                     </tr>

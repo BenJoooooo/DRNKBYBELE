@@ -2,7 +2,7 @@
 
     session_start();
     
-    include ('../functions/middleware.php');
+    include ('../functions/accessMiddleWare.php');
     include ('includes/header.php');
 
     $adminCount = getAdmin("users");
@@ -29,8 +29,8 @@
     $ordersCount = getAll("orders");
     $getOrdersCount = mysqli_num_rows($ordersCount);
 
-    // $orderSameDay = getSameDayOrders("orders");
-    // $getOrderSameDay = mysqli_num_rows($orderSameDay);
+    $orderSameDay = getSameDayOrders("orders");
+    $getOrderSameDay = mysqli_num_rows($orderSameDay);
 
 
 ?>
@@ -122,23 +122,6 @@
                         </div>
                     </a>
 
-                    <a href="" class="admin-card-link">
-                        <div class="admin-card">
-                            <div class="card-wrapper">
-                                <div class="details">
-                                    <h4>Dummy</h4>
-                                    <h5>Income</h5>
-                                </div>
-                                <div class="icon">
-                                    <i class="	fas fa-money-check"></i>
-                                </div>
-                            </div>
-                            <div class="button">
-                                <button>View All</button>
-                            </div>
-                        </div>
-                    </a>
-
                     <a href="orders_page" class="admin-card-link">
                         <div class="admin-card">
                             <div class="card-wrapper">
@@ -156,12 +139,12 @@
                         </div>
                     </a>
 
-                    <!-- <a href="orders_page" class="admin-card-link">
+                    <a href="orders_page" class="admin-card-link">
                         <div class="admin-card">
                             <div class="card-wrapper">
                                 <div class="details">
                                     <h4><?php print_r($getOrderSameDay); ?></h4>
-                                    <h5>Orders</h5>
+                                    <h5>Orders Today</h5>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-shopping-basket"></i>
@@ -171,7 +154,7 @@
                                 <button>View All</button>
                             </div>
                         </div>
-                    </a> -->
+                    </a>
 
                     <a href="client_blog_page" class="admin-card-link">
                         <div class="admin-card">

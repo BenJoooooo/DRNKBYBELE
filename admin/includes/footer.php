@@ -53,6 +53,8 @@
     <script src="../js/jquery-3.6.1.min.js"></script>
     <script src="../js/custom.js"></script>
     <script src="../js/orders.js"></script>
+    <script src="../js/dropdown_sidebar.js"></script>
+
 
     <script type="text/javascript">
         $("#live_search").on('input', function () {

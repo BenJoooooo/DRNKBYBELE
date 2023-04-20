@@ -8,53 +8,43 @@ include "myfunctions.php";
 
         $name = mysqli_real_escape_string($con, $_POST['signup_fullname']);
         $email = mysqli_real_escape_string($con, $_POST['signup_email']);
-        $password = md5(mysqli_real_escape_string($con, $_POST['signup_password']));
-        $cpassword = md5(mysqli_real_escape_string($con, $_POST['repeat_signup_password']));
+        $password = mysqli_real_escape_string($con, $_POST['signup_password']);
+        $cpassword = mysqli_real_escape_string($con, $_POST['repeat_signup_password']);
         
         // Checks if email already registered
         $checks_email_query = "SELECT email FROM users WHERE email = '$email' ";
         $check_email_query_run = mysqli_query($con, $checks_email_query);
 
         if(mysqli_num_rows($check_email_query_run) > 0) {
-            
             redirect("../signup", "Email already registered");
-            // $_SESSION['message'] = "Email already registered";
-            // header('Location: ../signup.php');
 
         } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
             redirect("../signup", "Please enter a valid email");
 
         } else {
 
-             // Checks if password is the same with confirm password
-            if ($password == $cpassword) {
+            if(strlen($password) >= 8) {
+                // Checks if password is the same with confirm password
+                if ($password == $cpassword) {
 
-                // Insert user data
-                $insert_query = "INSERT INTO users (fullname, email, password) VALUES ('$name', '$email', '$password')";
-                $insert_query_run = mysqli_query($con, $insert_query);
-    
-                if($insert_query_run) {
-    
-                    redirectSuccess("../login", "Registered Successfully");
-                    // $_SESSION['message'] = "Registered Successfull";
-                    // header('Location: ../login.php');
-    
+                    // Insert user data
+                    $insert_query = "INSERT INTO users (fullname, email,  password) VALUES ('$name', '$email', md5('$password'))";
+                    $insert_query_run = mysqli_query($con, $insert_query);
+        
+                    if($insert_query_run) {
+                        redirectSuccess("../login", "Registered Successfully");
+                    } else {
+                        redirectFailed("../signup", "Something went wrong");
+                    }
+        
                 } else {
-    
-                    redirectFailed("../signup", "Something went wrong");
-                    // $_SESSION['message'] = "Something went wrong";
-                    // header('Location: ../signup.php');
-    
+                    redirectFailed("../signup", "Passwords do not match");
                 }
-    
+
             } else {
-
-                redirectFailed("../signup", "Passwords do not match");
-                // $_SESSION['message'] = "Passwords do not match";
-                // header('Location: ../signup.php');
-
+                redirectFailed($_SERVER['HTTP_REFERER'], "Password should contain atleast 8 characters");
             }
+
         }    
 
     } elseif(isset($_POST['login_submit'])) {
@@ -87,24 +77,13 @@ include "myfunctions.php";
 
             // if (($role_as == 'admin' || $role_as == 'manager'))
             if(($role_as == '')) {
-
-                redirectSuccess("../index", "Logged in successfully");
-                // $_SESSION['message'] = "Logged in successfully";
-                // header('Location: ../index.php');   
-
+                redirectSuccess("../index", "Logged in successfully");  
             } else {
-
                 redirectSuccess("../admin/index", "Welcome to dashboard");
-                // $_SESSION['message'] = "Welcome to dashboard";
-                // header('Location: ../admin/index.php');
             }
 
         } else {
-
             redirectFailed("../login", "Invalid credentials");
-            // $_SESSION['message'] = "Invalid credentials";
-            // header('Location: ../login.php');
-
         }
 
     }

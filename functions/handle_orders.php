@@ -38,12 +38,56 @@
                     }
                     break;
 
+                case "deliver":
+
+                    $value = '4';
+                    $order_id = $_POST['order_id'];
+
+                    $update_query = "UPDATE orders SET status = '$value' WHERE id = '$order_id'";
+                    $update_query_run = mysqli_query($con, $update_query);
+
+                    if($update_query_run) {
+                        echo 201;
+                    } else {
+                        echo 500;
+                    }
+                    break;
+
                 case "complete":
 
                     $value = '3';
                     $order_id = $_POST['order_id'];
 
                     $update_query = "UPDATE orders SET status = '$value' WHERE id = '$order_id'";
+                    $update_query_run = mysqli_query($con, $update_query);
+
+                    if($update_query_run) {
+                        echo 201;
+                    } else {
+                        echo 500;
+                    }
+                    break;
+
+                case "fail":
+
+                    $value = '5';
+                    $order_id = $_POST['order_id'];
+
+                    $update_query = "UPDATE orders SET status = '$value' WHERE id = '$order_id'";
+                    $update_query_run = mysqli_query($con, $update_query);
+
+                    if($update_query_run) {
+                        echo 201;
+                    } else {
+                        echo 500;
+                    }
+                    break;
+
+                case "delete":
+
+                    $order_id = $_POST['order_id'];
+
+                    $update_query = "DELETE FROM orders WHERE id = '$order_id'";
                     $update_query_run = mysqli_query($con, $update_query);
 
                     if($update_query_run) {

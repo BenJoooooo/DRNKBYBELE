@@ -115,7 +115,6 @@ body {
     justify-content: space-around;
 }
 
-
 /* ---------------------------------- */
 /*              Sidebar Menu          */
 /* ---------------------------------- */
@@ -163,6 +162,7 @@ body {
     display: flex;
     align-items: center;
     flex-shrink: 1 0 auto;
+    border: 3px solid transparent;
 }
 
 .brand-child.has-border {
@@ -186,6 +186,14 @@ body {
     background: rgba(0, 0, 0, 0.1);
 
 } 
+
+.order-status-dropdown .brand-child:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.order-status-dropdown .active {
+    background: rgba(0, 0, 0, 0.1);
+}
 
 .body-wrapper {
     position: relative;
@@ -257,7 +265,7 @@ body.open .admin-menu-title {
 
 .admin-menu {
     min-width: 300px;
-    max-height: 90vh;
+    max-height: 100vh;
     background: var(--clr-main-color);
     display: flex;
     flex-direction: column;
@@ -266,10 +274,18 @@ body.open .admin-menu-title {
     left: 0;
     width: 25vw;
     overflow-y: scroll;
-
 }
 
 .brand-child a {
+    text-decoration: none;
+    color: var(--clr-secondary-color);
+    font-family: var(--ff-league);
+    font-size: clamp(1rem, 2vw, 1.5rem); 
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.brand-child button {
     text-decoration: none;
     color: var(--clr-secondary-color);
     font-family: var(--ff-league);
@@ -282,10 +298,21 @@ body.open .admin-menu-title {
     color: white;
 }
 
+.show-dropdown {
+    border-left: 3px solid var(--clr-dirty-white);
+}
+
 .client {
     display: none;
 }
 
+.admin-links .order-status-dropdown {
+    display: none;
+}
+
+.admin-wrapper .order-status-dropdown.show {
+    display: block;
+}
 
 /* ------------------------------------------ */
 /*            Admin Main content              */

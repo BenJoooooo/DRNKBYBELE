@@ -5,7 +5,7 @@
     // fetches all data from the table
     function getAll($table) {
         global $con;
-        $query = "SELECT *, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at 
+        $query = "SELECT *, DATE_FORMAT(created_at, '%a, %M %e  %Y | %h:%i %p') AS created_at 
         FROM $table";
         return $query_run = mysqli_query($con, $query);
     }
@@ -61,7 +61,7 @@
     // Fetches name of product and category
     function getProductAndCategory($table1, $table2) {
         global $con;
-        $query  = "SELECT products.id AS product_id, products.category_id, products.size, products.name, products.size, products.original_price, products.selling_price, products.image, products.slug, products.description, products.status, products.featured, products.created_at, products.added_by, categories.id, categories.name AS cat_name
+        $query  = "SELECT products.id AS product_id, products.category_id, products.size, products.name, products.size, products.original_price, products.selling_price, products.image, products.slug, products.description, products.status, products.featured, DATE_FORMAT(products.created_at, '%a, %M %e  %Y | %k:%i') AS created_at, products.added_by, categories.id, categories.name AS cat_name
         FROM $table1, $table2
         WHERE products.category_id = categories.id";
         return $query_run = mysqli_query($con, $query);
@@ -93,20 +93,20 @@
 
     function getOrders($table) {
         global $con;
-        $query = "SELECT id, user_id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table ";
+        $query = "SELECT id, user_id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %h:%i %p') AS created_at FROM $table ";
         return $query_run = mysqli_query($con, $query);
     }
 
     function getOrdersByStatus($table) {
         global $con;
-        $query = "SELECT id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %h:%i %p') AS created_at FROM $table
         ORDER BY status ASC, id DESC";
         return $query_run = mysqli_query($con, $query);
     }
 
     function getOrdersByDeclined($table) {
         global $con;
-        $query = "SELECT id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %h:%i %p') AS created_at FROM $table
         WHERE status = '1'
         ORDER BY status ASC, id DESC";
         return $query_run = mysqli_query($con, $query);
@@ -114,7 +114,7 @@
 
     function getOrdersByAccept($table) {
         global $con;
-        $query = "SELECT id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %k:%i') AS created_at FROM $table
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y | %h:%i %p') AS created_at FROM $table
         WHERE status = '2'
         ORDER BY status ASC, id DESC";
         return $query_run = mysqli_query($con, $query);
@@ -122,19 +122,217 @@
 
     function getOrdersByComplete($table) {
         global $con;
-        $query = "SELECT id, tracking_no, FORMAT(total_price, '#,###,###.##') AS total_price, status, DATE_FORMAT(created_at, '%W %M %e %Y') AS date_created
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e %Y | %h:%i %p') AS date_created
         FROM $table
         WHERE status = '3'
         ORDER BY status ASC, id DESC";
         return $query_run = mysqli_query($con, $query);
     }
 
+    function getOrdersByDelivered($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e %Y | %h:%i %p') AS date_created
+        FROM $table
+        WHERE status = '4'
+        ORDER BY status ASC, id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getOrdersByFailed($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e %Y | %h:%i %p') AS created_at
+        FROM $table
+        WHERE status = '5'
+        ORDER BY status ASC, id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getAssumedSales($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price FROM $table
+        WHERE status = '3' || status = '2' || status = '4'";
+        return $query_run = mysqli_query($con, $query);
+    }
 
     function getSameDayOrders($table) {
         global $con;
-        $query = "SELECT id, tracking_no, FORMAT(price, '#,###,###.##') AS price, status, DATE_FORMAT(date_created, '%W %M %e %Y')
-        FROM $table";
+        $query = "SELECT * FROM $table
+        WHERE DATE_FORMAT(created_at, '%y/%m/%d') = CURDATE()";
         return $query_run = mysqli_query($con, $query);
     }
+
+    function getTotalSales($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price FROM $table";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalSalesComplete($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price FROM $table
+        WHERE status = '3'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalSalesToday($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price FROM $table
+        WHERE DATE_FORMAT(created_at, '%y/%m/%d') = CURDATE() AND status = '3'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getSalesByOrderComplete($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e %Y | %h:%i %p') AS created_at
+        FROM $table
+        WHERE status = '3'
+        AND DATE_FORMAT(created_at, '%y/%m/%d') = CURDATE()
+        ORDER BY status ASC, id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalOfCompleteSales($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price
+        FROM $table
+        WHERE status = '3'
+        AND DATE_FORMAT(created_at, '%y/%m/%d') = CURDATE()";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalofCompleteSalesAll($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e %Y | %h:%i %p') AS created_at
+        FROM $table
+        WHERE status = '3'
+        ORDER BY status ASC, id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalOfCompleteSalesTotalPrice($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price
+        FROM $table
+        WHERE status = '3'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getAssumedTotalSales($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e %Y | %h:%i %p') AS created_at
+        FROM $table
+        WHERE status = '3' || status = '2' || status = '4'
+        ORDER BY created_at DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getAssumedTotalSalesPrice($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price
+        FROM $table
+        WHERE status = '3' || status = '2' || status = '4'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getMonthlySales($table) {
+        global $con;
+        $query = "SELECT MONTHNAME(created_at) as created_at, FORMAT(SUM(total_price),2) as total_price
+        FROM $table
+        WHERE status = '3'
+        GROUP BY MONTH(created_at)";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getMonthSale($table) {
+        global $con;
+        $query = "SELECT MONTHNAME(created_at) as created_at, FORMAT(SUM(total_price),2) as total_price
+        FROM $table
+        WHERE MONTH(created_at) = MONTH(CURRENT_DATE())
+        AND status = '3'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalOfMonth($table) {
+        global $con;
+        $query = "SELECT MONTHNAME(created_at) as created_at, FORMAT(SUM(total_price),2) AS total_price
+        FROM $table
+        WHERE status = '3'
+        AND MONTH(created_at)";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalOfWeek($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price
+        FROM $table
+        WHERE status = '3'
+        AND YEARWEEK(created_at) = YEARWEEK(NOW())";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalOfWeekPrice($table) {
+        global $con;
+        $query = "SELECT WEEK(created_at) as created_at, FORMAT(SUM(total_price),2) AS total_price
+        FROM $table
+        WHERE status = '3'
+        GROUP BY YEARWEEK(created_at)";
+
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalOfWeeks($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price
+        FROM $table
+        WHERE status = '3'
+        AND YEARWEEK(created_at)";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalOfDay($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price
+        FROM $table
+        WHERE status = '3'
+        AND DAY(created_at)";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalOfDays($table) { 
+        global $con;
+        $query = "SELECT DATE_FORMAT(created_at, '%Y-%m-%d') as created_at, FORMAT(SUM(total_price),2) AS total_price
+        FROM $table
+        WHERE status = '3'
+        GROUP BY DATE(created_at)";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getTotalOfDaysPrice($table) {
+        global $con;
+        $query = "SELECT FORMAT(SUM(total_price),2) AS total_price
+        FROM $table
+        WHERE status = '3'
+        AND DATE(created_at)";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    // function getTotalOfParticularDay($table) {
+    //     global $con;
+    //     $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e  %Y') AS created_at FROM $table
+    //     WHERE status = '3'
+    //     AND DATE(created_at) = CURDATE() -1
+    //     ORDER BY status ASC, id DESC";
+    //     return $query_run = mysqli_query($con, $query);
+    // }
+
+    function checkDateDetails($date) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%Y-%m-%d') AS created_at FROM orders
+        WHERE status = '3'
+        AND DATE(created_at) = $date
+        ORDER BY status ASC, id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
 
 ?>

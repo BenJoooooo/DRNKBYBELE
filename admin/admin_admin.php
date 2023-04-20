@@ -2,8 +2,7 @@
 
     session_start();
     
-    include ('../functions/middleware.php');
-    include ('../functions/middleware_manager.php');
+    include ('../functions/accessMiddleWareAdmin.php');
     include ('includes/header.php');
 ?>
     <div class="wrapper">
@@ -34,7 +33,7 @@
                             <h3>Accounts Table</h3>
                         </div>
 
-                        <div class="card-body" id="useradmin_table">
+                        <div class="card-body" id="user_table">
                             <table>
                                 <thead>
                                     <tr>

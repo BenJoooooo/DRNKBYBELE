@@ -49,6 +49,10 @@
                                 echo "Processing";
                             } elseif($item['status'] == 3) {
                                 echo "Completed";
+                            } elseif($item['status'] == 4) {
+                                echo "Delivery";
+                            } elseif($item['status'] == 5) {
+                                echo "Order Failed";
                             } else {
                                 echo "Error";
                             }
