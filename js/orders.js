@@ -39,6 +39,7 @@ $(document).ready(function () {
 
     });
 
+    // Accept Orders
     $(document).on('click', '.acceptOrder', function () {
         
         var order_id = $(this).val();
@@ -77,6 +78,7 @@ $(document).ready(function () {
 
     });
 
+    // Deliver Orders
     $(document).on('click', '.deliverOrder', function () {
         
       var order_id = $(this).val();
@@ -113,8 +115,9 @@ $(document).ready(function () {
           }
         });
 
-  });
+    });
 
+    // Complete Orders
     $(document).on('click', '.completeOrder', function () {
         
         var order_id = $(this).val();
@@ -153,6 +156,7 @@ $(document).ready(function () {
 
     });
 
+    // Fail Orders
     $(document).on('click', '.failOrder', function () {
         
       var order_id = $(this).val();
@@ -190,13 +194,14 @@ $(document).ready(function () {
     });
     });
 
+    // Delete Orders
     $(document).on('click', '.deleteOrder', function () {
         
       var order_id = $(this).val();
 
       swal({
           title: "Confirmation",
-          text: "Order will be permanently deleted",
+          text: "Order will be removed",
           icon: "error",
           buttons: true,
           dangerMode: true,
@@ -216,6 +221,82 @@ $(document).ready(function () {
               success: function(response) {
                   if(response == 201) {
                       swal("Order Deleted!", "", "error");
+                      $("#coverphotos_table").load(location.href + " #coverphotos_table");
+                  } else if(response == 500) {
+                      swal("Error!", "Something went wrong", "error");
+                  }
+              }
+            });
+
+          }
+      });
+    });
+
+    // Delete Orders Permanent
+    $(document).on('click', '.deleteOrderPermanent', function () {
+        
+      var order_id = $(this).val();
+
+      swal({
+          title: "Confirmation",
+          text: "Order will be deleted permanently",
+          icon: "error",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+
+          if (willDelete) {
+
+            $.ajax({
+              method: "POST",
+              url: "../functions/handle_orders.php",
+              data: {
+                  'order_id': order_id,
+                  'scope': 'deletePermanent',
+                  'deleteOrderPermanent': true
+              },
+              success: function(response) {
+                  if(response == 201) {
+                      swal("Order Deleted!", "", "error");
+                      $("#coverphotos_table").load(location.href + " #coverphotos_table");
+                  } else if(response == 500) {
+                      swal("Error!", "Something went wrong", "error");
+                  }
+              }
+            });
+
+          }
+      });
+    });
+
+    // Recover Order
+    $(document).on('click', '.recoverOrder', function () {
+        
+      var order_id = $(this).val();
+
+      swal({
+          title: "Confirmation",
+          text: "Order will be recovered",
+          icon: "info",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+
+          if (willDelete) {
+
+            $.ajax({
+              method: "POST",
+              url: "../functions/handle_orders.php",
+              data: {
+                  'order_id': order_id,
+                  'scope': 'recoverOrder',
+                  'recoverOrder': true
+              },
+              success: function(response) {
+                  if(response == 201) {
+                      swal("Order Recovered!", "", "success");
                       $("#coverphotos_table").load(location.href + " #coverphotos_table");
                   } else if(response == 500) {
                       swal("Error!", "Something went wrong", "error");

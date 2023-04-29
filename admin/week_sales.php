@@ -30,6 +30,10 @@
                             <div class="card-header">
                                 <h3>Sales Page</h3>
                                 
+                                <form action="../functions/export.php" method="POST">
+                                    <button type="submit" value="CSV" name="export_week_sales" class="btn btn-success">Export CSV</button>
+                                </form>
+
                                 <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                             </div>
 
@@ -52,8 +56,15 @@
                                                 foreach ($data as $item) { ?>
 
                                                     <tr>
-                                                        <td><?= $item['created_at']; ?></td>
+                                                        <td>Week <?= $item['created_at']; ?></td>
                                                         <td><?= $item['total_price']; ?></td>
+                                                        <td class="td-justify">
+                                                            <a href="weekly_sales?week=<?= $item['created_at'];?>"  class="btn btn-success">View</a>
+
+                                                            <form action="../functions/export.php" method="POST">
+                                                                <button type="submit" value="<?= $item['created_at']; ?>" name="week_sales" class="btn btn-success">Export CSV</button>
+                                                            </form>
+                                                        </td>
                                                     </tr>
                                         <?php
                                                 }

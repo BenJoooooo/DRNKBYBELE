@@ -187,11 +187,11 @@ body {
 
 } 
 
-.order-status-dropdown .brand-child:hover {
+.order-status-dropdown .brand-child:hover, .order-status-dropdown-home .brand-child:hover, .order-status-dropdown-accounts .brand-child:hover {
     background: rgba(0, 0, 0, 0.1);
 }
 
-.order-status-dropdown .active {
+.order-status-dropdown .active, .order-status-dropdown-home .active, .order-status-dropdown-accounts .active {
     background: rgba(0, 0, 0, 0.1);
 }
 
@@ -298,7 +298,7 @@ body.open .admin-menu-title {
     color: white;
 }
 
-.show-dropdown {
+.show-dropdown, .show-dropdown-home, .show-dropdown-accounts {
     border-left: 3px solid var(--clr-dirty-white);
 }
 
@@ -306,11 +306,11 @@ body.open .admin-menu-title {
     display: none;
 }
 
-.admin-links .order-status-dropdown {
+.admin-links .order-status-dropdown, .admin-links .order-status-dropdown-home, .admin-links .order-status-dropdown-accounts {
     display: none;
 }
 
-.admin-wrapper .order-status-dropdown.show {
+.admin-wrapper .order-status-dropdown.show, .admin-wrapper .order-status-dropdown-home.show, .admin-wrapper .order-status-dropdown-accounts.show {
     display: block;
 }
 

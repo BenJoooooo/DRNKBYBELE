@@ -5,7 +5,6 @@
     // include ('../functions/middleware.php');
     include ("../functions/accessMiddleWare.php");
     include ('includes/header.php');
-    include ('includes/sidebar.php');
 
 ?>
     <div class="wrapper">

@@ -46,62 +46,6 @@
 
         $insert_query_run = mysqli_query($con, $insert_query);
 
-        // php mailer instant
-        $mailTo = $email;
-        $body = "<!DOCTYPE html>
-        <html lang='en'>
-        <head>
-            <meta charset='UTF-8'>
-            <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-            <title>Document</title>
-        </head>
-        <body>
-            <div style='max-width: 600px; width: 100%; margin: 0 auto; background-color: #C27933; padding: 40px;' >
-
-                <h1 style='color: #ffffff; font-size: 2rem;'>DRNK BY BELE</h1>
-
-                <hr>
-
-                <h3 style='color: #ffffff; font-size: 1rem;'>We Have received your order $name!</h3>
-                <h3 style='color: #ffffff; font-size: 1rem;'>Thank you for your purchase</h3>
-
-                <hr>
-
-                <h5 style='color: #ffffff; font-size: 1rem;'>For updates, click the button.</h5>
-                <a href='drnkbybele.com/mypurchase' style='text-decoration: none; color: #C27933;padding: 1rem 1.5rem; background-color: #ffffff; border-radius: 5px; text-align: center; text-transform: uppercase; font-size: 1rem; '>My Purchase</a>
-
-            </div>
-        </body>
-        </html>";
-
-        $mail = new PHPMailer\PHPMailer\PHPMailer();
-        // $mail->SMTPDebug = 3;
-        $mail->isSMTP();
-        $mail->Host = "mail.smtp2go.com";
-
-        $mail->SMTPAuth = true;
-        $mail->Username = "drnkbybele";
-        $mail->Password = "Gr4FCbPgwVrC56tJ";
-        $mail->SMTPSecure = "tls";
-        $mail->Port = "2525";
-
-        $mail->From = "info.customerservice@drnkbybele.com";
-        $mail->FromName = "Drnkbybele";
-        $mail->addAddress($mailTo, $name);
-
-        $mail->isHTML(true);
-        $mail->Subject = "Order Complete";
-        $mail->Body = $body;
-        $mail->AltBody = "";
-
-        if(!$mail->send()) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
-        } else {
-            echo "<h1>Message has been sent</h1>";     
-        }
-        // php mailer instant
-
         if($insert_query_run) {
 
             $order_id = mysqli_insert_id($con);

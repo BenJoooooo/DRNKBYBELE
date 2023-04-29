@@ -87,7 +87,6 @@
                                                             <button class="btn btn-info acceptOrder" value="<?= $item['id']; ?>">Accept</button>
                                                             <button class="btn btn-primary deliverOrder" value="<?= $item['id']; ?>">Deliver</button>
                                                             <button class="btn btn-dark completeOrder" value="<?= $item['id']; ?>">Complete</button>
-                                                            <button class="btn btn-danger failOrder" value="<?= $item['id']; ?>">Failed</button>
 
 
                                                             <!-- <form action="" method="POST">

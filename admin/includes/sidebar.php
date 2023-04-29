@@ -17,12 +17,25 @@
 
             <div class="admin-links">
 
-                <div class="brand-child <?= $page ==  "index.php" ? 'active':''; ?>">
+                <!-------------------- Home Dropdown ------------------>
+                <div class="brand-child show-dropdown-home <?= $page ==  "" ? 'active':''; ?>">
                     <div class="image-svg">
                         <i class="fa fa-home"></i>
                     </div>
-                    <a href="index">Home</a>
+                    <button href="index">Home</button>
                 </div>
+
+                <div class="order-status-dropdown-home">
+                    <div class="brand-child <?= $page ==  "index.php" ? 'active':''; ?>">
+                        <div class="image-svg"></div>
+                        <a href="index">Home Page</a>
+                    </div>
+                    <div class="brand-child <?= $page ==  "archives.php" ? 'active':''; ?>">
+                        <div class="image-svg"></div>
+                        <a href="archives">Archives</a>
+                    </div>
+                </div>
+                <!-------------------- Home Dropdown ------------------>
                 
                 <div class="brand-child has-border <?= $page ==  "admin_manage_home.php" ? 'active':''; ?> ">
                     <div class="image-svg">
@@ -62,7 +75,7 @@
                     </div>
                 <?php } ?>
 
-                <!-- Orders divider and status dropdown -->
+                <!--------- Orders divider and status dropdown -------->
                 <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master') { ?>
 
                     <div class="brand-child has-border show-dropdown">
@@ -100,25 +113,44 @@
                     </div>
 
                 <?php } ?>
-                <!-- Orders divider and status dropdown -->
+                <!--------- Orders divider and status dropdown -------->
 
-                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'master') { ?>
-                    <div class="brand-child <?= $page ==  "admin_admin.php" ? 'active':''; ?>">
+
+                <!----------------- Admin acounts---------------------->
+                <?php if($_SESSION['role'] == 'master' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager') { ?>
+
+                    <div class="brand-child show-dropdown-accounts">
                         <div class="image-svg">
-                            <i class="fas fa-user-cog"></i>
+                            <i class="fas fa-poll"></i>
                         </div>
-                        <a href="admin_admin">Admin Account</a>
+                        <button href="orders_page">Accounts Section<button>
                     </div>
-                <?php } ?>
+
+                    <div class="order-status-dropdown-accounts">
+                        
+                        <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'master') { ?>
+                            <div class="brand-child <?= $page ==  "admin_admin.php" ? 'active':''; ?>">
+                                <div class="image-svg">
+                                    <i class="fas fa-user-cog"></i>
+                                </div>
+                                <a href="admin_admin">Admin Account</a>
+                            </div>
+                        <?php } ?>
+                        
+                        <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master') { ?>
+                            <div class="brand-child has-border <?= $page ==  "admin_users.php" ? 'active':''; ?>">
+                                <div class="image-svg">
+                                    <i class="fas fa-user-friends"></i>
+                                </div>
+                                <a href="admin_users">User Account</a>
+                            </div>
+                        <?php } ?>
+                    </div>
                 
-                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master') { ?>
-                    <div class="brand-child has-border <?= $page ==  "admin_users.php" ? 'active':''; ?>">
-                        <div class="image-svg">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <a href="admin_users">User Account</a>
-                    </div>
                 <?php } ?>
+    
+                <!----------------- Admin acounts---------------------->
+
 
                 <div class="brand-child <?= $page ==  "admin_categories_page.php" ? 'active':''; ?>">
                     <div class="image-svg">

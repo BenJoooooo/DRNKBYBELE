@@ -29,6 +29,10 @@
 
                             <div class="card-header">
                                 <h3>Sales Page</h3>
+
+                                <form action="../functions/export.php" method="POST">
+                                    <button type="submit" value="CSV" name="export_all_sales" class="btn btn-success">Export CSV</button>
+                                </form>
                                 
                                 <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                             </div>

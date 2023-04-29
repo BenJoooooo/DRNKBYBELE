@@ -11,6 +11,8 @@
     $monthSales = getMonthSale("orders");
     $weekSales = getTotalOfWeek("orders");
     $dayTotal = getTotalOfDay("orders");
+    $yearSales = getYearSale("orders");
+    $failedTrans = checkFailedtrans("orders");
 
 ?>
     <div class="wrapper">
@@ -33,6 +35,30 @@
                 </div>
 
                 <div class="admin-card-container">
+
+                    <?php if(mysqli_num_rows($failedTrans)) {
+                        foreach($failedTrans as $items) {
+                    ?>
+                        <a href="failed_page" class="admin-card-link">
+                            <div class="admin-card">
+                                <div class="card-wrapper">
+                                    <div class="details">
+                                        <h4><?= $items['total_sum']; ?> items </h4>
+                                        <h5>Failed Transactions</h5>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-shopping-basket"></i>
+                                    </div>
+                                </div>
+                                <div class="button">
+                                    <button>View All</button>
+                                </div>
+                            </div>
+                        </a>
+
+                    <?php 
+                        }   
+                    } ?>
 
                     <?php if(mysqli_num_rows($assumed_sales)) {
                         foreach($assumed_sales as $items) {
@@ -67,6 +93,30 @@
                                     <div class="details">
                                         <h4><?= $items['total_price']; ?></h4>
                                         <h5>Total Sales</h5>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-shopping-basket"></i>
+                                    </div>
+                                </div>
+                                <div class="button">
+                                    <button>View All</button>
+                                </div>
+                            </div>
+                        </a>
+
+                    <?php 
+                        }   
+                    } ?>
+
+                    <?php if(mysqli_num_rows($yearSales)) {
+                        foreach($yearSales as $items) {
+                    ?>
+                        <a href="year_sales" class="admin-card-link">
+                            <div class="admin-card">
+                                <div class="card-wrapper">
+                                    <div class="details">
+                                        <h4><?= $items['total_price']; ?></h4>
+                                        <h5>Yearly Sales</h5>
                                     </div>
                                     <div class="icon">
                                         <i class="fas fa-shopping-basket"></i>

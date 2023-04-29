@@ -28,6 +28,7 @@
 
                             <div class="card-header">
                                 <h3>Orders Page</h3>
+
                                 <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
                             </div>
 
@@ -38,10 +39,11 @@
                                             <!-- <th>ID</th> -->
                                             <th>Order Id</th>
                                             <th>Tracking No</th>
-                                            <th>Price</th>
                                             <th>Status</th>
                                             <th>Created at</th>
                                             <th>Actions</th>
+                                            <th>Price</th>
+
                                         </tr>
                                     </thead>
 
@@ -49,29 +51,64 @@
 
                                     <?php 
 
-                                        if(isset($_GET['created_at'])) {
+                                        if(isset($_GET['date'])) {
+                                            $date = $_GET['date'];
 
-                                            $created_at = $_GET['created_at'];
-                                            $resultTracking = checkDateDetails($date);
-                                            if(mysqli_num_rows($resultTracking) > 0) {
-                                                foreach($resultTracking as $item)
+                                            $result = checkDateDetails("orders", $date);
+                                            if(mysqli_num_rows($result) > 0) {
+
+                                                foreach($result as $item) {
                                         ?>
 
                                                     <tr>
                                                         <td><?= $item['id']; ?></td>
                                                         <td><?= $item['tracking_no']; ?></td>
-                                                        <td><?= $item['total_price']; ?></td>
-
                                                         <td>
-                                                          
+                                                            <?php 
+                                                                if($item['status'] == 0) {
+                                                                    echo "Pending";
+                                                                } elseif($item['status'] == 1) {
+                                                                    echo "Declined";
+                                                                } elseif($item['status'] == 2) {
+                                                                    echo "Processing";
+                                                                } elseif($item['status'] == 3) {
+                                                                    echo "Completed";
+                                                                } elseif($item['status'] == 4) {
+                                                                    echo "Delivery";
+                                                                } elseif($item['status'] == 5) {
+                                                                    echo "Order Failed";
+                                                                } else {
+                                                                    echo "Error";
+                                                                }
+                                                            ?>
                                                         </td>
-
                                                         <td><?= $item['created_at']; ?></td>
-
+                                                        <td class="td-justify">
+                                                            <a href="../view_order_admin?id=<?= $item['tracking_no']; ?>" value="<?= $item['id']; ?>" class="btn btn-success">View</a>
+                                                        </td>
+                                                        <td><?= $item['total_price']; ?></td>
                                                     </tr>
 
                                         <?php
                                             }
+                                        }
+
+                                        $total = checkDateTotal("orders", $date);
+                                            if(mysqli_num_rows($total) > 0) {
+                                                foreach($total as $total_price) { ?>
+                                                    
+                                                    <tr>
+                                                        <td>Total Sales</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td><?= $total_price['total_price']; ?></td>
+                                                    </tr>
+
+                                        <?php   }
+                                            }
+                                        
                                         ?>
                                     </tbody>
                                 </table>
