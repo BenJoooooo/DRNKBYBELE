@@ -46,6 +46,10 @@
                             <i class="fa fa-eye" id="show-repeat-password"></i>
                         </div>
                     </div>
+
+                    <div class="signup-header">
+                        <a href="forgot-password">Forgot Password?</a>
+                    </div>
                     
                     <button class="signup-submit" name="signup_submit">Submit</button>
                 </form>

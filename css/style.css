@@ -187,11 +187,11 @@ body {
 
 } 
 
-.order-status-dropdown .brand-child:hover, .order-status-dropdown-home .brand-child:hover, .order-status-dropdown-accounts .brand-child:hover {
+.order-status-dropdown .brand-child:hover, .order-status-dropdown-home .brand-child:hover, .order-status-dropdown-accounts .brand-child:hover, .order-status-dropdown-sales .brand-child:hover {
     background: rgba(0, 0, 0, 0.1);
 }
 
-.order-status-dropdown .active, .order-status-dropdown-home .active, .order-status-dropdown-accounts .active {
+.order-status-dropdown .active, .order-status-dropdown-home .active, .order-status-dropdown-accounts .active, .order-status-dropdown-sales .active {
     background: rgba(0, 0, 0, 0.1);
 }
 
@@ -298,7 +298,7 @@ body.open .admin-menu-title {
     color: white;
 }
 
-.show-dropdown, .show-dropdown-home, .show-dropdown-accounts {
+.show-dropdown, .show-dropdown-home, .show-dropdown-accounts, .show-dropdown-sales {
     border-left: 3px solid var(--clr-dirty-white);
 }
 
@@ -306,11 +306,11 @@ body.open .admin-menu-title {
     display: none;
 }
 
-.admin-links .order-status-dropdown, .admin-links .order-status-dropdown-home, .admin-links .order-status-dropdown-accounts {
+.admin-links .order-status-dropdown, .admin-links .order-status-dropdown-home, .admin-links .order-status-dropdown-accounts, .admin-links .order-status-dropdown-sales {
     display: none;
 }
 
-.admin-wrapper .order-status-dropdown.show, .admin-wrapper .order-status-dropdown-home.show, .admin-wrapper .order-status-dropdown-accounts.show {
+.admin-wrapper .order-status-dropdown.show, .admin-wrapper .order-status-dropdown-home.show, .admin-wrapper .order-status-dropdown-accounts.show, .admin-wrapper .order-status-dropdown-sales.show {
     display: block;
 }
 
@@ -354,7 +354,19 @@ tbody td img {
 .admin-page-table .table-container {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin-bottom: 3em;
 }
+
+.table-container .chart-container {
+    max-width: 50vw;
+    min-width: 100%;
+    padding: 2em;
+    border: 1px solid var(--clr-dirty-white);
+}
+
 
 /* add product and search */
 .table-button-add {
@@ -425,6 +437,14 @@ tbody td img {
     padding: .5em 1em;
     z-index: -1;
     margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em
+}
+
+.admin-main-content .chart-container {
+    padding: 2em;
+    border: 1px solid var(--clr-dirty-white);
 }
 
 .admin-main-content-add-page {
@@ -664,6 +684,8 @@ tbody td img {
 
 .card-texts {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     gap: .5em;
 }

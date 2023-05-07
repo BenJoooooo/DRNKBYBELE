@@ -3,28 +3,23 @@
     require ("includes/header.php");
 
 ?>
+            <!-- Session Message -->
+            <?php include('functions/sessionmessage.php'); ?>
 
         <main class="main-contact">
-            <!-- <div class="contact-container">
-                <h1 class="contact-header">Send us a message</h1>
-                <div class="contact-form-container"> -->
-                    <!-- Fix the responsiveness of textarea<textarea class="contact-form" cols="50" rows="20" type="text" placeholder="Write your message here" spellcheck="false"></textarea> -->
-                    <!-- <button class="contact-form-submit" type="submit">Submit</button>
-                </div>
-            </div> -->
 
             <div class="contact-container">
               <div class="contact-header">
                 <h1>Send us a message</h1>
               </div>
 
-              <div class="contact-form-container">
+              <form class="contact-form-container" action="functions/contact-form-request.php" method="POST">
                 <input type="text" name="fullname" placeholder="Full Name" class="contact-input info contact-form">
                 <input type="email" name="email" placeholder="Email Address" class="contact-input email contact-form">
-                <input type="text" name="phone_number" placeholder="Phone" class="contact-input phone contact-form">
+                <input type="number" name="phone_number" placeholder="Phone" class="contact-input phone contact-form">
                 <textarea name="message" placeholder="Type Your Message" class="contact-input message contact-form"></textarea>
                 <button type="submit" name="send_message" class="contact-input send">Send</button>
-              </div>
+              </form>
             </div>
 
             <div class="mapouter">

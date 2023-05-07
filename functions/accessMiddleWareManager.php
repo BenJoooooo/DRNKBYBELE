@@ -7,6 +7,8 @@
             redirectFailed("../index", "You are not authorized to access this page");
         } elseif($_SESSION['role'] == 'content') {
             redirectFailed("index", "You are not authorized to access this page");
+        } elseif($_SESSION['role'] == 'rider') {
+            redirectFailed("index", "You are not authorized to access this page");
         } elseif($_SESSION['role'] == 'manager') {
 
         } elseif($_SESSION['role'] == 'admin') {

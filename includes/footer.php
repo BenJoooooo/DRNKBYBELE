@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <div class="footer column-one">
+                <!-- <div class="footer column-one">
                     <img src="img/drnklogowhite.png" alt="">
                     <div class="footer-newsletter-container">
                         <p class="footer-p">Subscribe to our newsletter</p>
@@ -42,11 +42,11 @@
                             <button class="submit-letter" type="submit">Subscribe</button>
                         </form>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="footer-lower">
                 <div class="copyright-container">
-                    <h3>&#169 2022 Webify Creatives. All rights reserved.</h3>
+                    <h3>&#169 2022 Webify Creatives (Capstone Project). All rights reserved.</h3>
                 </div>
             </div>
         </footer>
@@ -56,7 +56,6 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/jquery-3.6.1.min.js"></script>
     <script src="js/addtocart.js"></script>
-    <script src="js/espressyourself.js"></script>
     <script src="js/orders.js"></script>
 
     <!-- Search function for blog -->
@@ -143,7 +142,14 @@
                 }
             })
         })
+
+
+        // window.setTimeout( function() {
+        // window.location.reload();
+        // }, 30000);
     </script>
+
+    
 
     <!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>

@@ -33,6 +33,10 @@
                             <i class="fa fa-eye" id="show-password"></i>
                         </div>
                     </div>
+
+                    <div class="signup-header">
+                        <a href="forgot-password">Forgot Password?</a>
+                    </div>
                     
                     <button class="signup-submit" name="login_submit">Login</button>
                 </form>

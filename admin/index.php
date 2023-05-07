@@ -34,7 +34,7 @@
 
 
 ?>
-    <div class="wrapper">
+    <div class="wrapper" id="wrapper">
         <?php include ('includes/sidebar.php'); ?>
 
         <div class="body-wrapper">

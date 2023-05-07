@@ -910,3 +910,14 @@ $(document).ready(function() {
   });
 
 });
+
+// Alerts Admin for new orders
+// $(document).ready(function () {
+
+//   $(document).on('click', '.update_admin_orders', function () {
+
+//     $(".body-wrapper").load(location.href + ".body-wrapper");
+
+//   });
+
+// });

@@ -3,7 +3,7 @@
     session_start();
     
     // include ('../functions/middleware.php');
-    include ("../functions/accessMiddleWare.php");
+    include ("../functions/accessMiddleWareRider.php");
     include ('includes/header.php');
 
 ?>
@@ -39,10 +39,10 @@
                                         <label for="">Product Name</label>
                                         <input type="text" name="name" class="signup-input" required placeholder="Enter Product Name">
                                     </div>
-                                    <div class="signup price">
+                                    <!-- <div class="signup price">
                                         <label for="">Slug</label>
                                         <input type="text" name="slug" class="signup-input" required placeholder="e.g., milktea-series">
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="signup">
                                     <label for="">Select Category</label>

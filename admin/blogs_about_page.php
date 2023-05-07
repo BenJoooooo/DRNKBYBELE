@@ -4,7 +4,7 @@
     // include ('../functions/middleware.php');
     // include ('../functions/middleware_manager.php');
 
-    include ('../functions/accessMiddleWare.php');
+    include ('../functions/accessMiddleWareRider.php');
     include ('includes/header.php')
 
 ?>

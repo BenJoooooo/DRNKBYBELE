@@ -63,7 +63,7 @@
                                                 <h5 class="card-category"><?= $product['category_name']; ?></h5>
                                             </div>
 
-                                            <div class="card-rate-orders">
+                                            <!-- <div class="card-rate-orders">
                                                 <div class="card-rates">
                                                     <span><i class="fas fa-star-half-alt"></i></span>
                                                     <small class="rate">4.8</small>
@@ -73,7 +73,7 @@
                                                     <span class="medium"><i class='fas fa-glass-whiskey'></i></i></span>
                                                     <span class="large"><i class='fas fa-glass-whiskey'></i></i></span>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <input type="hidden" name="" class="input-qty" value="1">
                                         <button class="btn btn-primary addToCartBtn" value="<?= $product['id']; ?>">Add to cart</button>

@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="card-menu-content">
                                     <h2 class="card-menu-title"><?= $items['product_name'] ?></h2>
-                                    <p class="card-menu-description"><?= $items['category_name']; ?></p>
+                                    <p class="card-menu-description"><?= $items['category_name']; ?> / <?= $items['size']; ?></p>
                                 </div>
                             </div>
                         </a>

@@ -573,11 +573,12 @@ include ('../functions/myfunctions.php');
 
         $added_by = mysqli_real_escape_string($con, $_POST['added_by']);
         $category_name = mysqli_real_escape_string($con, $_POST['name']);
-        $slug = mysqli_real_escape_string($con, $_POST['slug']);
+        // $slug = mysqli_real_escape_string($con, $_POST['slug']);
         $image = $_FILES['upload']['name'];
         $imageSize = $_FILES['upload']['size'];
         $category_description = mysqli_real_escape_string($con, $_POST['description']);
         $status = isset($_POST['status']) ? '1':'0';
+        $slug = $category_name;
 
         $fileExt = explode('.', $image);
         $fileActualExt = strtolower(end($fileExt));
@@ -858,13 +859,13 @@ include ('../functions/myfunctions.php');
         $category_id = $_POST['category_id'];
         $added_by = mysqli_real_escape_string($con, $_POST['added_by']);
         $name = mysqli_real_escape_string($con, $_POST['name']);
-        $slug = mysqli_real_escape_string($con, $_POST['slug']);
         $description = mysqli_real_escape_string($con, $_POST['description']);
         $size = mysqli_real_escape_string($con, $_POST['size']);
         $status = isset($_POST['status']) ? '1':'0';
         $featured = isset($_POST['featured']) ? '1':'0';
         $original_price = $_POST['original_price'];
         $selling_price = $_POST['selling_price'];
+        $slug = $name."-".$size;
 
         $imageSize = $_FILES['upload']['size'];
         $image = $_FILES['upload']['name'];
@@ -913,7 +914,7 @@ include ('../functions/myfunctions.php');
         $category_id = $_POST['category_id'];
         $product_id = $_POST['product_id'];
         $name = mysqli_real_escape_string($con, $_POST['name']);
-        $slug = $_POST['slug'];
+        $slug = mysqli_real_escape_string($con, $_POST['slug']);
         $description = mysqli_real_escape_string($con, $_POST['description']);
         $size = mysqli_real_escape_string($con, $_POST['size']);
         $status = isset($_POST['status']) ? '1':'0';
@@ -1153,7 +1154,7 @@ include ('../functions/myfunctions.php');
     if(isset($_POST['add_about_blog'])) {
         $author = mysqli_real_escape_string($con, $_POST['added_by']);
         $title = mysqli_real_escape_string($con, $_POST['name']);
-        $slug = mysqli_real_escape_string($con, $_POST['slug']);
+        // $slug = mysqli_real_escape_string($con, $_POST['slug']);
         $description = mysqli_real_escape_string($con, $_POST['story']);
         $status = isset($_POST['status']) ? '1':'0';
         $image = $_FILES['upload']['name'];
@@ -1161,6 +1162,7 @@ include ('../functions/myfunctions.php');
         $path = "../uploadsBlogs";
         $image_ext = pathinfo($image, PATHINFO_EXTENSION);
         $filename = time(). '.' .$image_ext;
+        $slug = $title;
 
         $fileExt = explode('.', $image);
         $fileActualExt = strtolower(end($fileExt));
@@ -1361,11 +1363,12 @@ include ('../functions/myfunctions.php');
     if(isset($_POST['add_industry_blog'])) {
         $author = mysqli_real_escape_string($con, $_POST['added_by']);
         $title = mysqli_real_escape_string($con, $_POST['name']);
-        $slug = mysqli_real_escape_string($con, $_POST['slug']);
+        // $slug = mysqli_real_escape_string($con, $_POST['slug']);
         $description = mysqli_real_escape_string($con, $_POST['story']);
         $status = isset($_POST['status']) ? '1':'0';
         $image = $_FILES['upload']['name'];
         $imageSize = $_FILES['upload']['size'];
+        $slug = $title;
 
         $fileExt = explode('.', $image);
         $fileActualExt = strtolower(end($fileExt));

@@ -20,7 +20,7 @@
     // Fetches data from table with admin or manager role
     function getAdmin($table) {
         global $con;
-        $query = "SELECT * FROM $table WHERE role = 'admin' || role = 'manager' || role = 'content'";
+        $query = "SELECT * FROM $table WHERE role = 'admin' || role = 'manager' || role = 'content' || role = 'rider'";
         return $query_run = mysqli_query($con, $query);
     }
 
@@ -449,6 +449,15 @@
         return $query_run = mysqli_query($con, $query);
     }
 
+    function getOrdersDeliverAndFailed($table) {
+        global $con;
+        $query = "SELECT id, tracking_no, FORMAT(total_price, 2) AS total_price, status, DATE_FORMAT(created_at, '%a, %M %e %Y | %h:%i %p') AS date_created
+        FROM $table
+        WHERE status = '4'
+        ORDER BY status ASC, id DESC";
+        return $query_run = mysqli_query($con, $query);
+    }
+
 // -----------------------------------------------------------
 // -------------------- Archive System -----------------------
 // -----------------------------------------------------------
@@ -476,4 +485,80 @@
         WHERE archive_products.category_id = categories.id";
         return $query_run = mysqli_query($con, $query);
     }
+
+// -----------------------------------------------------------
+// ----------------------- CHART JS---------------------------
+// -----------------------------------------------------------
+
+    function getMonthChart($table1) {
+        global $con;
+        $query  = "SELECT MONTHNAME(created_at) AS monthname, SUM(total_price) AS amount
+        FROM $table1
+        WHERE status = '3'
+        GROUP BY monthname";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getDayChart($table1) {
+        global $con;
+        $query = "SELECT DATE_FORMAT(created_at, '%b %e, %y') as days, SUM(total_price) AS amount
+        FROM $table1
+        WHERE status = '3'
+        GROUP BY DATE(created_at)";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getWeekChart($table1) {
+        global $con;
+        $query = "SELECT DATE_FORMAT(created_at, '%U') AS weeks, SUM(total_price) AS amount
+        FROM $table1
+        WHERE status = '3'
+        GROUP BY YEARWEEK(created_at)";
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getYearChart($table1) {
+        global $con;
+        $query = "SELECT YEAR(created_at) as year_created, SUM(total_price) AS amount
+        FROM $table1
+        WHERE status = '3'
+        GROUP BY YEAR(created_at)";
+
+        return $query_run = mysqli_query($con, $query);
+    }
+
+    function getProductChart() {
+        global $con;
+        $query = 
+        "SELECT p.id AS pid, p.name AS products_name, p.category_id AS cat_id, p.selling_price,
+         c.id AS cid, c.name AS category_name,
+         od.id AS oid, od.prod_id AS product_id, SUM(od.price) as amount
+        FROM products p, categories c, order_items od
+        WHERE p.id = od.prod_id
+        AND  p.category_id = c.id
+        GROUP BY p.id";
+
+        return $query_run = mysqli_query($con, $query);
+
+    }
+
+    function getProductDayChart() {
+        global $con;
+        $query = 
+        "SELECT p.id AS pid, p.name AS products_name, p.category_id AS cat_id, p.selling_price,
+         c.id AS cid, c.name AS category_name,
+         od.id AS oid, od.prod_id AS product_id, SUM(od.price) as amount, od.order_id,
+         o.id as order_id, o.created_at, o.status
+        FROM products p, categories c, order_items od, orders o
+        WHERE p.id = od.prod_id
+        AND  p.category_id = c.id
+        AND o.id = od.order_id
+        AND o.status = '3'
+        AND DATE(o.created_at) = CURDATE()
+        GROUP BY p.id";
+
+        return $query_run = mysqli_query($con, $query);
+
+    }
+    
 ?>

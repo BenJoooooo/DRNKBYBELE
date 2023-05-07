@@ -18,12 +18,12 @@
             <div class="admin-links">
 
                 <!-------------------- Home Dropdown ------------------>
-                <div class="brand-child show-dropdown-home <?= $page ==  "" ? 'active':''; ?>">
-                    <div class="image-svg">
-                        <i class="fa fa-home"></i>
+                    <div class="brand-child show-dropdown-home <?= $page ==  "" ? 'active':''; ?>">
+                        <div class="image-svg">
+                            <i class="fa fa-home"></i>
+                        </div>
+                        <button href="index">Home</button>
                     </div>
-                    <button href="index">Home</button>
-                </div>
 
                 <div class="order-status-dropdown-home">
                     <div class="brand-child <?= $page ==  "index.php" ? 'active':''; ?>">
@@ -37,84 +37,103 @@
                 </div>
                 <!-------------------- Home Dropdown ------------------>
                 
-                <div class="brand-child has-border <?= $page ==  "admin_manage_home.php" ? 'active':''; ?> ">
-                    <div class="image-svg">
-                        <i class="far fa-file-code"></i>
-                    </div>
-                    <a href="admin_manage_home">Manage</a>
-                </div>
-
-                <div class="brand-child <?= $page ==  "client_blog_page.php" ? 'active':''; ?>">
-                    <div class="image-svg">
-                        <i class="fas fa-file-invoice"></i>
-                    </div>
-                    <a href="client_blog_page">Client Blogs</a>
-                </div>
-
-
-                <div class="brand-child <?= $page ==  "blogs_industry_page.php" ? 'active':''; ?>">
-                    <div class="image-svg">
-                        <i class="fas fa-file-invoice"></i>
-                    </div>
-                    <a href="blogs_industry_page">Industry Blogs</a>
-                </div>
-
-                <div class="brand-child has-border <?= $page ==  "blogs_about_page.php" ? 'active':''; ?>">
-                    <div class="image-svg">
-                        <i class="fas fa-file-invoice"></i>
-                    </div>
-                    <a href="blogs_about_page">About Blogs</a>
-                </div>
-                
-                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master') { ?>
-                    <div class="brand-child <?= $page ==  "sales.php" ? 'active':''; ?>">
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master' || $_SESSION['role'] == 'content') { ?>
+                    <div class="brand-child has-border <?= $page ==  "admin_manage_home.php" ? 'active':''; ?> ">
                         <div class="image-svg">
-                            <i class="fas fa-poll"></i>
+                            <i class="far fa-file-code"></i>
                         </div>
-                        <a href="sales">Sales</a>
+                        <a href="admin_manage_home">Manage</a>
                     </div>
                 <?php } ?>
 
-                <!--------- Orders divider and status dropdown -------->
-                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master') { ?>
-
-                    <div class="brand-child has-border show-dropdown">
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master' || $_SESSION['role'] == 'content') { ?>
+                    <div class="brand-child <?= $page ==  "client_blog_page.php" ? 'active':''; ?>">
                         <div class="image-svg">
-                            <i class="fas fa-poll"></i>
+                            <i class="fas fa-file-invoice"></i>
                         </div>
-                        <button href="orders_page">Orders Section<button>
+                        <a href="client_blog_page">Client Blogs</a>
                     </div>
-                    
-                    <div class="order-status-dropdown">
-                        <div class="brand-child <?= $page ==  "orders_page.php" ? 'active':''; ?>">
-                            <div class="image-svg"></div>
-                            <a href="orders_page">All orders</a>
+                <?php } ?>
+
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master' || $_SESSION['role'] == 'content') { ?>
+                    <div class="brand-child <?= $page ==  "blogs_industry_page.php" ? 'active':''; ?>">
+                        <div class="image-svg">
+                            <i class="fas fa-file-invoice"></i>
                         </div>
-                        <div class="brand-child <?= $page ==  "orders_page_decline.php" ? 'active':''; ?>">
-                            <div class="image-svg"></div>
-                            <a href="orders_page_decline">Declined</a>
-                        </div>
-                        <div class="brand-child <?= $page ==  "orders_page_accept.php" ? 'active':''; ?>">
-                            <div class="image-svg"></div>
-                            <a href="orders_page_accept">Accepted</a>
-                        </div>
-                        <div class="brand-child <?= $page ==  "orders_page_deliver.php" ? 'active':''; ?>">
-                            <div class="image-svg"></div>
-                            <a href="orders_page_deliver">Delivery</a>
-                        </div>
-                        <div class="brand-child <?= $page ==  "orders_page_complete.php" ? 'active':''; ?>">
-                            <div class="image-svg"></div>
-                            <a href="orders_page_complete">Completed</a>
-                        </div>
-                        <div class="brand-child has-border <?= $page ==  "orders_page_failed.php" ? 'active':''; ?>">
-                            <div class="image-svg"></div>
-                            <a href="orders_page_failed">Failed</a>
-                        </div>
+                        <a href="blogs_industry_page">Industry Blogs</a>
                     </div>
+                <?php } ?>
+
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master' || $_SESSION['role'] == 'content') { ?>
+                    <div class="brand-child has-border <?= $page ==  "blogs_about_page.php" ? 'active':''; ?>">
+                        <div class="image-svg">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                        <a href="blogs_about_page">About Blogs</a>
+                    </div>
+                <?php } ?>
+
+                 <!--------- Orders divider and status dropdown -------->
+                 <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master') { ?>
+
+                <div class="brand-child has-border show-dropdown">
+                    <div class="image-svg">
+                        <i class="fas fa-poll"></i>
+                    </div>
+                    <button href="orders_page">Orders Section<button>
+                </div>
+
+                <div class="order-status-dropdown">
+                    <div class="brand-child <?= $page ==  "orders_page.php" ? 'active':''; ?>">
+                        <div class="image-svg"></div>
+                        <a href="orders_page">All orders</a>
+                    </div>
+                    <div class="brand-child <?= $page ==  "orders_page_decline.php" ? 'active':''; ?>">
+                        <div class="image-svg"></div>
+                        <a href="orders_page_decline">Declined</a>
+                    </div>
+                    <div class="brand-child <?= $page ==  "orders_page_accept.php" ? 'active':''; ?>">
+                        <div class="image-svg"></div>
+                        <a href="orders_page_accept">Accepted</a>
+                    </div>
+                    <div class="brand-child <?= $page ==  "orders_page_deliver.php" ? 'active':''; ?>">
+                        <div class="image-svg"></div>
+                        <a href="orders_page_deliver">Delivery</a>
+                    </div>
+                    <div class="brand-child <?= $page ==  "orders_page_complete.php" ? 'active':''; ?>">
+                        <div class="image-svg"></div>
+                        <a href="orders_page_complete">Completed</a>
+                    </div>
+                    <div class="brand-child has-border <?= $page ==  "orders_page_failed.php" ? 'active':''; ?>">
+                        <div class="image-svg"></div>
+                        <a href="orders_page_failed">Failed</a>
+                    </div>
+                </div>
 
                 <?php } ?>
                 <!--------- Orders divider and status dropdown -------->
 
+
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master') { ?>
+                    <div class="brand-child show-dropdown-sales">
+                        <div class="image-svg">
+                            <i class="fas fa-poll"></i>
+                        </div>
+                        <button href="sales">Sales</button>
+                    </div>
+
+                    <div class="order-status-dropdown-sales">
+                        <div class="brand-child <?= $page ==  "sales.php" ? 'active':''; ?>">
+                            <div class="image-svg"></div>
+                            <a href="sales">All Sales</a>
+                        </div>
+                        <div class="brand-child <?= $page ==  "products_sales.php" ? 'active':''; ?>">
+                            <div class="image-svg"></div>
+                            <a href="products_sales">Products</a>
+                        </div>
+                    </div>
+
+                <?php } ?>
 
                 <!----------------- Admin acounts---------------------->
                 <?php if($_SESSION['role'] == 'master' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager') { ?>
@@ -152,19 +171,32 @@
                 <!----------------- Admin acounts---------------------->
 
 
-                <div class="brand-child <?= $page ==  "admin_categories_page.php" ? 'active':''; ?>">
-                    <div class="image-svg">
-                        <i class="fa fa-th"></i>
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master' || $_SESSION['role'] == 'content') { ?>
+                    <div class="brand-child <?= $page ==  "admin_categories_page.php" ? 'active':''; ?>">
+                        <div class="image-svg">
+                            <i class="fa fa-th"></i>
+                        </div>
+                        <a href="admin_categories_page">Categories</a>
                     </div>
-                    <a href="admin_categories_page">Categories</a>
-                </div>
+                <?php } ?>
 
-                <div class="brand-child has-border <?= $page ==  "admin_products_page.php" ? 'active':''; ?>">
-                    <div class="image-svg">
-                        <i class="fas fa-glass-whiskey"></i>
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master' || $_SESSION['role'] == 'content') { ?>
+                    <div class="brand-child has-border <?= $page ==  "admin_products_page.php" ? 'active':''; ?>">
+                        <div class="image-svg">
+                            <i class="fas fa-glass-whiskey"></i>
+                        </div>
+                        <a href="admin_products_page">Products</a>
                     </div>
-                    <a href="admin_products_page">Products</a>
-                </div>
+                <?php } ?>
+
+                <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'manager' || $_SESSION['role'] == 'master' || $_SESSION['role'] == 'rider') { ?>
+                    <div class="brand-child has-border <?= $page ==  "admin_riders_page.php" ? 'active':''; ?>">
+                        <div class="image-svg">
+                            <i class="fas fa-glass-whiskey"></i>
+                        </div>
+                        <a href="admin_riders_page">Rider</a>
+                    </div>
+                <?php } ?>
 
                 <!-- Drink Sizes -->
                 <!-- <div class="brand-child has-border<?= $page ==  "admin_sizes_page.php" ? 'active':''; ?>">

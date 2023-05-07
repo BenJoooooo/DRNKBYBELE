@@ -3,7 +3,7 @@
     session_start();
     
     // include ('../functions/middleware.php');
-    include ("../functions/accessMiddleWare.php");
+    include ("../functions/accessMiddleWareRider.php");
     include ('includes/header.php');
 
 ?>
@@ -45,7 +45,7 @@
                                         <th>Name</th>
                                         <th>Size</th>
 
-                                        <?php if($_SESSION['role'] == 'admin') { ?>
+                                        <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'master') { ?>
                                             <th>Original Price</th>
                                         <?php } ?>
 
@@ -76,7 +76,7 @@
                                                     <td><?= $product['name']; ?></td>
                                                     <td><?= $product['size']; ?></td>
 
-                                                    <?php if($_SESSION['role'] == 'admin') { ?>
+                                                    <?php if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'master') { ?>
                                                         <td><?= $product['original_price']; ?></td>
                                                     <?php } ?>
 

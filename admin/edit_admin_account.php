@@ -82,6 +82,10 @@
                                             <label for="">Content Creator</label>
                                             <input type="radio" name="signup_radio" value="content" class="signup-input" checked>
                                         </div>
+                                        <div class="signup admin-role">
+                                            <label for="">Rider</label>
+                                            <input type="radio" name="signup_radio" class="signup-input" value="rider" checked>
+                                        </div>
                                     </div>
                                     <button class="signup-submit" name="update_admin_submit">Update User</button>
                                 </form>
