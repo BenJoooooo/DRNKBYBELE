@@ -58,6 +58,10 @@
     <script src="js/addtocart.js"></script>
     <script src="js/orders.js"></script>
 
+    
+    <!-- String Counter -->
+    <script src="js/stringcounterclient.js"></script>
+
     <!-- Search function for blog -->
     <script type="text/javascript">
 
@@ -147,9 +151,8 @@
         // window.setTimeout( function() {
         // window.location.reload();
         // }, 30000);
+        
     </script>
-
-    
 
     <!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>
@@ -181,6 +184,7 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
+
 
     </body>
 </html>

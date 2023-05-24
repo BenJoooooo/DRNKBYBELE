@@ -280,7 +280,7 @@ body.open .admin-menu-title {
     text-decoration: none;
     color: var(--clr-secondary-color);
     font-family: var(--ff-league);
-    font-size: clamp(1rem, 2vw, 1.5rem); 
+    font-size: clamp(.6rem, 1.3vw, 1.5rem); 
     font-weight: 300;
     letter-spacing: 1px;
 }
@@ -289,7 +289,7 @@ body.open .admin-menu-title {
     text-decoration: none;
     color: var(--clr-secondary-color);
     font-family: var(--ff-league);
-    font-size: clamp(1rem, 2vw, 1.5rem); 
+    font-size: clamp(.6rem, 1.3vw, 1.5rem); 
     font-weight: 300;
     letter-spacing: 1px;
 }
@@ -344,6 +344,7 @@ tbody td {
     border: 1px solid #f0f0f0;
     /* font-size: clamp(.7rem, 1.0vw, 1.2rem); */
     font-size: 1rem;
+    text-transform: lowercase;
 }
 
 tbody td img {
@@ -508,8 +509,8 @@ tbody td img {
     text-align: center;
     color: var(--clr-main-color);
     font-family: var(--ff-league);
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 500;
     letter-spacing: 2px;
     transition: all .3s ease-in-out;
 }
@@ -865,10 +866,25 @@ tbody td img {
 /* style is same with .card-menu */
 .card-menu-content {
     display: flex; 
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 1em .5em;
     width: 100%;
+}
+
+.card-menu-content .card-menu-description {
+    font-weight: 600;
+}
+
+.card-menu-content .card-menu-description, .card-menu-content .card-menu-title {
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.card-menu-content .card-menu-title {
+    text-transform: uppercase;
+    font-size: 1.2rem;
 }
 
 .error-message-container {
@@ -2040,11 +2056,14 @@ tbody td img {
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3) inset;
     width: 300px;
     max-width: 500px;
+    max-height: 400px;
+    min-height: 400px;
 }
 
 .menu-espresso .article {
     text-align: justify;
     font-size: 1rem;
+    overflow: hidden;
 }
 
 .menu-espresso .name {

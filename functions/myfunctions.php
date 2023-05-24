@@ -560,5 +560,37 @@
         return $query_run = mysqli_query($con, $query);
 
     }
+
+    function getProductChartMediumSize() {
+        global $con;
+        $query = 
+        "SELECT p.id AS pid, p.name AS products_name, p.size, p.category_id AS cat_id, p.selling_price,
+         c.id AS cid, c.name AS category_name,
+         od.id AS oid, od.prod_id AS product_id, SUM(od.price) as amount
+        FROM products p, categories c, order_items od
+        WHERE p.id = od.prod_id
+        AND  p.category_id = c.id
+        AND p.size = 'medium'
+        GROUP BY p.id";
+
+        return $query_run = mysqli_query($con, $query);
+
+    }
+
+    function getProductChartLargeSize() {
+        global $con;
+        $query = 
+        "SELECT p.id AS pid, p.name AS products_name, p.size, p.category_id AS cat_id, p.selling_price,
+         c.id AS cid, c.name AS category_name,
+         od.id AS oid, od.prod_id AS product_id, SUM(od.price) as amount
+        FROM products p, categories c, order_items od
+        WHERE p.id = od.prod_id
+        AND  p.category_id = c.id
+        AND p.size = 'large'
+        GROUP BY p.id";
+
+        return $query_run = mysqli_query($con, $query);
+
+    }
     
 ?>

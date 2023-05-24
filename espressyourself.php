@@ -56,7 +56,8 @@
                     </div>
                     <div class="text-body">
                         <label for="">Your Message</label>
-                        <textarea name="article" class="input-article" required placeholder="Enter Your Message"></textarea>
+                        <textarea name="article" class="input-article" required placeholder="Enter Your Message" maxlength="200" id="my-teext"></textarea>
+                        <p id="counter-result" class="text-count"></p>
                     </div>
                 </div>
 
