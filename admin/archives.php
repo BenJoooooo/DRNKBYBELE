@@ -47,7 +47,7 @@
                                         <h5>Deleted Users</h5>
                                     </div>
                                     <div class="icon">
-                                        <i class="fas fa-shopping-basket"></i>
+                                        <i class="fas fa-user-friends"></i>
                                     </div>
                                 </div>
                                 <div class="button">
@@ -95,7 +95,7 @@
                                         <h5>Deleted Cover Photo</h5>
                                     </div>
                                     <div class="icon">
-                                        <i class="fas fa-shopping-basket"></i>
+                                        <i class="fas fa-chalkboard"></i>
                                     </div>
                                 </div>
                                 <div class="button">
@@ -119,7 +119,7 @@
                                         <h5>Deleted Espress Blog</h5>
                                     </div>
                                     <div class="icon">
-                                        <i class="fas fa-shopping-basket"></i>
+                                        <i class="fas fa-book"></i>
                                     </div>
                                 </div>
                                 <div class="button">
@@ -143,7 +143,7 @@
                                         <h5>Deleted Industry Blog</h5>
                                     </div>
                                     <div class="icon">
-                                        <i class="fas fa-shopping-basket"></i>
+                                        <i class="fas fa-newspaper"></i>
                                     </div>
                                 </div>
                                 <div class="button">
@@ -167,7 +167,7 @@
                                         <h5>Deleted About Blog</h5>
                                     </div>
                                     <div class="icon">
-                                        <i class="fas fa-shopping-basket"></i>
+                                        <i class="far fa-newspaper"></i>
                                     </div>
                                 </div>
                                 <div class="button">
@@ -191,7 +191,7 @@
                                         <h5>Deleted Products</h5>
                                     </div>
                                     <div class="icon">
-                                        <i class="fas fa-shopping-basket"></i>
+                                        <i class="fas fa-glass-whiskey"></i>
                                     </div>
                                 </div>
                                 <div class="button">
@@ -215,7 +215,7 @@
                                         <h5>Deleted Categories</h5>
                                     </div>
                                     <div class="icon">
-                                        <i class="fas fa-shopping-basket"></i>
+                                        <i class="fa fa-th"></i>
                                     </div>
                                 </div>
                                 <div class="button">

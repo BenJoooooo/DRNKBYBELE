@@ -574,7 +574,6 @@
         GROUP BY p.id";
 
         return $query_run = mysqli_query($con, $query);
-
     }
 
     function getProductChartLargeSize() {
@@ -590,7 +589,20 @@
         GROUP BY p.id";
 
         return $query_run = mysqli_query($con, $query);
-
     }
-    
+
+    // -----------------------------------------------------------
+    // ------------------- Loyal Customers------------------------
+    // -----------------------------------------------------------
+
+    function getLoyalCust() {
+        global $con;
+        $query = "SELECT u.id AS uid, u.fullname AS uname, o.id AS oid, o.user_id AS ouid
+        FROM users u, orders o
+        WHERE u.id = o.user_id
+        GROUP BY uid";
+
+        return $query_run = mysqli_query($con, $query);
+    }
+
 ?>

@@ -2,12 +2,12 @@
     session_start();
 
     // include ("../functions/middleware.php");
-    include ("../functions/accessMiddleWare.php");
+    include ('../functions/accessMiddleWareManager.php');
     include ("includes/header.php");
 
 ?>  
 
-    <div class="wrapper">
+    <div class="wrapper" id="wrapper">
             <?php include ('includes/sidebar.php'); ?>
 
             <div class="body-wrapper">
@@ -17,7 +17,7 @@
                             <h4>Welcome, <?= $_SESSION['auth_user']['fullname'];  ?></h4>
                         </div>
                         <div class="admin-page-title">
-                            <h3>Riders Page</h3>
+                            <h3>Loyal Customers</h3>
                         </div>
                     </div>
                     
@@ -28,7 +28,7 @@
                         <?php include('../functions/sessionmessage.php'); ?>
 
                             <div class="card-header">
-                                <h3>Riders Page</h3>
+                                <h3>Frequent visitors</h3>
                                 <div>
                                     <i class="fa fa-search"></i>
                                     <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
@@ -39,51 +39,22 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <!-- <th>ID</th> -->
-                                            <th>Order Id</th>
-                                            <th>Tracking No</th>
-                                            <th>Price</th>
-                                            <th>Status</th>
-                                            <th>Created at</th>
-                                            <th>Actions</th>
+                                            <th>Customer ID</th>
+                                            <th>Customer Name</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
 
                                         <?php
-                                            $data = getOrdersDeliverAndFailed("orders");
+                                            $data = getLoyalCust();
                                             if(mysqli_num_rows($data) > 0) {
 
                                                 foreach ($data as $item) { ?>
 
                                                     <tr>
-                                                        <td><?= $item['id']; ?></td>
-                                                        <td><?= $item['tracking_no']; ?></td>
-                                                        <td><?= $item['total_price']; ?></td>
-
-                                                        <td>
-                                                            <?php 
-
-                                                                 if($item['status'] == 3) {
-                                                                    echo "Completed";
-                                                                } elseif($item['status'] == 4) {
-                                                                    echo "Delivery";
-                                                                } elseif($item['status'] == 5) {
-                                                                    echo "Order Failed";
-                                                                } else {
-                                                                    echo "Error";
-                                                                }
-                                                            ?>
-                                                        </td>
-
-                                                        <td><?= $item['date_created']; ?></td>
-                                                        <td class="td-justify">
-                                                            <a href="../view_order_admin?id=<?= $item['tracking_no']; ?>" value="<?= $item['id']; ?>" class="btn btn-success">View</a>
-                                                            <button class="btn btn-dark completeOrder" value="<?= $item['id']; ?>">Complete</button>
-                                                            <button class="btn btn-danger failOrder" value="<?= $item['id']; ?>">Failed</button>
-                                                        </td>
-
+                                                        <td><?= $item['uid']; ?></td>
+                                                        <td><?= $item['uname']; ?></td>
                                                     </tr>
 
                                         <?php

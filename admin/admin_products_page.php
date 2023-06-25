@@ -29,7 +29,10 @@
 
                         <div class="table-button-add">
                             <a href="admin_add_new_products" class="table-container-add-new">Add Products</a>
-                            <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
+                            <div>
+                                <i class="fa fa-search"></i>
+                                <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
+                            </div>
                         </div>
 
                         <div class="card-header">

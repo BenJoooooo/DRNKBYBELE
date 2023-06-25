@@ -131,6 +131,10 @@
                             <div class="image-svg"></div>
                             <a href="products_sales">Products</a>
                         </div>
+                        <div class="brand-child <?= $page == "frequent_customers.php" ? 'active':''; ?>">
+                            <div class="image-svg"></div>
+                            <a href="frequent_customers">Loyal Customers</a>
+                        </div>
                     </div>
 
                 <?php } ?>

@@ -27,7 +27,10 @@
 
                             <div class="card-header">
                                 <h3>Home Page</h3>
-                                <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
+                                <div>
+                                    <i class="fa fa-search"></i>
+                                    <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
+                                </div>
                             </div>
 
                             <div class="card-body" id="coverphotos_table">

@@ -31,7 +31,10 @@
 
                         <div class="table-button-add">
                             <a href="blogs_about_add_new" class="table-container-add-new">Add Blogs</a>
-                            <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
+                            <div>
+                                <i class="fa fa-search"></i>
+                                <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
+                            </div>
                         </div>
                         <div class="card-header">
                             <h3>About Blogs Table</h3>

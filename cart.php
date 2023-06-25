@@ -46,7 +46,10 @@
                             <p><?= $item['name']; ?> <span>(<?= $item['size']; ?>)</span></p>
                             <p><?= $item['cat_name'] ?></p>
                         </a> 
-                        <button class="data-cart-remove-item deleteItem" value="<?= $item['cid']; ?>">Remove</button>
+                        <div>
+                            <button class="data-cart-remove-item deleteItem" value="<?= $item['cid']; ?>">Remove</button>
+                            <a class="data-cart-remove-item" href="drnksproductinfo?product=<?= $item['slug']?>">Edit Item</a>
+                        </div>
                     </td>
                     <td class="data-cart-items-qty">
                         <div class="input-group">

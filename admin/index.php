@@ -148,7 +148,7 @@
                                     <h5>Orders Today</h5>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-shopping-basket"></i>
+                                    <i class="fas fa-funnel-dollar"></i>
                                 </div>
                             </div>
                             <div class="button">
@@ -165,7 +165,7 @@
                                     <h5>EspressYourSelf Posts</h5>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-shopping-basket"></i>
+                                    <i class="fas fa-book"></i>
                                 </div>
                             </div>
                             <div class="button">
@@ -182,7 +182,7 @@
                                     <h5>About Page Blogs</h5>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-shopping-basket"></i>
+                                    <i class="far fa-newspaper"></i>
                                 </div>
                             </div>
                             <div class="button">
@@ -199,7 +199,7 @@
                                     <h5>Industry Page Blogs</h5>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-shopping-basket"></i>
+                                    <i class="fas fa-newspaper"></i>
                                 </div>
                             </div>
                             <div class="button">

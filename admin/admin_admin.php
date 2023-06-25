@@ -27,7 +27,10 @@
 
                         <div class="table-button-add">
                             <a href="admin_add_new_account" class="table-container-add-new">Add User</a>
-                            <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
+                            <div>
+                                <i class="fa fa-search"></i>
+                                <input type="text" id="live_search" class="search-input-admin" placeholder="Search here">
+                            </div>
                         </div>
                         <div class="card-header">
                             <h3>Accounts Table</h3>

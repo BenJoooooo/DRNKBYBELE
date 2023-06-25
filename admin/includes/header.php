@@ -71,9 +71,9 @@
 
 
                         <?php } ?>
-                        <div class="nav-home">
+                        <!-- <div class="nav-home">
                             <a href="../index">Home</a>
-                        </div>
+                        </div> -->
                         <div class="nav-menu">
                             <a href="../menu">Menu</a>
                         </div>
@@ -92,11 +92,11 @@
                             <a href="../blog">Blog</a>
                         </div>
 
-                        <?php if(isset($_SESSION['auth'])) { ?>
+                        <!-- <?php if(isset($_SESSION['auth'])) { ?>
                             <div class="nav-admin">
                                 <a href="../espressyourself">EspressYourSelf</a>
                             </div>
-                        <?php } ?>
+                        <?php } ?> -->
                     </nav>
 
                     <div class="search-bar-container">
@@ -120,8 +120,6 @@
                                     <?php echo $_SESSION['auth_user']['fullname']; ?>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="../mypurchase">My purchase</a></li>
-                                    <li><a class="dropdown-item" href="../order_history">Order History</a></li>
                                     <li><a class="dropdown-item" href="../logout">Logout</a></li>
                                 </ul>
                             </div>
